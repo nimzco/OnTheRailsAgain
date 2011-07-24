@@ -1,0 +1,9 @@
+= semantic_form_for @article do |f|
+  - # render :partial => "shared/form_error", :object => @article
+  - f.inputs do
+    = f.input :title
+    = f.input :introduction,  :as => :text
+    = f.input :content,       :as => :text
+    = f.input :author_id,     :as => :hidden,     :value => 1
+
+  = f.buttons

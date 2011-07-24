@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang=>"en"}
+  %head
+    %title MoERailsApp
+    
+    / Includes CSS
+    - stylesheet_link_tag :all
+    
+    / Include des Javascripts
+
+    = csrf_meta_tag
+  %body
+    - # render :partial => "shared/header"
+    - # render :partial => "shared/nav"
+    
+    #content
+      - flash.each do |name, msg|
+        = content_tag :p, msg, :id => "flash_#{name}"
+      #container
+        = yield
+
+    - # render :partial => "shared/footer"
