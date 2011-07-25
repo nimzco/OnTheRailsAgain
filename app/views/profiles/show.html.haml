@@ -1,0 +1,5 @@
+- if @author
+  = render :partial => "profiles/author", :object => @author
+- else
+  = params[:name]
+  n'existe pas...!

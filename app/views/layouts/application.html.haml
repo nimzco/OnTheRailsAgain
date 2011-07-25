@@ -1,22 +1,24 @@
-<!DOCTYPE html>
+!!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang=>"en"}
   %head
     %title MoERailsApp
     
     / Includes CSS
-    - stylesheet_link_tag :all
-    
-    / Include des Javascripts
+    = stylesheet_link_tag :all
 
     = csrf_meta_tag
-  %body
-    - # render :partial => "shared/header"
-    - # render :partial => "shared/nav"
-    
-    #content
-      - flash.each do |name, msg|
-        = content_tag :p, msg, :id => "flash_#{name}"
-      #container
-        = yield
 
-    - # render :partial => "shared/footer"
+  %body
+    - if author_signed_in?
+      = link_to "Sign out", destroy_author_session_path(current_author), :method => :delete
+
+    = render :partial => "shared/header"
+    
+    - flash.each do |name, msg|
+      = content_tag :p, msg, :id => "flash_#{name}"
+    = yield
+
+    = render :partial => "shared/footer"
+
+  / Include des Javascripts
+  = javascript_include_tag :all

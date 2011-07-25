@@ -1,0 +1,14 @@
+%article
+  %h1= article.title
+  %p.introduction= article.introduction
+  .content
+    = Haml::Engine.new(article.content).to_html[0...10]
+    …
+    = link_to 'En savoir plus', article
+  %ul.authors
+    - article.authors.each do |author|
+      %li
+        = link_to author.name, profile_path(author.name)
+  - if author_signed_in? #and article.authors.contains(current_author)
+    = link_to 'Edit', edit_article_path(article)
+    = link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete

@@ -1,6 +1,11 @@
 OntheRailsAgain::Application.routes.draw do
 
-  devise_for :authors
+  devise_for  :authors, 
+              :path_names => {  :sign_in => 'login', 
+                                :sign_out => 'logout', 
+                                :sign_up => 'register' }
+
+  get "/profile/:name" => "profiles#show", :as => "profile"
 
   resources :tags
 

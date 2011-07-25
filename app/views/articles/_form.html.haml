@@ -4,6 +4,7 @@
     = f.input :title
     = f.input :introduction,  :as => :text
     = f.input :content,       :as => :text
-    = f.input :author_id,     :as => :hidden,     :value => 1
+    - # f.input :author_id,     :as => :hidden,     :value => current_author.id
+    = f.input :authors, :as => :check_boxes, :required => false
 
   = f.buttons
