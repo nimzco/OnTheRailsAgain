@@ -9,10 +9,15 @@
   %b Content:
   = @article.content
 %p
-  %b Author:
-  = @article.author_id
-
-= render 'form'
+  %b Authors:
+  %ul
+  - @article.authors.each do |author|
+    %li=author.name
+%p
+  %b Tags:
+  %ul
+  - @article.tags.each do |tag|
+    %li=tag.name
 
 = link_to 'Edit', edit_article_path(@article)
 |
