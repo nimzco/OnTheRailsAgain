@@ -1,23 +1,22 @@
 !!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang=>"en"}
   %head
-    %title MoERailsApp
-    
-    / Includes CSS
-    = stylesheet_link_tag :all
-
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'typography.css'
+    %title On The Rails Again
     = csrf_meta_tag
 
   %body
-    - if author_signed_in?
-      = link_to "Sign out", destroy_author_session_path, :method => :delete
-
     = render :partial => "shared/header"
-    
-    - flash.each do |name, msg|
-      = content_tag :p, msg, :id => "flash_#{name}"
-    = yield
-
+    %section
+      .content                       
+        - flash.each do |name, msg|
+          = content_tag :p, msg, :id => "flash_#{name}"
+        = yield
+  
     = render :partial => "shared/footer"
 
   / Include des Javascripts

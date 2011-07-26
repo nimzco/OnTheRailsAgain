@@ -14,8 +14,9 @@ gem 'inherited_resources'
 gem 'mongrel'             , '~>1.1.5'
 gem 'haml'                , '~>3.1.0'
 
+gem "compass", ">= 0.11.5"
 gem "jquery-rails"
-
+gem "sass"
 
 # Use unicorn as the web server
 # gem 'unicorn'
