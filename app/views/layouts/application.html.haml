@@ -10,7 +10,7 @@
 
   %body
     - if author_signed_in?
-      = link_to "Sign out", destroy_author_session_path(current_author), :method => :delete
+      = link_to "Sign out", destroy_author_session_path, :method => :delete
 
     = render :partial => "shared/header"
     
@@ -21,4 +21,5 @@
     = render :partial => "shared/footer"
 
   / Include des Javascripts
-  = javascript_include_tag :all
+  - #javascript_include_tag :all
+  = javascript_include_tag :defaults

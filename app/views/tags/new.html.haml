@@ -1,3 +1,9 @@
 %h1 New tag
+
 = render 'form'
+
+#add_tag
+= link_to "New Tag", new_tag_path, :remote => true, :id => "new_tag"
+
+
 = link_to 'Back', tags_path
