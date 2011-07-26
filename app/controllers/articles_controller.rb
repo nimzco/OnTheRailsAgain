@@ -6,5 +6,9 @@ class ArticlesController < InheritedResources::Base
     @article.authors << current_author
     new!
   end
-    
+  
+  def show
+    @comment = Comment.new
+    show!
+  end  
 end

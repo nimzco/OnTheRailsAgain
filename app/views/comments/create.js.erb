@@ -1,0 +1,7 @@
+$('#comment_form').html("");
+<% if params[:comment][:parent_id] != "" %>
+  $("#comment_<%= params[:comment][:parent_id] %>").after("<ul><%= escape_javascript(render @comment) %></ul>");
+<% else %>
+  $('#comments').append("<%= escape_javascript(render @comment) %>");
+  $('#comments').after('<%= link_to "Nouvelle réponse", new_article_comment_path(@article, :new_article => true), :remote => true, :id => "new_answer_link" %>');
+<% end %>
