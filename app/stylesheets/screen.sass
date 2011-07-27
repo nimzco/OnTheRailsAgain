@@ -16,12 +16,16 @@ $max-width: 70em
   max-width: $max-width
   margin: auto
   
+  
 header
+  padding-top: 1em
+  border-bottom: 1px solid #EFEFEF
+  -webkit-box-shadow: white 0 -1px 0 inset
+  background-color: whiteSmoke
   .content
-
     nav
-      border-top: 1px solid black
-      -webkit-box-shadow: rgba(155, 0, 0, 0.2) 0 1px 0 inset
+      border-top: 1px solid #EFEFEF
+      -webkit-box-shadow: white 0 1px 0 inset
       ul
         list-style: none
         padding-left: 0
@@ -32,17 +36,21 @@ header
           display: table-cell
           width: 33%
           a
+            font-size: 1em
+            text-decoration: none
             cursor: pointer
             display: block
             text-align: center
-            line-height: 7em
+            line-height: 4em
+            letter-spacing: 0.1em
           a:hover
-            background-color: #F00            
-            
+            background-color: #EFEFEF
+            -webkit-box-shadow: white 0 1px 0 inset          
 section
+  h1
+    margin-top: 1em
   .content
-    border-top: 1px solid black
-    -webkit-box-shadow: rgba(155, 0, 0, 0.2) 0 1px 0 inset
+
     
 aside
   background-color: #F1F1F1

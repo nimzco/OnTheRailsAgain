@@ -78,12 +78,19 @@ body {
   margin: auto;
 }
 
-/* line 22, ../../app/stylesheets/screen.sass */
-header .content nav {
-  border-top: 1px solid black;
-  -webkit-box-shadow: rgba(155, 0, 0, 0.2) 0 1px 0 inset;
+/* line 20, ../../app/stylesheets/screen.sass */
+header {
+  padding-top: 1em;
+  border-bottom: 1px solid #efefef;
+  -webkit-box-shadow: white 0 -1px 0 inset;
+  background-color: whiteSmoke;
 }
-/* line 25, ../../app/stylesheets/screen.sass */
+/* line 26, ../../app/stylesheets/screen.sass */
+header .content nav {
+  border-top: 1px solid #efefef;
+  -webkit-box-shadow: white 0 1px 0 inset;
+}
+/* line 29, ../../app/stylesheets/screen.sass */
 header .content nav ul {
   list-style: none;
   padding-left: 0;
@@ -91,25 +98,33 @@ header .content nav ul {
   width: 100%;
   margin: 0;
 }
-/* line 31, ../../app/stylesheets/screen.sass */
+/* line 35, ../../app/stylesheets/screen.sass */
 header .content nav ul li {
   display: table-cell;
   width: 33%;
 }
-/* line 34, ../../app/stylesheets/screen.sass */
+/* line 38, ../../app/stylesheets/screen.sass */
 header .content nav ul li a {
+  font-size: 1em;
+  text-decoration: none;
   cursor: pointer;
   display: block;
   text-align: center;
-  line-height: 7em;
+  line-height: 4em;
+  letter-spacing: 0.1em;
 }
-/* line 39, ../../app/stylesheets/screen.sass */
+/* line 46, ../../app/stylesheets/screen.sass */
 header .content nav ul li a:hover {
-  background-color: red;
+  background-color: #efefef;
+  -webkit-box-shadow: white 0 1px 0 inset;
 }
 
-/* line 43, ../../app/stylesheets/screen.sass */
-section .content {
-  border-top: 1px solid black;
-  -webkit-box-shadow: rgba(155, 0, 0, 0.2) 0 1px 0 inset;
+/* line 50, ../../app/stylesheets/screen.sass */
+section h1 {
+  margin-top: 1em;
+}
+
+/* line 55, ../../app/stylesheets/screen.sass */
+aside {
+  background-color: #f1f1f1;
 }
