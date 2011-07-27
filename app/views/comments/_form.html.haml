@@ -1,8 +1,12 @@
 #comment_form
   = semantic_form_for [@article, @comment], :remote => true do |f|
     - f.inputs do
-      = f.input :username
       = f.input :content
-      = f.input :article_id , :as => :hidden, :value => @article.id
-      = f.input :parent_id  , :as => :hidden, :value => params[:parent_id]
-    = f.buttons
+      = f.input :username
+      = f.input :user_email    , :label => "Email"
+      = f.input :user_homepage , :label => "Site perso"
+      = f.input :article_id    , :as => :hidden, :value => @article.id
+      = f.input :parent_id     , :as => :hidden, :value => params[:parent_id]
+    = f.buttons do
+      = f.commit_button "Poster"
+    
