@@ -6,4 +6,8 @@ module ArticlesHelper
     end.join.html_safe
   end  
 
+  def highlight(code)
+    Albino.new(code, :ruby).to_s.html_safe
+  end
+
 end
