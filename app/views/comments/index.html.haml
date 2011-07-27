@@ -15,7 +15,7 @@
       %td= comment.article_id
       %td= comment.ancestry
       %td= link_to 'Show', comment
-      %td= link_to 'Edit', edit_comment_path(comment)
+      %td= link_to 'Edit', edit_article_comment_path(@article, comment)
       %td= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete
 %br/
-= link_to 'New Comment', new_comment_path
+= link_to 'New Comment', new_article_comment_path

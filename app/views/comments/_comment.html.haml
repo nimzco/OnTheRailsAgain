@@ -1,0 +1,5 @@
+%li{:id => "comment_#{comment.id}"}
+  = comment.username
+  = comment.content
+  = comment.created_at
+  = link_to "Repondre", new_article_comment_path(@article, :parent_id => comment.id), :remote => true

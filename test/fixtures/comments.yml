@@ -2,12 +2,12 @@
 
 one:
   username: MyString
-  content: MyString
+  content: MyText
   article_id: 1
   ancestry: MyString
 
 two:
   username: MyString
-  content: MyString
+  content: MyText
   article_id: 1
   ancestry: MyString
