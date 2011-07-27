@@ -86,11 +86,16 @@ header {
   background-color: whiteSmoke;
 }
 /* line 26, ../../app/stylesheets/screen.sass */
+header .content h1 {
+  color: #bf0000;
+  text-shadow: white 1px 1px 0;
+}
+/* line 29, ../../app/stylesheets/screen.sass */
 header .content nav {
   border-top: 1px solid #efefef;
   -webkit-box-shadow: white 0 1px 0 inset;
 }
-/* line 29, ../../app/stylesheets/screen.sass */
+/* line 32, ../../app/stylesheets/screen.sass */
 header .content nav ul {
   list-style: none;
   padding-left: 0;
@@ -98,12 +103,12 @@ header .content nav ul {
   width: 100%;
   margin: 0;
 }
-/* line 35, ../../app/stylesheets/screen.sass */
+/* line 38, ../../app/stylesheets/screen.sass */
 header .content nav ul li {
   display: table-cell;
   width: 33%;
 }
-/* line 38, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 header .content nav ul li a {
   font-size: 1em;
   text-decoration: none;
@@ -112,19 +117,49 @@ header .content nav ul li a {
   text-align: center;
   line-height: 4em;
   letter-spacing: 0.1em;
+  color: #bf0000;
 }
-/* line 46, ../../app/stylesheets/screen.sass */
+/* line 50, ../../app/stylesheets/screen.sass */
 header .content nav ul li a:hover {
   background-color: #efefef;
   -webkit-box-shadow: white 0 1px 0 inset;
+  -webkit-border-radius: 0.2em;
 }
 
-/* line 50, ../../app/stylesheets/screen.sass */
-section h1 {
-  margin-top: 1em;
+/* line 54, ../../app/stylesheets/screen.sass */
+section {
+  display: table-cell;
+  padding: 0.5em;
+  width: 80%;
+}
+/* line 58, ../../app/stylesheets/screen.sass */
+section p {
+  font-size: 1.2em;
 }
 
-/* line 55, ../../app/stylesheets/screen.sass */
+/* line 61, ../../app/stylesheets/screen.sass */
+.container {
+  max-width: 70em;
+  margin: auto;
+  height: 100%;
+}
+
+/* line 65, ../../app/stylesheets/screen.sass */
 aside {
-  background-color: #f1f1f1;
+  padding: 0.5em;
+  background-color: #f5f5f5;
+  width: 20%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: top;
+  border-right: 1px solid #efefef;
+  -webkit-box-shadow: white -1px 0px 0 inset;
+}
+
+/* line 75, ../../app/stylesheets/screen.sass */
+footer {
+  border-top: 1px solid #efefef;
+  -webkit-box-shadow: white 0 1px 0 inset;
+  background-color: whiteSmoke;
+  padding: 1em;
 }

@@ -23,6 +23,9 @@ header
   -webkit-box-shadow: white 0 -1px 0 inset
   background-color: whiteSmoke
   .content
+    h1
+      color: #bf0000
+      text-shadow: white 1px 1px 0
     nav
       border-top: 1px solid #EFEFEF
       -webkit-box-shadow: white 0 1px 0 inset
@@ -43,15 +46,34 @@ header
             text-align: center
             line-height: 4em
             letter-spacing: 0.1em
+            color: #bf0000
           a:hover
             background-color: #EFEFEF
-            -webkit-box-shadow: white 0 1px 0 inset          
+            -webkit-box-shadow: white 0 1px 0 inset
+            -webkit-border-radius: 0.2em
 section
-  h1
-    margin-top: 1em
-  .content
+  display: table-cell
+  padding: 0.5em
+  width: 80%
+  p
+    font-size: 1.2em
 
-    
+.container
+  max-width: $max-width
+  margin: auto 
+  height: 100%
 aside
-  background-color: #F1F1F1
-  
+  padding: 0.5em
+  background-color: #F5F5F5
+  width: 20%
+  height: 100%
+  display: table-cell
+  vertical-align: top
+  border-right: 1px solid #EFEFEF
+  -webkit-box-shadow: white -1px 0px 0 inset
+
+footer
+  border-top: 1px solid #EFEFEF
+  -webkit-box-shadow: white 0 1px 0 inset
+  background-color: whiteSmoke
+  padding: 1em
