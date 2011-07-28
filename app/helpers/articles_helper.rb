@@ -7,7 +7,21 @@ module ArticlesHelper
   end  
 
   def highlight(code)
-    Albino.new(code, :ruby).to_s.html_safe
+    Albino.new(code, :ruby).to_s
+  end
+  
+  # To refactor...
+  def haml2html(content)
+    begin
+      @new_content = Haml::Engine.new(content).to_html
+    rescue Haml::SyntaxError
+      @new_content = "Problème d'encodage..."
+    end
+    @new_content.gsub(/<pre.*<\/pre>/) do |match|
+      @string = match.sub(/<pre.*'>/, "").sub(/<\/pre>/, "")
+      @string = @string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
+      highlight(@string)
+    end.html_safe
   end
 
 end

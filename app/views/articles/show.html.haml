@@ -1,15 +1,13 @@
-= highlight(@article.content)
-
 %p#notice= notice
 %p
   %b Title:
   = @article.title
 %p
   %b Introduction:
-  = @article.introduction
+  ~ haml2html(@article.introduction)
 %p
   %b Content:
-  = @article.content
+  ~ haml2html(@article.content)
 %p
   %b Authors:
   %ul

@@ -6,12 +6,13 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql'               , '~>2.8.1'
+gem 'ruby-debug'
+
 gem 'ancestry'            , '~>1.2.4'
 gem 'devise'              , '~>1.4.2'
 gem 'formtastic'          , '~>1.2.3'
 gem 'inherited_resources'
 gem 'albino'
-gem 'redcloth'            , '~>4.2.7'
 
 gem 'mongrel'             , '~>1.1.5'
 gem 'haml'                , '~>3.1.0'
