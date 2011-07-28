@@ -1,5 +1,5 @@
 class ArticlesController < InheritedResources::Base
-  before_filter :authenticate_author!, :only => ["new", "create"]
+  before_filter :authenticate_author!, :only => ["new", "create", "edit"]
   
   def new
     @article = Article.new

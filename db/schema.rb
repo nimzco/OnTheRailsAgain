@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(:version => 20110727165355) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
-    t.text     "introduction"
     t.text     "content"
     t.integer  "author_id"
     t.datetime "created_at"

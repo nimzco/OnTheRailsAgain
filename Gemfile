@@ -1,3 +1,6 @@
+# Todo for albino
+# sudo easy_install pygments
+
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'

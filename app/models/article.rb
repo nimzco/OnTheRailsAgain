@@ -9,6 +9,6 @@ class Article < ActiveRecord::Base
   validates_associated    :tags
 
   validates_uniqueness_of :title
-  validates_presence_of   :title, :introduction, :content
+  validates_presence_of   :title, :content
 
 end

@@ -10,7 +10,6 @@ module ArticlesHelper
     Albino.new(code, language).to_s
   end
   
-  # To refactor...
   def haml2html(content)
     begin
       @new_content = Haml::Engine.new(content).to_html
