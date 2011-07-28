@@ -6,8 +6,8 @@ module ArticlesHelper
     end.join.html_safe
   end  
 
-  def highlight(code)
-    Albino.new(code, :ruby).to_s
+  def highlight(code, language = :ruby)
+    Albino.new(code, language).to_s
   end
   
   # To refactor...
@@ -18,9 +18,10 @@ module ArticlesHelper
       @new_content = "Problème d'encodage..."
     end
     @new_content.gsub(/<pre.*<\/pre>/) do |match|
-      @string = match.sub(/<pre.*'>/, "").sub(/<\/pre>/, "")
-      @string = @string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
-      highlight(@string)
+      @language = match.match(/<pre class='(.*)'>.*pre>/)[1]
+      @string   = match.sub(/<pre.*'>/, "").sub(/<\/pre>/, "")
+      @string   = @string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
+      highlight(@string, @language)
     end.html_safe
   end
 
