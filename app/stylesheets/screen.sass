@@ -60,9 +60,7 @@ header
   -webkit-box-shadow: white -1px 0px 0 inset
   background-color: whiteSmoke
   .content
-    border-left: 1px solid #EFEFEF
-    border-right: 1px solid #EFEFEF
-    -webkit-box-shadow: white -1px 0 0 inset
+
     h1
       color: #bf0000
       text-shadow: white 1px 1px 0
@@ -70,39 +68,56 @@ header
     h2
       padding-left: 0.3em
     nav
-      border-top: 1px solid #EFEFEF
-      -webkit-box-shadow: white 0 1px 0 inset
+      //border-top: 1px solid #EFEFEF
+      //-webkit-box-shadow: white 0 1px 0 inset
       ul
         padding-left: 0
         display: table
         width: 100%
         margin: 0
         list-style-type: none
+        li:first-child a
+          border-left: 1px solid #EFEFEF
+          border-right: 1px solid #F7F7F7
+        li:last-child a
+          border-left: 1px solid #F7F7F7
+          border-right: 1px solid #EFEFEF
         li
           display: table-cell
           width: 33%
+          +radius(1em)
+          background-color: transparent
           a
-            font-size: 1em
+            font-size: 1.3em
             text-decoration: none
             cursor: pointer
             display: block
             text-align: center
-            line-height: 4em
+            line-height: 3.5em
             letter-spacing: 0.1em
             color: #bf0000
             +gradient(#FFF, #F7F7F7)
             text-shadow: 1px 1px 1px rgba(255,255,255,1)
+            +radius(0.3em)
+            border-top: 1px solid #EFEFEF
+            border-bottom: 1px solid #F7F7F7
+            -webkit-box-shadow: white 0 1px 0 inset
           a:hover
+            +radius(0.3em)
             color: white
             +gradient(#e10000, #a20003)
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
             -webkit-border-radius: 0.2em
+            border: 1px solid #a20003
+            -webkit-box-shadow: none
+          
+            
 section
   display: table-cell
   padding: 0.5em
   width: 80%
-  border-right: 1px solid white
-  -webkit-box-shadow: #EFEFEF 1px 0 0
+  border-right: 1px solid #EFEFEF
+  -webkit-box-shadow: white -1px 0 0
   p
     font-size: 1.2em
 
@@ -128,7 +143,7 @@ footer
   padding: 1em
 
 button, input[type=submit]
-  +radius(0.4em)
+  +radius(0.2em)
   +gradient(#f3f3f3, #ececec)
   display: inline-block
   padding: 5px 10px 6px 10px
@@ -138,7 +153,7 @@ button, input[type=submit]
   font-size: 1em
   
 button:hover, input[type=submit]:hover
-  border: 1px solid #555
+  border: 1px solid #a20003
   color: white
   +gradient(#e10000, #a20003)
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
