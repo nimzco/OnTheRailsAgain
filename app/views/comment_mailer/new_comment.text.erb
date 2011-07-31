@@ -1,0 +1,11 @@
+Un commentaire vient d'être posté sur  <%= @comment.article.title %>
+Permalink: <%= article_url(@comment.article) %> !
+
+Contenu du commentaire :
+Commentaire de <%= @comment.username %> :
+<%= @comment.content %>
+
+
+Info sur <%= @comment.username %> :
+Email:    <%= @comment.user_email %>
+Homepage: <%= @comment.user_homepage %>
