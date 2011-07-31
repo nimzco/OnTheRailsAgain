@@ -1,7 +1,7 @@
 #comment_form
   = semantic_form_for [@article, @comment], :remote => true do |f|
     - f.inputs do
-      = f.input :content
+      = f.input :content       , :input_html => { :rows => 10, :cols => 50 }
       = f.input :username
       = f.input :user_email    , :label => "Email"
       = f.input :user_homepage , :label => "Site perso"

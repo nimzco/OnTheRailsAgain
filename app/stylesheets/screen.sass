@@ -1,74 +1,56 @@
-/*
-  Welcome to Compass.
-  In this file you should write your main styles. (or centralize your imports)
-  Import this file using the following HTML or equivalent:
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
 @import compass/reset
-
 @import compass/typography
+@import mixins
+@import form
+@import articles
 
-@mixin gradient($start, $end)
-  background: $start
-  background: -webkit-gradient(linear, left top, left bottom, from($start), to($end))
-  background: -webkit-linear-gradient(top, $start, $end 100%)
-  background: -moz-linear-gradient(top,  $start,  $end)
-  background: -o-linear-gradient(top, $start, $end 100%)
-  background: linear-gradient(top, $start, $end 100%)
-
-@mixin bshadow-out($left, $top, $radius, $color)
-  -webkit-box-shadow: $left $top $radius $color
-  -moz-box-shadow: $left $top $radius $color
-  box-shadow: $left $top $radius $color
-
-@mixin bshadow-in($left, $top, $radius, $color)
-  -webkit-box-shadow: inset $left $top $radius $color
-  -moz-box-shadow: inset $left $top $radius - 1 $color
-  box-shadow: inset $left $top $radius - 1 $color
-
-@mixin radius($radius: 0.5em)
-  -webkit-border-radius: $radius
-  -moz-border-radius: $radius
-  border-radius: $radius
+$max-width: 70em
+$dark_red : #a20003
+$light_red: #e10000 
 
 body
+  //font-size: 1.2em
   ol
     list-style-type: none
   label
     vertical-align: middle
   abbr[title=required]
     vertical-align: top
-  ul
-    list-style-type: none
-    list-style-image: url('../images/liste_red.png')
-
-$max-width: 70em
+  
 .content
+  width: 100%
   max-width: $max-width
   margin: auto
-  
-
-  
   
   
 header
   padding-top: 1em
-  border-bottom: 1px solid #EFEFEF
-  -webkit-box-shadow: white 0 -1px 0 inset
+  border-bottom: 2px solid $dark_red
+  //-webkit-box-shadow: white 0 -1px 0 inset
   //-webkit-box-shadow: white 0 -1px 0
-  border-left: 1px solid #EFEFEF
-  -webkit-box-shadow: white -1px 0px 0 inset
+  //border-left: 1px solid #EFEFEF
+  //-webkit-box-shadow: rgba(255,255,255,0.5) 0 1px 6px inset
+  -webkit-box-shadow: black 0px -1px 0
+  //+gradient(#222, #000)
+  background: url('../images/top.png')
+  background-position: top center
+  background-repeat: no-repeat
   background-color: whiteSmoke
+  
   .content
 
     h1
-      color: #bf0000
-      text-shadow: white 1px 1px 0
+      letter-spacing: -0.1em
+      color: $dark_red
+      text-shadow: white -1px -1px 0
       padding-left: 0.3em
     h2
+      color: $dark_red
+      text-shadow: white -1px -1px 0
       padding-left: 0.3em
     nav
       //border-top: 1px solid #EFEFEF
+      //border-bottom: 2px solid $dark_red
       //-webkit-box-shadow: white 0 1px 0 inset
       ul
         padding-left: 0
@@ -85,10 +67,10 @@ header
         li
           display: table-cell
           width: 33%
-          +radius(1em)
+          +radiusTop(1em)
           background-color: transparent
           a
-            font-size: 1.3em
+            //font-size: 1.3em
             text-decoration: none
             cursor: pointer
             display: block
@@ -98,55 +80,39 @@ header
             color: #bf0000
             +gradient(#FFF, #F7F7F7)
             text-shadow: 1px 1px 1px rgba(255,255,255,1)
-            +radius(0.3em)
+            +radiusTop(0.3em)
             border-top: 1px solid #EFEFEF
             border-bottom: 1px solid #F7F7F7
             -webkit-box-shadow: white 0 1px 0 inset
-          a:hover
-            +radius(0.3em)
+          a:hover, a.selected
+            +radiusTop(0.3em)
             color: white
-            +gradient(#e10000, #a20003)
+            +gradient($light_red, $dark_red)
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-            -webkit-border-radius: 0.2em
-            border: 1px solid #a20003
+            border: 1px solid $dark_red
             -webkit-box-shadow: none
           
             
 section
-  display: table-cell
-  padding: 0.5em
   width: 80%
-  border-right: 1px solid #EFEFEF
-  -webkit-box-shadow: white -1px 0 0
+  display: inline-block
+  //border-right: 2px solid $dark_red
   p
-    font-size: 1.2em
+    //font-size: 1.2em
 
 .container
   max-width: $max-width
   margin: auto 
   height: 100%
-aside
-  padding: 0.5em
-  background-color: #F5F5F5
-  width: 20%
-  height: 100%
-  display: table-cell
-  vertical-align: top
-  border-left: 1px solid #EFEFEF
-  border-right: 1px solid #EFEFEF
-  -webkit-box-shadow: white -1px 0px 0 inset
-
-footer
-  border-top: 1px solid #EFEFEF
-  -webkit-box-shadow: white 0 1px 0 inset
-  background-color: whiteSmoke
-  padding: 1em
   
-  height: 6em
-  background-color: #252525
-  color: #999992
-  a 
-    color: #e10000 
+aside
+  //background-color: #EFEFEF
+  width: 19%
+  height: 100%
+  display: inline-block
+  vertical-align: top
+  border-right: 1px solid #EFEFEF
+  //-webkit-box-shadow: rgba(255,255,255,0.5) 0px 0px 5px inset
 
 button, input[type=submit]
   +radius(0.2em)
@@ -156,11 +122,19 @@ button, input[type=submit]
   text-shadow: 1px 1px 1px rgba(255,255,255,1)
   border: 1px solid #D4D4D4
   cursor: pointer
-  font-size: 1em
+  //font-size: 1em
   
 button:hover, input[type=submit]:hover
-  border: 1px solid #a20003
+  border: 1px solid $dark_red
   color: white
-  +gradient(#e10000, #a20003)
+  +gradient($light_red, $dark_red)
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-
+  
+footer
+  background-color: whiteSmoke
+  color: #222
+  padding: 1em
+  min-height: 5em
+  border-top: 1px solid $dark_red
+  //-webkit-box-shadow: rgba(255,255,255,0.4) 0 -1px 8px inset
+  -webkit-box-shadow: black 0px -1px 0

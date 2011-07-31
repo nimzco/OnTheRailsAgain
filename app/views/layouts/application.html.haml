@@ -16,14 +16,14 @@
   %body
     = render :partial => "shared/header"
     .container
-      %aside
-        %p
-          lorem
       %section
         .content                       
           - flash.each do |name, msg|
             = content_tag :p, msg, :id => "flash_#{name}"
           = yield
+      %aside
+        %p
+          lorem    
     = render :partial => "shared/footer"
   
     / Include des Javascripts

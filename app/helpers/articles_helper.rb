@@ -15,11 +15,7 @@ module ArticlesHelper
   end
   
   def haml2html(content)
-    begin
-      @new_content = Haml::Engine.new(content).to_html
-    rescue Haml::SyntaxError
-      @new_content = "Problème d'encodage..."
-    end
+    @new_content = Haml::Engine.new(content).to_html
     @new_content.gsub(/<pre.*<\/pre>/) do |match|
       @language = match.match(/<pre class='(.*)'>.*pre>/)[1]
       @string   = match.sub(/<pre.*'>/, "").sub(/<\/pre>/, "")

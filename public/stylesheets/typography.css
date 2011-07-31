@@ -37,7 +37,10 @@ h4 img, h5 img, h6 img {
 /* Text elements
 -------------------------------------------------------------- */
 
-p           { margin: 0 0 1.5em; }
+p           { 
+  font-size: 1.2em;
+  margin: 0 0 1.5em;
+}
 
 a:focus,
 a:hover     { color: #09f; }
@@ -53,8 +56,12 @@ acronym     { border-bottom: 1px dotted #666; }
 address     { margin: 0 0 1.5em; font-style: italic; }
 del         { color:#666; }
 
-pre         { margin: 1.5em 0; white-space: pre; }
-pre,code,tt { font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5; }
+pre         { 
+  font-size: 1.2em;
+  margin: 1.5em 0; 
+  white-space: pre;
+}
+pre,code,tt { font-family:'andale mono', 'lucida console', monospace; line-height: 1.5; }
 
 
 /* Lists
@@ -64,8 +71,14 @@ li ul,
 li ol  { margin: 0; }
 ul, ol { margin: 0 1.5em 1.5em 0; padding-left: 1.5em; }
 
-ul     { list-style-type: disc; }
-ol     { list-style-type: decimal; }
+ul     { 
+  list-style-type: disc;
+  font-size: 1.2em;
+}
+ol     { 
+  list-style-type: decimal; 
+  font-size: 1.2em;
+}
 
 dl     { margin: 0 0 1.5em 0; }
 dl dt  { font-weight: bold; }
@@ -80,7 +93,9 @@ dd     { margin-left: 1.5em;}
   on table cells has to be 27px, instead of the standard 18px or 36px
   of other elements.
  */
-table         { margin-bottom: 1.4em; width:100%; }
+table         { 
+  font-size: 1.2em;
+  margin-bottom: 1.4em; width:100%; }
 th            { font-weight: bold; }
 thead th      { background: #c3d9ff; }
 th,td,caption { padding: 4px 10px 4px 5px; }
@@ -90,7 +105,7 @@ th,td,caption { padding: 4px 10px 4px 5px; }
  */
 tbody tr:nth-child(even) td,
 tbody tr.even td  {
-  background: #e5ecf9;
+  background: #F4F4FF;
 }
 tfoot       { font-style: italic; }
 caption     { background: #eee; }

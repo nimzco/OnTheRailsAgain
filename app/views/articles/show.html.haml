@@ -1,9 +1,4 @@
-%p#notice= notice
-%p
-  %b Title:
-  = @article.title
-%p
-  %b Content:
+.article_content
   ~ haml2html(@article.content)
 %p
   %b Authors:

@@ -7,9 +7,8 @@
         Deux jeunes qui veulent vous aider en Rails !
     %nav
       %ul
-        %li 
-          %a 
-            Articles 
+        %li  
+          =link_to 'Articles', articles_path, :class => @page == :article ? 'selected' : ''
         %li 
           %a 
             Tutos

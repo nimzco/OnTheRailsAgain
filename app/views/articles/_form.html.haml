@@ -2,7 +2,7 @@
   - # render :partial => "shared/form_error", :object => @article
   - f.inputs do
     = f.input :title
-    = f.input :content,       :as => :text
+    = f.input :content,       :as => :text, :input_html => { :rows => 40, :cols => 50 }
     = f.input :authors  , :as => :check_boxes, :required => true
     = f.input :tags     , :as => :check_boxes, :required => false
 
