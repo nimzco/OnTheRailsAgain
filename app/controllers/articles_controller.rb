@@ -27,6 +27,7 @@ class ArticlesController < InheritedResources::Base
   def update
     @article = Article.find(params[:id])
     params[:article][:content] = haml2html(params[:article][:content])
+    @article.generate_summary
     update!
   end
 
