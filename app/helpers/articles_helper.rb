@@ -10,18 +10,4 @@ module ArticlesHelper
     end.join.html_safe
   end  
 
-  def highlight(code, language = :ruby)
-    Albino.new(code, language).to_s
-  end
-  
-  def haml2html(content)
-    @new_content = Haml::Engine.new(content).to_html
-    @new_content.gsub(/<pre.*<\/pre>/) do |match|
-      @language = match.match(/<pre class='(.*)'>.*pre>/)[1]
-      @string   = match.sub(/<pre.*'>/, "").sub(/<\/pre>/, "")
-      @string   = @string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
-      highlight(@string, @language)
-    end.html_safe
-  end
-
 end

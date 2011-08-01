@@ -11,4 +11,12 @@ class Article < ActiveRecord::Base
   validates_uniqueness_of :title
   validates_presence_of   :title, :content
 
+
+  def generate_summary
+    self.summary = ""
+    self.content.gsub(/<h[0-9][^<]*<\/h[0-9]>/m) do |match|
+      self.summary += match
+    end
+  end
+
 end
