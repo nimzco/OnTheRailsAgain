@@ -8,9 +8,9 @@
     %li=author.name
 %p
   %b Tags:
-  %ul
-  - @article.tags.each do |tag|
-    %li=tag.name
+  %ul.tags
+    - article.tags.each do |tag|
+      %li= link_to tag.name, articles_path(:tag => tag.name)
 
 - if author_signed_in?
   = link_to 'Edit', edit_article_path(@article)
