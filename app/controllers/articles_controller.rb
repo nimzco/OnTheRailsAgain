@@ -6,6 +6,13 @@ class ArticlesController < InheritedResources::Base
     @page = :article
   end
   
+  def index
+    if params[:tag]
+      @articles = Article.find(:all, :include => :tags, :conditions => ["tags.name = ?", params[:tag]])
+    end
+    index!
+  end
+  
   def new
     @article = Article.new
     @article.authors << current_author
@@ -14,6 +21,7 @@ class ArticlesController < InheritedResources::Base
   
   def show
     @comment = Comment.new
+    @article = Article.find_by_title(params[:id].gsub(/_/," "))
     show!
   end
   

@@ -1,13 +1,17 @@
 %article
-  %h1= article.title
+  %h1= link_to article.title, :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
   .article_content
     ~ article.content[0..300].html_safe
-    …
-    = link_to 'En savoir plus', article
+
+  %ul.tags
+    - article.tags.each do |tag|
+      %li
+        = link_to tag.name, articles_path(:tag => tag.name)
   %ul.authors
     - article.authors.each do |author|
       %li
         = link_to author.name, profile_path(author.name)
+
   - if author_signed_in? #and article.authors.contains(current_author)
     = link_to 'Edit', edit_article_path(article)
     = link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete
