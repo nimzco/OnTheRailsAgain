@@ -12,7 +12,7 @@ class ArticlesController < InheritedResources::Base
     end
     index!
   end
-  
+
   def new
     @article = Article.new
     @article.authors << current_author

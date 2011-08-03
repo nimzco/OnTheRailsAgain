@@ -9,6 +9,7 @@ $dark_red : #a20003
 $light_red: #e10000 
 
 body
+  background-color: #F7F7F7
   //font-size: 1.2em
   ol
     list-style-type: none
@@ -29,25 +30,36 @@ header
   //-webkit-box-shadow: white 0 -1px 0 inset
   //-webkit-box-shadow: white 0 -1px 0
   //border-left: 1px solid #EFEFEF
-  //-webkit-box-shadow: rgba(255,255,255,0.5) 0 1px 6px inset
-  -webkit-box-shadow: black 0px -1px 0
-  //+gradient(#222, #000)
-  background: url('../images/top.png')
-  background-position: top center
-  background-repeat: no-repeat
-  background-color: whiteSmoke
-  
+  -webkit-box-shadow: $light_red 0 -1px 0px inset
+  //-webkit-box-shadow: black 0px -1px 0
+  //background-color: white
+  //+gradient($light_red, $dark_red)
   .content
-
     h1
+      //letter-spacing: 0.1em
+      //color: $dark_red
+      //text-shadow: $light_red 1px 1px 0
+      padding-bottom: 0.1em
+      margin-bottom: 0
+      color: transparent
+      -webkit-background-clip: text
+      background-color: rgba(82,96,117,0.5)
+      text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
+      //font-weight: bold
+      font-size: 4.2em
       letter-spacing: -0.1em
-      color: $dark_red
-      text-shadow: white -1px -1px 0
-      padding-left: 0.3em
+      text-rendering : optimizeLegibility
     h2
+      text-align: right
       color: $dark_red
-      text-shadow: white -1px -1px 0
+      //text-shadow: $light_red 1px 1px 0
       padding-left: 0.3em
+      color: transparent
+      -webkit-background-clip: text
+      background-color: rgba(82,96,117,0.5)
+      text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
+      //letter-spacing: -0.1em
+      padding-bottom: 0.1em      
     nav
       //border-top: 1px solid #EFEFEF
       //border-bottom: 2px solid $dark_red
@@ -82,8 +94,9 @@ header
             text-shadow: 1px 1px 1px rgba(255,255,255,1)
             +radiusTop(0.3em)
             border-top: 1px solid #EFEFEF
-            border-bottom: 1px solid #F7F7F7
-            -webkit-box-shadow: white 0 1px 0 inset
+            //border-bottom: 1px solid #F7F7F7
+            //-webkit-box-shadow: white 0 1px 0 inset
+
           a:hover, a.selected
             +radiusTop(0.3em)
             color: white
@@ -91,8 +104,14 @@ header
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
             border: 1px solid $dark_red
             -webkit-box-shadow: none
-          
-            
+  
+#bold_title
+  font-weight: normal
+  color: lighten($dark_red, 5%)
+  //color: rgba(175,0,0,0.8)
+  //text-shadow: rgba(255,255,255,0.5) 0 5px 4px, rgba(255,0,0,0.2) 1px 3px 2px
+  letter-spacing: 0
+  //-webkit-background-clip: text
 section
   width: 80%
   display: inline-block

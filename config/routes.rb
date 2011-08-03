@@ -1,5 +1,5 @@
 OntheRailsAgain::Application.routes.draw do
-
+  get 'demo/index'
   devise_for :authors
   get "/profile/:name" => "profiles#show", :as => "profile"
 
