@@ -8,8 +8,11 @@ class ArticlesController < InheritedResources::Base
   
   def index
     if params[:tag]
-      @articles = Article.find(:all, :include => :tags, :conditions => ["tags.name = ?", params[:tag]])
+      @articles = Article.find(:all, :include => :tags, :conditions => ["tags.name = ?", params[:tag]]).paginate(:page => params[:page], :per_page => 5)
+    else
+      @articles = Article.all.paginate(:page => params[:page], :per_page => 5)
     end
+    @tags = Tag.all
     index!
   end
 
@@ -24,6 +27,11 @@ class ArticlesController < InheritedResources::Base
     @article = Article.find_by_title(params[:id].gsub(/_/," "))
     show!
   end
+
+  def edit
+    @article = Article.find_by_title(params[:id].gsub(/_/," "))
+    edit!
+  end
   
   def create
     @article = Article.create(params[:article])
@@ -34,7 +42,8 @@ class ArticlesController < InheritedResources::Base
   
   def update
     @article = Article.find(params[:id])
-    params[:article][:content] = haml2html(params[:article][:content])
+    @article.content = haml2html(params[:article][:content])
+    params[:article][:content] = @article.content
     @article.generate_summary
     update!
   end

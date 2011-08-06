@@ -1,5 +1,7 @@
 %article
   %h1= link_to article.title, :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
+  .article_date
+    = article.created_at
   .article_content
     ~ article.content[0..300].html_safe
 
@@ -11,7 +13,8 @@
     - article.authors.each do |author|
       %li
         = link_to author.name, profile_path(author.name)
-
+  .comments
+    = link_to pluralize(article.comments.length, "Commentaire"), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
   - if author_signed_in? #and article.authors.contains(current_author)
     = link_to 'Edit', edit_article_path(article)
     = link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete

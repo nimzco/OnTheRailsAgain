@@ -1,3 +1,11 @@
+%aside
+  %h2 Tags
+  %ul
+    - @tags.each do |tag|
+      %li= link_to tag.name, articles_path(:tag => tag.name)
+  
 %section.articles  
   - @articles.each do |article|
     = render article
+
+  = will_paginate @articles, :previous_label => "Précédent", :next_label => "Suivant"

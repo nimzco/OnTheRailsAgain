@@ -1,5 +1,12 @@
-.article_summary
+#current_section
+  %h1
+  %h2
+  %h3
+%aside#summary
   ~ @article.summary.html_safe
+
+%p
+  Article
 .article_content
   ~ @article.content.html_safe
 %p
@@ -20,3 +27,51 @@
   = nested_comments(@article.comments.arrange(:order => :created_at))
 
 = render "comments/form"
+
+= content_for :javascript do
+  :coffeescript
+    $( ->
+      $(window).scroll( ->
+        summary = $('#summary')
+        if $(document).scrollTop() > summary.offset().top
+          summary.css('position', 'fixed')
+          summary.css('top', '0')
+        else if $(document).scrollTop() < summary.offset().top
+          summary.css('position', 'absolute')
+        
+        for h1 in $('.article_content h2')
+          if ($(h1).offset().top - $(document).scrollTop()) < 80
+            $('#current_section h1').text($(h1).text())
+          if $('#current_section h1').text()[0] != $('#current_section h2').text()[0]
+            $('#current_section h2').text("")
+          if $('#current_section h1').text()[0] != $('#current_section h3').text()[0]
+            $('#current_section h3').text("")
+
+        for h2 in $('.article_content h3')
+          if ($(h2).offset().top - $(document).scrollTop()) < 80
+            if $(h2).text()[0] == $('#current_section h1').text()[0]
+              $('#current_section h2').text($(h2).text())
+
+        for h3 in $('.article_content h4')
+          if ($(h3).offset().top - $(document).scrollTop()) < 80
+            if $(h3).text()[0] == $('#current_section h2').text()[0]
+              $('#current_section h3').text($(h3).text())
+      )
+
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

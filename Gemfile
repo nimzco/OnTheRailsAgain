@@ -17,8 +17,11 @@ gem 'formtastic'          , '~>1.2.3'
 gem 'inherited_resources'
 gem 'albino'
 
+gem 'will_paginate'       , '~>2.3.15'
 gem 'mongrel'             , '~>1.1.5'
+
 gem 'haml'                , '~>3.1.0'
+gem 'barista'     , '~>1.2.1'  # Attention, haml doit être chargé AVANT barrista.
 
 gem "compass", ">= 0.11.5"
 gem "jquery-rails"
