@@ -358,28 +358,24 @@ aside {
   background-color: #dadcd5;
   padding: 1em;
 }
-/* line 126, ../../app/stylesheets/screen.sass */
-aside a {
-  text-decoration: none;
-}
 
-/* line 129, ../../app/stylesheets/screen.sass */
+/* line 127, ../../app/stylesheets/screen.sass */
 #summary_content {
   position: fixed;
   width: 10%;
   font-size: 0.6em;
 }
-/* line 133, ../../app/stylesheets/screen.sass */
+/* line 131, ../../app/stylesheets/screen.sass */
 #summary_content h1 {
   font-size: 200%;
 }
 
-/* line 136, ../../app/stylesheets/screen.sass */
+/* line 134, ../../app/stylesheets/screen.sass */
 .current_section {
   font-weight: bold;
 }
 
-/* line 139, ../../app/stylesheets/screen.sass */
+/* line 137, ../../app/stylesheets/screen.sass */
 button, input[type=submit] {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
@@ -397,7 +393,7 @@ button, input[type=submit] {
   cursor: pointer;
 }
 
-/* line 149, ../../app/stylesheets/screen.sass */
+/* line 147, ../../app/stylesheets/screen.sass */
 button:hover, input[type=submit]:hover {
   border: 1px solid #a20003;
   color: white;
@@ -410,7 +406,7 @@ button:hover, input[type=submit]:hover {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
-/* line 155, ../../app/stylesheets/screen.sass */
+/* line 153, ../../app/stylesheets/screen.sass */
 footer {
   background-color: whiteSmoke;
   color: #222222;
