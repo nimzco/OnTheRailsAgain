@@ -104,7 +104,11 @@ header
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
             border: 1px solid $dark_red
             -webkit-box-shadow: none
-  
+
+
+#content
+  display: table
+ 
 #bold_title
   font-weight: normal
   color: lighten($dark_red, 5%)
@@ -113,8 +117,7 @@ header
   letter-spacing: 0
   //-webkit-background-clip: text
 section
-  width: 80%
-  display: inline-block
+
   //border-right: 2px solid $dark_red
   p
     //font-size: 1.2em
@@ -124,33 +127,27 @@ section
   margin: auto 
   height: 100%
   
+.article_content
+  width: 80%
+  display: table-cell
+    
 aside
-  //background-color: #EFEFEF
   width: 19%
-  height: 100%
-  display: inline-block
+  display: table-cell
   vertical-align: top
   border-right: 1px solid #EFEFEF
-  //-webkit-box-shadow: rgba(255,255,255,0.5) 0px 0px 5px inset
-  float:right
-  background-color: #E0E0E0
-  position: absolute
-  width: 30em
-  font-size: 0.6em
-  width: 30em
-  font-size: 0.6em
+  background-color: #dadcd5
   padding: 1em
-  padding-top: 2em
-  margin-left: 67em
 
-#current_section
-  float:left
-  background-color: #E0E0E0
-  height: 15em
-  width: 30em
-  font-size: 2me
+#summary_content
   position: fixed
-  left: 0
+  width: 10%
+  font-size: 0.6em
+  h1
+    font-size: 200%
+
+.current_section
+  font-weight: bold
 
 button, input[type=submit]
   +radius(0.2em)

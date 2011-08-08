@@ -2,42 +2,37 @@
   %h1
   %h2
   %h3
-%aside#summary
-  ~ @article.summary.html_safe
-
-%p
-  Article
 .article_content
   ~ @article.content.html_safe
-%p
-  %b Authors:
-  %ul
-  - @article.authors.each do |author|
-    %li=author.name
-%p
-  %b Tags:
-  %ul.tags
-    - @article.tags.each do |tag|
-      %li= link_to tag.name, articles_path(:tag => tag.name)
+  %p
+    %b Authors:
+    %ul
+    - @article.authors.each do |author|
+      %li=author.name
+  %p
+    %b Tags:
+    %ul.tags
+      - @article.tags.each do |tag|
+        %li= link_to tag.name, articles_path(:tag => tag.name)
 
-- if author_signed_in?
-  = link_to 'Edit', edit_article_path(@article)
+  - if author_signed_in?
+    = link_to 'Edit', edit_article_path(@article)
+  
+  %ul#comments
+    = nested_comments(@article.comments.arrange(:order => :created_at))
+  
+  = render "comments/form"
 
-%ul#comments
-  = nested_comments(@article.comments.arrange(:order => :created_at))
+%aside#summary
+  #summary_content
+    ~ @article.summary.html_safe
 
-= render "comments/form"
 
 = content_for :javascript do
   :coffeescript
     $( ->
       $(window).scroll( ->
         summary = $('#summary')
-        if $(document).scrollTop() > summary.offset().top
-          summary.css('position', 'fixed')
-          summary.css('top', '0')
-        else if $(document).scrollTop() < summary.offset().top
-          summary.css('position', 'absolute')
         
         for h1 in $('.article_content h2')
           if ($(h1).offset().top - $(document).scrollTop()) < 80
