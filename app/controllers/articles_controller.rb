@@ -37,14 +37,16 @@ class ArticlesController < InheritedResources::Base
     @article = Article.create(params[:article])
     @article.content = haml2html(params[:article][:content])
     @article.generate_summary
+    @article.generate_anchor_links
     create!
   end
   
   def update
     @article = Article.find(params[:id])
     @article.content = haml2html(params[:article][:content])
-    params[:article][:content] = @article.content
     @article.generate_summary
+    @article.generate_anchor_links
+    params[:article][:content] = @article.content
     update!
   end
 
