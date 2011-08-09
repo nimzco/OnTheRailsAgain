@@ -2,6 +2,6 @@ class MailerObserver < ActiveRecord::Observer
   observe :comment
  
   def after_create(comment)
-    CommentMailer.new_comment(comment).deliver  
+    CommentMailer.delay.new_comment(comment)
   end
 end

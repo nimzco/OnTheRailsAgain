@@ -49,6 +49,9 @@ GEM
       fssm (>= 0.2.7)
       sass (~> 3.1)
     daemons (1.1.4)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -141,6 +144,7 @@ DEPENDENCIES
   ancestry (~> 1.2.4)
   barista (~> 1.2.1)
   compass (>= 0.11.5)
+  delayed_job
   devise (~> 1.4.2)
   formtastic (~> 1.2.3)
   haml (~> 3.1.0)

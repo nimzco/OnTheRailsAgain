@@ -10,6 +10,7 @@ gem 'rails', '3.0.9'
 
 gem 'mysql'               , '~>2.8.1'
 gem 'ruby-debug'
+gem 'delayed_job'
 
 gem "meta_search"  
 gem 'ancestry'            , '~>1.2.4'

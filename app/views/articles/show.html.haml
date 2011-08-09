@@ -16,8 +16,8 @@
   - if author_signed_in?
     = link_to 'Edit', edit_article_path(@article)
 
-  %h3#comments= pluralize(@article.comments.length, "Commentaire")
-  %ul#comments_list
+  %h3#comments_header= pluralize(@article.comments.length, "Commentaire")
+  %ul#comments
     = nested_comments(@article.comments.arrange(:order => :created_at))
   
   = render "comments/form"
@@ -28,49 +28,4 @@
 
 
 = content_for :javascript do
-  :coffeescript
-    $( ->
-      $(window).scroll( ->
-        h1 = $('.article_content h1')
-        if ($(h1[0]).offset().top - $(document).scrollTop()) > 80
-          $("#summary a *").removeClass('current_content')
-          $($("#summary a h1")[0]).addClass('current_content')
-                  
-        h2 = $('.article_content h2')
-        for i in [0..(h2.length - 1)]
-          if ($(h2[i]).offset().top - $(document).scrollTop()) < 80
-            $("#summary a *").removeClass('current_content')
-            $($("#summary a h2")[i]).addClass('current_content')
-
-        h3 = $('.article_content h3')
-        if h3.length != 0
-          for i in [0..(h3.length - 1)]
-            if ($(h3[i]).offset().top - $(document).scrollTop()) < 80
-              $("#summary a *").removeClass('current_content')
-              $($("#summary a h3")[i]).addClass('current_content')
-
-        h4 = $('.article_content h4')
-        if h4.length != 0
-          for i in [0..(h4.length - 1)]
-            if ($(h4[i]).offset().top - $(document).scrollTop()) < 80
-              $("#summary a *").removeClass('current_content')
-              $($("#summary a h4")[i]).addClass('current_content')
-      )
-
-    )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  = coffeescript_include_tag "article_show"
