@@ -26,32 +26,34 @@ body
   
 header
   padding-top: 1em
-  border-bottom: 4px solid $dark_red
+  //border-bottom: 4px solid $dark_red
   //-webkit-box-shadow: white 0 -1px 0 inset
   //-webkit-box-shadow: white 0 -1px 0
   //border-left: 1px solid #EFEFEF
-  -webkit-box-shadow: $light_red 0 -1px 0px inset
+  //-webkit-box-shadow: $light_red 0 -1px 0px inset
   //-webkit-box-shadow: black 0px -1px 0
   //background-color: white
   //+gradient($light_red, $dark_red)
   padding-bottom: 1em
-  border-bottom: 2px solid $dark_red
-  -webkit-box-shadow: black 0px -1px 0 inset
+  border-bottom: 1px solid $dark_red
+  //-webkit-box-shadow: black 0px -1px 0 inset
   .content
-    h1
-      //letter-spacing: 0.1em
-      //color: $dark_red
-      //text-shadow: $light_red 1px 1px 0
-      padding-bottom: 0.1em
-      margin-bottom: 0
-      color: transparent
-      -webkit-background-clip: text
-      background-color: rgba(82,96,117,0.5)
-      text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
-      //font-weight: bold
-      font-size: 4.2em
-      letter-spacing: -0.1em
-      text-rendering : optimizeLegibility
+    a
+      text-decoration: none
+      h1
+        //letter-spacing: 0.1em
+        //color: $dark_red
+        //text-shadow: $light_red 1px 1px 0
+        padding-bottom: 0.1em
+        margin-bottom: 0
+        color: transparent
+        -webkit-background-clip: text
+        background-color: rgba(82,96,117,0.5)
+        text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
+        //font-weight: bold
+        font-size: 4.2em
+        letter-spacing: -0.1em
+        text-rendering : optimizeLegibility
     h2
       text-align: right
       color: $dark_red
@@ -129,7 +131,7 @@ aside
   width: 29%
   display: table-cell
   vertical-align: top
-  border-right: 1px solid #EFEFEF
+  //border-right: 1px solid #EFEFEF
   background-color: #dadcd5
   padding: 1em
   a
@@ -170,4 +172,62 @@ footer
   border-top: 1px solid $dark_red
   -webkit-box-shadow: black 0px -1px 0
   
-article
+section.articles
+  border-left: 2px solid $dark_red
+  border-right: 2px solid $dark_red
+  display: table-cell
+  h1
+    display: inline
+    padding-left: 0.5em
+    text-decoration: none
+    
+  hr
+    border: none
+    background-color: $dark_red
+    height: 1px
+  
+time
+  width: 3em
+  margin-left: -2.2em
+  text-align: center
+  display: inline-block
+  +radius(0.3em)
+  color: white
+  padding: 0.5em 0.8em 0.5em 0.8em
+  +gradient($light_red, $dark_red)
+
+  font-size: 1.1em
+  //text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
+  //border: 1px solid $dark_red
+  letter-spacing: 0.1em 
+  text-transform: capitalize
+
+span.day
+  font-size: 2em
+  font-weight: bold
+  
+aside.date
+  display: table-cell
+  width: 7.1%
+  background-color: #F0F0F0
+
+aside.tags
+  display: table-cell
+  width: 20%
+  background-color: #F0F0F0
+   
+.search
+  +gradient($light_red, $dark_red)
+  color: white
+  padding: 0.5em
+  border-bottom: 1px solid darken($dark_red, 5%)
+  .content
+    max-width: $max-width 
+    margin: auto
+    a
+      color: white
+    input
+      border: 1px solid $dark_red
+      +radius(0.1em)
+    input#search_submit
+      display: none 
