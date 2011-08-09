@@ -13,14 +13,26 @@ class Article < ActiveRecord::Base
 
   
   def generate_summary
-    self.summary = ""
+    self.summary = "<ul>"
+    first = true
+    oldH = 1
     self.content.gsub(/<h[0-9][^>]*>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9][^>]*>/m, "").sub(/<\/h[0-9]>/m, "")
       link  = title.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
-      
-      self.summary += "<h#{h}><a href='##{link}'>#{title}</a></h#{h}>"
+      if !first and (h.to_i - oldH) == 1
+        self.summary += "<ul><li>"
+      elsif !first and (h.to_i - oldH) == -1
+        self.summary += "</ul><li>"
+      else
+        self.summary += "<li>"
+      end
+      self.summary += "<a href='##{link}'>#{title}</a>"
+      self.summary += "</li>"
+      oldH = h.to_i
+      first = false
     end
+    self.summary += "</ul>"
   end
 
   def generate_anchor_links

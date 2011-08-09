@@ -116,6 +116,13 @@ header
   width: 70%
   display: table-cell
     
+    
+.current_content
+  padding: 0.5em
+  +radius(0.3em)
+  color: white
+  +gradient($light_red, $dark_red)
+
 aside
   width: 29%
   display: table-cell
@@ -123,10 +130,13 @@ aside
   border-right: 1px solid #EFEFEF
   background-color: #dadcd5
   padding: 1em
+  a
+    text-decoration: none
+    padding: 0.5em
 
 #summary_content
   position: fixed
-  width: 10%
+  width: 13%
   font-size: 0.6em
   h1
     font-size: 200%

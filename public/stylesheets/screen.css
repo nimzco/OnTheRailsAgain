@@ -349,7 +349,22 @@ header .content nav ul li a:hover, header .content nav ul li a.selected {
   display: table-cell;
 }
 
-/* line 119, ../../app/stylesheets/screen.sass */
+/* line 120, ../../app/stylesheets/screen.sass */
+.current_content {
+  padding: 0.5em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
+  color: white;
+  background: #e10000;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e10000), to(#a20003));
+  background: -webkit-linear-gradient(top, #e10000, #a20003 100%);
+  background: -moz-linear-gradient(top, #e10000, #a20003);
+  background: -o-linear-gradient(top, #e10000, #a20003 100%);
+  background: linear-gradient(top, #e10000, #a20003 100%);
+}
+
+/* line 126, ../../app/stylesheets/screen.sass */
 aside {
   width: 29%;
   display: table-cell;
@@ -358,24 +373,29 @@ aside {
   background-color: #dadcd5;
   padding: 1em;
 }
+/* line 133, ../../app/stylesheets/screen.sass */
+aside a {
+  text-decoration: none;
+  padding: 0.5em;
+}
 
-/* line 127, ../../app/stylesheets/screen.sass */
+/* line 137, ../../app/stylesheets/screen.sass */
 #summary_content {
   position: fixed;
-  width: 10%;
+  width: 13%;
   font-size: 0.6em;
 }
-/* line 131, ../../app/stylesheets/screen.sass */
+/* line 141, ../../app/stylesheets/screen.sass */
 #summary_content h1 {
   font-size: 200%;
 }
 
-/* line 134, ../../app/stylesheets/screen.sass */
+/* line 144, ../../app/stylesheets/screen.sass */
 .current_section {
   font-weight: bold;
 }
 
-/* line 137, ../../app/stylesheets/screen.sass */
+/* line 147, ../../app/stylesheets/screen.sass */
 button, input[type=submit] {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
@@ -393,7 +413,7 @@ button, input[type=submit] {
   cursor: pointer;
 }
 
-/* line 147, ../../app/stylesheets/screen.sass */
+/* line 157, ../../app/stylesheets/screen.sass */
 button:hover, input[type=submit]:hover {
   border: 1px solid #a20003;
   color: white;
@@ -406,7 +426,7 @@ button:hover, input[type=submit]:hover {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
-/* line 153, ../../app/stylesheets/screen.sass */
+/* line 163, ../../app/stylesheets/screen.sass */
 footer {
   background-color: whiteSmoke;
   color: #222222;

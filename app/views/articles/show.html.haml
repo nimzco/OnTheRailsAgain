@@ -30,36 +30,28 @@
       $(window).scroll( ->
         h1 = $('.article_content h1')
         if ($(h1[0]).offset().top - $(document).scrollTop()) > 80
-          $("#summary *").css('color', '#000')
-          $("#summary *").css('font-weight', 'normal')
-          $($("#summary h1")[0]).find('a').css('color', '#A00')
-          $($("#summary h1")[0]).find('a').css('font-weight', 'bold')
+          $("#summary a *").removeClass('current_content')
+          $($("#summary a h1")[0]).addClass('current_content')
                   
         h2 = $('.article_content h2')
         for i in [0..(h2.length - 1)]
           if ($(h2[i]).offset().top - $(document).scrollTop()) < 80
-            $("#summary *").css('color', '#000')
-            $("#summary *").css('font-weight', 'normal')
-            $($("#summary h2")[i]).find('a').css('color', '#A00')
-            $($("#summary h2")[i]).find('a').css('font-weight', 'bold')
+            $("#summary a *").removeClass('current_content')
+            $($("#summary a h2")[i]).addClass('current_content')
 
         h3 = $('.article_content h3')
         if h3.length != 0
           for i in [0..(h3.length - 1)]
             if ($(h3[i]).offset().top - $(document).scrollTop()) < 80
-              $("#summary *").css('color', '#000')
-              $("#summary *").css('font-weight', 'normal')
-              $($("#summary h3")[i]).find('a').css('color', '#A00')
-              $($("#summary h3")[i]).find('a').css('font-weight', 'bold')
+              $("#summary a *").removeClass('current_content')
+              $($("#summary a h3")[i]).addClass('current_content')
 
         h4 = $('.article_content h4')
         if h4.length != 0
           for i in [0..(h4.length - 1)]
             if ($(h4[i]).offset().top - $(document).scrollTop()) < 80
-              $("#summary *").css('color', '#000')
-              $("#summary *").css('font-weight', 'normal')
-              $($("#summary h4")[i]).find('a').css('color', '#A00')
-              $($("#summary h4")[i]).find('a').css('font-weight', 'bold')
+              $("#summary a *").removeClass('current_content')
+              $($("#summary a h4")[i]).addClass('current_content')
       )
 
     )

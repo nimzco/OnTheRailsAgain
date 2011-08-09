@@ -7,12 +7,13 @@ class ArticlesController < InheritedResources::Base
   end
   
   def index
+    @search = Article.search(params[:search])
     if params[:tag]
       @articles = Article.find(:all, :include => :tags, :conditions => ["tags.name = ?", params[:tag]]).paginate(:page => params[:page], :per_page => 5)
     else
-      @articles = Article.all.paginate(:page => params[:page], :per_page => 5)
+      @articles = @search.all.paginate(:page => params[:page], :per_page => 5)
     end
-    @tags = Tag.all
+    @tags = Tag.find(:all, :order => :name)
     index!
   end
 
