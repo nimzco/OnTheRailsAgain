@@ -19,6 +19,3 @@
         = link_to author.name, profile_path(author.name)
   .comments
     = link_to pluralize(article.comments.length, "Commentaire"), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "comments"
-  - if author_signed_in? #and article.authors.contains(current_author)
-    = link_to 'Edit', edit_article_path(article)
-    = link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete
