@@ -10,6 +10,7 @@ $light_red: #e10000
 
 body
   background-color: #F7F7F7
+  background-color: #F0F0F0
   //font-size: 1.2em
   ol
     list-style-type: none
@@ -37,6 +38,7 @@ header
   padding-bottom: 1em
   border-bottom: 1px solid $dark_red
   //-webkit-box-shadow: black 0px -1px 0 inset
+  background-color: #F7F7F7
   .content
     a
       text-decoration: none
@@ -112,14 +114,17 @@ header
   max-width: $max-width
   margin: auto 
   height: 100%
-
+  background-color: #F7F7F7
+  
 #content
   display: table
   
 .article_content
-  width: 70%
   display: table-cell
-    
+  
+article
+  padding: 1em
+  //border-top: 1px solid #EFEFEF
     
 .current_content
   padding: 0.5em
@@ -173,9 +178,10 @@ footer
   -webkit-box-shadow: black 0px -1px 0
   
 section.articles
-  border-left: 2px solid $dark_red
-  border-right: 2px solid $dark_red
+  border-left: 1px solid #B2B2B2
+  border-right: 1px solid #B2B2B2
   display: table-cell
+  padding-top: 1em
   h1
     display: inline
     padding-left: 0.5em
@@ -183,12 +189,15 @@ section.articles
     
   hr
     border: none
-    background-color: $dark_red
-    height: 1px
-  
+    //background-color: $dark_red
+    //height: 1px
+section.articles
+  article:nth-child(odd)
+    //background-color: #FDFDFD
+      
 time
   width: 3em
-  margin-left: -2.2em
+  margin-left: -3.2em
   text-align: center
   display: inline-block
   +radius(0.3em)
@@ -201,6 +210,7 @@ time
   //border: 1px solid $dark_red
   letter-spacing: 0.1em 
   text-transform: capitalize
+
 
 span.day
   font-size: 2em
@@ -222,8 +232,8 @@ aside.tags
   padding: 0.5em
   border-bottom: 1px solid darken($dark_red, 5%)
   .content
-    max-width: $max-width 
-    margin: auto
+    //max-width: $max-width 
+    margin-left: auto
     a
       color: white
     input

@@ -1,7 +1,7 @@
 %article
   %time{ :datetime => article.created_at }
     %span.day= l article.created_at.to_date, :format => "%d"
-    = l article.created_at.to_date, :format => "%B"
+    = l article.created_at.to_date, :format => "%b"
     = l article.created_at.to_date, :format => "%Y"
     
   = link_to article.title, :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")

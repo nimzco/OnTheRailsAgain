@@ -3,7 +3,6 @@
 %section.articles  
   - @articles.each do |article|
     = render article
-    %hr
   = will_paginate @articles, :previous_label => "Précédent", :next_label => "Suivant"
 
 = content_for :javascript do
