@@ -1,7 +1,8 @@
 %article
   %h1= link_to article.title, :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
-  .article_date
-    = article.created_at
+
+  %time{ :datetime => article.created_at }
+    = article.created_at.to_s
   .article_content
     ~ article.content[0..300].html_safe
 
