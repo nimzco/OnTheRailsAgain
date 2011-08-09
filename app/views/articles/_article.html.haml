@@ -1,21 +1,22 @@
 %article
-  %time{ :datetime => article.created_at }
-    %span.day= l article.created_at.to_date, :format => "%d"
-    = l article.created_at.to_date, :format => "%b"
-    = l article.created_at.to_date, :format => "%Y"
+  %header
+    %time{ :datetime => article.created_at }
+      %span.day= l article.created_at.to_date, :format => "%d"
+      = l article.created_at.to_date, :format => "%b"
+      = l article.created_at.to_date, :format => "%Y"
+  .wrapper    
+    = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
     
-  = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
+    %p.article_content
+      = article.introduction
   
-  .article_content
-    = article.introduction
-
-  %ul.tags
-    - article.tags.each do |tag|
-      %li
-        = link_to tag.name, articles_path(:tag => tag.name)
-  %ul.authors
-    - article.authors.each do |author|
-      %li
-        = link_to author.name, profile_path(author.name)
-  .comments
-    = link_to pluralize(article.comments.length, "Commentaire"), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "comments"
+    %ul.tags
+      - article.tags.each do |tag|
+        %li
+          = link_to tag.name, articles_path(:tag => tag.name)
+    %ul.authors
+      - article.authors.each do |author|
+        %li
+          = link_to author.name, profile_path(author.name)
+    .comments
+      = link_to pluralize(article.comments.length, "Commentaire"), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "comments"

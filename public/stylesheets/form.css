@@ -1,23 +1,23 @@
 /*
 Syntax error: Undefined mixin 'radius'.
-        on line 28 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass, in `radius'
-        from line 28 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass
+        on line 25 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass, in `radius'
+        from line 25 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass
 
-23:     content: " : "
-24:   input, textarea
-25:     display: inline-block
-26:     vertical-align: middle
-27:     outline: none
-28:     +radius(0.2em)
-29:     border: 1px inset #999
-30:     padding: 5px 2px 6px 2px
-31:     +bshadow-in(0px, 0px, 4px, rgba(0,0,0,0.2))
-32:     margin: 0
-33:     margin-left: 0.5%
+20:     content: " : "
+21:   input, textarea
+22:     display: inline-block
+23:     vertical-align: middle
+24:     outline: none
+25:     +radius(0.2em)
+26:     border: 1px inset #999
+27:     padding: 5px 2px 6px 2px
+28:     +bshadow-in(0px, 0px, 4px, rgba(0,0,0,0.2))
+29:     margin: 0
+30:     margin-left: 0.5%
 
 Backtrace:
-/Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass:28:in `radius'
-/Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass:28
+/Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass:25:in `radius'
+/Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass:25
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
@@ -128,4 +128,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'radius'.\A         on line 28 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass, in `radius'\A         from line 28 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass\A \A 23:     content: \" : \"\A 24:   input, textarea\A 25:     display: inline-block\A 26:     vertical-align: middle\A 27:     outline: none\A 28:     +radius(0.2em)\A 29:     border: 1px inset #999\A 30:     padding: 5px 2px 6px 2px\A 31:     +bshadow-in(0px, 0px, 4px, rgba(0,0,0,0.2))\A 32:     margin: 0\A 33:     margin-left: 0.5%"; }
+  content: "Syntax error: Undefined mixin 'radius'.\A         on line 25 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass, in `radius'\A         from line 25 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/form.sass\A \A 20:     content: \" : \"\A 21:   input, textarea\A 22:     display: inline-block\A 23:     vertical-align: middle\A 24:     outline: none\A 25:     +radius(0.2em)\A 26:     border: 1px inset #999\A 27:     padding: 5px 2px 6px 2px\A 28:     +bshadow-in(0px, 0px, 4px, rgba(0,0,0,0.2))\A 29:     margin: 0\A 30:     margin-left: 0.5%"; }

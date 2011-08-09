@@ -24,86 +24,63 @@ body
   max-width: $max-width
   margin: auto
   
-  
-header
-  padding-top: 1em
-  //border-bottom: 4px solid $dark_red
-  //-webkit-box-shadow: white 0 -1px 0 inset
-  //-webkit-box-shadow: white 0 -1px 0
-  //border-left: 1px solid #EFEFEF
-  //-webkit-box-shadow: $light_red 0 -1px 0px inset
-  //-webkit-box-shadow: black 0px -1px 0
-  //background-color: white
-  //+gradient($light_red, $dark_red)
-  padding-bottom: 1em
-  border-bottom: 1px solid $dark_red
-  //-webkit-box-shadow: black 0px -1px 0 inset
-  background-color: #F7F7F7
-  .content
-    a
-      text-decoration: none
-      h1
-        //letter-spacing: 0.1em
-        //color: $dark_red
-        //text-shadow: $light_red 1px 1px 0
-        padding-bottom: 0.1em
-        margin-bottom: 0
-        color: transparent
-        -webkit-background-clip: text
-        background-color: rgba(82,96,117,0.5)
-        text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
-        //font-weight: bold
-        font-size: 4.2em
-        letter-spacing: -0.1em
-        text-rendering : optimizeLegibility
-    h2
-      text-align: right
-      color: $dark_red
-      //text-shadow: $light_red 1px 1px 0
-      padding-left: 0.3em
-      color: transparent
-      -webkit-background-clip: text
-      background-color: rgba(82,96,117,0.5)
-      text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
-      //letter-spacing: -0.1em
-      padding-bottom: 0.1em      
-    nav
-      ul
-        padding-left: 0
-        display: table
-        width: 100%
-        margin: 0
-        list-style-type: none
-        li:first-child a
-          border-left: 1px solid #EFEFEF
-          border-right: 1px solid #F7F7F7
-        li:last-child a
-          border-left: 1px solid #F7F7F7
-          border-right: 1px solid #EFEFEF
-        li
-          display: table-cell
-          width: 33%
-          +radiusTop(1em)
-          background-color: transparent
-          a
-            text-decoration: none
-            cursor: pointer
-            display: block
-            text-align: center
-            line-height: 3.5em
-            letter-spacing: 0.1em
-            color: #bf0000
-            +gradient(#FFF, #F7F7F7)
-            text-shadow: 1px 1px 1px rgba(255,255,255,1)
-            +radiusTop(0.3em)
-            border-top: 1px solid #EFEFEF
-          a:hover, a.selected
-            +radiusTop(0.3em)
-            color: white
-            +gradient($light_red, $dark_red)
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-            border: 1px solid $dark_red
-            -webkit-box-shadow: none
+body
+  > header
+    padding-top: 1em
+    padding-bottom: 1em
+    border-bottom: 1px solid $dark_red
+    background-color: #F7F7F7
+    .content
+      a
+        text-decoration: none
+        h1
+          padding-bottom: 0.1em
+          margin-bottom: 0
+          color: transparent
+          -webkit-background-clip: text
+          -moz-background-clip: text
+          background-color: rgba(82,96,117,0.5)
+          text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
+          font-size: 4.2em
+          letter-spacing: -0.1em
+          text-rendering : optimizeLegibility
+      nav
+        ul
+          padding-left: 0
+          display: table
+          width: 100%
+          margin: 0
+          list-style-type: none
+          li:first-child a
+            border-left: 1px solid #EFEFEF
+            border-right: 1px solid #F7F7F7
+          li:last-child a
+            border-left: 1px solid #F7F7F7
+            border-right: 1px solid #EFEFEF
+          li
+            display: table-cell
+            width: 33%
+            +radiusTop(1em)
+            background-color: transparent
+            a
+              text-decoration: none
+              cursor: pointer
+              display: block
+              text-align: center
+              line-height: 3.5em
+              letter-spacing: 0.1em
+              color: #bf0000
+              +gradient(#FFF, #F7F7F7)
+              text-shadow: 1px 1px 1px rgba(255,255,255,1)
+              +radiusTop(0.3em)
+              border-top: 1px solid #EFEFEF
+            a:hover, a.selected
+              +radiusTop(0.3em)
+              color: white
+              +gradient($light_red, $dark_red)
+              text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
+              border: 1px solid $dark_red
+              -webkit-box-shadow: none
  
 #bold_title
   font-weight: normal
@@ -114,7 +91,6 @@ header
   max-width: $max-width
   margin: auto 
   height: 100%
-  background-color: #F7F7F7
   
 #content
   display: table
@@ -124,7 +100,6 @@ header
   
 article
   padding: 1em
-  //border-top: 1px solid #EFEFEF
     
 .current_content
   padding: 0.5em
@@ -136,7 +111,6 @@ aside
   width: 29%
   display: table-cell
   vertical-align: top
-  //border-right: 1px solid #EFEFEF
   background-color: #dadcd5
   padding: 1em
   a
@@ -161,7 +135,6 @@ button, input[type=submit]
   text-shadow: 1px 1px 1px rgba(255,255,255,1)
   border: 1px solid #D4D4D4
   cursor: pointer
-  //font-size: 1em
   
 button:hover, input[type=submit]:hover
   border: 1px solid $dark_red
@@ -176,41 +149,55 @@ footer
   min-height: 5em
   border-top: 1px solid $dark_red
   -webkit-box-shadow: black 0px -1px 0
+  margin-top: 1em
   
 section.articles
-  border-left: 1px solid #B2B2B2
-  border-right: 1px solid #B2B2B2
   display: table-cell
   padding-top: 1em
-  h1
-    display: inline
-    padding-left: 0.5em
-    text-decoration: none
+  header
+    display: table-cell
+    vertical-align: top
+    time
+      width: 3em
+      margin-left: -3.2em
+      margin-top: 1em
+      text-align: center
+      display: inline-block
+      +radius(0.3em)
+      color: white
+      padding: 0.5em 0.8em 0.5em 0.8em
+      +gradient($light_red, $dark_red)
     
-  hr
-    border: none
-    //background-color: $dark_red
-    //height: 1px
-section.articles
-  article:nth-child(odd)
-    //background-color: #FDFDFD
-      
-time
-  width: 3em
-  margin-left: -3.2em
-  text-align: center
-  display: inline-block
-  +radius(0.3em)
-  color: white
-  padding: 0.5em 0.8em 0.5em 0.8em
-  +gradient($light_red, $dark_red)
-
-  font-size: 1.1em
-  //text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-  //border: 1px solid $dark_red
-  letter-spacing: 0.1em 
-  text-transform: capitalize
-
+      font-size: 1.1em
+      letter-spacing: 0.1em 
+      text-transform: capitalize
+      border: 1px solid darken($dark_red, 5%)
+      -webkit-box-shadow: rgba(255,255,255, 0.4) 0px 0px 4px inset
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
+  a
+    display: inline-block
+    text-decoration: none
+    h2
+      display: inline
+  a:hover
+    h2
+      color: $dark_red
+  .wrapper
+    display: table-cell
+    padding: 2em
+    padding-top: 1.5em
+    padding-left: 1em
+    ul.authors
+      list-style: none
+      padding-left: 0
+    p.article_content
+      text-align: justify
+      padding-left: 0
+  article
+    border: 1px solid #CCC
+    +radius(0.3em)
+    background-color: #F7F7F7
+    margin-top: 1em 
 
 span.day
   font-size: 2em
@@ -218,13 +205,20 @@ span.day
   
 aside.date
   display: table-cell
-  width: 7.1%
+  width: 0.5em
   background-color: #F0F0F0
 
 aside.tags
   display: table-cell
   width: 20%
+  padding: 1em
+  padding-top: 2em
   background-color: #F0F0F0
+  .content
+    height: 100%
+    border: 1px solid #B2B2B2
+    +radius(0.3em)
+    background-color: #F7F7F7
    
 .search
   +gradient($light_red, $dark_red)
@@ -241,3 +235,9 @@ aside.tags
       +radius(0.1em)
     input#search_submit
       display: none 
+    
+#header_border
+  +gradient($light_red, $dark_red)
+  color: white
+  padding: 0.5em
+  border-bottom: 1px solid darken($dark_red, 5%)
