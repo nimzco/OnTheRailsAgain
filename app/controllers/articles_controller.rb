@@ -35,11 +35,19 @@ class ArticlesController < InheritedResources::Base
   end
   
   def create
-    @article = Article.create(params[:article])
-    @article.content = haml2html(params[:article][:content])
-    @article.generate_summary
-    @article.generate_anchor_links
-    create!
+    @article = Article.new(params[:article])
+    begin
+      @article.content = haml2html(params[:article][:content])
+      @article.generate_summary
+      @article.generate_anchor_links
+      create!
+    rescue Haml::SyntaxError => e
+      puts e
+      flash[:error] = "Problème d'encodate HAML. Voir console pour plus d'info..."
+      respond_to do |format|
+        format.html { render "new" }
+      end
+    end
   end
   
   def update

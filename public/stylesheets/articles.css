@@ -1,6 +1,6 @@
 /*
 Syntax error: Undefined variable: "$dark_red".
-        on line 18 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/articles.sass
+        on line 18 of /Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass
 
 13:   ul
 14:     list-style-type: circle
@@ -15,7 +15,7 @@ Syntax error: Undefined variable: "$dark_red".
 23:     background-color: #EFEFEF
 
 Backtrace:
-/Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/articles.sass:18
+/Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass:18
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/script/variable.rb:45:in `_perform'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/script/node.rb:40:in `perform'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/tree/visitors/perform.rb:215:in `visit_prop'
@@ -128,4 +128,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$dark_red\".\A         on line 18 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/articles.sass\A \A 13:   ul\A 14:     list-style-type: circle\A 15:     line-height: 20px\A 16:     margin-bottom: 20px\A 17:   a\A 18:     color: $dark_red\A 19:   a:hover\A 20:     color: $light_red\A 21:   pre\A 22:     //font-size: 1.2em\A 23:     background-color: #EFEFEF"; }
+  content: "Syntax error: Undefined variable: \"$dark_red\".\A         on line 18 of /Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass\A \A 13:   ul\A 14:     list-style-type: circle\A 15:     line-height: 20px\A 16:     margin-bottom: 20px\A 17:   a\A 18:     color: $dark_red\A 19:   a:hover\A 20:     color: $light_red\A 21:   pre\A 22:     //font-size: 1.2em\A 23:     background-color: #EFEFEF"; }
