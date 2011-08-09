@@ -1,3 +1,5 @@
+= flash[:notice]
+= flash[:error]
 .article_content
   ~ @article.content.html_safe
   %p
@@ -13,8 +15,9 @@
 
   - if author_signed_in?
     = link_to 'Edit', edit_article_path(@article)
-  
-  %ul#comments
+
+  %h3#comments= pluralize(@article.comments.length, "Commentaire")
+  %ul#comments_list
     = nested_comments(@article.comments.arrange(:order => :created_at))
   
   = render "comments/form"

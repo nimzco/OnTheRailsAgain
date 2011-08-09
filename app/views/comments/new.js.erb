@@ -1,10 +1,10 @@
 $('#comment_form').remove();
 <% if params[:new_article] %>
   $('#new_answer_link').remove();
-  $('#comments').after("<%= escape_javascript(render 'form') %>");
+  $('#comments_list').after("<%= escape_javascript(render 'form') %>");
 <% else %>
   $('#comment_<%= params[:parent_id] %>').append("<%= escape_javascript(render 'form') %>");
-  if ($('#comments').length === 0) {
-    $('#comments').after('<%= link_to "Nouvelle réponse", new_article_comment_path(@article, :new_article => true), :remote => true, :id => "new_answer_link" %>');
+  if ($('#comments_list').length === 0) {
+    $('#comments_list').after('<%= link_to "Nouvelle réponse", new_article_comment_path(@article, :new_article => true), :remote => true, :id => "new_answer_link" %>');
   }
 <% end %>

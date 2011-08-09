@@ -4,10 +4,10 @@
     = l article.created_at.to_date, :format => "%b"
     = l article.created_at.to_date, :format => "%Y"
     
-  = link_to article.title, :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
+  = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
   
   .article_content
-    ~ article.content[0..300].html_safe
+    = article.introduction
 
   %ul.tags
     - article.tags.each do |tag|
@@ -18,7 +18,7 @@
       %li
         = link_to author.name, profile_path(author.name)
   .comments
-    = link_to pluralize(article.comments.length, "Commentaire"), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_")
+    = link_to pluralize(article.comments.length, "Commentaire"), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "comments"
   - if author_signed_in? #and article.authors.contains(current_author)
     = link_to 'Edit', edit_article_path(article)
     = link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete

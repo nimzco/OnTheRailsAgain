@@ -14,23 +14,6 @@
 
   %body
     = render :partial => "shared/header"
-    .search
-      .content
-        = form_for @search do |f|
-          = f.label       :title_or_content_contains
-          = f.text_field  :title_or_content_contains
-          %a#advance_search_button{:href => "#"} Recherche avancée
-          #advance_search
-            = f.label       :title_contains
-            = f.text_field  :title_contains
-            %br/
-            = f.label       :content_contains
-            = f.text_field  :content_contains
-            %br/   
-            = f.label       :tags_name_contains
-            = f.text_field  :tags_name_contains
-          %br/   
-          = f.submit  
     .container
       %section
         .content                       

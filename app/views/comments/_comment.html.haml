@@ -1,9 +1,8 @@
 %li{:id => "comment_#{comment.id}"}
-  - if comment.user_email
-    = mail_to(comment.user_email, comment.username)
+  - if !comment.user_homepage.empty?
+    = link_to comment.username, comment.user_homepage, :rel => "external nofollow"
   - else 
     = comment.username
-  = comment.user_homepage
   = comment.content
   = comment.created_at
   = # link_to "Repondre", new_article_comment_path(@article, :parent_id => comment.id), :remote => true
