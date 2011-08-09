@@ -3,7 +3,7 @@
 .article_content
   ~ @article.content.html_safe
   %p
-    %b Authors:
+    %b= @article.authors.length > 1 ? "Auteurs:" : "Auteur:"
     %ul
     - @article.authors.each do |author|
       %li=author.name
