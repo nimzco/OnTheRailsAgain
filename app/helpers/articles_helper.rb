@@ -5,7 +5,7 @@ module ArticlesHelper
       if sub_comment.empty?
         render(:partial => "comments/comment", :locals => {:comment => comment})
       else
-        render(:partial => "comments/comment", :locals => {:comment => comment}) + content_tag(:ul, nested_comments(sub_comment))
+        render(:partial => "comments/comment", :locals => {:comment => comment}) + nested_comments(sub_comment)
       end
     end.join.html_safe
   end  

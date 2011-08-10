@@ -17,7 +17,7 @@
     = link_to 'Edit', edit_article_path(@article)
 
   %h3#comments_header= pluralize(@article.comments.length, "Commentaire")
-  %ul#comments
+  #comments
     = nested_comments(@article.comments.arrange(:order => :created_at))
   
   = render "comments/form"

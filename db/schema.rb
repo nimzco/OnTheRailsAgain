@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809223122) do
+ActiveRecord::Schema.define(:version => 20110810111421) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20110809223122) do
     t.string   "ancestry"
     t.string   "user_email"
     t.string   "user_homepage"
+    t.integer  "ancestry_depth", :default => 0
   end
 
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"

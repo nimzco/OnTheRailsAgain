@@ -21,15 +21,17 @@ class Article < ActiveRecord::Base
       title = match.sub(/<h[0-9][^>]*>/m, "").sub(/<\/h[0-9]>/m, "")
       link  = title.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
       if !first and (h.to_i - oldH) == 1
-        self.summary += "<ul>"
+        self.summary += "</li><li><ul><li>"
+      elsif !first and (h.to_i - oldH) == 0
+        self.summary += "</li><li>"
       elsif !first and (h.to_i - oldH) == -1
-        self.summary += "</ul>"
+        self.summary += "</li></ul><li>"
       elsif !first and (h.to_i - oldH) == -2
-        self.summary += "</ul></ul>"
+        self.summary += "</li></ul></ul><li>"
       elsif !first and (h.to_i - oldH) == -3
-        self.summary += "</ul></ul></ul>"
+        self.summary += "</li></ul></ul></ul><li>"
       end
-      self.summary += "<li><a href='##{link}'>#{title}</a></li>"
+      self.summary += "<a href='##{link}'>#{title}</a>"
       oldH = h.to_i
       first = false
     end
