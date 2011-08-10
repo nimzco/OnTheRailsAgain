@@ -21,8 +21,7 @@
           - flash.each do |name, msg|
             = content_tag :p, msg, :id => "flash_#{name}"
           = yield 
-          
-      Tweet
+        
     = render :partial => "shared/footer"
   
     / Include des Javascripts
