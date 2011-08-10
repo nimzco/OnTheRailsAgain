@@ -1,8 +1,8 @@
-%li{:id => "comment_#{comment.id}"}
+%div.comment{:id => "comment_#{comment.id}", :class => "depth_#{comment.depth}"}
   - if !comment.user_homepage.empty?
     = link_to comment.username, comment.user_homepage, :rel => "external nofollow"
   - else 
     = comment.username
   = comment.content
   = comment.created_at
-  = # link_to "Repondre", new_article_comment_path(@article, :parent_id => comment.id), :remote => true
+  =  link_to "Repondre", new_article_comment_path(@article, :parent_id => comment.id), :remote => true
