@@ -1,5 +1,5 @@
 %aside.date
-  
+ 
 %section.articles  
   - @articles.each do |article|
     = render article
@@ -15,7 +15,9 @@
     )
 %aside.tags
   .content
-    %h2 Tags
-    %ul
-      - @tags.each do |tag|
-        %li= link_to tag.name, articles_path(:tag => tag.name)
+    = render "shared/search"
+    #tags
+      %h2 Tags
+      %ul
+        - @tags.each do |tag|
+          %li= link_to tag.name, articles_path(:tag => tag.name)

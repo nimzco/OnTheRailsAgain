@@ -210,31 +210,52 @@ aside.date
 
 aside.tags
   display: table-cell
-  width: 20%
+  width: 25%
   padding: 1em
   padding-top: 2em
   background-color: #F0F0F0
   .content
     height: 100%
-    border: 1px solid #B2B2B2
-    +radius(0.3em)
-    background-color: #F7F7F7
-   
+    //background-color: #F7F7F7
+
+#tags
+  border: 1px solid #CCC
+  +radius(0.3em)
+  padding: 1em
+  margin-top: 1em
+  background-color: #F7F7F7   
 .search
   +gradient($light_red, $dark_red)
+  +radius(0.4em)
   color: white
   padding: 0.5em
-  border-bottom: 1px solid darken($dark_red, 5%)
-  .content
-    //max-width: $max-width 
-    margin-left: auto
-    a
-      color: white
+  border: 1px solid darken($dark_red, 5%)
+  -webkit-box-shadow: rgba(255,255,255, 0.4) 0px 0px 4px inset
+  .content_search
+    padding: 0.3em
+    label.search_icon
+      font-size: 1.2em
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
+      letter-spacing: 0.1em
+      display: inline-block
+      width: 13%
+      margin-bottom: 0.2em
+      background-image: url('/images/search.png')
+      background-repeat: no-repeat
+      background-position: left center
     input
+      margin-left: 0
+      padding: 0.3em 0.1em 0.3em 0.1em
       border: 1px solid $dark_red
-      +radius(0.1em)
-    input#search_submit
-      display: none 
+      width: 82%
+      margin: auto
+      display: inline-block
+      +radius(0.2em)
+      -webkit-box-shadow: rgba(0,0,0, 0.4) 0px 0px 4px inset
+    a#advance_search_button
+      text-align: center
+      color: white
+      display: none
     
 #header_border
   +gradient($light_red, $dark_red)
