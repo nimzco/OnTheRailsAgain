@@ -21,9 +21,15 @@
           - flash.each do |name, msg|
             = content_tag :p, msg, :id => "flash_#{name}"
           = yield 
+          
+      Tweet
     = render :partial => "shared/footer"
   
     / Include des Javascripts
     - #javascript_include_tag :all
     = javascript_include_tag :defaults
     = yield :javascript
+    = javascript_include_tag "https://apis.google.com/js/plusone.js"
+    = javascript_include_tag "http://platform.twitter.com/widgets.js"
+
+

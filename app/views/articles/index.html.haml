@@ -5,6 +5,17 @@
     = render article
   = will_paginate @articles, :previous_label => "Précédent", :next_label => "Suivant"
 
+%aside.tags
+  .content
+
+    = render "shared/search"
+    #tags
+      %h2 Tags
+      %ul
+        - @tags.each do |tag|
+          %li= link_to "#{tag.name} (#{tag.articles.length})", articles_path(:tag => tag.name)
+      
+
 = content_for :javascript do
   :coffeescript
     $( () ->
@@ -13,11 +24,3 @@
         $('#advance_search').slideToggle()
       )
     )
-%aside.tags
-  .content
-    = render "shared/search"
-    #tags
-      %h2 Tags
-      %ul
-        - @tags.each do |tag|
-          %li= link_to tag.name, articles_path(:tag => tag.name)
