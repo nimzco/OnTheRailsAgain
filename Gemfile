@@ -11,7 +11,7 @@ gem 'rails', '3.0.9'
 gem 'mysql'               , '~>2.8.1'
 gem 'ruby-debug'
 gem 'delayed_job'
-
+gem 'disqus'
 gem "meta_search"  
 gem 'ancestry'            , '~>1.2.4'
 gem 'devise'              , '~>1.4.2'

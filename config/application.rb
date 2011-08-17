@@ -40,5 +40,13 @@ module OntheRailsAgain
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.after_initialize do
+      Disqus::defaults[:account] = "ontherailsagain"
+      # so that the comments will load up in development environment
+      Disqus::defaults[:developer] = true
+      Disqus::defaults[:container_id] = "disqus_thread"
+      Disqus::defaults[:show_powered_by] = false
+    end
   end
 end

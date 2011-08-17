@@ -1,5 +1,6 @@
 = flash[:notice]
 = flash[:error]
+
 .article_content
   ~ @article.content.html_safe
   %p
@@ -16,11 +17,14 @@
   - if author_signed_in?
     = link_to 'Edit', edit_article_path(@article)
 
-  %h3#comments_header= pluralize(@article.comments.length, "Commentaire")
-  #comments
-    = nested_comments(@article.comments.arrange(:order => :created_at))
+  #disqus_thread
+    = raw disqus_thread
   
-  = render "comments/form"
+  -# %h3#comments_header= pluralize(@article.comments.length, "Commentaire")
+  -# #comments
+  -#  = nested_comments(@article.comments.arrange(:order => :created_at))
+  
+  -# render "comments/form"
 
 %aside#summary
   #summary_content

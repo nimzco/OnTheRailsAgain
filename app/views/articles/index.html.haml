@@ -15,7 +15,7 @@
         - @tags.each do |tag|
           %li= link_to "#{tag.name} (#{tag.articles.length})", articles_path(:tag => tag.name)
       
-
+    
 = content_for :javascript do
   :coffeescript
     $( () ->

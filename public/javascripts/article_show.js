@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Tue, 09 Aug 2011 19:45:55 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 17 Aug 2011 20:47:28 GMT from
  * /Users/Nima/Sites/OnTheRailsAgain/app/coffeescripts/article_show.coffee
  */
 
@@ -6,7 +6,7 @@
   $(function() {
     return $(window).scroll(function() {
       var headers, i, summary_headers, _ref, _results;
-      headers = $('.article_content :header');
+      headers = $('.article_content > :header');
       summary_headers = $('#summary a');
       _results = [];
       for (i = 0, _ref = headers.length - 1; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
