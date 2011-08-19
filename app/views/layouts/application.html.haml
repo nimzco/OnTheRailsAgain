@@ -30,5 +30,10 @@
     = yield :javascript
     = javascript_include_tag "https://apis.google.com/js/plusone.js"
     = javascript_include_tag "http://platform.twitter.com/widgets.js"
+    = javascript_include_tag "http://connect.facebook.net/fr_FR/all.js#xfbml=1"
+    / %style{:type => "text/css"}
+    / sass:
+    /   td.connect_widget_vertical_center
+    /     display: none !important
 
 
