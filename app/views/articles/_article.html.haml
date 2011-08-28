@@ -18,6 +18,6 @@
       - article.authors.each do |author|
         %li
           = link_to author.name, profile_path(author.name)
-    .comments
-      = link_to "Commentaires", :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "disqus_thread"
-      -# link_to pluralize(article.comments.length, "Commentaire"), :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "comments"
+    / .comments
+    /       = link_to "Commentaires", :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "disqus_thread"
+

@@ -2,12 +2,15 @@
 = flash[:error]
 
 .article_content
+  %h1= @article.title
+  %p.posted_by
+    Posté par 
+    = @article.authors[0].name
+    le 
+    = l @article.updated_at.to_date, :format => "%d %b %Y"
+
   ~ @article.content.html_safe
-  %p
-    %b= @article.authors.length > 1 ? "Auteurs:" : "Auteur:"
-    %ul
-    - @article.authors.each do |author|
-      %li=author.name
+
   %p
     %b Tags:
     %ul.tags
@@ -21,12 +24,6 @@
   #disqus_thread
     = raw disqus_thread
   
-  -# %h3#comments_header= pluralize(@article.comments.length, "Commentaire")
-  -# #comments
-  -#  = nested_comments(@article.comments.arrange(:order => :created_at))
-  
-  -# render "comments/form"
-
 %aside#summary
   #summary_content
     ~ @article.summary.html_safe

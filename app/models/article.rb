@@ -30,8 +30,11 @@ class Article < ActiveRecord::Base
         self.summary += "</li></ul></ul><li>"
       elsif !first and (h.to_i - oldH) == -3
         self.summary += "</li></ul></ul></ul><li>"
+      else
+        self.summary += "<li>"
       end
       self.summary += "<a href='##{link}'>#{title}</a>"
+
       oldH = h.to_i
       first = false
     end

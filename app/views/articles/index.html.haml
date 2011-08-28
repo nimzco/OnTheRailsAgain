@@ -7,14 +7,20 @@
 
 %aside.tags
   .content
-
+  
     = render "shared/search"
-    #tags
-      %h2 Tags
+    
+    #tags.aside_box
+      %h3 Tags
       %ul
         - @tags.each do |tag|
           %li= link_to "#{tag.name} (#{tag.articles.length})", articles_path(:tag => tag.name)
-      
+    #contact.aside_box
+      %h3 
+        %a{:href => "mailto:admin@ontherailsagain.com"} Nous contacter
+      %p
+        N'hésitez pas à nous envoyer un mailpour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
+        
     
 = content_for :javascript do
   :coffeescript

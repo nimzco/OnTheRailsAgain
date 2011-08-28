@@ -19,6 +19,7 @@ body
   abbr[title=required]
     vertical-align: top
   
+
 .content
   width: 100%
   max-width: $max-width
@@ -100,7 +101,12 @@ body
   
 article
   padding: 1em
-    
+  p
+    color: #333
+    text-align: justify
+    line-height: 18px
+    text-indent: 30px
+
 .current_content
   padding: 0.5em
   +radius(0.3em)
@@ -120,9 +126,16 @@ aside
 #summary_content
   position: fixed
   width: 13%
-  font-size: 0.6em
+  font-size: 1em
   h1
     font-size: 200%
+  ul 
+    list-style: none
+    padding-left: 0
+    li:first-letter
+      font-weight: bold
+    li
+      margin-bottom: 0.5em
 
 .current_section
   font-weight: bold
@@ -218,12 +231,16 @@ aside.tags
     height: 100%
     //background-color: #F7F7F7
 
-#tags
+.aside_box
   border: 1px solid #CCC
   +radius(0.3em)
   padding: 1em
   margin-top: 1em
-  background-color: #F7F7F7   
+  background-color: #F7F7F7
+  text-align: justify
+  p
+    font-size: 1em
+
 .search
   +gradient($light_red, $dark_red)
   +radius(0.4em)

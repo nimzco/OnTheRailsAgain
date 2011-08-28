@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 17 Aug 2011 20:47:28 GMT from
+/* DO NOT MODIFY. This file was compiled Sun, 28 Aug 2011 20:01:46 GMT from
  * /Users/Nima/Sites/OnTheRailsAgain/app/coffeescripts/article_show.coffee
  */
 
@@ -10,7 +10,7 @@
       summary_headers = $('#summary a');
       _results = [];
       for (i = 0, _ref = headers.length - 1; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
-        _results.push(($(headers[i]).offset().top - $(document).scrollTop()) < 80 ? (summary_headers.removeClass('current_content'), $(summary_headers[i]).addClass('current_content')) : void 0);
+        _results.push(i < headers.length - 1 && ($(headers[i + 1]).offset().top - $(document).scrollTop()) < 15 ? (summary_headers.css('font-weight', 'normal'), $(summary_headers[i]).css('font-weight', 'bold')) : void 0);
       }
       return _results;
     });
