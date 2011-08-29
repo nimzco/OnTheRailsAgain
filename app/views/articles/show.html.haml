@@ -7,8 +7,11 @@
     Posté par 
     = @article.authors[0].name
     le 
-    = l @article.updated_at.to_date, :format => "%d %b %Y"
-
+    = l @article.created_at.to_date, :format => "%d %b %Y"
+    - if @article.updated_at != @article.created_at
+      (Mis à jour le
+      = l @article.created_at.to_date, :format => "%d %b %Y"
+      )
   ~ @article.content.html_safe
 
   %p

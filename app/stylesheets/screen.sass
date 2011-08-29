@@ -104,9 +104,11 @@ article
   p
     color: #333
     text-align: justify
-    line-height: 18px
+    line-height: 150%
     text-indent: 30px
-
+    font-size  : 1.1em
+  ul
+    margin-bottom: 0.4em
 .current_content
   padding: 0.5em
   +radius(0.3em)
@@ -117,7 +119,7 @@ aside
   width: 26%
   display: table-cell
   vertical-align: top
-  background-color: #dadcd5
+  /* background-color: #dadcd5 */
   padding: 1em
   a
     text-decoration: none
@@ -125,17 +127,19 @@ aside
 
 #summary_content
   position: fixed
-  width: 13%
-  font-size: 1em
-  h1
-    font-size: 200%
-  ul 
-    list-style: none
-    padding-left: 0
+  /* width: 13% */
+  ul
+    font-size: 1.2em
+    padding-left  : 1em
+    list-style    : none
     li:first-letter
       font-weight: bold
     li
       margin-bottom: 0.5em
+    ul
+      font-size: 0.9em
+  > ul
+    padding-left: 0
 
 .current_section
   font-weight: bold
@@ -223,10 +227,15 @@ aside.date
 
 aside.tags
   display: table-cell
-  width: 25%
+  width: 28%
   padding: 1em
   padding-top: 2em
   background-color: #F0F0F0
+  h3
+    margin-bottom: 0.6em
+  ul
+    padding-left  : 0
+    list-style    : none
   .content
     height: 100%
     //background-color: #F7F7F7
@@ -234,12 +243,13 @@ aside.tags
 .aside_box
   border: 1px solid #CCC
   +radius(0.3em)
-  padding: 1em
+  padding: 1.3em
+  line-height: 140%
   margin-top: 1em
   background-color: #F7F7F7
   text-align: justify
   p
-    font-size: 1em
+    font-size: 1.1em
 
 .search
   +gradient($light_red, $dark_red)

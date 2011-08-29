@@ -11,7 +11,7 @@ Syntax error: Undefined variable: "$dark_red".
 20:   a:hover
 21:     color: $light_red
 22:   pre
-23:     //font-size: 1.2em
+23:     font-size: 1.1em
 24:     background-color: #EFEFEF
 
 Backtrace:
@@ -128,4 +128,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$dark_red\".\A         on line 19 of /Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass\A \A 14:   ul\A 15:     list-style-type: circle\A 16:     line-height: 20px\A 17:     margin-bottom: 20px\A 18:   a\A 19:     color: $dark_red\A 20:   a:hover\A 21:     color: $light_red\A 22:   pre\A 23:     //font-size: 1.2em\A 24:     background-color: #EFEFEF"; }
+  content: "Syntax error: Undefined variable: \"$dark_red\".\A         on line 19 of /Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass\A \A 14:   ul\A 15:     list-style-type: circle\A 16:     line-height: 20px\A 17:     margin-bottom: 20px\A 18:   a\A 19:     color: $dark_red\A 20:   a:hover\A 21:     color: $light_red\A 22:   pre\A 23:     font-size: 1.1em\A 24:     background-color: #EFEFEF"; }
