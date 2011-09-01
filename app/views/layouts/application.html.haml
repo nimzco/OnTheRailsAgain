@@ -22,7 +22,10 @@
             = content_tag :p, msg, :id => "flash_#{name}"
           = yield 
         
-    = render :partial => "shared/footer"
+    %footer
+      .content
+        %a{:href => "mailto:admin@ontherailsagain.com"} Contactez-nous
+        = yield :footer
   
     / Include des Javascripts
     - #javascript_include_tag :all

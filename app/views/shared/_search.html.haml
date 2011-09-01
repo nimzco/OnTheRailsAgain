@@ -1,16 +1,5 @@
 .search
   .content_search
     = form_for @search, {:controller => 'articles', :action => 'index'} do |f|
-      %p
-        = f.label       :title_or_content_contains, '&nbsp;'.html_safe , :class => 'search_icon'
-        = f.text_field  :title_or_content_contains, :size => '15'
-      %a#advance_search_button{:href => "#"} Recherche avancée
-      #advance_search
-        = f.label       :title_contains
-        = f.text_field  :title_contains
-        %br/
-        = f.label       :content_contains
-        = f.text_field  :content_contains
-        %br/   
-        = f.label       :tags_name_contains
-        = f.text_field  :tags_name_contains
+      = f.text_field  :title_or_content_contains, :size => '15'
+      = f.submit  "&nbsp;".html_safe

@@ -16,10 +16,12 @@
         - @tags.each do |tag|
           %li= link_to "#{tag.name} (#{tag.articles.length})", articles_path(:tag => tag.name)
     #contact.aside_box
-      %h3 
-        %a{:href => "mailto:admin@ontherailsagain.com"} Nous contacter
+      %h3 Nous contacter
       %p
-        N'hésitez pas à nous envoyer un mail pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
+        N'hésitez pas à nous         
+        %a{:href => "mailto:admin@ontherailsagain.com"} envoyer un mail 
+        pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
+      
         
     
 = content_for :javascript do
