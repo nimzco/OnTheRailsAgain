@@ -102,6 +102,8 @@ body
   display: table-cell
   
 article
+  .tags
+    font-size: 1.2em
   padding: 1em
   p
     color: #333
@@ -204,13 +206,15 @@ section.articles
     h2
       color: $dark_red
   .wrapper
+    width: 100%
     display: table-cell
     //padding: 2em
     padding-top: 1em
     padding-left: 1em
-    ul.authors
-      list-style: none
+    .authors
       padding-left: 0
+      float: right
+      font-size: 1.2em
     p.article_content
       text-align: justify
       padding-left: 0

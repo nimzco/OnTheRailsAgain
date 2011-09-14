@@ -1,13 +1,11 @@
 OntheRailsAgain::Application.routes.draw do
+
   devise_for :authors
-  get "/profile/:name" => "profiles#show", :as => "profile"
 
   resources :tags
 
-  resources :articles do 
-    resources :comments #, :only => [:new, :create, :show]
-  end
-  
+  resources :articles  
+
   root :to => "articles#index"  
   
   # The priority is based upon order of creation:

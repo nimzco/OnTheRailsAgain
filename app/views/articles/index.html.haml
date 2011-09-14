@@ -1,6 +1,9 @@
 %aside.date
  
 %section.articles  
+  - if @articles.empty?
+    %h3
+      Aucun article correspond à votre recherche...
   - @articles.each do |article|
     = render article
   = will_paginate @articles, :previous_label => "Précédent", :next_label => "Suivant"
@@ -21,14 +24,3 @@
         N'hésitez pas à nous         
         %a{:href => "mailto:admin@ontherailsagain.com"} envoyer un mail 
         pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
-      
-        
-    
-= content_for :javascript do
-  :coffeescript
-    $( () ->
-      $('#advance_search').toggle()
-      $('#advance_search_button').click( ->
-        $('#advance_search').slideToggle()
-      )
-    )

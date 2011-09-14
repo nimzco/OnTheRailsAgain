@@ -10,6 +10,8 @@ class ArticlesController < InheritedResources::Base
     @search = Article.search(params[:search])
     if params[:tag]
       @articles = Article.find(:all, :include => :tags, :conditions => ["tags.name = ?", params[:tag]]).paginate(:page => params[:page], :per_page => 5)
+    elsif params[:author]
+      @articles = Article.find(:all, :include => :authors, :conditions => ["authors.name = ?", params[:author]]).paginate(:page => params[:page], :per_page => 5)
     else
       @articles = @search.all.paginate(:page => params[:page], :per_page => 5)
     end
@@ -24,7 +26,6 @@ class ArticlesController < InheritedResources::Base
   end
   
   def show
-    @comment = Comment.new
     @article = Article.find_by_title(params[:id].gsub(/_/," "))
     show!
   end

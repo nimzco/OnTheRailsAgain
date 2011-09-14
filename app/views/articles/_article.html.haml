@@ -9,15 +9,10 @@
     
     %p.article_content
       = article.introduction
-  
-    %ul.tags
-      - article.tags.each do |tag|
-        %li
-          = link_to tag.name, articles_path(:tag => tag.name)
-    %ul.authors
-      - article.authors.each do |author|
-        %li
-          = link_to author.name, profile_path(author.name)
+    .tags
+      = join_tags article
+    .authors
+      = join_authors article
     / .comments
-    /       = link_to "Commentaires", :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "disqus_thread"
+    /   = link_to "Commentaires", :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "disqus_thread"
 

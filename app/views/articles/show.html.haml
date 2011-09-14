@@ -5,7 +5,7 @@
   %h1= @article.title
   %p.posted_by
     Posté par 
-    = @article.authors[0].name
+    = join_authors @article
     le 
     = l @article.created_at.to_date, :format => "%d %b %Y"
     - if @article.updated_at != @article.created_at
