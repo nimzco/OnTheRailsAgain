@@ -5,11 +5,13 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
 
+gem "heroku"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql'               , '~>2.8.1'
-gem 'ruby-debug'
+
 gem 'delayed_job'
 gem 'disqus'
 gem "meta_search"  
@@ -29,11 +31,12 @@ gem "compass", ">= 0.11.5"
 gem "jquery-rails"
 gem "sass"
 
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+# gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
@@ -48,6 +51,6 @@ gem 'capistrano'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development, :test do
+  gem 'ruby-debug'
+end
