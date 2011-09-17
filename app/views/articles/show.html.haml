@@ -26,7 +26,7 @@
   .share_button
     %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button"} 
   #fb_span
-    %fb:like{ :send => "false", :layout => "standard", :show_faces => "false", :action => "like"}
+    %fb:like{ :send => "false", :layout => "standard", :action => "like", :data => {show_faces => "false"}}
 
   #disqus_thread
     = raw disqus_thread
