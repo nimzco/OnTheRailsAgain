@@ -44,7 +44,7 @@ class ArticlesController < InheritedResources::Base
       create!
     rescue Haml::SyntaxError => e
       puts e
-      flash[:error] = 'Problème d'encodage HAML. Voir console pour plus d'info...'
+      flash[:error] = "Problème d'encodage HAML. Voir console pour plus d'info..."
       respond_to do |format|
         format.html { render "new" }
       end
