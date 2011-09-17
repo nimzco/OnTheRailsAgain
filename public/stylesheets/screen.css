@@ -229,6 +229,19 @@ abbr[title="required"] {
   text-align: right;
 }
 
+/* line 82, ../../app/stylesheets/articles.sass */
+.share_button {
+  float: left;
+  margin-right: 1em;
+}
+
+/* line 85, ../../app/stylesheets/articles.sass */
+#fb_span {
+  width: 62px;
+  height: 24px;
+  overflow: hidden;
+}
+
 /* line 11, ../../app/stylesheets/screen.sass */
 body {
   background-color: #f7f7f7;

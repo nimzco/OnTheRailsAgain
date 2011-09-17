@@ -21,8 +21,16 @@
       - @article.tags.each do |tag|
         %li= link_to tag.name, articles_path(:tag => tag.name)
 
+  .share_button
+    %g:plusone{:size => "medium", :count => "false"}
+  .share_button
+    %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button"} 
+  #fb_span
+    %fb:like{ :send => "false", :layout => "standard", :show_faces => "false", :action => "like"}
+
   #disqus_thread
     = raw disqus_thread
+
 
 %aside#summary
   #summary_content
@@ -33,9 +41,3 @@
     = javascript_include_tag "article_show"
   - else
     = coffeescript_include_tag "article_show"
-
-= content_for :footer do  
-  %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button"} 
-  %g:plusone{:size => "medium", :count => "false"}
-
-  %fb:like{ :send => "false", :layout => "standard", :show_faces => "false", :action => "like"}
