@@ -29,7 +29,10 @@
     ~ @article.summary.html_safe
 
 = content_for :javascript do
-  = coffeescript_include_tag "article_show"
+  - if Rails.env.production?
+    = javascript_include_tag "article_show"
+  - else
+    = coffeescript_include_tag "article_show"
 
 = content_for :footer do  
   %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button"} 

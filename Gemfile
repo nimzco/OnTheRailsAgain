@@ -24,11 +24,16 @@ gem 'albino'
 gem 'will_paginate'       , '~>2.3.15'
 
 gem 'haml'                , '~>3.1.0'
-gem 'barista'             , '~>1.2.1'  # Attention, haml doit être chargé AVANT barrista.
 
 gem "compass", ">= 0.11.5"
 gem "jquery-rails"
 gem "sass"
+
+group :development, :test do
+  gem 'ruby-debug'
+  gem 'mongrel'   , '~>1.1.5'
+  gem 'barista'             , '~>1.2.1'  # Attention, haml doit être chargé AVANT barrista.
+end
 
 
 # Use unicorn as the web server
@@ -50,7 +55,3 @@ gem "sass"
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-group :development, :test do
-  gem 'ruby-debug'
-  gem 'mongrel'   , '~>1.1.5'
-end
