@@ -9,9 +9,11 @@
     = stylesheet_link_tag 'typography'
     = stylesheet_link_tag 'highlight'
     
-    %title On The Rails Again
+    %title 
+      On The Rails Again
+      = yield :title
     = csrf_meta_tag
-
+    
   %body
     = render :partial => "shared/header"
     #header_border
@@ -33,10 +35,13 @@
     = yield :javascript
     = javascript_include_tag "https://apis.google.com/js/plusone.js"
     = javascript_include_tag "http://platform.twitter.com/widgets.js"
-    = javascript_include_tag "http://connect.facebook.net/fr_FR/all.js#xfbml=1"
-    / %style{:type => "text/css"}
-    / sass:
-    /   td.connect_widget_vertical_center
-    /     display: none !important
-
+    #fb-root
+    :javascript 
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/all.js#appId=201467316581947&xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
 

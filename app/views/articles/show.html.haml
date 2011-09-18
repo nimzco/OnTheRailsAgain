@@ -1,6 +1,10 @@
 = flash[:notice]
 = flash[:error]
 
+= content_for :title do
+  \- 
+  = @article.title
+
 .article_content
   %h1= @article.title
   %p.posted_by
@@ -26,7 +30,7 @@
   .share_button
     %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button"} 
   #fb_span
-    %fb:like{ :send => "false", :layout => "standard", :action => "like", :data => {:show_faces => "false"}}
+    .fb-like{:data => {:send => false, :layout => "button_count", :width => 100, "show-faces" => false}}
 
   #disqus_thread
     = raw disqus_thread
