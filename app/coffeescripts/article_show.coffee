@@ -1,15 +1,23 @@
 $( ->
   $(window).scroll( ->
-    headers         = $('.article_content > :header')
+    headers         = $('.article_content > :header:not("h1")')
     summary_headers = $('#summary a')
 
-    for i in [0..(headers.length - 1)]
-      
-      if i < headers.length - 1 and ($(headers[i + 1]).offset().top - $(document).scrollTop()) < 15
-        # summary_headers.removeClass('current_content')
-        # $(summary_headers[i]).addClass('current_content')
-        summary_headers.css('font-weight', 'normal')
-        $(summary_headers[i]).css('font-weight', 'bold')
+    # If at the begining of the document
+    if 0 < $(document).scrollTop() < 50
+      summary_headers.css('font-weight', 'normal')
+      $(summary_headers[0]).css('font-weight', 'bold')      
+    # If reach the end of the page, select last header
+    else if $(document).scrollTop() + window.innerHeight >= document.body.scrollHeight
+      summary_headers.css('font-weight', 'normal')
+      $(summary_headers[summary_headers.length - 1]).css('font-weight', 'bold')
+
+    # Else check which header to select
+    else
+      for i in [0..(headers.length)]
+        if i < headers.length and ($(headers[i]).offset().top - $(document).scrollTop()) < 15
+          summary_headers.css('font-weight', 'normal')
+          $(summary_headers[i]).css('font-weight', 'bold')
     
   )
 
