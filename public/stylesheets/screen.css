@@ -546,14 +546,13 @@ section.articles header time {
   background: -moz-linear-gradient(top, #e10000, #a20003);
   background: -o-linear-gradient(top, #e10000, #a20003 100%);
   background: linear-gradient(top, #e10000, #a20003 100%);
-  font-size: 1.1em;
+  font-size: 1em;
   letter-spacing: 0.1em;
   text-transform: capitalize;
   border: 1px solid #890003;
   -webkit-box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4);
   -moz-box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4);
   box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4);
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 /* line 200, ../../app/stylesheets/screen.sass */
 section.articles a {
@@ -598,18 +597,19 @@ section.articles article {
 
 /* line 227, ../../app/stylesheets/screen.sass */
 span.day {
-  font-size: 2em;
+  font-size: 2.2em;
   font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
-/* line 231, ../../app/stylesheets/screen.sass */
+/* line 232, ../../app/stylesheets/screen.sass */
 aside.date {
   display: table-cell;
   width: 0.5em;
   background-color: #f0f0f0;
 }
 
-/* line 236, ../../app/stylesheets/screen.sass */
+/* line 237, ../../app/stylesheets/screen.sass */
 aside.tags {
   display: table-cell;
   width: 28%;
@@ -617,21 +617,21 @@ aside.tags {
   padding-top: 1em;
   background-color: #f0f0f0;
 }
-/* line 242, ../../app/stylesheets/screen.sass */
+/* line 243, ../../app/stylesheets/screen.sass */
 aside.tags h3 {
   margin-bottom: 0.6em;
 }
-/* line 244, ../../app/stylesheets/screen.sass */
+/* line 245, ../../app/stylesheets/screen.sass */
 aside.tags ul {
   padding-left: 0;
   list-style: none;
 }
-/* line 247, ../../app/stylesheets/screen.sass */
+/* line 248, ../../app/stylesheets/screen.sass */
 aside.tags .content {
   height: 100%;
 }
 
-/* line 251, ../../app/stylesheets/screen.sass */
+/* line 252, ../../app/stylesheets/screen.sass */
 .aside_box {
   border: 1px solid #cccccc;
   -webkit-border-radius: 0.3em;
@@ -643,12 +643,12 @@ aside.tags .content {
   background-color: #f7f7f7;
   text-align: justify;
 }
-/* line 259, ../../app/stylesheets/screen.sass */
+/* line 260, ../../app/stylesheets/screen.sass */
 .aside_box p {
   font-size: 1.1em;
 }
 
-/* line 262, ../../app/stylesheets/screen.sass */
+/* line 263, ../../app/stylesheets/screen.sass */
 .search {
   background: #e10000;
   background: -webkit-gradient(linear, left top, left bottom, from(#e10000), to(#a20003));
@@ -666,11 +666,11 @@ aside.tags .content {
   -moz-box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.4);
   box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.4);
 }
-/* line 269, ../../app/stylesheets/screen.sass */
+/* line 270, ../../app/stylesheets/screen.sass */
 .search .content_search {
   padding: 0.3em;
 }
-/* line 271, ../../app/stylesheets/screen.sass */
+/* line 272, ../../app/stylesheets/screen.sass */
 .search .content_search label.search_icon {
   font-size: 1.2em;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
@@ -680,7 +680,7 @@ aside.tags .content {
   margin-bottom: 0.2em;
   display: none;
 }
-/* line 282, ../../app/stylesheets/screen.sass */
+/* line 283, ../../app/stylesheets/screen.sass */
 .search .content_search input {
   margin-left: 0;
   padding: 0.3em 0.1em 0.3em 0.1em;
@@ -695,13 +695,13 @@ aside.tags .content {
   -moz-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.4);
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
-/* line 291, ../../app/stylesheets/screen.sass */
+/* line 292, ../../app/stylesheets/screen.sass */
 .search .content_search a#advance_search_button {
   text-align: center;
   color: white;
   display: none;
 }
-/* line 295, ../../app/stylesheets/screen.sass */
+/* line 296, ../../app/stylesheets/screen.sass */
 .search #search_submit {
   display: inline-block;
   border: none;
@@ -715,7 +715,7 @@ aside.tags .content {
   background-position: center center;
 }
 
-/* line 305, ../../app/stylesheets/screen.sass */
+/* line 306, ../../app/stylesheets/screen.sass */
 #header_border {
   background: #e10000;
   background: -webkit-gradient(linear, left top, left bottom, from(#e10000), to(#a20003));
@@ -729,37 +729,37 @@ aside.tags .content {
 }
 
 @media screen and (max-width: 800px) {
-  /* line 313, ../../app/stylesheets/screen.sass */
+  /* line 314, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 85%;
   }
 }
 @media screen and (max-width: 710px) {
-  /* line 317, ../../app/stylesheets/screen.sass */
+  /* line 318, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.4em;
   }
-  /* line 320, ../../app/stylesheets/screen.sass */
+  /* line 321, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 84%;
   }
 }
 @media screen and (max-width: 670px) {
-  /* line 324, ../../app/stylesheets/screen.sass */
+  /* line 325, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.3em;
   }
-  /* line 327, ../../app/stylesheets/screen.sass */
+  /* line 328, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 83%;
   }
 }
 @media screen and (max-width: 640px) {
-  /* line 331, ../../app/stylesheets/screen.sass */
+  /* line 332, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.2em;
   }
-  /* line 334, ../../app/stylesheets/screen.sass */
+  /* line 335, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 77%;
   }
