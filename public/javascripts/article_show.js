@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 28 Sep 2011 13:45:40 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 28 Sep 2011 19:25:27 GMT from
  * /Users/Nima/Sites/OnTheRailsAgain/app/coffeescripts/article_show.coffee
  */
 
