@@ -308,6 +308,26 @@ aside.tags
   color: white
   padding: 0.5em
   border-bottom: 1px solid darken($dark_red, 5%)
+    
+p#special_error
+  margin-top: 2em
+  span
+    font-size: 700% !important
+    text-shadow: 2px 2px 0px black
+  font-size: 200% !important
+  text-shadow: 1px 1px 0px black
+  width: 100%
+  text-align: center
+  display: inline-block
+  +radius(0.3em)
+  color: white
+  padding: 0.5em
+  +gradient($light_red, $dark_red)
+  border: 1px solid darken($dark_red, 5%)
+  +bshadow(2px, 2px, 15px, black, 0, 0, 4px, rgba(255,255,255, 0.4)) 
+
+  
+
 
 @media screen and (max-width: 800px)
   .search .content_search
