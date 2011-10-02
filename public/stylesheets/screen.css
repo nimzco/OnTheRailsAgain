@@ -185,8 +185,9 @@ abbr[title="required"] {
   border-radius: 0.2em;
   /* border: 1px solid lighten(#fcd700, 20%) */
   background-color: #fffed3;
+  border: 1px solid #dddddd;
 }
-/* line 50, ../../app/stylesheets/articles.sass */
+/* line 51, ../../app/stylesheets/articles.sass */
 .article_content p.notice, .article_content .require, .article_content .see {
   padding: 1em;
   text-indent: 1em;
@@ -195,8 +196,9 @@ abbr[title="required"] {
   border-radius: 0.2em;
   /* border: 1px solid lighten(#77D, 20%) */
   background-color: #e6f2fa;
+  border: 1px solid #dddddd;
 }
-/* line 57, ../../app/stylesheets/articles.sass */
+/* line 59, ../../app/stylesheets/articles.sass */
 .article_content .require, .article_content .see {
   background-color: #fff7c9;
   font-size: 1.2em;
@@ -204,7 +206,7 @@ abbr[title="required"] {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/* line 63, ../../app/stylesheets/articles.sass */
+/* line 65, ../../app/stylesheets/articles.sass */
 .article_content .require ul, .article_content .see ul {
   margin-top: 1em;
   margin-bottom: 0;
@@ -212,15 +214,15 @@ abbr[title="required"] {
   font-size: 1em;
   font-weight: normal;
 }
-/* line 69, ../../app/stylesheets/articles.sass */
+/* line 71, ../../app/stylesheets/articles.sass */
 .article_content .require ul li, .article_content .see ul li {
   text-indent: 0;
 }
-/* line 73, ../../app/stylesheets/articles.sass */
+/* line 75, ../../app/stylesheets/articles.sass */
 .article_content h1 + p, .article_content h2 + p, .article_content h3 + p, .article_content h4 + p, .article_content h5 + p {
   text-indent: 2em;
 }
-/* line 75, ../../app/stylesheets/articles.sass */
+/* line 77, ../../app/stylesheets/articles.sass */
 .article_content p.posted_by {
   color: #666666;
   margin-top: 0;
@@ -229,13 +231,13 @@ abbr[title="required"] {
   text-align: right;
 }
 
-/* line 82, ../../app/stylesheets/articles.sass */
+/* line 84, ../../app/stylesheets/articles.sass */
 .share_button {
   float: left;
   margin-right: 1em;
 }
 
-/* line 86, ../../app/stylesheets/articles.sass */
+/* line 88, ../../app/stylesheets/articles.sass */
 #fb_span {
   width: 65px;
   height: 24px;
