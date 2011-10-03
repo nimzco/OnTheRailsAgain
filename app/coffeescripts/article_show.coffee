@@ -2,9 +2,9 @@ $( ->
   $(window).scroll( ->
     headers         = $('.article_content > :header:not("h1")')
     summary_headers = $('#summary a')
-
+    console.log $(document).scrollTop()
     # If at the begining of the document
-    if 0 < $(document).scrollTop() < 50
+    if $(document).scrollTop() < 150
       summary_headers.css('font-weight', 'normal')
       $(summary_headers[0]).css('font-weight', 'bold')      
     # If reach the end of the page, select last header
