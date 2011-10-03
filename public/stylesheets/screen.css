@@ -760,37 +760,47 @@ p#special_error span {
 }
 
 @media screen and (max-width: 800px) {
-  /* line 333, ../../app/stylesheets/screen.sass */
+  /* line 334, ../../app/stylesheets/screen.sass */
+  body > header h1 {
+    margin-left: 1em;
+  }
+
+  /* line 336, ../../app/stylesheets/screen.sass */
+  #summary {
+    display: none;
+  }
+
+  /* line 339, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 85%;
   }
 }
 @media screen and (max-width: 710px) {
-  /* line 337, ../../app/stylesheets/screen.sass */
+  /* line 343, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.4em;
   }
-  /* line 340, ../../app/stylesheets/screen.sass */
+  /* line 346, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 84%;
   }
 }
 @media screen and (max-width: 670px) {
-  /* line 344, ../../app/stylesheets/screen.sass */
+  /* line 350, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.3em;
   }
-  /* line 347, ../../app/stylesheets/screen.sass */
+  /* line 353, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 83%;
   }
 }
 @media screen and (max-width: 640px) {
-  /* line 351, ../../app/stylesheets/screen.sass */
+  /* line 357, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.2em;
   }
-  /* line 354, ../../app/stylesheets/screen.sass */
+  /* line 360, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 77%;
   }
