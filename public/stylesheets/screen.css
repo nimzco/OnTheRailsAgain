@@ -731,12 +731,13 @@ aside.tags .content {
 
 /* line 311, ../../app/stylesheets/screen.sass */
 p#special_error {
-  margin-top: 2em;
   font-size: 200% !important;
   text-shadow: 1px 1px 0px black;
-  width: 100%;
+  width: 70%;
   text-align: center;
-  display: inline-block;
+  display: block;
+  margin: auto;
+  margin-top: 2em;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
   border-radius: 0.3em;
@@ -753,44 +754,54 @@ p#special_error {
   -moz-box-shadow: 2px 2px 15px black, inset 0 0 4px rgba(255, 255, 255, 0.4);
   box-shadow: 2px 2px 15px black, inset 0 0 4px rgba(255, 255, 255, 0.4);
 }
-/* line 313, ../../app/stylesheets/screen.sass */
+/* line 312, ../../app/stylesheets/screen.sass */
 p#special_error span {
   font-size: 700% !important;
   text-shadow: 2px 2px 0px black;
 }
 
 @media screen and (max-width: 800px) {
-  /* line 333, ../../app/stylesheets/screen.sass */
+  /* line 335, ../../app/stylesheets/screen.sass */
+  body > header h1 {
+    margin-left: 1em;
+  }
+
+  /* line 337, ../../app/stylesheets/screen.sass */
+  #summary {
+    display: none;
+  }
+
+  /* line 340, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 85%;
   }
 }
 @media screen and (max-width: 710px) {
-  /* line 337, ../../app/stylesheets/screen.sass */
+  /* line 344, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.4em;
   }
-  /* line 340, ../../app/stylesheets/screen.sass */
+  /* line 347, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 84%;
   }
 }
 @media screen and (max-width: 670px) {
-  /* line 344, ../../app/stylesheets/screen.sass */
+  /* line 351, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.3em;
   }
-  /* line 347, ../../app/stylesheets/screen.sass */
+  /* line 354, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 83%;
   }
 }
 @media screen and (max-width: 640px) {
-  /* line 351, ../../app/stylesheets/screen.sass */
+  /* line 358, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.2em;
   }
-  /* line 354, ../../app/stylesheets/screen.sass */
+  /* line 361, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 77%;
   }
