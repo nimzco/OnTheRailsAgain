@@ -52,7 +52,7 @@ class ArticlesController < InheritedResources::Base
   
   def update
     @article = Article.find(params[:id])
-    @article.content = haml2html(params[:article][:content])
+    @article.content = haml2html(params[:article][:content]) if RAILS_ENV != 'production'
     @article.generate_summary
     @article.generate_anchor_links
     params[:article][:content] = @article.content
