@@ -16,7 +16,7 @@ class Article < ActiveRecord::Base
     self.content.gsub(/<h[0-9][^>]*>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9][^>]*>/m, "").sub(/<\/h[0-9]>/m, "")
-      link  = title.gsub(/ /, '_')#.gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
+      link  = title.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
       if !first and (h.to_i - oldH) == 1
         self.summary += "</li><li><ul><li>"
       elsif !first and (h.to_i - oldH) == 0
@@ -42,7 +42,7 @@ class Article < ActiveRecord::Base
     self.content = self.content.gsub(/<h[0-9]>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9]>/m, "").sub(/<\/h[0-9]>/m, "")
-      link  = title.gsub(/ /, '_')#.gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
+      link  = title.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
       "<h#{h} id='#{link}'>#{title}</h#{h}>"
     end    
   end

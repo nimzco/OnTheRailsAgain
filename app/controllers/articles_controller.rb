@@ -44,7 +44,6 @@ class ArticlesController < InheritedResources::Base
       create!
     rescue Haml::SyntaxError => e
       puts e
-      # flash[:error] = "Problème d'encodage HAML. Voir console pour plus d'info..."
       respond_to do |format|
         format.html { render "new" }
       end
@@ -68,9 +67,10 @@ class ArticlesController < InheritedResources::Base
   
   def haml2html(content)
     @new_content = Haml::Engine.new(content).to_html
-    @new_content.gsub(/<pre.*<\/pre>/) do |match|
-      @language = match.match(/<pre class='(.*)'>.*pre>/)[1]
-      @string   = match.sub(/<pre.*'>/, "").sub(/<\/pre>/, "")
+
+    @new_content.gsub(/<pre.*<\/pre>/) do |matched|
+      @language = matched.match(/<pre class='([aA-zZ]*)'>.*pre>/)[1]
+      @string   = matched.sub(/<pre class='([aA-zZ]*)'>/, "").sub(/<\/pre>/, "")
       @string   = @string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
       highlight(@string, @language)
     end.html_safe
