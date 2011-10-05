@@ -93,3 +93,9 @@
 	-o-background-size: 100% 100%
 	background-size: 100% 100%
 
+@mixin transition($time: 0.3s, $type: all)
+	-webkit-transition : $type $time ease-in-out
+	-moz-transition    : $type $time ease-in-out
+	-ms-transition     : $type $time ease-in-out
+	-o-transition      : $type $time ease-in-out
+	transition         : $type $time ease-in-out
