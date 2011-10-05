@@ -50,7 +50,7 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
-    - if RAILS_ENV == 'production' and !logged_in?
+    - if RAILS_ENV == 'production' and !current_author
       :javascript
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-25978280-1']);
