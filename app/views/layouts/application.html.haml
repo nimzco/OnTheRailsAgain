@@ -1,7 +1,7 @@
 !!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang=>"en"}
+%html{:xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'fr', :lang=>'en', 'xmlns:fb' => 'http://www.facebook.com/2008/fbml',  'xmlns:og' => 'http://opengraphprotocol.org/schema/'}
   %head
-    %link{:rel => "shortcut icon", :href => "/favicon.png"}
+    %link{:rel => 'shortcut icon', :href => '/favicon.png'}
 
     = stylesheet_link_tag 'screen', :media => 'screen, projection'
     = stylesheet_link_tag 'print', :media => 'print'
@@ -10,14 +10,18 @@
       = stylesheet_link_tag 'ie', :media => 'screen, projection'
     = stylesheet_link_tag 'typography'
     = stylesheet_link_tag 'highlight'
-    %meta{ :name => "viewport", :content => "width=device-width" }
+    = render 'shared/meta_information'
+
+
     %title 
       On The Rails Again
+      - if !(yield :title).empty?
+        \-
       = yield :title
     = csrf_meta_tag
     
   %body
-    = render :partial => "shared/header"
+    = render :partial => 'shared/header'
     #header_border
     .container
       %section
@@ -34,8 +38,8 @@
     - #javascript_include_tag :all
     = javascript_include_tag :defaults
     = yield :javascript
-    = javascript_include_tag "https://apis.google.com/js/plusone.js"
-    = javascript_include_tag "http://platform.twitter.com/widgets.js"
+    = javascript_include_tag 'https://apis.google.com/js/plusone.js'
+    = javascript_include_tag 'http://platform.twitter.com/widgets.js'
     #fb-root
     :javascript 
       (function(d, s, id) {
