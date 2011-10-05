@@ -34,7 +34,7 @@ body
       a
         text-decoration: none
         h1
-          padding-bottom: 0.1em
+          padding-bottom: 0.5em
           margin-bottom: 0
           //color: transparent
           //-webkit-background-clip: text
@@ -46,6 +46,28 @@ body
           text-rendering : optimizeLegibility
           color: #BBB
           text-shadow: white 1px 1px 0px
+          background-image: url('/images/home.png')
+          background-repeat: no-repeat
+          background-position: 100% 100%
+          width: 9em
+          +transition(0.1s, color)
+        #bold_title
+          font-weight: normal
+          color: lighten($dark_red, 5%)
+          letter-spacing: 0
+          +transition(0.1s, color)
+          
+      a:hover
+        text-decoration: none
+        h1
+          color: darken(#BBB, 10%)
+          background-image: url('/images/home_hover.png')
+          background-repeat: no-repeat
+          background-position: 100% 100%
+          +transition(0.1s, color)
+          
+        #bold_title
+          +transition(0.1s, color)
       nav
         ul
           padding-left: 0
@@ -83,11 +105,7 @@ body
               text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
               border: 1px solid $dark_red
               +noshadow
- 
-#bold_title
-  font-weight: normal
-  color: lighten($dark_red, 5%)
-  letter-spacing: 0
+
 
 .container
   background-color: #F0F0F0
@@ -325,8 +343,6 @@ p#special_error
   +gradient($light_red, $dark_red)
   border: 1px solid darken($dark_red, 5%)
   +bshadow(2px, 2px, 15px, black, 0, 0, 4px, rgba(255,255,255, 0.4)) 
-
-  
 
 
 @media screen and (max-width: 800px)

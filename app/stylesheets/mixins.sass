@@ -93,3 +93,10 @@
 	-o-background-size: 100% 100%
 	background-size: 100% 100%
 
+@mixin transition($time: 0.3s, $type: all)
+	-webkit-transition : $type $time ease-in-out
+	-moz-transition    : $type $time ease-in-out
+	-ms-transition     : $type $time ease-in-out
+	-o-transition      : $type $time ease-in-out
+	transition         : $type $time ease-in-out
+	-webkit-transform: translateZ(0) /* Android end iOS improvement, force to use GPU hardware acceleration on these device */
