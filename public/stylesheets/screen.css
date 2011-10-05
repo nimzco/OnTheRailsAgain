@@ -292,24 +292,14 @@ body > header .content a h1 {
   background-repeat: no-repeat;
   background-position: 100% 100%;
   width: 9em;
-  -webkit-transition: color 0.1s ease-in-out;
-  -moz-transition: color 0.1s ease-in-out;
-  -ms-transition: color 0.1s ease-in-out;
-  -o-transition: color 0.1s ease-in-out;
-  transition: color 0.1s ease-in-out;
-  -webkit-transform: translateZ(0);
+  /* +transition(0.1s, color) */
 }
 /* line 54, ../../app/stylesheets/screen.sass */
 body > header .content a #bold_title {
   font-weight: normal;
   color: #bc0003;
   letter-spacing: 0;
-  -webkit-transition: color 0.1s ease-in-out;
-  -moz-transition: color 0.1s ease-in-out;
-  -ms-transition: color 0.1s ease-in-out;
-  -o-transition: color 0.1s ease-in-out;
-  transition: color 0.1s ease-in-out;
-  -webkit-transform: translateZ(0);
+  /* +transition(0.1s, color) */
 }
 /* line 60, ../../app/stylesheets/screen.sass */
 body > header .content a:hover {
@@ -326,16 +316,10 @@ body > header .content a:hover h1 {
   -ms-transition: color 0.1s ease-in-out;
   -o-transition: color 0.1s ease-in-out;
   transition: color 0.1s ease-in-out;
-  -webkit-transform: translateZ(0);
 }
 /* line 69, ../../app/stylesheets/screen.sass */
 body > header .content a:hover #bold_title {
-  -webkit-transition: color 0.1s ease-in-out;
-  -moz-transition: color 0.1s ease-in-out;
-  -ms-transition: color 0.1s ease-in-out;
-  -o-transition: color 0.1s ease-in-out;
-  transition: color 0.1s ease-in-out;
-  -webkit-transform: translateZ(0);
+  /* +transition(0.1s, color) */
 }
 /* line 72, ../../app/stylesheets/screen.sass */
 body > header .content nav ul {
