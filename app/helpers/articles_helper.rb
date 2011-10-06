@@ -1,7 +1,7 @@
 module ArticlesHelper
 
   def join_tags(article)
-    article.tags.map { |tag| link_to tag.name, articles_path(:tag => tag.name) }.join(" - ").html_safe
+    article.tags(true).map { |tag| link_to tag.name, articles_path(:tag => tag.name) }.join(" - ").html_safe
   end
 
   def join_authors(article)
