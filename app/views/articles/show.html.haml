@@ -3,7 +3,8 @@
 
 = content_for :title do
   = @article.title
-
+- if current_author
+  = button_to "Supprimer", article_path(@article), :method => :delete
 .article_content
   %h1= @article.title
   %p.posted_by
