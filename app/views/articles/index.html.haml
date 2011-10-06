@@ -6,13 +6,12 @@
       Aucun article correspond à votre recherche...
   - @articles.each do |article|
     = render article
-  = will_paginate @articles, :previous_label => "Précédent", :next_label => "Suivant"
+  = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
 
 %aside.tags
   .content
   
-    = render "shared/search"
-    
+    = render 'shared/search'    
     #tags.aside_box
       %h3 Tags
       %ul
@@ -22,5 +21,9 @@
       %h3 Nous contacter
       %p
         N'hésitez pas à nous         
-        %a{:href => "mailto:admin@ontherailsagain.com"} envoyer un mail 
+        %a{:href => 'mailto:admin@ontherailsagain.com'} envoyer un mail 
         pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
+
+    #twitter_follow_link
+      %a{:href => 'https://twitter.com/OnTheRailsBlog', :class => 'twitter-follow-button', :data => {'show-count' =>'false', :width => '200px'}} Follow @OnTheRailsBlog
+    %script{:src => '//platform.twitter.com/widgets.js', :type => 'text/javascript'}
