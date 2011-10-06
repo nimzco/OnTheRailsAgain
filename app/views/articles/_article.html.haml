@@ -13,6 +13,3 @@
       = join_tags article
     .authors
       = join_authors article
-    / .comments
-    /   = link_to "Commentaires", :controller => "articles", :action => "show", :id => article.title.gsub(/ /, "_"), :anchor => "disqus_thread"
-
