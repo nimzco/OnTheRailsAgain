@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Sun, 02 Oct 2011 19:46:32 GMT from
+/* DO NOT MODIFY. This file was compiled Fri, 07 Oct 2011 07:23:02 GMT from
  * /Users/Nima/Sites/OnTheRailsAgain/app/coffeescripts/article_show.coffee
  */
 
@@ -12,7 +12,7 @@
       if ($(document).scrollTop() < 150) {
         summary_headers.css('font-weight', 'normal');
         return $(summary_headers[0]).css('font-weight', 'bold');
-      } else if ($(document).scrollTop() + window.innerHeight >= document.body.scrollHeight) {
+      } else if (($(document).scrollTop() + window.innerHeight) >= (document.body.scrollHeight - 20)) {
         summary_headers.css('font-weight', 'normal');
         return $(summary_headers[summary_headers.length - 1]).css('font-weight', 'bold');
       } else {
