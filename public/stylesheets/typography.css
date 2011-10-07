@@ -46,8 +46,7 @@ a:hover     { color: #e10000; }
 a           { color: #a20003; text-decoration: underline; }
 
 blockquote  { margin: 1.5em; color: #666; font-style: italic; font-family: 'HelveticaNeueItalic'; }
-strong,dfn  { font-weight: normal; font-family: "HelveticaNeueBold";}
-em,dfn      { font-style: italic; font-family: 'HelveticaNeueItalic'; }
+strong,dfn,em { font-weight: normal; font-family: "HelveticaNeueBold";}
 sup, sub    { line-height: 0; }
 
 abbr,
