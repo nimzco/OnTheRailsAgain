@@ -1,21 +1,21 @@
 /*
 Syntax error: Undefined variable: "$dark_red".
-        on line 26 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/articles.sass
+        on line 27 of /Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass
 
-21:     line-height: 150%
-22:     margin-bottom: 20px
-23:     text-align: justify
-24: 
-25:   a
-26:     color: $dark_red
-27:   a:hover
-28:     color: $light_red
-29:   pre
-30:     font-size: 1.1em
-31:     background-color: #EFEFEF
+22:     line-height: 150%
+23:     margin-bottom: 20px
+24:     text-align: justify
+25: 
+26:   a
+27:     color: $dark_red
+28:   a:hover
+29:     color: $light_red
+30:   pre
+31:     font-size: 1.1em
+32:     background-color: #EFEFEF
 
 Backtrace:
-/Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/articles.sass:26
+/Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass:27
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/script/variable.rb:45:in `_perform'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/script/node.rb:40:in `perform'
 /Library/Ruby/Gems/1.8/gems/sass-3.1.4/lib/sass/../sass/tree/visitors/perform.rb:215:in `visit_prop'
@@ -128,4 +128,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$dark_red\".\A         on line 26 of /Users/Nico/Development/Rails/ontherailsagain/app/stylesheets/articles.sass\A \A 21:     line-height: 150%\A 22:     margin-bottom: 20px\A 23:     text-align: justify\A 24: \A 25:   a\A 26:     color: $dark_red\A 27:   a:hover\A 28:     color: $light_red\A 29:   pre\A 30:     font-size: 1.1em\A 31:     background-color: #EFEFEF"; }
+  content: "Syntax error: Undefined variable: \"$dark_red\".\A         on line 27 of /Users/Nima/Sites/OnTheRailsAgain/app/stylesheets/articles.sass\A \A 22:     line-height: 150%\A 23:     margin-bottom: 20px\A 24:     text-align: justify\A 25: \A 26:   a\A 27:     color: $dark_red\A 28:   a:hover\A 29:     color: $light_red\A 30:   pre\A 31:     font-size: 1.1em\A 32:     background-color: #EFEFEF"; }
