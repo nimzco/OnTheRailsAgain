@@ -13,5 +13,7 @@
 
 %meta{ :name => "title"       , :content => "#{yield :title}" }/
 %meta{ :name => "keywords"    , :content => "Blog, Ruby On Rails, Rails, Article, Articles, Routes, ActiveRecord" }/
+- if !(yield :meta_description).empty?
+  %meta{ :property => 'description'        , :content => "#{yield :meta_description}"}/
 
 %meta{ :name => 'google-site-verification', :content => 'ZARXAl3d4HKL9_iHPCdPy-fZkhR8vhD42RsKHxRe-o8' } 
