@@ -373,7 +373,7 @@ body > header .content a {
   text-decoration: none;
 }
 /* line 37, ../../app/stylesheets/screen.sass */
-body > header .content a h1 {
+body > header .content a h2 {
   padding-bottom: 0.5em;
   margin-bottom: 0;
   font-weight: normal;
