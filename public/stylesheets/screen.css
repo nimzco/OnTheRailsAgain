@@ -215,16 +215,17 @@ abbr[title="required"] {
   margin-left: 2em;
   font-size: 1em;
   font-weight: normal;
+  font-family: "HelveticaNeueRegular";
 }
-/* line 73, ../../app/stylesheets/articles.sass */
+/* line 74, ../../app/stylesheets/articles.sass */
 .article_content .require ul li, .article_content .see ul li {
   text-indent: 0;
 }
-/* line 77, ../../app/stylesheets/articles.sass */
+/* line 78, ../../app/stylesheets/articles.sass */
 .article_content h1 + p, .article_content h2 + p, .article_content h3 + p, .article_content h4 + p, .article_content h5 + p {
   text-indent: 2em;
 }
-/* line 79, ../../app/stylesheets/articles.sass */
+/* line 80, ../../app/stylesheets/articles.sass */
 .article_content p.posted_by {
   color: #666666;
   margin-top: 0;
@@ -233,13 +234,13 @@ abbr[title="required"] {
   text-align: right;
 }
 
-/* line 86, ../../app/stylesheets/articles.sass */
+/* line 87, ../../app/stylesheets/articles.sass */
 .share_button {
   float: left;
   margin-right: 1em;
 }
 
-/* line 90, ../../app/stylesheets/articles.sass */
+/* line 91, ../../app/stylesheets/articles.sass */
 #fb_span {
   width: 65px;
   height: 24px;
@@ -248,88 +249,88 @@ abbr[title="required"] {
 
 @font-face {
   font-family: "HelveticaLight";
-  src: url("fonts/helveticalight-webfont.eot");
-  src: url("fonts/helveticalight-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticalight-webfont.woff") format("woff"), url("fonts/helveticalight-webfont.ttf") format("truetype"), url("fonts/helveticalight-webfont.svg#HelveticaLight") format("svg");
+  src: url("../fonts/helveticalight-webfont.eot");
+  src: url("../fonts/helveticalight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticalight-webfont.woff") format("woff"), url("../fonts/helveticalight-webfont.ttf") format("truetype"), url("../fonts/helveticalight-webfont.svg#HelveticaLight") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueRegular";
-  src: url("fonts/helveticaneue-webfont.eot");
-  src: url("fonts/helveticaneue-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-webfont.woff") format("woff"), url("fonts/helveticaneue-webfont.ttf") format("truetype"), url("fonts/helveticaneue-webfont.svg#HelveticaNeueRegular") format("svg");
+  src: url("../fonts/helveticaneue-webfont.eot");
+  src: url("../fonts/helveticaneue-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-webfont.woff") format("woff"), url("../fonts/helveticaneue-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-webfont.svg#HelveticaNeueRegular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueUltraLightItalic";
-  src: url("fonts/helveticaneue-ultralightitalic-webfont.eot");
-  src: url("fonts/helveticaneue-ultralightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-ultralightitalic-webfont.woff") format("woff"), url("fonts/helveticaneue-ultralightitalic-webfont.ttf") format("truetype"), url("fonts/helveticaneue-ultralightitalic-webfont.svg#HelveticaNeueUltraLightItalic") format("svg");
+  src: url("../fonts/helveticaneue-ultralightitalic-webfont.eot");
+  src: url("../fonts/helveticaneue-ultralightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-ultralightitalic-webfont.woff") format("woff"), url("../fonts/helveticaneue-ultralightitalic-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-ultralightitalic-webfont.svg#HelveticaNeueUltraLightItalic") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueUltraLight";
-  src: url("fonts/helveticaneue-ultralight-webfont.eot");
-  src: url("fonts/helveticaneue-ultralight-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-ultralight-webfont.woff") format("woff"), url("fonts/helveticaneue-ultralight-webfont.ttf") format("truetype"), url("fonts/helveticaneue-ultralight-webfont.svg#HelveticaNeueUltraLight") format("svg");
+  src: url("../fonts/helveticaneue-ultralight-webfont.eot");
+  src: url("../fonts/helveticaneue-ultralight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-ultralight-webfont.woff") format("woff"), url("../fonts/helveticaneue-ultralight-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-ultralight-webfont.svg#HelveticaNeueUltraLight") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueLightItalic";
-  src: url("fonts/helveticaneue-lightitalic-webfont.eot");
-  src: url("fonts/helveticaneue-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-lightitalic-webfont.woff") format("woff"), url("fonts/helveticaneue-lightitalic-webfont.ttf") format("truetype"), url("fonts/helveticaneue-lightitalic-webfont.svg#HelveticaNeueLightItalic") format("svg");
+  src: url("../fonts/helveticaneue-lightitalic-webfont.eot");
+  src: url("../fonts/helveticaneue-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-lightitalic-webfont.woff") format("woff"), url("../fonts/helveticaneue-lightitalic-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-lightitalic-webfont.svg#HelveticaNeueLightItalic") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueLight";
-  src: url("fonts/helveticaneue-light-webfont.eot");
-  src: url("fonts/helveticaneue-light-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-light-webfont.woff") format("woff"), url("fonts/helveticaneue-light-webfont.ttf") format("truetype"), url("fonts/helveticaneue-light-webfont.svg#HelveticaNeueLight") format("svg");
+  src: url("../fonts/helveticaneue-light-webfont.eot");
+  src: url("../fonts/helveticaneue-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-light-webfont.woff") format("woff"), url("../fonts/helveticaneue-light-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-light-webfont.svg#HelveticaNeueLight") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueItalic";
-  src: url("fonts/helveticaneue-italic-webfont.eot");
-  src: url("fonts/helveticaneue-italic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-italic-webfont.woff") format("woff"), url("fonts/helveticaneue-italic-webfont.ttf") format("truetype"), url("fonts/helveticaneue-italic-webfont.svg#HelveticaNeueItalic") format("svg");
+  src: url("../fonts/helveticaneue-italic-webfont.eot");
+  src: url("../fonts/helveticaneue-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-italic-webfont.woff") format("woff"), url("../fonts/helveticaneue-italic-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-italic-webfont.svg#HelveticaNeueItalic") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueCondensedBold";
-  src: url("fonts/helveticaneue-condensedbold-webfont.eot");
-  src: url("fonts/helveticaneue-condensedbold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-condensedbold-webfont.woff") format("woff"), url("fonts/helveticaneue-condensedbold-webfont.ttf") format("truetype"), url("fonts/helveticaneue-condensedbold-webfont.svg#HelveticaNeueCondensedBold") format("svg");
+  src: url("../fonts/helveticaneue-condensedbold-webfont.eot");
+  src: url("../fonts/helveticaneue-condensedbold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-condensedbold-webfont.woff") format("woff"), url("../fonts/helveticaneue-condensedbold-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-condensedbold-webfont.svg#HelveticaNeueCondensedBold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueCondensedBlack";
-  src: url("fonts/helveticaneue-condensedblack-webfont.eot");
-  src: url("fonts/helveticaneue-condensedblack-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-condensedblack-webfont.woff") format("woff"), url("fonts/helveticaneue-condensedblack-webfont.ttf") format("truetype"), url("fonts/helveticaneue-condensedblack-webfont.svg#HelveticaNeueCondensedBlack") format("svg");
+  src: url("../fonts/helveticaneue-condensedblack-webfont.eot");
+  src: url("../fonts/helveticaneue-condensedblack-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-condensedblack-webfont.woff") format("woff"), url("../fonts/helveticaneue-condensedblack-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-condensedblack-webfont.svg#HelveticaNeueCondensedBlack") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueBoldItalic";
-  src: url("fonts/helveticaneue-bolditalic-webfont.eot");
-  src: url("fonts/helveticaneue-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-bolditalic-webfont.woff") format("woff"), url("fonts/helveticaneue-bolditalic-webfont.ttf") format("truetype"), url("fonts/helveticaneue-bolditalic-webfont.svg#HelveticaNeueBoldItalic") format("svg");
+  src: url("../fonts/helveticaneue-bolditalic-webfont.eot");
+  src: url("../fonts/helveticaneue-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-bolditalic-webfont.woff") format("woff"), url("../fonts/helveticaneue-bolditalic-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-bolditalic-webfont.svg#HelveticaNeueBoldItalic") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "HelveticaNeueBold";
-  src: url("fonts/helveticaneue-bold-webfont.eot");
-  src: url("fonts/helveticaneue-bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-bold-webfont.woff") format("woff"), url("fonts/helveticaneue-bold-webfont.ttf") format("truetype"), url("fonts/helveticaneue-bold-webfont.svg#HelveticaNeueBold") format("svg");
+  src: url("../fonts/helveticaneue-bold-webfont.eot");
+  src: url("../fonts/helveticaneue-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/helveticaneue-bold-webfont.woff") format("woff"), url("../fonts/helveticaneue-bold-webfont.ttf") format("truetype"), url("../fonts/helveticaneue-bold-webfont.svg#HelveticaNeueBold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -387,15 +388,16 @@ body > header .content a h1 {
 /* line 55, ../../app/stylesheets/screen.sass */
 body > header .content a #bold_title {
   font-weight: normal;
+  font-family: "HelveticaNeueRegular";
   color: #bc0003;
   letter-spacing: 0;
   /* +transition(0.1s, color) */
 }
-/* line 61, ../../app/stylesheets/screen.sass */
+/* line 62, ../../app/stylesheets/screen.sass */
 body > header .content a:hover {
   text-decoration: none;
 }
-/* line 63, ../../app/stylesheets/screen.sass */
+/* line 64, ../../app/stylesheets/screen.sass */
 body > header .content a:hover h1 {
   color: #a2a2a2;
   background-image: url("/images/home_hover.png");
@@ -407,11 +409,7 @@ body > header .content a:hover h1 {
   -o-transition: color 0.1s ease-in-out;
   transition: color 0.1s ease-in-out;
 }
-/* line 70, ../../app/stylesheets/screen.sass */
-body > header .content a:hover #bold_title {
-  /* +transition(0.1s, color) */
-}
-/* line 73, ../../app/stylesheets/screen.sass */
+/* line 72, ../../app/stylesheets/screen.sass */
 body > header .content nav ul {
   padding-left: 0;
   display: table;
@@ -419,17 +417,17 @@ body > header .content nav ul {
   margin: 0;
   list-style-type: none;
 }
-/* line 79, ../../app/stylesheets/screen.sass */
+/* line 78, ../../app/stylesheets/screen.sass */
 body > header .content nav ul li:first-child a {
   border-left: 1px solid #efefef;
   border-right: 1px solid #f7f7f7;
 }
-/* line 82, ../../app/stylesheets/screen.sass */
+/* line 81, ../../app/stylesheets/screen.sass */
 body > header .content nav ul li:last-child a {
   border-left: 1px solid #f7f7f7;
   border-right: 1px solid #efefef;
 }
-/* line 85, ../../app/stylesheets/screen.sass */
+/* line 84, ../../app/stylesheets/screen.sass */
 body > header .content nav ul li {
   display: table-cell;
   width: 33%;
@@ -441,7 +439,7 @@ body > header .content nav ul li {
   border-top-right-radius: 1em;
   background-color: transparent;
 }
-/* line 90, ../../app/stylesheets/screen.sass */
+/* line 89, ../../app/stylesheets/screen.sass */
 body > header .content nav ul li a {
   text-decoration: none;
   cursor: pointer;
@@ -465,7 +463,7 @@ body > header .content nav ul li a {
   border-top-right-radius: 0.3em;
   border-top: 1px solid #efefef;
 }
-/* line 102, ../../app/stylesheets/screen.sass */
+/* line 101, ../../app/stylesheets/screen.sass */
 body > header .content nav ul li a:hover, body > header .content nav ul li a.selected {
   -webkit-border-top-left-radius: 0.3em;
   -webkit-border-top-right-radius: 0.3em;
@@ -487,32 +485,32 @@ body > header .content nav ul li a:hover, body > header .content nav ul li a.sel
   box-shadow: none;
 }
 
-/* line 111, ../../app/stylesheets/screen.sass */
+/* line 110, ../../app/stylesheets/screen.sass */
 .container {
   background-color: #f0f0f0;
   margin: auto;
   height: 100%;
 }
 
-/* line 116, ../../app/stylesheets/screen.sass */
+/* line 115, ../../app/stylesheets/screen.sass */
 #content {
   display: table;
 }
 
-/* line 119, ../../app/stylesheets/screen.sass */
+/* line 118, ../../app/stylesheets/screen.sass */
 .article_content {
   display: table-cell;
 }
 
-/* line 122, ../../app/stylesheets/screen.sass */
+/* line 121, ../../app/stylesheets/screen.sass */
 article {
   padding: 1em;
 }
-/* line 123, ../../app/stylesheets/screen.sass */
+/* line 122, ../../app/stylesheets/screen.sass */
 article .tags {
   font-size: 1.2em;
 }
-/* line 126, ../../app/stylesheets/screen.sass */
+/* line 125, ../../app/stylesheets/screen.sass */
 article p {
   color: #333333;
   text-align: justify;
@@ -520,12 +518,12 @@ article p {
   text-indent: 30px;
   font-size: 1.1em;
 }
-/* line 132, ../../app/stylesheets/screen.sass */
+/* line 131, ../../app/stylesheets/screen.sass */
 article ul {
   margin-bottom: 0.4em;
 }
 
-/* line 134, ../../app/stylesheets/screen.sass */
+/* line 133, ../../app/stylesheets/screen.sass */
 .current_content {
   padding: 0.5em;
   -webkit-border-radius: 0.3em;
@@ -540,7 +538,7 @@ article ul {
   background: linear-gradient(top, #e10000, #a20003 100%);
 }
 
-/* line 140, ../../app/stylesheets/screen.sass */
+/* line 139, ../../app/stylesheets/screen.sass */
 aside {
   width: 26%;
   display: table-cell;
@@ -548,30 +546,31 @@ aside {
   /* background-color: #dadcd5 */
   padding: 1em;
 }
-/* line 146, ../../app/stylesheets/screen.sass */
+/* line 145, ../../app/stylesheets/screen.sass */
 aside a {
   text-decoration: none;
 }
-/* line 149, ../../app/stylesheets/screen.sass */
+/* line 148, ../../app/stylesheets/screen.sass */
 aside ul {
   margin-bottom: 0;
 }
 
-/* line 152, ../../app/stylesheets/screen.sass */
+/* line 151, ../../app/stylesheets/screen.sass */
 #summary_content {
   position: fixed;
   /* width: 13% */
   font-size: 105%;
 }
-/* line 156, ../../app/stylesheets/screen.sass */
+/* line 155, ../../app/stylesheets/screen.sass */
 #summary_content ul {
   font-size: 1.2em;
   padding-left: 1em;
   list-style: none;
 }
-/* line 160, ../../app/stylesheets/screen.sass */
+/* line 159, ../../app/stylesheets/screen.sass */
 #summary_content ul li:first-letter {
   font-weight: bold;
+  font-family: "HelveticaNeueBold";
 }
 /* line 162, ../../app/stylesheets/screen.sass */
 #summary_content ul li {
@@ -589,9 +588,10 @@ aside ul {
 /* line 169, ../../app/stylesheets/screen.sass */
 .current_section {
   font-weight: bold;
+  font-family: "HelveticaNeueBold";
 }
 
-/* line 172, ../../app/stylesheets/screen.sass */
+/* line 173, ../../app/stylesheets/screen.sass */
 button, input[type=submit] {
   -webkit-border-radius: 0.2em;
   -moz-border-radius: 0.2em;
@@ -609,7 +609,7 @@ button, input[type=submit] {
   cursor: pointer;
 }
 
-/* line 181, ../../app/stylesheets/screen.sass */
+/* line 182, ../../app/stylesheets/screen.sass */
 button:hover, input[type=submit]:hover {
   border: 1px solid #a20003;
   color: white;
@@ -622,7 +622,7 @@ button:hover, input[type=submit]:hover {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
-/* line 187, ../../app/stylesheets/screen.sass */
+/* line 188, ../../app/stylesheets/screen.sass */
 footer {
   background-color: whiteSmoke;
   color: #222222;
@@ -634,17 +634,17 @@ footer {
   box-shadow: 0px -1px 0 black;
 }
 
-/* line 195, ../../app/stylesheets/screen.sass */
+/* line 196, ../../app/stylesheets/screen.sass */
 section.articles {
   display: table-cell;
   padding-top: 1em;
 }
-/* line 198, ../../app/stylesheets/screen.sass */
+/* line 199, ../../app/stylesheets/screen.sass */
 section.articles header {
   display: table-cell;
   vertical-align: top;
 }
-/* line 201, ../../app/stylesheets/screen.sass */
+/* line 202, ../../app/stylesheets/screen.sass */
 section.articles header time {
   width: 3em;
   margin-left: -3.2em;
@@ -670,38 +670,38 @@ section.articles header time {
   -moz-box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4);
   box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4);
 }
-/* line 218, ../../app/stylesheets/screen.sass */
+/* line 219, ../../app/stylesheets/screen.sass */
 section.articles a {
   display: inline-block;
   text-decoration: none;
 }
-/* line 221, ../../app/stylesheets/screen.sass */
+/* line 222, ../../app/stylesheets/screen.sass */
 section.articles a h2 {
   display: inline;
 }
-/* line 224, ../../app/stylesheets/screen.sass */
+/* line 225, ../../app/stylesheets/screen.sass */
 section.articles a:hover h2 {
   color: #a20003;
 }
-/* line 226, ../../app/stylesheets/screen.sass */
+/* line 227, ../../app/stylesheets/screen.sass */
 section.articles .wrapper {
   width: 100%;
   display: table-cell;
   padding-top: 1em;
   padding-left: 1em;
 }
-/* line 232, ../../app/stylesheets/screen.sass */
+/* line 233, ../../app/stylesheets/screen.sass */
 section.articles .wrapper .authors {
   padding-left: 0;
   float: right;
   font-size: 1.2em;
 }
-/* line 236, ../../app/stylesheets/screen.sass */
+/* line 237, ../../app/stylesheets/screen.sass */
 section.articles .wrapper p.article_content {
   text-align: justify;
   padding-left: 0;
 }
-/* line 239, ../../app/stylesheets/screen.sass */
+/* line 240, ../../app/stylesheets/screen.sass */
 section.articles article {
   border: 1px solid #cccccc;
   -webkit-border-radius: 0.3em;
@@ -711,21 +711,22 @@ section.articles article {
   margin-bottom: 1em;
 }
 
-/* line 245, ../../app/stylesheets/screen.sass */
+/* line 246, ../../app/stylesheets/screen.sass */
 span.day {
   font-size: 2.2em;
   font-weight: bold;
+  font-family: "HelveticaNeueBold";
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
-/* line 250, ../../app/stylesheets/screen.sass */
+/* line 252, ../../app/stylesheets/screen.sass */
 aside.date {
   display: table-cell;
   width: 0.5em;
   background-color: #f0f0f0;
 }
 
-/* line 255, ../../app/stylesheets/screen.sass */
+/* line 257, ../../app/stylesheets/screen.sass */
 aside.tags {
   display: table-cell;
   width: 28%;
@@ -733,21 +734,21 @@ aside.tags {
   padding-top: 1em;
   background-color: #f0f0f0;
 }
-/* line 261, ../../app/stylesheets/screen.sass */
+/* line 263, ../../app/stylesheets/screen.sass */
 aside.tags h3 {
   margin-bottom: 0.6em;
 }
-/* line 263, ../../app/stylesheets/screen.sass */
+/* line 265, ../../app/stylesheets/screen.sass */
 aside.tags ul {
   padding-left: 0;
   list-style: none;
 }
-/* line 266, ../../app/stylesheets/screen.sass */
+/* line 268, ../../app/stylesheets/screen.sass */
 aside.tags .content {
   height: 100%;
 }
 
-/* line 270, ../../app/stylesheets/screen.sass */
+/* line 272, ../../app/stylesheets/screen.sass */
 .aside_box {
   border: 1px solid #cccccc;
   -webkit-border-radius: 0.3em;
@@ -759,17 +760,17 @@ aside.tags .content {
   background-color: #f7f7f7;
   text-align: justify;
 }
-/* line 278, ../../app/stylesheets/screen.sass */
+/* line 280, ../../app/stylesheets/screen.sass */
 .aside_box p {
   font-size: 1.1em;
 }
 
-/* line 281, ../../app/stylesheets/screen.sass */
+/* line 283, ../../app/stylesheets/screen.sass */
 #twitter_follow_link {
   margin-top: 1em;
 }
 
-/* line 284, ../../app/stylesheets/screen.sass */
+/* line 286, ../../app/stylesheets/screen.sass */
 .search {
   background: #e10000;
   background: -webkit-gradient(linear, left top, left bottom, from(#e10000), to(#a20003));
@@ -787,11 +788,11 @@ aside.tags .content {
   -moz-box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.4);
   box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.4);
 }
-/* line 291, ../../app/stylesheets/screen.sass */
+/* line 293, ../../app/stylesheets/screen.sass */
 .search .content_search {
   padding: 0.3em;
 }
-/* line 293, ../../app/stylesheets/screen.sass */
+/* line 295, ../../app/stylesheets/screen.sass */
 .search .content_search label.search_icon {
   font-size: 1.2em;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
@@ -801,7 +802,7 @@ aside.tags .content {
   margin-bottom: 0.2em;
   display: none;
 }
-/* line 304, ../../app/stylesheets/screen.sass */
+/* line 306, ../../app/stylesheets/screen.sass */
 .search .content_search input {
   margin-left: 0;
   padding: 0.3em 0.1em 0.3em 0.1em;
@@ -816,13 +817,13 @@ aside.tags .content {
   -moz-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.4);
   box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
-/* line 313, ../../app/stylesheets/screen.sass */
+/* line 315, ../../app/stylesheets/screen.sass */
 .search .content_search a#advance_search_button {
   text-align: center;
   color: white;
   display: none;
 }
-/* line 317, ../../app/stylesheets/screen.sass */
+/* line 319, ../../app/stylesheets/screen.sass */
 .search #search_submit {
   display: inline-block;
   border: none;
@@ -836,7 +837,7 @@ aside.tags .content {
   background-position: center center;
 }
 
-/* line 327, ../../app/stylesheets/screen.sass */
+/* line 329, ../../app/stylesheets/screen.sass */
 #header_border {
   background: #e10000;
   background: -webkit-gradient(linear, left top, left bottom, from(#e10000), to(#a20003));
@@ -849,7 +850,7 @@ aside.tags .content {
   border-bottom: 1px solid #890003;
 }
 
-/* line 333, ../../app/stylesheets/screen.sass */
+/* line 335, ../../app/stylesheets/screen.sass */
 p#special_error {
   font-size: 200% !important;
   text-shadow: 1px 1px 0px black;
@@ -874,54 +875,54 @@ p#special_error {
   -moz-box-shadow: 2px 2px 15px black, inset 0 0 4px rgba(255, 255, 255, 0.4);
   box-shadow: 2px 2px 15px black, inset 0 0 4px rgba(255, 255, 255, 0.4);
 }
-/* line 334, ../../app/stylesheets/screen.sass */
+/* line 336, ../../app/stylesheets/screen.sass */
 p#special_error span {
   font-size: 700% !important;
   text-shadow: 2px 2px 0px black;
 }
 
 @media screen and (max-width: 800px) {
-  /* line 355, ../../app/stylesheets/screen.sass */
+  /* line 357, ../../app/stylesheets/screen.sass */
   body > header h1 {
     margin-left: 1em;
   }
 
-  /* line 357, ../../app/stylesheets/screen.sass */
+  /* line 359, ../../app/stylesheets/screen.sass */
   #summary {
     display: none;
   }
 
-  /* line 360, ../../app/stylesheets/screen.sass */
+  /* line 362, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 85%;
   }
 }
 @media screen and (max-width: 710px) {
-  /* line 364, ../../app/stylesheets/screen.sass */
+  /* line 366, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.4em;
   }
-  /* line 367, ../../app/stylesheets/screen.sass */
+  /* line 369, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 84%;
   }
 }
 @media screen and (max-width: 670px) {
-  /* line 371, ../../app/stylesheets/screen.sass */
+  /* line 373, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.3em;
   }
-  /* line 374, ../../app/stylesheets/screen.sass */
+  /* line 376, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 83%;
   }
 }
 @media screen and (max-width: 640px) {
-  /* line 378, ../../app/stylesheets/screen.sass */
+  /* line 380, ../../app/stylesheets/screen.sass */
   .search {
     padding: 0.2em;
   }
-  /* line 381, ../../app/stylesheets/screen.sass */
+  /* line 383, ../../app/stylesheets/screen.sass */
   .search .content_search input {
     width: 77%;
   }
