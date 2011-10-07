@@ -16,6 +16,13 @@
       (Mis à jour le
       = l @article.updated_at.to_date, :format => "%d %b %Y"
       )
+  .share_button
+    %g:plusone{:size => "medium", :count => "false"}
+  .share_button
+    %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button", :data => {:via => 'ontherailsblog'}} 
+  #fb_span
+    .fb-like{:data => {:send => false, :layout => "button_count", :width => 100, "show-faces" => false}}
+
   ~ @article.content.html_safe
   
   %hr
@@ -24,13 +31,6 @@
     %ul.tags
       - @article.tags.each do |tag|
         %li= link_to tag.name, articles_path(:tag => tag.name)
-
-  .share_button
-    %g:plusone{:size => "medium", :count => "false"}
-  .share_button
-    %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button", :data => {:via => 'ontherailsblog'}} 
-  #fb_span
-    .fb-like{:data => {:send => false, :layout => "button_count", :width => 100, "show-faces" => false}}
 
   #disqus_thread
     = raw disqus_thread
