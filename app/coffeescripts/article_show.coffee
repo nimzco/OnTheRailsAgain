@@ -7,8 +7,9 @@ $( ->
     if $(document).scrollTop() < 150
       summary_headers.css('font-weight', 'normal')
       $(summary_headers[0]).css('font-weight', 'bold')      
+
     # If reach the end of the page, select last header
-    else if $(document).scrollTop() + window.innerHeight >= document.body.scrollHeight
+    else if ($(document).scrollTop() + window.innerHeight) >= (document.body.scrollHeight - 20)
       summary_headers.css('font-weight', 'normal')
       $(summary_headers[summary_headers.length - 1]).css('font-weight', 'bold')
 
