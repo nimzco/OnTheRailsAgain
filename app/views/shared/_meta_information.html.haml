@@ -1,19 +1,20 @@
-%meta{ :name => 'viewport', :content => 'width=device-width' }/
-%meta{ :property => 'fb:app_id', :content =>'201467316581947' }/
+%meta{ :name => 'viewport', :content => 'width=device-width' }
+
+%meta{ :property => 'fb:app_id', :content =>'201467316581947' }
 
 - if !(yield :title).empty?
-  %meta{ :property => 'og:title'        , :content => "#{yield :title}"}/
+  %meta{ :property => 'og:title'        , :content => "#{yield :title}" }
 - else 
-  %meta{ :property => 'og:title'        , :content => "On The Rails Again"}/
+  %meta{ :property => 'og:title'        , :content => "On The Rails Again" }
 
-%meta{ :property => 'og:site_name'    , :content => 'On The Rails Again'}/
-%meta{ :property => 'og:type'         , :content => 'document'}/
-%meta{ :property => 'og:url'          , :content => "http://ontherailsagain.com#{request.env['PATH_INFO']}"}/
-%meta{ :property => 'og:country-name' , :content => "France"}/
+%meta{ :property => 'og:site_name'    , :content => 'On The Rails Again'}
+%meta{ :property => 'og:type'         , :content => 'document'}
+%meta{ :property => 'og:url'          , :content => "http://ontherailsagain.com#{request.env['PATH_INFO']}"}
+%meta{ :property => 'og:country-name' , :content => "France"}
 
-%meta{ :name => "title"       , :content => "#{yield :title}" }/
-%meta{ :name => "keywords"    , :content => "Blog, Ruby On Rails, Rails, Article, Articles, Routes, ActiveRecord" }/
+%meta{ :name => "title"       , :content => "#{yield :title}" }
+%meta{ :name => "keywords"    , :content => "Blog, Ruby On Rails, Rails, Article, Articles, Routes, ActiveRecord" }
 - if !(yield :meta_description).empty?
-  %meta{ :property => 'description'        , :content => "#{yield :meta_description}"}/
+  %meta{ :property => 'description'        , :content => "#{yield :meta_description}"}
 
-%meta{ :name => 'google-site-verification', :content => 'ZARXAl3d4HKL9_iHPCdPy-fZkhR8vhD42RsKHxRe-o8' } 
+%meta{ :name => 'google-site-verification', :content => 'ZARXAl3d4HKL9_iHPCdPy-fZkhR8vhD42RsKHxRe-o8' }

@@ -1,7 +1,8 @@
 !!!
-%html{:xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'fr', :lang=>'en', 'xmlns:fb' => 'http://www.facebook.com/2008/fbml',  'xmlns:og' => 'http://opengraphprotocol.org/schema/'}
+%html{:xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'fr', :lang=>'fr', 'xmlns:fb' => 'http://www.facebook.com/2008/fbml',  'xmlns:og' => 'http://opengraphprotocol.org/schema/'}
   %head
-    %link{:rel => 'shortcut icon', :href => '/favicon.png'}
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    %link{:rel => 'icon', :href => '/favicon.png', :type => 'image/png'}
 
     = stylesheet_link_tag 'screen', :media => 'screen, projection'
     = stylesheet_link_tag 'print', :media => 'print'
