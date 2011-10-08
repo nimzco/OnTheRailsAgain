@@ -1,6 +1,9 @@
 = flash[:notice]
 = flash[:error]
 
+= content_for :meta_description do
+  = @article.introduction
+
 = content_for :title do
   = @article.title
 - if current_author
