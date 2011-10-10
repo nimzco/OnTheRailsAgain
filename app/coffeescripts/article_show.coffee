@@ -2,7 +2,6 @@ $( ->
   $(window).scroll( ->
     headers         = $('.article_content > :header:not("h1")')
     summary_headers = $('#summary a')
-    console.log $(document).scrollTop()
     # If at the begining of the document
     if $(document).scrollTop() < 150
       summary_headers.css('font-weight', 'normal')
