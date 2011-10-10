@@ -4,6 +4,7 @@
 @import form
 @import articles
 @import font
+@import mobile
 
 $max-width: 70em
 $dark_red : #a20003
@@ -353,34 +354,3 @@ p#special_error
   +bshadow(2px, 2px, 15px, black, 0, 0, 4px, rgba(255,255,255, 0.4)) 
 
 
-@media screen and (max-width: 800px)
-  body
-    > header
-      h1
-        margin-left: 1em
-  #summary
-    display: none
-  .search .content_search
-    input
-      width: 85%
-
-@media screen and (max-width: 710px)
-  .search
-    padding: 0.4em  
-    .content_search
-      input
-        width: 84%
-
-@media screen and (max-width: 670px)
-  .search
-    padding: 0.3em 
-    .content_search
-      input
-        width: 83%
-
-@media screen and (max-width: 640px)
-  .search
-    padding: 0.2em 
-    .content_search
-      input
-        width: 77%
