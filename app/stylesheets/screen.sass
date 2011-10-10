@@ -367,18 +367,19 @@ p#special_error
     +gradient(#f3f3f3, #ececec)
     display: inline-block
     padding: 5px 10px 7px 10px
-    text-shadow: 1px 1px 1px rgba(255,255,255,1)
+    text-shadow: 1px 1px 0px rgba(255,255,255,1)
     border: 1px solid #CCC
     cursor: pointer
     margin: 0
     color: #333
+    letter-spacing: 0.1em
     
   span.current, .prev_page:hover, .next_page:hover, a:hover
     border: 1px solid $dark_red
     color: white
     cursor: pointer
     +gradient(lighten($light_red, 5%), lighten($dark_red, 5%))
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8)
   
   span.current,
     +gradient($light_red,$dark_red)  
@@ -393,11 +394,11 @@ p#special_error
     +gradient(#f3f3f3, #ececec)
     display: inline-block
     padding: 5px 10px 7px 10px
-    text-shadow: 1px 1px 1px rgba(255,255,255,1)
+    text-shadow: 1px 1px 0px rgba(255,255,255,1)
     border: 1px solid #CCC
     cursor: pointer
     border-right: none
-    
+    letter-spacing: 0.1em
   .next_page
     color: #333
     width: 5em
@@ -405,10 +406,11 @@ p#special_error
     +gradient(#f3f3f3, #ececec)
     display: inline-block
     padding: 5px 10px 7px 10px
-    text-shadow: 1px 1px 1px rgba(255,255,255,1)
+    text-shadow: 1px 1px 0px rgba(255,255,255,1)
     border: 1px solid #CCC
     border-left: none
     cursor: pointer
+    letter-spacing: 0.1em
     
 #rss_feed
   display: inline-block
