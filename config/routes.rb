@@ -4,8 +4,8 @@ OntheRailsAgain::Application.routes.draw do
 
   resources :tags
 
-  resources :articles  
-
+  resources :articles
+  
   root :to => "articles#index"  
   
   match "sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
