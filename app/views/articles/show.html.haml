@@ -6,8 +6,6 @@
 
 = content_for :title do
   = @article.title
-- if current_author
-  = button_to "Supprimer", article_path(@article), :method => :delete
 .article_content
   %h1= @article.title
   %p.posted_by
@@ -19,12 +17,13 @@
       (Mis à jour le
       = l @article.updated_at.to_date, :format => "%d %b %Y"
       )
-  .share_button
-    %g:plusone{:size => "medium", :count => "false"}
-  .share_button
-    %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button", :data => {:via => 'ontherailsblog'}} 
-  #fb_span
-    .fb-like{:data => {:send => false, :layout => "button_count", :width => 100, "show-faces" => false}}
+  #share_button
+    .share_button
+      %g:plusone{:size => "medium", :count => "false"}
+    .share_button
+      %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button", :data => {:via => 'ontherailsblog'}} 
+    #fb_span
+      .fb-like{:data => {:send => false, :layout => "button_count", :width => 100, "show-faces" => false}}
 
   ~ @article.content.html_safe
   
@@ -38,6 +37,8 @@
   #disqus_thread
     = raw disqus_thread
 
+- if current_author
+  = button_to "Supprimer", article_path(@article), :method => :delete
 
 %aside#summary
   #summary_content
