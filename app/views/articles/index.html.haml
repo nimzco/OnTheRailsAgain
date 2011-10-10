@@ -24,9 +24,9 @@
         N'hésitez pas à nous         
         %a{:href => 'mailto:admin@ontherailsagain.com'} envoyer un mail 
         pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
-
-    #twitter_follow_link
-      %a{:href => 'https://twitter.com/OnTheRailsBlog', :class => 'twitter-follow-button', :data => {'show-count' =>'false', :width => '200px'}} Follow @OnTheRailsBlog
-    %script{:src => '//platform.twitter.com/widgets.js', :type => 'text/javascript'}
+    #follow_rss
+      %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} &nbsp;
+      #twitter_follow_link
+        %a{:href => 'https://twitter.com/OnTheRailsBlog', :class => 'twitter-follow-button', :data => {'show-count' =>'false', :width => '170px'}} Follow @OnTheRailsBlog
+        %script{:src => '//platform.twitter.com/widgets.js', :type => 'text/javascript'}
     = auto_discovery_link_tag(articles_url(:rss, :title => "OnTheRailsAgain - RSS"))
-    %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} &nbsp;
