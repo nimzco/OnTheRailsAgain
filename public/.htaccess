@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^ontherailsagain.com$
+RewriteRule ^(.*) http://www.ontherailsagain.com/$1 [QSA,L,R=301]
