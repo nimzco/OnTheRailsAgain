@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 07 Oct 2011 07:25:05 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 10 Oct 2011 08:24:04 GMT from
  * /Users/Nima/Sites/OnTheRailsAgain/app/coffeescripts/article_show.coffee
  */
 
@@ -8,7 +8,6 @@
       var headers, i, summary_headers, _ref, _results;
       headers = $('.article_content > :header:not("h1")');
       summary_headers = $('#summary a');
-      console.log($(document).scrollTop());
       if ($(document).scrollTop() < 150) {
         summary_headers.css('font-weight', 'normal');
         return $(summary_headers[0]).css('font-weight', 'bold');
