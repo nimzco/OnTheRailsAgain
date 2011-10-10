@@ -283,8 +283,7 @@ aside.tags
   p
     font-size: 1.1em
 
-#twitter_follow_link
-  margin-top: 1em
+
   
 .search
   +gradient($light_red, $dark_red)
@@ -412,14 +411,25 @@ p#special_error
     cursor: pointer
     letter-spacing: 0.1em
     
+#follow_rss
+  display: table
+  margin-top: 0.5em
+  > *
+    display: table-cell
+    vertical-align: middle
+
+#twitter_follow_link
+  margin-top: 1em
+  padding-left: 0.5em
+  
 #rss_feed
   display: inline-block
   background: url('/images/rss.png') no-repeat 50% 50%
-  width: 25px
-  height: 25px
+  width: 20px
+  height: 20px
 
 #rss_feed:hover
   display: inline-block
   background: url('/images/rss_hover.png') no-repeat 50% 50%
-  width: 25px
-  height: 25px
+  width: 20px
+  height: 20px
