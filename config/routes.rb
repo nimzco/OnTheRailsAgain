@@ -8,6 +8,8 @@ OntheRailsAgain::Application.routes.draw do
 
   root :to => "articles#index"  
   
+  match "sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
