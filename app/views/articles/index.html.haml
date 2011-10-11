@@ -1,10 +1,13 @@
 = content_for :meta_description do
-  Blog destiné à une communauté francophone voulant se former à Ruby On Rails.
+  Blog destiné à une communauté francophone voulant se lancer dans l'apprentissage de Ruby On Rails.
 %aside.date
 %section.articles  
   - if @articles.empty?
-    %h3
+    %h2.search_title
       Aucun article correspond à votre recherche...
+  - elsif @search_text != ""
+    %h2.search_title
+      = @search_text
   - @articles.each do |article|
     = render article
   = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
