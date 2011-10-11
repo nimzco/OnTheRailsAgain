@@ -17,8 +17,7 @@ $( ->
       for i in [0..(headers.length)]
         if i < headers.length and ($(headers[i]).offset().top - $(document).scrollTop()) < 15
           summary_headers.css('font-weight', 'normal')
-          $(summary_headers[i]).css('font-weight', 'bold')
-    
+          $(summary_headers[i]).css('font-weight', 'bold')    
   )
 
 )
