@@ -1,8 +1,3 @@
-Options +FollowSymlinks
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^www.ontherailsagain.com$
-RewriteRule ^(.*) http://ontherailsagain.com/$1 [QSA,L,R=301]
-
 # compress text, html, javascript, css, xml:
 AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/html
@@ -14,7 +9,3 @@ AddOutputFilterByType DEFLATE application/rss+xml
 AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 
-# Or, compress certain file types by extension:
-<Files *.html>
-SetOutputFilter DEFLATE
-</Files>
