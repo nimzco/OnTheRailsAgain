@@ -27,8 +27,13 @@ class ArticlesController < InheritedResources::Base
   end
   
   def show
-    @article = Article.find_by_title(params[:id].gsub(/_/," "))
-    show!
+    if params[:id].to_i > 0 # Then it is an integer
+      @article = Article.find params[:id]
+      redirect_to :action => :show, :id => @article.title.gsub(/ /,"_")
+    else
+      @article = Article.find_by_title(params[:id].gsub(/_/," "))
+      show!
+    end
   end
 
   def edit
