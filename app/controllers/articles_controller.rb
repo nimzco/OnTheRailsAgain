@@ -12,13 +12,13 @@ class ArticlesController < InheritedResources::Base
     @search_text = ""
     if params[:tag]
       @articles = Article.find(:all, :order => 'Articles.created_at DESC', :include => :tags, :conditions => ["tags.name = ?", params[:tag]]).paginate(:page => params[:page], :per_page => 5)
-      @search_text = "Articles correspondant au tag : " + params[:tag]
+      @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant au tag : " + params[:tag]
     elsif params[:author]
       @articles = Article.find(:all, :order => 'Articles.created_at DESC', :include => :authors, :conditions => ["authors.name = ?", params[:author]]).paginate(:page => params[:page], :per_page => 5)
-      @search_text = "Articles ayant pour auteur : " + params[:author]      
+      @search_text = "Article#{@articles.size > 1 ? 's' : ''} ayant pour auteur : " + params[:author]      
     else
       @articles = @search.all(:order => 'created_at DESC').paginate(:page => params[:page], :per_page => 5)
-      @search_text = "Articles correspondant à la recherche : «#{params[:search]["title_or_content_contains"]}»" if params[:search]
+      @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant à la recherche : «#{params[:search]["title_or_content_contains"]}»" if params[:search]
     end
     @tags = Tag.find(:all, :order => :name)
     index!
