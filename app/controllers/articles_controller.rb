@@ -34,14 +34,16 @@ class ArticlesController < InheritedResources::Base
     if params[:id].to_i > 0 # Then it is an integer
       @article = Article.find params[:id]
       redirect_to :action => :show, :id => @article.title.gsub(/ /,"_")
+    elsif params[:id].include? ' ' # Prevent for URL duplication (mainly for Disqus)
+      redirect_to :action => :show, :id => params[:id].gsub(/ /,"_") 
     else
-      @article = Article.find_by_title(params[:id].gsub(/_/," "))
+      @article = Article.where("title LIKE ?",params[:id]).first
       show!
     end
   end
 
   def edit
-    @article = Article.find_by_title(params[:id].gsub(/_/," "))
+    @article = Article.where("title LIKE ?",params[:id]).first
     edit!
   end
   
