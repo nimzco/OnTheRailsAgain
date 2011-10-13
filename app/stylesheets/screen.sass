@@ -4,7 +4,7 @@
 @import form
 @import articles
 @import font
-@import mobile
+
 
 $max-width: 70em
 $dark_red : #a20003
@@ -33,34 +33,35 @@ body
     border-bottom: 1px solid $dark_red
     background-color: #F7F7F7
     .content
-      a
-        text-decoration: none
-        h2
-          padding-bottom: 0.5em
-          margin-bottom : 0
-          font-weight   : normal
-          font-family: "HelveticaNeueRegular"
+      h2
+        font-size: 4.2em
+        padding-bottom: 0.5em
+        margin-bottom : 0
+        font-weight   : normal
+        font-family: "HelveticaNeueRegular"
+        letter-spacing: -0.1em
+        background-image: url('/images/home.png')
+        background-repeat: no-repeat
+        background-position: 100% 100%
+        width: 9em
+        a
           //color: transparent
           //-webkit-background-clip: text
           //-moz-background-clip: padding
           //background-color: rgba(82,96,117,0.5)
           //text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.2) 1px 3px 3px
-          font-size: 4.2em
-          letter-spacing: -0.1em
-          text-rendering : optimizeLegibility
           color: #BBB
           text-shadow: white 1px 1px 0px
-          background-image: url('/images/home.png')
-          background-repeat: no-repeat
-          background-position: 100% 100%
-          width: 9em
           /* +transition(0.1s, color) */
-        #bold_title
-          font-weight: normal
-          font-family: 'HelveticaNeueRegular'
-          color: lighten($dark_red, 5%)
-          letter-spacing: 0
-          /* +transition(0.1s, color) */
+          #bold_title
+            font-weight: normal
+            font-family: 'HelveticaNeueRegular'
+            color: lighten($dark_red, 5%)
+            letter-spacing: 0
+            /* +transition(0.1s, color) */
+      a
+        text-decoration: none
+        
           
       a:hover
         text-decoration: none
@@ -444,3 +445,5 @@ h2.search_title
   border: 1px solid darken($dark_red, 5%)
   +bshadow-in(0, 0, 4px, rgba(255,255,255, 0.4)) 
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
+  
+@import mobile 
