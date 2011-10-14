@@ -1,4 +1,6 @@
 @media screen and (max-width: 800px)
+  #content
+    display: block
   #summary
     display: none
   .search .content_search
@@ -26,6 +28,9 @@
     font-size: 3em
   .search .content_search input  
     width: 93%
+  section.articles article
+    margin-left: 3em
+    margin-left: 1em
 
 @media screen and (max-width: 640px)
   .search
@@ -48,9 +53,10 @@
     width: auto
     margin: auto
     margin-top: -2em
+  article:first-child
+    margin-top: 0
   article
     margin-top: 2em
-  article
     margin-left: 1em
     margin-right: 1em
   footer

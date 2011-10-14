@@ -72,45 +72,6 @@ body
           background-position: 100% 100%
           +transition(0.1s, color)
           
-      nav
-        ul
-          padding-left: 0
-          display: table
-          width: 100%
-          margin: 0
-          list-style-type: none
-          li:first-child a
-            border-left: 1px solid #EFEFEF
-            border-right: 1px solid #F7F7F7
-          li:last-child a
-            border-left: 1px solid #F7F7F7
-            border-right: 1px solid #EFEFEF
-          li
-            display: table-cell
-            width: 33%
-            +radiusTop(1em)
-            background-color: transparent
-            a
-              text-decoration: none
-              cursor: pointer
-              display: block
-              text-align: center
-              line-height: 3.5em
-              letter-spacing: 0.1em
-              color: #bf0000
-              +gradient(#FFF, #F7F7F7)
-              text-shadow: 1px 1px 1px rgba(255,255,255,1)
-              +radiusTop(0.3em)
-              border-top: 1px solid #EFEFEF
-            a:hover, a.selected
-              +radiusTop(0.3em)
-              color: white
-              +gradient($light_red, $dark_red)
-              text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-              border: 1px solid $dark_red
-              +noshadow
-
-
 .container
   background-color: #F0F0F0
   margin: auto 
