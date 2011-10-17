@@ -11,4 +11,8 @@ module ArticlesHelper
       "#{link_to article.authors[0].name, articles_path(:author => article.authors[0].name)}"
     end.html_safe
   end
+
+  def escape_accent(string)
+    string.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u')
+  end
 end
