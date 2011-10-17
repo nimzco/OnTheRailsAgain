@@ -1,6 +1,14 @@
 .article_content
   padding: 3%
   background-color: #F7F7F7
+  border-left: 1px solid #CCC
+  border-right: 1px solid #CCC
+  word-wrap: break-word
+  img
+    max-width: 100%
+    margin: auto
+    display: block
+    margin-bottom: 20px
   p
     color: #333
     text-align: justify
@@ -21,6 +29,8 @@
 
   ul
     list-style-type: circle
+    li
+      text-align: left
   ul, dl
     font-size: 1.2em
     line-height: 150%
@@ -39,6 +49,8 @@
     border: 1px solid #DDD
     font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important
     white-space: pre-wrap
+    word-wrap: break-word
+    
   span.code
     font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important
     white-space: pre-wrap
@@ -72,6 +84,7 @@
     font-family   : "HelveticaNeueBold"
     margin-top    : 1em
     margin-bottom : 1em
+    word-wrap: break-word
     ul
       margin-top    : 1em
       margin-bottom : 0
@@ -106,3 +119,5 @@
   .share_button
     margin-right: 1em
     display: inline
+section.articles .article_content
+  border: none

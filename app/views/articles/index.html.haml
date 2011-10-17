@@ -40,3 +40,11 @@
         #twitter_follow_link
           %a{:href => 'https://twitter.com/OnTheRailsBlog', :class => 'twitter-follow-button', :data => {'show-count' =>'false', :width => '163px'}} Follow @OnTheRailsBlog
           %script{:src => '//platform.twitter.com/widgets.js', :type => 'text/javascript'}
+
+= content_for :footer do
+  -if is_mobile?
+    #follow_rss
+      %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} &nbsp;
+      #twitter_follow_link
+        %a{:href => 'https://twitter.com/OnTheRailsBlog', :class => 'twitter-follow-button', :data => {'show-count' =>'false', :width => '163px'}} Follow @OnTheRailsBlog
+        %script{:src => '//platform.twitter.com/widgets.js', :type => 'text/javascript'}
