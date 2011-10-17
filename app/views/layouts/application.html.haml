@@ -36,6 +36,10 @@
       .content
         = yield :footer
   
+    :javascript
+      window.onload = function() {
+        
+      };
     = javascript_include_tag "jquery.min"
     = yield :javascript
     = javascript_include_tag 'https://apis.google.com/js/plusone.js'

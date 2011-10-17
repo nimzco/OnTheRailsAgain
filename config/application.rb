@@ -44,7 +44,7 @@ module OntheRailsAgain
 
     config.after_initialize do
       Disqus::defaults[:account] = "ontherailsagain"
-      # so that the comments will load up in development environment
+      Disqus::defaults[:developer] = true # so that the comments will load up in development environment
       Disqus::defaults[:container_id] = "disqus_thread"
       Disqus::defaults[:show_powered_by] = false
     end
