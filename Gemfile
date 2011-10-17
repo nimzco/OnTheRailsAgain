@@ -10,7 +10,7 @@ gem "heroku"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'               , '~>2.8.1'
+gem 'pg'
 
 gem 'delayed_job'
 gem 'disqus'
@@ -20,7 +20,7 @@ gem 'devise'              , '~>1.4.2'
 gem 'formtastic'          , '~>1.2.3'
 gem 'inherited_resources'
 gem 'albino'
-
+gem 'capistrano'
 gem 'will_paginate'       , '~>2.3.15'
 
 gem 'haml'                , '~>3.1.0'
