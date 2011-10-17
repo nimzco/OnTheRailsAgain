@@ -1,4 +1,5 @@
 class ArticlesController < InheritedResources::Base
+  helper :all
   before_filter :authenticate_author!, :only => ["new", "create", "edit"]
   before_filter :set_page_name
   respond_to :rss

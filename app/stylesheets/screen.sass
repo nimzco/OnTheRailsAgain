@@ -12,6 +12,7 @@ $light_red: #e10000
 
 body
   background-color: whiteSmoke
+  width: 100%
   //font-size: 1.2em
   ol
     list-style-type: none
@@ -32,10 +33,11 @@ body
     padding-bottom: 1em
     border-bottom: 1px solid $dark_red
     background-color: #F7F7F7
+    width: 100%
     .content
       h2
         font-size: 4.2em
-        padding-bottom: 0.5em
+        padding-bottom: 0.4em
         margin-bottom : 0
         font-weight   : normal
         font-family: "HelveticaNeueRegular"
@@ -43,7 +45,8 @@ body
         background-image: url('/images/home.png')
         background-repeat: no-repeat
         background-position: 100% 100%
-        width: 9em
+        width: 9.7em
+        background-size: 23%
         a
           //color: transparent
           //-webkit-background-clip: text
@@ -62,55 +65,10 @@ body
       a
         text-decoration: none
         
+      h2 a:hover
+        color: darken(#BBB, 10%)
+        +transition(0.1s, color)
           
-      a:hover
-        text-decoration: none
-        h1
-          color: darken(#BBB, 10%)
-          background-image: url('/images/home_hover.png')
-          background-repeat: no-repeat
-          background-position: 100% 100%
-          +transition(0.1s, color)
-          
-      nav
-        ul
-          padding-left: 0
-          display: table
-          width: 100%
-          margin: 0
-          list-style-type: none
-          li:first-child a
-            border-left: 1px solid #EFEFEF
-            border-right: 1px solid #F7F7F7
-          li:last-child a
-            border-left: 1px solid #F7F7F7
-            border-right: 1px solid #EFEFEF
-          li
-            display: table-cell
-            width: 33%
-            +radiusTop(1em)
-            background-color: transparent
-            a
-              text-decoration: none
-              cursor: pointer
-              display: block
-              text-align: center
-              line-height: 3.5em
-              letter-spacing: 0.1em
-              color: #bf0000
-              +gradient(#FFF, #F7F7F7)
-              text-shadow: 1px 1px 1px rgba(255,255,255,1)
-              +radiusTop(0.3em)
-              border-top: 1px solid #EFEFEF
-            a:hover, a.selected
-              +radiusTop(0.3em)
-              color: white
-              +gradient($light_red, $dark_red)
-              text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-              border: 1px solid $dark_red
-              +noshadow
-
-
 .container
   background-color: #F0F0F0
   margin: auto 
@@ -189,10 +147,18 @@ button:hover, input[type=submit]:hover
   +gradient($light_red, $dark_red)
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
   
+button[disabled], button[disabled]
+  +radius(0.2em)
+  +gradient(#f3f3f3, #ececec)
+  display: inline-block
+  padding: 5px 10px 6px 10px
+  text-shadow: 1px 1px 1px rgba(255,255,255,1)
+  border: 1px solid #D4D4D4
+  cursor: pointer
+  
 footer
   background-color: whiteSmoke
   color: #222
-  padding: 1em
   min-height: 5em
   border-top: 1px solid $dark_red
   +bshadow-out(0px, -1px, 0, black)
@@ -361,7 +327,6 @@ p#special_error
   margin-bottom: 20px
   font-family: 'HelveticaNeueBold'
   font-size: 1.1em
-
   a, span.current
     //+radius(0.2em)
     +gradient(#f3f3f3, #ececec)
@@ -373,7 +338,8 @@ p#special_error
     margin: 0
     color: #333
     letter-spacing: 0.1em
-    
+    border-left-color: #ececec
+  
   span.current, .prev_page:hover, .next_page:hover, a:hover
     border: 1px solid $dark_red
     color: white
@@ -389,7 +355,7 @@ p#special_error
     border-left: none
   .prev_page
     color: #333
-    width: 5em
+    width: 5.5em
     +radiusLeft(0.3em)
     +gradient(#f3f3f3, #ececec)
     display: inline-block
@@ -397,11 +363,12 @@ p#special_error
     text-shadow: 1px 1px 0px rgba(255,255,255,1)
     border: 1px solid #CCC
     cursor: pointer
-    border-right: none
     letter-spacing: 0.1em
+    text-align: center
+    
   .next_page
     color: #333
-    width: 5em
+    width: 5.5em
     +radiusRight(0.3em)
     +gradient(#f3f3f3, #ececec)
     display: inline-block
@@ -410,6 +377,18 @@ p#special_error
     border: 1px solid #CCC
     border-left: none
     cursor: pointer
+    letter-spacing: 0.1em
+    text-align: center
+    border-left-color: #ececec
+  .disabled, .disabled:hover
+    +gradient(#f3f3f3, #ececec)
+    display: inline-block
+    padding: 5px 10px 7px 10px
+    text-shadow: 1px 1px 0px rgba(255,255,255,1)
+    border: 1px solid #CCC
+    cursor: pointer
+    margin: 0
+    color: #CCC
     letter-spacing: 0.1em
     
 #follow_rss
@@ -445,5 +424,10 @@ h2.search_title
   border: 1px solid darken($dark_red, 5%)
   +bshadow-in(0, 0, 4px, rgba(255,255,255, 0.4)) 
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-  
+
+footer .content
+  max-width: $max-width
+  min-height: 96px
+
+
 @import mobile 

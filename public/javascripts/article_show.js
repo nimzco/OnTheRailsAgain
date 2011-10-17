@@ -1,10 +1,10 @@
-/* DO NOT MODIFY. This file was compiled Tue, 11 Oct 2011 18:12:50 GMT from
+/* DO NOT MODIFY. This file was compiled Fri, 14 Oct 2011 08:31:14 GMT from
  * /Users/Nima/Sites/OnTheRailsAgain/app/coffeescripts/article_show.coffee
  */
 
 (function() {
   $(function() {
-    return $(window).scroll(function() {
+    $(window).scroll(function() {
       var headers, i, summary_headers, _ref, _results;
       headers = $('.article_content > :header:not("h1")');
       summary_headers = $('#summary a');
@@ -21,6 +21,11 @@
         }
         return _results;
       }
+    });
+    return $('#show_disqus').click(function() {
+      $(this).attr('disabled', 'disabled');
+      window.disqus_developer = true;
+      return $.getScript("http://disqus.com/forums/ontherailsagain/embed.js");
     });
   });
 }).call(this);
