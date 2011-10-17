@@ -4,12 +4,13 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>http://ontherailsagain.com/</loc>
 </url>
 <url>
-  <loc>http://ontherailsagain.com/articles/Les_associations_Many-to-Many</loc>
+  <loc>http://ontherailsagain.com/articles/Les_associations_Many-to-Many_avanc%C3%A9es_(has_many_:through)</loc>
 </url>
 <url>
   <loc>http://ontherailsagain.com/articles?tag=Rails</loc>
@@ -22,6 +23,9 @@
 </url>
 <url>
   <loc>http://ontherailsagain.com/articles?author=Nima</loc>
+</url>
+<url>
+  <loc>http://ontherailsagain.com/articles/Les_associations_Many-to-Many</loc>
 </url>
 <url>
   <loc>http://ontherailsagain.com/articles/Comprendre_la_structure_d&#39;une_application_Rails</loc>
