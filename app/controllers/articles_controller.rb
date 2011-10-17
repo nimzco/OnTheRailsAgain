@@ -38,7 +38,7 @@ class ArticlesController < InheritedResources::Base
     elsif params[:id].include? ' ' # Prevent for URL duplication (mainly for Disqus)
       redirect_to :action => :show, :id => params[:id].gsub(/ /,"_")
     else
-      @article = Article.where("title LIKE ?", '%' + params[:id] + '%').first
+      @article = Article.where("title LIKE ?", '%' + params[:id].gsub(/e/,'_').gsub(/a/,'_').gsub(/i/,'_').gsub(/u/,'_') + '%').first
       show!
     end
   end
