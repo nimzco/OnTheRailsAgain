@@ -31,8 +31,13 @@ class ArticlesController < InheritedResources::Base
   end
   
   def show
-    @article = Article.where("link = ?", params[:id]).first
-    show!
+    if params[:id].to_i > 0 # Then it is an integer
+      @article = Article.find params[:id]
+      redirect_to :action => :show, :id => escape_accent(@article.title)
+    else
+      @article = Article.where("link = ?", params[:id]).first
+      show!
+    end
   end
 
   def edit

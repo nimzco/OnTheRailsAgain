@@ -10,7 +10,6 @@ gem "heroku"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
 
 gem 'delayed_job'
 gem 'disqus'
@@ -29,7 +28,9 @@ gem "compass", ">= 0.11.5"
 gem "jquery-rails"
 gem "sass"
 
-
+group :production do
+  gem 'pg'
+end
 group :development, :test do
   gem 'ruby-debug'
   gem 'mongrel'   , '~>1.1.5'
