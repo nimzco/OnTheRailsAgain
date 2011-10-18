@@ -46,7 +46,4 @@
     ~ @article.summary.html_safe
 
 = content_for :javascript do
-  - if Rails.env.production?
-    = javascript_include_tag "article_show"
-  - else
-    = coffeescript_include_tag "article_show"
+  = javascript_include_tag "article_show"

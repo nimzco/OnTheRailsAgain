@@ -3,38 +3,39 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.1'
 
 gem "heroku"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
-gem 'delayed_job'
 gem 'disqus'
-gem "meta_search"  
+gem 'meta_search'  
 gem 'ancestry'            , '~>1.2.4'
 gem 'devise'              , '~>1.4.2'
-gem 'formtastic'          , '~>1.2.3'
+gem 'formtastic'
 gem 'inherited_resources'
 gem 'albino'
 gem 'capistrano'
-gem 'will_paginate'       , '~>2.3.15'
+gem 'will_paginate'       , '~>3.0.2'
 
 gem 'haml'                , '~>3.1.0'
 
-gem "compass", ">= 0.11.5"
-gem "jquery-rails"
-gem "sass"
 
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+gem "jquery-rails"
 group :production do
   gem 'pg'
 end
 group :development, :test do
+  gem 'mysql'
   gem 'ruby-debug'
   gem 'mongrel'   , '~>1.1.5'
-  gem 'barista'             , '~>1.2.1'  # Attention, haml doit être chargé AVANT barrista.
 end
 
 

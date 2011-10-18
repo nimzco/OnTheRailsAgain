@@ -3,21 +3,23 @@ class ArticlesController < InheritedResources::Base
   before_filter :set_page_name
   respond_to :rss
   
+  WillPaginate.per_page = 5
+  
   def set_page_name
     @page = :article
   end
   
   def index
-    @search = Article.search(params[:search], :order => 'created_at DESC')
-    @search_text = ""
+    @search = Article.search(params[:search])
+    @search_text = ''
     if params[:tag]
-      @articles = Article.find(:all, :order => 'Articles.created_at DESC', :include => :tags, :conditions => ["tags.name = ?", params[:tag]]).paginate(:page => params[:page], :per_page => 5)
+      @articles = Article.page(params[:page]).find(:all, :order => 'Articles.created_at DESC', :include => :tags, :conditions => ["tags.name = ?", params[:tag]])
       @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant au tag : " + params[:tag]
     elsif params[:author]
-      @articles = Article.find(:all, :order => 'Articles.created_at DESC', :include => :authors, :conditions => ["authors.name = ?", params[:author]]).paginate(:page => params[:page], :per_page => 5)
+      @articles = Article.page(params[:page]).find(:all, :order => 'Articles.created_at DESC', :include => :authors, :conditions => ["authors.name = ?", params[:author]])
       @search_text = "Article#{@articles.size > 1 ? 's' : ''} ayant pour auteur : " + params[:author]      
     else
-      @articles = @search.all(:order => 'created_at DESC').paginate(:page => params[:page], :per_page => 5)
+      @articles = @search.page(params[:page]).order('created_at DESC')
       @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant à la recherche : «#{params[:search]["title_or_content_contains"]}»" if params[:search]
     end
     @tags = Tag.find(:all, :order => :name)
@@ -31,7 +33,8 @@ class ArticlesController < InheritedResources::Base
   end
   
   def show
-    if params[:id].to_i > 0 # Then it is an integer
+    # Redirect user on correct URL if params[:id] is an integer
+    if params[:id].to_i > 0
       @article = Article.find params[:id]
       redirect_to :action => :show, :id => escape_accent(@article.title)
     else

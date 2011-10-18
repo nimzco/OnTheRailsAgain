@@ -1,43 +1,50 @@
 class Article < ActiveRecord::Base
-
+  include ArticlesHelper
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :tags
 
-  validates_associated    :authors
-  validates_associated    :tags
+  validates :authors, :associated => true
+  validates :tags   , :associated => true
 
-  validates_uniqueness_of :title
-  validates_presence_of   :title, :introduction, :content
+  # The link is the title without spaces (blank) neither accents. It is used for URLs.
+  # It has to be unique
+  validates :title, :link, :uniqueness => true
+  validates :title, :introduction, :content, :link, :presence => true
   
+  # Generate a summary in a nested list composed of all headers of the article
+  # The method is REALLY ugly because of some problem in the gsub...
+  # Don't even try to understand it.
   def generate_summary
-    self.summary = "<ul>"
+    summary_string = '<ul>'
     first = true
     oldH = 1
     self.content.gsub(/<h[0-9][^>]*>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
-      title = match.sub(/<h[0-9][^>]*>/m, "").sub(/<\/h[0-9]>/m, "")
-      link  = title.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
+      title = match.sub(/<h[0-9][^>]*>/m, '').sub(/<\/h[0-9]>/m, '')
+      link  = escape_accent title #.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
       if !first and (h.to_i - oldH) == 1
-        self.summary += "</li><li><ul><li>"
+        summary_string += '</li><li><ul><li>'
       elsif !first and (h.to_i - oldH) == 0
-        self.summary += "</li><li>"
+        summary_string += '</li><li>'
       elsif !first and (h.to_i - oldH) == -1
-        self.summary += "</li></ul><li>"
+        summary_string += '</li></ul><li>'
       elsif !first and (h.to_i - oldH) == -2
-        self.summary += "</li></ul></ul><li>"
+        summary_string += '</li></ul></ul><li>'
       elsif !first and (h.to_i - oldH) == -3
-        self.summary += "</li></ul></ul></ul><li>"
+        summary_string += '</li></ul></ul></ul><li>'
       else
-        self.summary += "<li>"
+        summary_string += '<li>'
       end
-      self.summary += "<a href='##{link}'>#{title}</a>"
+      summary_string += "<a href='##{link}'>#{title}</a>"
 
       oldH = h.to_i
       first = false
     end
-    self.summary += "</ul>"
+    summary_string += "</ul>"
+    self.summary = summary_string
   end
 
+  # Add an id to all the headers
   def generate_anchor_links
     self.content = self.content.gsub(/<h[0-9]>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
