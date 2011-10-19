@@ -7,7 +7,7 @@ module ArticlesHelper
 
   # Join all authors of an article with the keyword 'et'
   def join_authors(article)
-    article.authors.collect{ |author| link_to author.name, articles_path(:author => article.authors[0].name) }.join(' et ').html_safe
+    article.authors.collect{ |author| link_to author.name, articles_path(:author => author.name) }.join(' et ').html_safe
   end
 
 end
