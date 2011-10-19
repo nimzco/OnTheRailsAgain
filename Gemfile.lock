@@ -63,6 +63,7 @@ GEM
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
+    factory_girl (2.1.0)
     fastthread (1.0.7)
     formtastic (2.0.2)
       rails (~> 3.0)
@@ -203,6 +204,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0)
   devise (~> 1.4.2)
   disqus
+  factory_girl
   formtastic
   haml (~> 3.1.0)
   heroku

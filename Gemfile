@@ -21,7 +21,7 @@ gem 'capistrano'
 gem 'will_paginate'       , '~>3.0.2'
 
 gem 'haml'                , '~>3.1.0'
-
+gem 'factory_girl'
 
 group :assets do
   gem 'sass-rails'

@@ -9,8 +9,8 @@ class ArticlesController < InheritedResources::Base
     @page = :article
   end
   
-  def index
-    @search = Article.search(params[:search])
+  def index  
+    @search = current_author ? Article.search(params[:search]) : Article.where(:articles => {:activate => true}).search(params[:search]) 
     @search_text = ''
     if params[:tag]
       @articles = Article.page(params[:page]).find(:all, :order => 'Articles.created_at DESC', :include => :tags, :conditions => ["tags.name = ?", params[:tag]])
