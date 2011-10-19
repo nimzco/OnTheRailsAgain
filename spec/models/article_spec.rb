@@ -39,4 +39,23 @@ describe Article do
       @article.link.should == 'a-complicated-url-a-e'    
     end
   end
+  describe :activate_desactivate do
+    before do
+      @article = Article.new(:title => "Generic Title")
+    end
+    
+    it 'should be desactivate just after creation' do
+      @article.activate.should be_false
+    end
+    it 'should be activate after using activate_article' do
+      @article.activate_article
+      @article.activate.should be_true
+    end
+    it 'should be desactivate after using desactivate' do
+      @article.activate_article
+      @article.activate.should be_true
+      @article.desactivate
+      @article.activate.should be_false
+    end
+  end
 end
