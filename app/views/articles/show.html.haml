@@ -34,9 +34,6 @@
       - @article.tags.each do |tag|
         %li= link_to tag.name, articles_path(:tag => tag.name)
 
-  - if current_author
-    = button_to "Supprimer", article_path(@article), :method => :delete
-
   #disqus_thread
     = raw disqus_thread
 

@@ -4,7 +4,10 @@ OntheRailsAgain::Application.routes.draw do
 
   resources :tags
 
-  resources :articles
+  resources :articles do
+    post 'activate', :on => :member
+    post 'desactivate', :on => :member
+  end
   
   root :to => "articles#index"  
   

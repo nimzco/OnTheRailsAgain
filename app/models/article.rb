@@ -58,6 +58,14 @@ class Article < ActiveRecord::Base
   def generate_link
      self.link = escape_characters self.title
   end
+    
+  def activate_article
+    self.activate = true
+  end
+
+  def desactivate
+    self.activate = false
+  end
   
   private 
   # Return a string with all weird character escaped
@@ -85,5 +93,4 @@ class Article < ActiveRecord::Base
      link_string.gsub!(/^-/,'')
      link_string.downcase
   end
-
 end

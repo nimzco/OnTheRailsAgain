@@ -21,6 +21,8 @@
     = render :partial => 'shared/header'
     #header_border
     .container
+      - if current_author
+        = button_to 'logout', destroy_author_session_path, :method => :delete, :id => 'logoutButton'
       %section
         .content                       
           - flash.each do |name, msg|
