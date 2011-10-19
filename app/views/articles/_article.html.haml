@@ -13,3 +13,11 @@
       = join_tags article
     .authors
       = join_authors article
+    .admin_tool
+      - if current_author
+        = button_to "Supprimer", article_path(article), :method => :delete
+        - if article.activate == true 
+          = button_to 'Desactiver', desactivate_article_path(article.id)        
+        - else
+          = button_to 'Activer', activate_article_path(article.id)
+    

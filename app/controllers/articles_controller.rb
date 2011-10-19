@@ -75,6 +75,21 @@ class ArticlesController < InheritedResources::Base
     @article.generate_link
     update!
   end
+  
+  def activate
+    @article = Article.find params[:id]
+    @article.activate_article
+    @article.save
+    redirect_to articles_path
+  end
+  
+  def desactivate
+    @article = Article.find params[:id]
+    @article.desactivate
+    @article.save
+    redirect_to articles_path
+  end
+  
   private
 
   def highlight(code, language = :ruby)
