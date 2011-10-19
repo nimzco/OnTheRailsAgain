@@ -6,4 +6,4 @@ db/seeds.rb
 public/stylesheets/*.css
 config/database.yml
 .sass-cache/
-
+public/assets/*
