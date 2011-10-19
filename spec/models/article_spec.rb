@@ -39,6 +39,133 @@ describe Article do
       @article.link.should == 'a-complicated-url-a-e'    
     end
   end
+ describe :summary do
+    it 'should generate a correct summary 1' do
+      article = Article.new(:content => """
+        <h1>Article Title</h1>
+          <h2>First Section</h2>
+          <h2>Second Section</h2>
+            <h3>First subsection</h3>
+            <h3>Second subsection</h3>
+          <h2>Third Section</h2>
+      """)
+      article.generate_summary
+      expected_summary = """
+      <ul>
+        <li><a href='#article-title'>Article Title</a>
+          <ul>
+            <li><a href='#first-section'>First Section</a></li>
+            <li><a href='#second-section'>Second Section</a>
+              <ul>
+                <li><a href='#first-subsection'>First subsection</a></li>
+                <li><a href='#second-subsection'>Second subsection</a></li>
+              </ul>
+            </li>
+            <li><a href='#third-section'>Third Section</a></li>
+          </ul>
+        </li>
+      </ul>
+      """.gsub(/\n/,'').gsub(/> +</,'><').gsub(/^ +/,'').gsub(/ +$/,'') # Gsubs used to eliminate extra spaces between HTML Tags
+      article.summary.should == expected_summary
+    end
+    it 'should generate a correct summary 2' do
+      article = Article.new(:content => """
+        <h1>Article Title</h1>
+          <h2>First Section</h2>
+          <h2>Second Section</h2>
+            <h3>First subsection</h3>
+            <h3>Second subsection</h3>
+      """)
+      article.generate_summary
+      expected_summary = """
+      <ul>
+        <li><a href='#article-title'>Article Title</a>
+          <ul>
+            <li><a href='#first-section'>First Section</a></li>
+            <li><a href='#second-section'>Second Section</a>
+              <ul>
+                <li><a href='#first-subsection'>First subsection</a></li>
+                <li><a href='#second-subsection'>Second subsection</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      """.gsub(/\n/,'').gsub(/> +</,'><').gsub(/^ +/,'').gsub(/ +$/,'') # Gsubs used to eliminate extra spaces between HTML Tags
+      article.summary.should == expected_summary
+    end
+    it 'should generate a correct summary 3' do
+      article = Article.new(:content => """
+        <h1>Article Title</h1>
+          <h2>First Section</h2>
+          <h2>Second Section</h2>
+            <h3>First subsection</h3>
+            <h3>Second subsection</h3>
+        <h1>Second Title</h1>
+      """)
+      article.generate_summary
+      expected_summary = """
+      <ul>
+        <li><a href='#article-title'>Article Title</a>
+          <ul>
+            <li><a href='#first-section'>First Section</a></li>
+            <li><a href='#second-section'>Second Section</a>
+              <ul>
+                <li><a href='#first-subsection'>First subsection</a></li>
+                <li><a href='#second-subsection'>Second subsection</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href='#second-title'>Second Title</a></li>
+      </ul>
+      """.gsub(/\n/,'').gsub(/> +</,'><').gsub(/^ +/,'').gsub(/ +$/,'') # Gsubs used to eliminate extra spaces between HTML Tags
+      article.summary.should == expected_summary
+    end
+    it 'should generate a correct summary 4' do
+      article = Article.new(:content => """
+        <h1>Article Title</h1>
+          <h2>First Section</h2>
+          <h2>Second Section</h2>
+            <h3>First subsection</h3>
+            <h3>Second subsection</h3>
+          <h2>Third Section</h2>
+        <h1>Second Title</h1>
+          <h2>First Section</h2>
+            <h3>First subsection</h3>
+        
+      """)
+      article.generate_summary
+      expected_summary = """
+      <ul>
+        <li><a href='#article-title'>Article Title</a>
+          <ul>
+            <li><a href='#first-section'>First Section</a></li>
+            <li><a href='#second-section'>Second Section</a>
+              <ul>
+                <li><a href='#first-subsection'>First subsection</a></li>
+                <li><a href='#second-subsection'>Second subsection</a></li>
+              </ul>
+            </li>
+            <li><a href='#third-section'>Third Section</a></li>
+          </ul>
+        </li>
+        <li><a href='#second-title'>Second Title</a>
+          <ul>
+            <li><a href='#first-section'>First Section</a>
+              <ul>
+                <li><a href='#first-subsection'>First subsection</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      """.gsub(/\n/,'').gsub(/> +</,'><').gsub(/^ +/,'').gsub(/ +$/,'') # Gsubs used to eliminate extra spaces between HTML Tags
+      article.summary.should == expected_summary
+    end
+
+  end
+  
   describe :activate_desactivate do
     before do
       @article = Article.new(:title => "Generic Title")
@@ -58,4 +185,5 @@ describe Article do
       @article.activate.should be_false
     end
   end
+
 end

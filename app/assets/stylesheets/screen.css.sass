@@ -328,7 +328,7 @@ p#special_error
   margin-bottom: 20px
   font-family: 'HelveticaNeueBold'
   font-size: 1.1em
-  a, span.current
+  a, .current
     //+radius(0.2em)
     +gradient(#f3f3f3, #ececec)
     display: inline-block
@@ -341,14 +341,14 @@ p#special_error
     letter-spacing: 0.1em
     border-left-color: #ececec
   
-  span.current, .prev_page:hover, .next_page:hover, a:hover
+  .current, .prev_page:hover, .next_page:hover, a:hover
     border: 1px solid $dark_red
     color: white
     cursor: pointer
     +gradient(lighten($light_red, 5%), lighten($dark_red, 5%))
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8)
   
-  span.current
+  .current
     +gradient($light_red,$dark_red)  
   .prev_page:hover
     border-right: none
