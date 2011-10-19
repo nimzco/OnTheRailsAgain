@@ -43,6 +43,3 @@
     ~ @article.summary.html_safe
     - if current_author
       = button_to "Editer", edit_article_path(@article.link), :method => :get 
-
-= content_for :javascript do
-  = javascript_include_tag "article_show"
