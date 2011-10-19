@@ -50,6 +50,7 @@ class Article < ActiveRecord::Base
   end
 
   # Add an id to all the headers
+  # Ids are generating in the same way that URLs are.
   def generate_anchor_links
     self.content = self.content.gsub(/<h[0-9]>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
