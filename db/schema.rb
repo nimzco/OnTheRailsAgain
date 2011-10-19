@@ -52,20 +52,6 @@ ActiveRecord::Schema.define(:version => 20111019083545) do
   add_index "authors", ["email"], :name => "index_authors_on_email", :unique => true
   add_index "authors", ["reset_password_token"], :name => "index_authors_on_reset_password_token", :unique => true
 
-  create_table "comments", :force => true do |t|
-    t.string   "username"
-    t.text     "content"
-    t.integer  "article_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "ancestry"
-    t.string   "user_email"
-    t.string   "user_homepage"
-    t.integer  "ancestry_depth", :default => 0
-  end
-
-  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
-
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0

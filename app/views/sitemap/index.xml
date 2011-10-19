@@ -10,7 +10,7 @@
   <loc>http://ontherailsagain.com/</loc>
 </url>
 
-<%= Article.all.each do |article| %>
+<% Article.all.each do |article| %>
   <url>
     <loc><%= article_url(:controller => "articles", :action => "show", :id => article.link) %></loc>
   </url>
