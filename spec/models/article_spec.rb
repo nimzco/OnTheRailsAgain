@@ -3,11 +3,17 @@ require 'spec_helper'
 describe Article do
   
   describe :validateion do
-    article = Article.create()
-    article.should have(1).errors_on :title
-    article.should have(1).errors_on :content 
-    article.should have(1).errors_on :introduction
-    article.should have(1).errors_on :link
+    let(:article) {Article.create()}
+    it {article.should have(1).errors_on :title}
+    it {article.should have(1).errors_on :content}
+    it {article.should have(1).errors_on :introduction}
+    it {article.should have(1).errors_on :link}
+  end
+  
+  it 'should not create if an article with the same title exists' do
+    article1 = Article.create(:title => 'title', :content => 'content', :introduction => 'introduction', :link => 'title')
+    article2 = Article.new(:title => 'title', :content => 'content', :introduction => 'introduction', :link => 'title')
+    lambda {article2.save!}.should raise_error ActiveRecord::RecordInvalid
   end
 
   describe :article_link do

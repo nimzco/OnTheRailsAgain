@@ -9,9 +9,13 @@
 <url>
   <loc>http://ontherailsagain.com/</loc>
 </url>
-<url>
-  <loc>http://ontherailsagain.com/articles/Les_associations_Many-to-Many_avanc%C3%A9es_(has_many_:through)</loc>
-</url>
+
+<%= Article.all.each do |article| %>
+  <url>
+    <loc><%= article_url(:controller => "articles", :action => "show", :id => article.link) %></loc>
+  </url>
+<% end %>
+
 <url>
   <loc>http://ontherailsagain.com/articles?tag=Rails</loc>
 </url>
@@ -25,22 +29,10 @@
   <loc>http://ontherailsagain.com/articles?author=Nima</loc>
 </url>
 <url>
-  <loc>http://ontherailsagain.com/articles/Les_associations_Many-to-Many</loc>
-</url>
-<url>
-  <loc>http://ontherailsagain.com/articles/Comprendre_la_structure_d&#39;une_application_Rails</loc>
-</url>
-<url>
   <loc>http://ontherailsagain.com/articles?tag=Structure</loc>
 </url>
 <url>
   <loc>http://ontherailsagain.com/articles?author=Nico</loc>
-</url>
-<url>
-  <loc>http://ontherailsagain.com/articles/Les_associations_One-to-Many</loc>
-</url>
-<url>
-  <loc>http://ontherailsagain.com/articles/Avant_de_commencer_avec_Ruby_on_Rails</loc>
 </url>
 <url>
   <loc>http://ontherailsagain.com/articles?tag=Routes</loc>
