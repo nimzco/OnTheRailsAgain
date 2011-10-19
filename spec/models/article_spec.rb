@@ -1,8 +1,7 @@
 require 'spec_helper'
 
-describe :Article do
+describe Article do
   
-
   describe :article_link do
     before(:each) do
       @article = Article.new(:title => "Generic Title")

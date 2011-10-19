@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  test "link generation" do
-    
+  test "the truth" do
+    assert true
   end
 end

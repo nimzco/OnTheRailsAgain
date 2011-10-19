@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
     self.content.gsub(/<h[0-9][^>]*>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9][^>]*>/m, '').sub(/<\/h[0-9]>/m, '')
-      link  = escape_accent title #.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
+      link  = escape_characters title
       if !first and (h.to_i - oldH) == 1
         summary_string += '</li><li><ul><li>'
       elsif !first and (h.to_i - oldH) == 0
@@ -49,14 +49,15 @@ class Article < ActiveRecord::Base
     self.content = self.content.gsub(/<h[0-9]>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9]>/m, "").sub(/<\/h[0-9]>/m, "")
-      link  = title.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u').gsub(/\./,'')
+      link  = escape_characters title
       "<h#{h} id='#{link}'>#{title}</h#{h}>"
     end    
   end
-
-  # Generate a link for an article based on its title
+  
+  # Return a string with all weird character escaped
   # Words will be seperated by dashes and all special characters will be removed
-  def generate_link
+  def escape_characters string
+    link_string = String.new string
     accents = { ['á','à','â','ä','ã','Ã','Ä','Â','À'] => 'a',
        ['é','è','ê','ë','Ë','É','È','Ê'] => 'e',
        ['í','ì','î','ï','I','Î','Ì'] => 'i',
@@ -64,17 +65,22 @@ class Article < ActiveRecord::Base
        ['œ'] => 'oe',
        ['ú','ù','û','ü','U','Û','Ù'] => 'u',
        ['ç','Ç'] => 'c',
-       [' '] => '_', 
-       ['.',',',';','?','!',':','=','+','=','<','>','%','^','$','€','&',')','(','…'] => '-'
+       [' '] => '-', 
+       ['.',',',';','?','!',':','=','+','=','<','>','%','^','$','€','&',')','(','…','\'','"'] => '-'
        }
-     link_string = self.title
+
      accents.each do |ac,rep|
        ac.each do |s|
          link_string.gsub!(s, rep)
        end
      end
-     link_string.gsub(/-{1,3}/, '-')
-     self.link = link_string.downcase
+     link_string.gsub!(/-+/, '-').gsub!(/-$/,'')
+     link_string.downcase
+  end
+
+  # Generate a link for an article based on its title
+  def generate_link
+     self.link = escape_characters self.title
   end
 
 end
