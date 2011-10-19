@@ -37,7 +37,6 @@ group :development, :test do
   gem 'ruby-debug'
   gem 'mongrel'     , '~>1.1.5'
   gem "rspec-rails" , "~> 2.6"
-
 end
 
 # Use unicorn as the web server
