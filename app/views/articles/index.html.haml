@@ -44,7 +44,7 @@
       - if current_author
         = button_to 'Tout desactiver', activate_all_articles_path
         = button_to 'Tout activer', desactivate_all_articles_path
-        = button_to 'Nouvel article', new_article_path
+        = button_to 'Nouvel article', new_article_path, :method => :get
 
 = content_for :footer do
   -if is_mobile?
