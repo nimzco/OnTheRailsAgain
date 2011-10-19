@@ -36,7 +36,7 @@ class ArticlesController < InheritedResources::Base
     # Redirect user on correct URL if params[:id] is an integer
     if params[:id].to_i > 0
       @article = Article.find params[:id]
-      redirect_to :action => :show, :id => escape_accent(@article.title)
+      redirect_to :action => :show, :id => @article.link
     else
       @article = Article.where("link = ?", params[:id]).first
       show!
@@ -54,7 +54,8 @@ class ArticlesController < InheritedResources::Base
       @article.content = if Rails.env != 'production' then haml2html(params[:article][:content]) else params[:article][:content] end
       @article.generate_summary
       @article.generate_anchor_links
-      @article.link = escape_accent params[:article][:title]
+      @article.title = params[:article][:title]
+      @article.generate_link
       create!
     rescue Haml::SyntaxError => e
       puts e
@@ -67,10 +68,11 @@ class ArticlesController < InheritedResources::Base
   def update
     @article = Article.find(params[:id])
     @article.content = if Rails.env != 'production' then haml2html(params[:article][:content]) else params[:article][:content] end
+    params[:article][:content] = @article.content
     @article.generate_summary
     @article.generate_anchor_links
-    @article.link = escape_accent params[:article][:title]
-    params[:article][:content] = @article.content
+    @article.title = params[:article][:title]
+    @article.generate_link
     update!
   end
   private
@@ -89,10 +91,4 @@ class ArticlesController < InheritedResources::Base
       highlight(@string, @language)
     end.html_safe
   end
-
-  private
-  def escape_accent(string)
-    string.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u')
-  end
-
 end

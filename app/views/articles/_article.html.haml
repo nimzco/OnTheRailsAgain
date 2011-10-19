@@ -5,7 +5,7 @@
       = l article.created_at.to_date, :format => "%b"
       = l article.created_at.to_date, :format => "%Y"
   .wrapper    
-    = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => escape_accent(article.title)
+    = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => article.link
     
     %p.article_content
       = article.introduction

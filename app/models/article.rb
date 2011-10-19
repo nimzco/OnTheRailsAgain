@@ -53,4 +53,28 @@ class Article < ActiveRecord::Base
       "<h#{h} id='#{link}'>#{title}</h#{h}>"
     end    
   end
+
+  # Generate a link for an article based on its title
+  # Words will be seperated by dashes and all special characters will be removed
+  def generate_link
+    accents = { ['á','à','â','ä','ã','Ã','Ä','Â','À'] => 'a',
+       ['é','è','ê','ë','Ë','É','È','Ê'] => 'e',
+       ['í','ì','î','ï','I','Î','Ì'] => 'i',
+       ['ó','ò','ô','ö','õ','Õ','Ö','Ô','Ò'] => 'o',
+       ['œ'] => 'oe',
+       ['ú','ù','û','ü','U','Û','Ù'] => 'u',
+       ['ç','Ç'] => 'c',
+       [' '] => '_', 
+       ['.',',',';','?','!',':','=','+','=','<','>','%','^','$','€','&',')','(','…'] => '-'
+       }
+     link_string = self.title
+     accents.each do |ac,rep|
+       ac.each do |s|
+         link_string.gsub!(s, rep)
+       end
+     end
+     link_string.gsub(/-{1,3}/, '-')
+     self.link = link_string.downcase
+  end
+
 end

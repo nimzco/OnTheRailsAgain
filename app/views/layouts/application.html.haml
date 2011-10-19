@@ -5,21 +5,16 @@
     = favicon_link_tag('/favicon.png', :rel => 'shortcut icon', :type => 'image/png')
 
     = stylesheet_link_tag 'application'#, :media => 'screen, projection'
-    = # stylesheet_link_tag 'print', :media => 'print'
-    = # stylesheet_link_tag 'media_query'
-    /[if IE]
-      = # stylesheet_link_tag 'ie', :media => 'screen, projection'
-    = # stylesheet_link_tag 'typography'
-    = # stylesheet_link_tag 'highlight'
+    
     = render 'shared/meta_information'
     == <link rel="alternate" type="application/rss+xml" title="OnTheRailsAgain - RSS" href="http://ontherailsagain.com/articles.rss" />
 
 
     %title 
-      On The Rails Again
-      - if !(yield :title).empty?
-        \-
-      = yield :title
+      - if (yield :title).empty?
+        On The Rails Again
+      - else
+        = yield :title
     = csrf_meta_tag
     
   %body

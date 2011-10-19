@@ -10,8 +10,4 @@ module ArticlesHelper
     article.authors.collect{ |author| link_to author.name, articles_path(:author => article.authors[0].name) }.join(' et ').html_safe
   end
 
-  # Escape all (usual) accents of a string
-  def escape_accent(string)
-    string.gsub(/ /, '_').gsub(/[éèêë]/,'e').gsub(/[âà]/,'a').gsub(/[îï]/,'i').gsub(/[ûüù]/,'u')
-  end
 end

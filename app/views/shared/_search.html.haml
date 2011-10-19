@@ -2,4 +2,4 @@
   .content_search
     = form_for @search, {:controller => 'articles', :action => 'index'} do |f|
       = f.text_field  :title_or_content_contains, :size => '15'
-      = f.submit  "&nbsp;".html_safe
+      = f.submit  "&nbsp;".html_safe, :id => 'search_submit'
