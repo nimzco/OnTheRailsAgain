@@ -18,27 +18,32 @@ class Article < ActiveRecord::Base
     summary_string = '<ul>'
     first = true
     oldH = 1
+    h = ''
     self.content.gsub(/<h[0-9][^>]*>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9][^>]*>/m, '').sub(/<\/h[0-9]>/m, '')
       link  = escape_characters title
-      if !first and (h.to_i - oldH) == 1
-        summary_string += '</li><li><ul><li>'
-      elsif !first and (h.to_i - oldH) == 0
-        summary_string += '</li><li>'
-      elsif !first and (h.to_i - oldH) == -1
-        summary_string += '</li></ul><li>'
-      elsif !first and (h.to_i - oldH) == -2
-        summary_string += '</li></ul></ul><li>'
-      elsif !first and (h.to_i - oldH) == -3
-        summary_string += '</li></ul></ul></ul><li>'
-      else
-        summary_string += '<li>'
+      nb_ul = 1
+      if !first
+        case (h.to_i - oldH)
+          when 1
+            summary_string += '<ul>'
+          when 0 
+            summary_string += '</li>'
+          else
+            summary_string += '</li>'
+            (h.to_i - oldH).abs.times do
+              summary_string += '</ul></li>'
+            end
+        end
       end
-      summary_string += "<a href='##{link}'>#{title}</a>"
-
+      summary_string += "<li><a href='##{link}'>#{title}</a>"
       oldH = h.to_i
       first = false
+    end
+    summary_string += '</li>'
+    (oldH - 1).abs.times do
+      summary_string += '</ul></li>'
     end
     summary_string += "</ul>"
     self.summary = summary_string
