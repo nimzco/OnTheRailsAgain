@@ -7,8 +7,6 @@
 = content_for :title do
   = @article.title
 .article_content
-  - if current_author
-    = button_to "Editer", edit_article_path(@article)
   %h1= @article.title
   %p.posted_by
     Posté par 
@@ -43,6 +41,8 @@
 %aside#summary
   #summary_content
     ~ @article.summary.html_safe
+    - if current_author
+      = button_to "Editer", edit_article_path(@article.link), :method => :get 
 
 = content_for :javascript do
   = javascript_include_tag "article_show"
