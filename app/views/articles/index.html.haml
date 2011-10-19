@@ -42,8 +42,8 @@
           %script{:src => '//platform.twitter.com/widgets.js', :type => 'text/javascript'}
     #tool
       - if current_author
-        = button_to 'Tout desactiver', activate_all_articles_path
-        = button_to 'Tout activer', desactivate_all_articles_path
+        = button_to 'Tout desactiver', desactivate_all_articles_path
+        = button_to 'Tout activer', activate_all_articles_path
         = button_to 'Nouvel article', new_article_path, :method => :get
 
 = content_for :footer do
