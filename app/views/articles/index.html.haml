@@ -19,8 +19,7 @@
   = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
 
 %aside.tags
-  .content
-  
+  .content        
     -if !is_mobile?
       = render 'shared/search'    
     #tags.aside_box
@@ -41,6 +40,11 @@
         #twitter_follow_link
           %a{:href => 'https://twitter.com/OnTheRailsBlog', :class => 'twitter-follow-button', :data => {'show-count' =>'false', :width => '163px'}} Follow @OnTheRailsBlog
           %script{:src => '//platform.twitter.com/widgets.js', :type => 'text/javascript'}
+    #tool
+      - if current_author
+        = button_to 'Tout desactiver', activate_all_articles_path
+        = button_to 'Tout activer', desactivate_all_articles_path
+        = button_to 'Nouvel article', new_article_path
 
 = content_for :footer do
   -if is_mobile?
