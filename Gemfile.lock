@@ -211,11 +211,7 @@ DEPENDENCIES
   inherited_resources
   jquery-rails
   meta_search
-<<<<<<< HEAD
-  mongrel (~> 1.1.5)
-=======
   mongrel (~> 1.2.0.pre2)
->>>>>>> 743b6ad5e1ce884ac332f675fea5ebb6eaa78ff6
   pg
   rails (= 3.1.1)
   rspec-rails (~> 2.6)
