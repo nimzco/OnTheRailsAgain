@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ArticlesController do
   before do
-    #user = Factory.create(:author)
+    #@user = Factory(:author)
   end
   
   describe :index do
@@ -20,8 +20,8 @@ describe ArticlesController do
   
   describe :new do
     it 'should not render new view but login form' do
-      @author = Author.create(:name => "Test User", :email => "user@example.com", :password => "password", :password_confirmation => "password")
-      sign_in @author
+      #@author = Author.create(:name => "Test User", :email => "user@example.com", :password => "password", :password_confirmation => "password")
+      #test_sign_in(@author)
       get :new
       response.should render_template("devise/sessions/new")
     end
