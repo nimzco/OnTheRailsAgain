@@ -7,6 +7,8 @@ OntheRailsAgain::Application.routes.draw do
   resources :articles do
     post 'activate', :on => :member
     post 'desactivate', :on => :member
+    post 'activate_all', :on => :collection
+    post 'desactivate_all', :on => :collection
   end
   
   root :to => "articles#index"  

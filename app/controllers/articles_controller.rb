@@ -90,6 +90,24 @@ class ArticlesController < InheritedResources::Base
     redirect_to articles_path
   end
   
+  def activate_all
+    @articles = Article.all
+    @articles.each do |article|
+      article.activate_article
+      article.save  
+    end  
+    redirect_to articles_path
+  end
+  
+  def desactivate_all
+    @articles = Article.all
+    @articles.each do |article|
+      article.desactivate
+      article.save  
+    end  
+    redirect_to articles_path
+  end
+  
   private
 
   def highlight(code, language = :ruby)

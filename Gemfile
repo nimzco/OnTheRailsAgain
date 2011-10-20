@@ -29,13 +29,11 @@ group :assets do
   gem 'uglifier'
 end
 gem "jquery-rails"
-group :production do
-  gem 'pg'
-end
+gem 'pg'
+
 group :development, :test do
-  gem 'pg'
-  gem 'ruby-debug'
-  gem 'mongrel'     , '~>1.1.5'
+  gem 'ruby-debug19'
+  gem 'mongrel'     , '~>1.2.0.pre2'
   gem "rspec-rails" , "~> 2.6"
 end
 
