@@ -11,7 +11,9 @@ class Article < ActiveRecord::Base
   # It has to be unique
   validates :title, :link, :uniqueness => true
   validates :title, :introduction, :content, :link, :presence => true
-  
+
+  self.per_page = 5
+
   # Generate a summary in a nested list composed of all headers of the article
   # The method is REALLY ugly because of some problem in the gsub...
   # Don't even try to understand it.

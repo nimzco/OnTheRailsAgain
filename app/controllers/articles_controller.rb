@@ -5,14 +5,12 @@ class ArticlesController < InheritedResources::Base
   before_filter :set_page_name
   respond_to :rss
   
-  WillPaginate.per_page = 5
-  
   def set_page_name
     @page = :article
   end
   
   def index  
-    @search = current_author ? Article.search(params[:search]) : Article.where(:articles => {:activate => true}).search(params[:search]) 
+    @search = current_author ? Article.search(params[:search]) : Article.where(:articles => {:activate => true}).search(params[:search])
     @search_text = ''
     if params[:tag]
       @articles = Article.page(params[:page]).find(:all, :order => 'Articles.created_at DESC', :include => :tags, :conditions => ["tags.name = ?", params[:tag]])
