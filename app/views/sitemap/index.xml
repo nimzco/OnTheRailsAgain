@@ -4,37 +4,27 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 <url>
   <loc>http://ontherailsagain.com/</loc>
 </url>
 
 <% Article.all.each do |article| %>
   <url>
-    <loc><%= article_url(:controller => "articles", :action => "show", :id => article.link) %></loc>
+    <loc><%= article_url(:id => article.link) %></loc>
+  </url>
+<% end %>
+
+<% Tag.all.each do |tag| %>
+  <url>
+    <loc><%= articles_url(:tag => tag.name) %></loc>
   </url>
 <% end %>
 
 <url>
-  <loc>http://ontherailsagain.com/articles?tag=Rails</loc>
-</url>
-<url>
-  <loc>http://ontherailsagain.com/articles?tag=ActiveRecord</loc>
-</url>
-<url>
-  <loc>http://ontherailsagain.com/articles?tag=Relations</loc>
-</url>
-<url>
   <loc>http://ontherailsagain.com/articles?author=Nima</loc>
-</url>
-<url>
-  <loc>http://ontherailsagain.com/articles?tag=Structure</loc>
 </url>
 <url>
   <loc>http://ontherailsagain.com/articles?author=Nico</loc>
 </url>
-<url>
-  <loc>http://ontherailsagain.com/articles?tag=Routes</loc>
-</url>
+
 </urlset>
