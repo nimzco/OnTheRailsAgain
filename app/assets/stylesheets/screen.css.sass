@@ -151,9 +151,16 @@ button[disabled], button[disabled]
 footer
   background-color: whiteSmoke
   color: #222
-  min-height: 5em
   border-top: 1px solid $dark_red
   +bshadow-out(0px, -1px, 0, black)
+  .content
+    text-align: center
+    font-size: 1.2em
+    max-width: $max-width
+    padding: 1em
+    a
+      text-decoration: none
+      font-family: "HelveticaNeueBold"
   
 section.articles
   display: table-cell
@@ -426,10 +433,6 @@ h2.search_title
   border: 1px solid darken($dark_red, 5%)
   +bshadow-in(0, 0, 4px, rgba(255,255,255, 0.4)) 
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
-
-footer .content
-  max-width: $max-width
-  min-height: 96px
 
 #logoutButton
   position: absolute
