@@ -74,11 +74,11 @@ class ArticlesController < InheritedResources::Base
     @article.generate_link
     if @article.save
       respond_to do |format|
-        format.html { render "show", :id => @article.link }
+        format.html { redirect_to @article }
       end
     else
       respond_to do |format|
-        format.html { render "edit", :id => @article.link, :notice => "Un problème est survenue à l'enregistrement."}
+        format.html { render action "edit", :notice => "Un problème est survenue à l'enregistrement."}
       end
     end
   end
