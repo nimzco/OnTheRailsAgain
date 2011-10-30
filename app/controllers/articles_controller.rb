@@ -68,12 +68,19 @@ class ArticlesController < InheritedResources::Base
   def update
     @article = Article.find(params[:id])
     @article.content = if Rails.env != 'production' then haml2html(params[:article][:content]) else params[:article][:content] end
-    params[:article][:content] = @article.content
     @article.generate_summary
     @article.generate_anchor_links
     @article.title = params[:article][:title]
     @article.generate_link
-    update!
+    if @article.save
+      respond_to do |format|
+        format.html { render "show", :id => @article.link }
+      end
+    else
+      respond_to do |format|
+        format.html { render "edit", :id => @article.link, :notice => "Un problème est survenue à l'enregistrement."}
+      end
+    end
   end
   
   def activate
