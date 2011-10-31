@@ -20,6 +20,8 @@
 
 %aside.tags
   .content        
+    - if current_author
+      = button_to 'Nouvel article', new_article_path, :method => :get
     -if !is_mobile?
       = render 'shared/search'    
     #tags.aside_box
@@ -44,7 +46,7 @@
       - if current_author
         = button_to 'Tout desactiver', desactivate_all_articles_path
         = button_to 'Tout activer', activate_all_articles_path
-        = button_to 'Nouvel article', new_article_path, :method => :get
+
 
 = content_for :footer do
   -if is_mobile?
