@@ -63,7 +63,8 @@ blockquote  {
   text-indent: -1em;
 }
 
-strong,dfn,em { font-weight: normal; font-family: "HelveticaNeueBold";}
+strong, dfn, b { font-weight: normal; font-family: "HelveticaNeueBold";}
+i, em { font-family: 'HelveticaNeueItalic'; }
 sup, sub    { line-height: 0; }
 
 abbr,

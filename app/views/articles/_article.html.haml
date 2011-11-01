@@ -15,7 +15,7 @@
       = join_authors article
     .admin_tool
       - if current_author
-        = button_to "Supprimer", article_path(article), :method => :delete
+        = button_to "Supprimer", article_path(article),:confirm => "are you sure ?", :method => :delete
         - if article.activate == true 
           = button_to 'Desactiver', desactivate_article_path(article.id)        
         - else
