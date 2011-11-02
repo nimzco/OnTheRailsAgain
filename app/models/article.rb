@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
   # The method is REALLY ugly because of some problem in the gsub...
   # Don't even try to understand it.
   def generate_summary
-    summary_string = '<ul>'
+    summary_string = '<ul class="first">'
     first = true
     oldH = 1
     h = ''

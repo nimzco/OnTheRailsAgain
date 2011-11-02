@@ -68,8 +68,11 @@ body
 #content
   display: table
   
-.article_content
+.article_show
   display: table-cell
+  background-color: #F7F7F7
+  border-left: 1px solid #CCC
+  border-right: 1px solid #CCC
   
 article
   .tags
@@ -103,23 +106,7 @@ aside
 
 #summary_content
   position: fixed
-  /* width: 13% */
-  font-size: 105%
-  ul
-    font-size: 1.2em
-    padding-left  : 1em
-    list-style    : none
-    li:first-letter
-      font-weight: normal
-      font-family: "HelveticaNeueBold"
-    li
-      margin-bottom: 0.5em
-      ul
-        margin-top: 0.5em
-        font-size: 0.9em
-  > ul
-    padding-left: 0
-
+  
 .current_section
   font-weight: normal
   font-family: "HelveticaNeueBold"
@@ -446,6 +433,14 @@ h2.search_title
   input
     width: 100%
 
-#disqus_thread ul    
-  list-style-image: none
+#disqus
+  border-top: 1px solid #DDD
+  +bshadow-in(0, 1px, 0px, rgba(255,255,255, 0.5)) 
+  padding: 2.5em
+  padding-top: 1.25em
+  background-color: #f4f4f4
+  ul    
+    list-style-image: none
+  h1:before, h2:before, h3:before, h4:before
+    content: none
 @import mobile 
