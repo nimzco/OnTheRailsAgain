@@ -14,8 +14,7 @@
     %h2.search_title
       = @search_text
   - @articles.each do |article|
-    - if article.activate == true || current_author
-      = render article
+    = render article
   = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
 
 %aside.tags

@@ -10,7 +10,7 @@ class ArticlesController < InheritedResources::Base
   end
   
   def index  
-    @search = current_author ? Article.search(params[:search]) : Article.where(:articles => {:activate => true}).search(params[:search])
+    @search = current_author ? Article.search(params[:search]) : Article.where(:articles => {:activated => true}).search(params[:search])
     @search_text = ''
     if params[:tag]
       @articles = Article.page(params[:page]).find(:all, :order => 'Articles.created_at DESC', :include => :tags, :conditions => ["tags.name = ?", params[:tag]])
@@ -52,7 +52,7 @@ class ArticlesController < InheritedResources::Base
     @article = Article.new(params[:article])
     begin
       @article.content = if Rails.env != 'production' then haml2html(params[:article][:content]) else params[:article][:content] end
-      @article.generate_summary
+      @article.generate_table_of_content
       @article.generate_anchor_links
       @article.title = params[:article][:title]
       @article.generate_link
@@ -68,7 +68,7 @@ class ArticlesController < InheritedResources::Base
   def update
     @article = Article.find(params[:id])
     @article.content = if Rails.env != 'production' then haml2html(params[:article][:content]) else params[:article][:content] end
-    @article.generate_summary
+    @article.generate_table_of_content
     @article.generate_anchor_links
     @article.title = params[:article][:title]
     @article.generate_link

@@ -8,4 +8,5 @@ config/database.yml
 .sass-cache/
 public/assets/*
 .rvm
+.rvmrc
 .DS_Store

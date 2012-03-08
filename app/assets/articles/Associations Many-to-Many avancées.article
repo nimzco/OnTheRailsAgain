@@ -1,0 +1,256 @@
+--date 
+29/09/2011
+
+--tags
+Test, Routes
+
+--introduction
+Maintenant que nous avons abordé les relations Many-to-Many simples, voyons comment mettre en oeuvre les relations Many-to-Many avancées (ou has_many :through).
+Cette relation permet de stocker des données relatives à l'association qui lie deux modèles.
+
+--content
+%h1 Les associations Many-to-Many avancées (has_many :through)
+
+.require
+  Pré-requis :
+  %ul
+    %li 
+      avoir vu les associations 
+      %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/les-associations-many-to-many"} Many-to-Many simples.
+
+.see
+  Ce que nous allons voir :
+  %ul
+    %li stocker des informations relatives à une relation Many-to-Many ;
+    %li utiliser et manipuler les associations.
+
+%h2 Présentation du problème
+
+%p
+  Avec les relations Many-to-Many nous avons déjà réussi à résoudre un certain nombre de problèmes pour ce qui était des relations entre deux objets.
+  Allons encore plus loin.
+  Supposons que vous vouliez stocker des informations supplémentaires et relatives à votre relation. Des propriétés propres à la relation et non aux objets liés.
+  
+%h2 Un exemple concret
+
+%p
+  Illustrons le problème.
+  Supposons que nous avons deux modèles : <span class="code">Doctor</span> et <span class="code">Patient</span>.
+
+%p
+  Un docteur a plusieurs patients et un patient peut avoir plusieurs docteurs.
+  Pour gérer les rendez-vous, nous avons besoin de savoir la date du prochain rendez-vous entre le docteur D et le patient P.
+
+%h2 Dans la théorie
+
+%p 
+  Il nous faut une table de jointure entre ces modèles avec la référence du docteur, la référence du patient et des champs qui décrivent le rendez-vous.
+  Cette approche est très similaire à une relation Many-to-Many classique à la différence que cette table ne stocke pas uniquement des références.
+
+%p
+  Voici tout ce qui diffère d'une relation Many-to-Many classique :
+%ul
+  %li 
+    Le stockage en base de données est différent, la table de jointure <b>doit</b> avoir une colonne clé primaire.
+    (contrairement à la relation Many-to-Many classique où l'on ne veut justement pas de clé primaire).
+  %li 
+    Il faut créer un modèle pour cette relation. Donc un modèle correspondant à la table en base de donnée.
+  %li 
+    Il n'y a pas de convention pour le nom de la table. Nous ne sommes pas obligé d'appeler la table <code>DoctorPatients</code>.
+    Il est même conseillé de donner un nom plus adéquat pour ces tables. Nous l'appellerons <code>Appointments</code>.
+
+%h2 Dans la pratique
+
+%p Avant de continuer, voilà une représentation de la relation des modèles entre eux.
+
+%img{:src => "/article_images/Associations_Many-to-Many_avancees/Many-to-Many.png"}
+%h3 Préparer la base de données
+
+%p  
+  Créons rapidement les modèles <code>Doctor</code> et <code>Patient</code>.
+
+%pre.bash
+  :preserve
+    $ rails generate scaffold Doctor  name:string speciality:string
+    $ rails generate scaffold Patient name:string 
+
+%p
+  Comme je vous l'ai dit, il est nécessaire de créer un modèle correspondant à la table de jointure&nbsp;: 
+
+%pre.bash
+  :preserve
+    $ rails generate model Appointment
+
+%p
+  On ne crée que le modèle car aucune vue ou contrôleur n'a besoin d'y être associé. De plus, le fait de passer par la commande rails permet d'avoir le modèle et la migration générés en une fois.
+  Il faut maintenant éditer la migration générée pour qu'elle corresponde à ce que l'on veut&nbsp;:
+
+%pre.ruby
+  :preserve
+    # db/migrate/x_create_appointments.rb
+    class CreateAppointments < ActiveRecord::Migration
+      def self.up
+        create_table :appointments do |t|
+          t.references :doctor, :patient
+          t.datetime   :appointment_date
+          t.timestamps
+        end
+        add_index :appointments, [:doctor_id, :patient_id]
+      end
+
+      def self.down
+        drop_table :appointments
+      end
+    end
+
+%p
+  Comme dans la relation Many-to-Many classique, on spécifie les références aux modèles <code>Doctor</code> et <code>Patient</code> .
+  Puis on rajoute les informations nécéssaires à la description de la relation entre les deux objets. 
+  On peut également rajouter les indexes pour <span class="code">doctor_id</span> et <span class="code">patient_id</span> qui sont les clés qui serviront à la base de données lors de la recherche dans la table.
+  
+%p.notice
+  On notera que cette table <b>DOIT</b> avoir une clé primaire, c'est pour ça que l'on n'a pas mis <span class="code">:id => false</span> après le <span class="code">create_table</span>.
+
+%h3 Adapter les modèles
+
+%p
+  Maintenant que la table de jointure est crée, il faut renseigner dans les modèles la façon dont ils sont liés entre eux.
+
+%pre.ruby
+  :preserve
+    # app/models/doctor.rb
+    Class Doctor < ActiveRecord::Base
+      has_many :appointments
+      has_many :patients,    :through => :appointments
+    end
+
+    # app/models/patient.rb
+    Class Patient < ActiveRecord::Base
+      has_many :appointments
+      has_many :doctors,     :through => :appointments
+    end
+
+    # app/models/appointment.rb
+    Class Appointment < ActiveRecord::Base
+      belongs_to :doctor
+      belongs_to :patient
+    end
+
+%p
+  Comme vous le voyez, on n'utilise plus <span class="code">has_and_belong_to_many</span>. Maintenant, les docteurs ont plusieurs patients et vice-versa <b>à travers</b> la table Appointment. 
+  Dans cette table seront stockées les informations qui lient les docteurs aux patients. 
+  C'est pour cela que l'on utilise le mot clé <span class="code">:through</span>. On indique à Rails que s'il veut trouver les patients liés à un docteur il devra passer par la table Appointments pour les trouver.
+
+%h2 Comment utiliser ces relations dans les contrôleurs
+
+%h3 Manipuler les associations (ici des «appointments»)
+
+%p
+  Plusieurs moyens s'offre à vous pour créer un <code>Appointment</code> qui lie un <code>Doctor</code> et un <code>Patient</code>.
+  En voici un exemple&nbsp;:
+
+%pre.ruby
+  :preserve
+    # @patient et @doctor contiennent une instance d'un docteur et d'un patient
+    Appointment.create(:doctor => @doctor, :patient => @patient, :appointment_date => Date.tomorrow)
+
+%p
+  Vous pouvez également créer une association sans spécifier tous les champs, juste en ajoutant un nouveau patient à la liste des docteurs ou vice-versa :
+
+%pre.ruby
+  :preserve
+    @doctor.patients << @patient
+    # Ou bien 
+    @patient.doctors << @doctor
+
+%p
+  Cela créera automatiquement un Appointment avec les bonnes valeurs pour <span class="code">doctor_id</span> et <span class="code">patient_id</span>, mais tous les autres attributs (ici, la date) seront fixés à null. 
+
+%p
+  Si vous voulez réaffecter toute la liste des patients ou des docteurs vous pouvez faire comme suit :
+
+%pre.ruby
+  :preserve
+    @doctor.patients = @new_array_of_patients
+
+%p
+  Ici plusieurs choses sont à noter :
+%ul
+  %li des appointments sont créés pour lier les nouveaux patients au docteur ;
+  %li si des patients de la nouvelle liste étaient déjà présents, leurs appointments ne seront pas supprimés ;
+  %li les appointments de tous les patients qui ne sont pas dans la nouvelle liste seront supprimés.
+  
+
+%h3 Supprimer une association
+
+%p
+  Comme je l'ai dit précédemment, en réaffectant de nouveaux patients à un docteur, ses anciennes associations seront automatiquement supprimées. 
+  Si vous voulez supprimer une association en particulier, vous pouvez simplement faire comme suit&nbsp;:
+
+%pre.ruby
+  :preserve
+    # On supprime tous les appointments qui existent entre @doctor et @patient
+    @doctor.patients.delete(@patient)
+    # Ou bien
+    @patient.doctors.delete(@doctor)
+    # Ou encore, pour supprimer les appointments qui ont une date antérieur à aujourd'hui
+    @patient.appointments.where("appointment_date < ?", Date.today).delete
+
+%h3 Les helpers Rails
+
+%p
+  Rails crée également un tas de <code>helpers</code> qui peuvent être très sympa et que vous trouverez dans l'<a target='_blank' href='http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html'>API Rails</a>. Voici un un avant goût :
+
+%pre.ruby
+  :preserve
+    @doctor.patient_ids
+    @doctor.patients.delete_all
+    @doctor.patients.size
+    # Etc. 
+
+%h2 Également utile pour créer des «raccourcis»
+
+%p
+  Vous pouvez vous servir des <span class="code">has_many :through</span> pour vous faire des raccourcis. Je m'explique.
+  Supposez qu'un document à plusieurs sections et que les sections ont plusieurs paragraphes comme le montre le schéma suivant&nbsp;:
+  
+%img{:src => "/article_images/Associations_Many-to-Many_avancees/Document.png"}
+
+%p Il peut arriver que vous ayez besoin d'accéder à tous les paragraphes d'un document. Pour faire cela, vous pouvez par exemple définir vos relations comme suit&nbsp;:
+
+%pre.ruby
+  :preserve
+    # app/models/document.rb
+    class Document < ActiveRecord::Base
+      has_many :sections
+      has_many :paragraphs, :through => :sections
+    end
+
+    # app/models/section.rb
+    class Section < ActiveRecord::Base
+      belongs_to :document
+      has_many :paragraphs
+    end
+
+    # app/models/paragraph.rb
+    class Paragraph < ActiveRecord::Base
+      belongs_to :section
+    end
+
+%p
+  Et donc pour accéder à tous les paragraphes d'un document il suffit de faire&nbsp;:
+
+%pre.ruby
+  :preserve
+    @document.paragraphs
+
+%p
+  Voilà, vous devriez avoir toutes les clés pour mettre en place vos relations. Si vous avez des questions ou des améliorations à proposer n'hésitez pas à laisser un commentaire !
+  
+%h2 Références
+%ul
+  %li 
+    %a{:target => '_blank', :href => "http://guides.rubyonrails.org/association_basics.html#the-has_many-through-association"} Guide rails sur les associations
+  %li 
+    %a{:target => '_blank', :href => "http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html"} API Rails 
+    sur les associations

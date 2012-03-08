@@ -12,13 +12,16 @@ class Article < ActiveRecord::Base
   validates :title, :link, :uniqueness => true
   validates :title, :introduction, :content, :link, :presence => true
 
+  before_validation :generate_link
+  
+  # For pagination gem
   self.per_page = 5
 
-  # Generate a summary in a nested list composed of all headers of the article
+  # Generate the table of content in a nested list composed of all headers of the article
   # The method is REALLY ugly because of some problem in the gsub...
   # Don't even try to understand it.
-  def generate_summary
-    summary_string = '<ul class="first">'
+  def generate_table_of_content
+    table_of_content_string = '<ul class="first">'
     first = true
     oldH = 1
     h = ''
@@ -30,26 +33,26 @@ class Article < ActiveRecord::Base
       if !first
         case (h.to_i - oldH)
           when 1
-            summary_string += '<ul>'
+            table_of_content_string += '<ul>'
           when 0 
-            summary_string += '</li>'
+            table_of_content_string += '</li>'
           else
-            summary_string += '</li>'
+            table_of_content_string += '</li>'
             (h.to_i - oldH).abs.times do
-              summary_string += '</ul></li>'
+              table_of_content_string += '</ul></li>'
             end
         end
       end
-      summary_string += "<li><a href='##{link}'>#{title}</a>"
+      table_of_content_string += "<li><a href='##{link}'>#{title}</a>"
       oldH = h.to_i
       first = false
     end
-    summary_string += '</li>'
+    table_of_content_string += '</li>'
     (oldH - 1).abs.times do
-      summary_string += '</ul></li>'
+      table_of_content_string += '</ul></li>'
     end
-    summary_string += "</ul>"
-    self.summary = summary_string
+    table_of_content_string += "</ul>"
+    self.table_of_content = table_of_content_string
   end
 
   # Add an id to all the headers
@@ -65,15 +68,15 @@ class Article < ActiveRecord::Base
   
   # Generate a link for an article based on its title
   def generate_link
-     self.link = escape_characters self.title
+    self.link = escape_characters self.title
   end
     
   def activate_article
-    self.activate = true
+    self.activated = true
   end
 
   def desactivate
-    self.activate = false
+    self.activated = false
   end
   
   private 

@@ -3,7 +3,7 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '~>3.2.2'
 
 gem "heroku"
 
@@ -20,12 +20,12 @@ gem 'albino'
 gem 'capistrano'
 gem 'will_paginate'       , '~>3.0.2'
 
-gem 'haml'                , '~>3.1.0'
+gem 'haml'
 gem 'factory_girl'
 
 group :assets do
   gem 'sass-rails'
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 gem "jquery-rails"
@@ -33,7 +33,6 @@ gem 'pg'
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'mongrel'     , '~>1.2.0.pre2'
   gem "rspec-rails" , "~> 2.6"
 end
 

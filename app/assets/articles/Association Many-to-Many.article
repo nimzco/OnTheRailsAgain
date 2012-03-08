@@ -1,0 +1,218 @@
+--date 
+28/09/2011
+
+--tags
+Rails, Routes, Ressources
+
+--introduction
+Arpès avoir vu les associations One-to-Many, il est temps de s'attaquer aux associations Many-to-Many qui sont fréquemment utilisées mais qui ne sont pas forcément évidentes à implémenter dans une application Rails au début.
+
+--content
+
+%h1 associations Many-to-Many
+
+.require
+  Pré-requis :
+  %ul
+    %li avoir des bases en SQL (table, clé primaire, clé étrangère) ;
+    %li 
+      avoir vu les associations 
+      %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/Les-associations-one-to-many"} One-to-Many.
+
+.see
+  Ce que nous allons voir :
+  %ul
+    %li comprendre une relation Many-to-Many ;
+    %li créer une relation Many-to-Many avec Rails.
+
+%h2 Présentation du problème
+
+%p
+  Lorsque l'on conçoit une application on tombe souvent sur un problème simple : un objet A peut <b>avoir plusieurs</b> objets B et un objet B 
+  peut <b>avoir plusieurs</b> objets A... Bon, tout ceci n'est pas très clair, mais quand on l'illustre par un exemple ça le devient.
+
+%p
+  Prenons un exemple très courant : <b>Elèves - Cours</b>. 
+  Un élève peut <strong>avoir plusieurs</strong> cours et <strong>appartenir à plusieurs</strong> cours.
+  Ou encore avec un autre exemple : <b>Articles - Tags</b>. Un article peut <strong>avoir</strong> et peut <strong>appartenir à plusieurs</strong>
+  tags. Effectivement un tag n'est pas unique, ce n'est pas parce qu'un article <b>a</b> 
+  le tag Ruby qu'aucun autre article ne pourra avoir ce même tag.
+
+%h2 En théorie
+
+%p
+  Cette association ressemble à une double association One-to-Many, mais le problème est : « Où mettre la/les clé(s) étrangère(s) pour connaître les associations entre les objets&nbsp;?&nbsp;»
+
+%p 
+  Pour ça,  il faut créer ce que l'on appelle une table de jointure (ou d'association) pour stocker les couples de clés étrangères appartenant aux deux modèles concernés.
+  Il est important de noter que cette table d'association ne sera constituée uniquement de deux colonnes qui contiendront des clés étrangères. En d'autres termes, cette table ne doit pas contenir de clé primaire.
+
+%h2 En pratique
+%p Avant de continuer, voilà une représentation de la relation des modèles entre eux.
+%img{:src => '/article_images/Associations_Many-to-Many/Many-to-Many.png'}
+
+%h3 Création des modèles
+
+%p
+  Prenons l'exemple des <b>Articles</b> et des <b>Tags</b>.
+  Nous avons donc deux modèles, le modèle <code>Article</code> et le modèle <code>Tag</code> et nous voulons pouvoir associer plusieurs tags à un article mais également plusieurs articles au même tag.
+  Commençons par créer les deux modèles à l'aide des scaffolds :
+  
+%pre.bash
+  :preserve
+    $ rails generate scaffold Article title:string content:text
+    $ rails generate scaffold Tag name:string
+
+%h3 Création de la migration
+
+%p
+  Bon, comme vous vous en doutez, la table de jointure ne vas pas se créer toute seule. Pour la créer nous allons passer par une migration (hors de question de la créer à la « main » !)
+
+%p.notice
+  Les migrations sont un moyen pratique de modifier la base de données de façon structurée et organisée. Elles décrivent des actions à effectuer comme créer une table, ajouter/supprimer une colonne à une table, etc. Elles permettent également de garder une trace de toutes les modifications effectuées sur la base de données.
+
+%h4 Convention de nommage 
+
+%p
+  Mais avant de faire ça, comme le principe de Rails est « Convention Over Configuration », il faut bien comprendre comment nommer cette table de jointure.
+  Voici les conventions à respecter pour le nom de cette table :
+
+%ul
+  %li nom_modèle_1 + _ + nom_modèle_2 ;
+  %li Les deux noms de tables doivent être au pluriel ;
+  %li Les noms des tables sont ordonnés alphabétiquement. Donc <b>Articles</b> vient avant <b>Tags</b>.
+
+%p
+  Dans notre cas, le nom sera donc : <code>articles_tags</code>.
+  Article en premier car il est alphabétiquement avant Tag, et les deux noms au pluriel.
+  Si le nom d'un de vos modèles est en plusieurs mots, il suffit de remplacer les espaces par des « _ ». <br /> Exemple : Le nom d'une table de jointure pour un modèle BlogPost et un modèle Category serait <code>blog_posts_categories</code>.
+
+%p.notice
+  %em Pour les anglophobes : 
+  faites bien attention au pluriel anglais pour les mots qui se finissent en « y ». « One category but two categories ! »
+
+%h4 Le fichier migration
+
+%p
+  Maintenant que nous savons comment nommer cette table et que l'on sait qu'elle ne doit pas avoir de clé primaire nous pouvons créer la migration.
+  Tâchez de donner un nom explicite à celle-ci (celui du fichier qui apparaitra dans le dossier db/migrations), cela pourrait vous servir à l'avenir si vous avez besoin de revenir en arrière.
+
+%pre.bash
+  :preserve
+    $ rails generate migration CreateArticlesTagsJoinTable
+
+%p
+  Il faut maintenant éditer cette migration pour y ajouter l'instruction de création de la table avec le bon nom (comme nous avons vu ci-dessus).
+   
+%pre.ruby
+  :preserve
+    # db/migrations/20111009221942_create_articles_tags_join_table
+    class CreateArticlesTagsJoinTable < ActiveRecord::Migration
+      def self.up
+        create_table :articles_tags, :id => false do |t|
+          t.references :article, :tag # Pour créer les clés etrangères
+        end
+        add_index :articles_tags, [:article_id, :tag_id] # Optionnel
+      end
+
+      def self.down
+        drop_table :articles_tags
+      end
+    end
+
+%p 
+  Comme on le voit, il faut absolument préciser <span class="code">:id => false</span> pour qu'aucune clé primaire ne soit créée.
+  L'instruction <span class="code">add_index</span> est optionnelle mais permet d'accélérer les recherches en base de données.
+  
+%p Ensuite, pour exécuter la migration il vous suffit d'éxécuter la commande suivante :
+
+%pre.bash
+  :preserve
+    rake db:migrate
+
+%h3 Adaptation des modèles
+
+%p 
+  Il ne reste plus qu'à spécifier aux modèles les associations et le tour est joué ! Traduction&nbsp;: dire aux Articles qu'ils 
+  %em ont et appartiennent (has_and_belongs) à plusieurs (to_many)
+  Tags. Et vice-versa !
+
+%pre.ruby
+  :preserve
+    # app/models/article.rb
+    class Article < ActiveRecord::Base
+      has_and_belongs_to_many :tags
+    end
+
+    # app/models/tag.rb
+    class Tag < ActiveRecord::Base
+      has_and_belongs_to_many :articles
+    end
+
+%h2 Utilisation dans les vues
+
+%p
+  Vous pouvez être amené à vous demander comment gérer ces dépendances dans un formulaire. Par exemple, lors de la création d'un article je voudrais pouvoir choisir tous les tags qui lui seront associés.
+  Voilà une méthode pour faire ça&nbsp;:
+
+%pre.ruby
+  :preserve
+    # app/views/articles/_form.html.erb
+    <%= form_for @article do |f| %>
+
+      <label>Title: <%= f.text_field :title %> </label>
+
+      <% Tag.all.each do |tag| %>
+        <label><%= tag.name %>
+          <%= check_box_tag "article[tag_ids][]", tag.id, @article.tags.include?(tag) %>
+        </label>
+      <% end %>
+
+      <%= f.submit %>
+    <% end %>
+
+%p
+  Ce qui se passe ici c'est que lors de la création d'un article on va chercher tous les tags existant en base de données (<span class="code">Tag.all</span>) et on affiche une checkbox pour chacun de ces tags. Ce formulaire servant également pour l'édition, on regarde si l'article n'a pas déjà ce tag 
+  (<span class="code">@article.tags.include?(tag)</span>) et si oui, la checkbox sera cochée. 
+%p
+  De plus, il n'y a rien a changer du côté du contrôleur, l'affectation des tags à l'article se fera automatiquement grâce au nom de l'input qui est <span class="code">article[tag_ids][]</span>. En effet, dans la methode create du contrôleur de l'article on retrouve&nbsp;:
+
+%pre.ruby
+  :preserve
+    # app/controllers/articles_controller.rb
+    def create
+      @article = Article.new(params[:article])
+
+%p
+  L'article qui va être mis en base de donnée est créé à partir des paramètres qui sont stockés dans le tableau article lors de l'envoi du formulaire.
+
+%h2 Utilisation dans les contrôleurs
+
+%p
+  Une fois toute la partie base de données et modèle mis en place, Rails permet d'accéder aux objets entre eux très simplement. Par exemple, pour accéder à tous les tags d'un article on peut faire&nbsp;:
+
+%pre.ruby
+  :preserve
+    @article.tags # Renvoie un tableau contenant tous les tags de @article
+
+%p Pour ce qui est de l'affectation il y a deux possibilités&nbsp;:
+  
+%pre.ruby
+  :preserve
+    @article.tags << Tag.first # On ajoute au tags déjà existant
+    @article.tags = Tag.first  # On remplace les tags déjà existant
+    
+%p
+  Si vous utilisez l'opérateur <span class="code">=</span>, il faut bien garder en tête que tous les tags que possédait l'article seront remplacés par la nouvelle affectation.
+  Au contraire, si vous utilisez l'opérateur <span class="code"><<</span>, le tag sera ajouté aux tags déjà existant.
+
+%h2 Références
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://guides.rubyonrails.org/association_basics.html#the-has_many-through-association"} Guide rails sur les associations
+  %li
+    %a{:target => '_blank', :href => "http://guides.rubyonrails.org/migrations.html"} Guide rails sur les migrations
+
+%p
+  Voilà pour les associations Many-to-Many. Je posterai un article sur les associations Many-to-Many avancées (<span class="code">has_many :through</span>) dans les jours à venir. Si vous avez des questions ou des améliorations à proposer n'hésitez pas à laisser un commentaire !
+
