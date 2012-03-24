@@ -13,6 +13,7 @@ class Article < ActiveRecord::Base
   validates :title, :introduction, :content, :link, :presence => true
 
   before_validation :generate_link
+  before_save :generate_table_of_content
   
   # For pagination gem
   self.per_page = 5
@@ -66,6 +67,7 @@ class Article < ActiveRecord::Base
     end    
   end
   
+  # Is called before validation of the article when it is created
   # Generate a link for an article based on its title
   def generate_link
     self.link = escape_characters self.title

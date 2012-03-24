@@ -7,10 +7,13 @@ Rails, Routes, Ressources
 --introduction
 Arpès avoir vu les associations One-to-Many, il est temps de s'attaquer aux associations Many-to-Many qui sont fréquemment utilisées mais qui ne sont pas forcément évidentes à implémenter dans une application Rails au début.
 
+--title
+Association Many-to-Many
+
+--authors
+Nima, Nico
+
 --content
-
-%h1 associations Many-to-Many
-
 .require
   Pré-requis :
   %ul

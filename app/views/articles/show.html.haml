@@ -40,6 +40,6 @@
 
 %aside#summary
   #summary_content
-    ~ @article.summary.html_safe
+    ~ @article.table_of_content.html_safe
     - if current_author
       = button_to "Editer", edit_article_path(@article.link), :method => :get 

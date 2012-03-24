@@ -8,9 +8,10 @@ Test, Routes
 Maintenant que nous avons abordé les relations Many-to-Many simples, voyons comment mettre en oeuvre les relations Many-to-Many avancées (ou has_many :through).
 Cette relation permet de stocker des données relatives à l'association qui lie deux modèles.
 
---content
-%h1 Les associations Many-to-Many avancées (has_many :through)
+--title
+Les associations Many-to-Many avancées (has_many :through)
 
+--content
 .require
   Pré-requis :
   %ul
