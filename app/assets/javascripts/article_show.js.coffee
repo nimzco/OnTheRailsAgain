@@ -19,7 +19,7 @@ $( ->
     # Else check which header to select
     else
       for i in [0..(headers.length)]
-        if i < headers.length and ($(headers[i]).offset().top - $(document).scrollTop()) < 15
+        if i < headers.length and ($(headers[i]).offset().top - $(document).scrollTop()) < (window.innerHeight / 3)
           summary_headers.css('font-weight', 'normal')
           $(summary_headers[i]).css('font-weight', 'bold')    
   )  
