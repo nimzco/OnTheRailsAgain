@@ -24,7 +24,8 @@ gem 'haml'
 gem 'factory_girl'
 
 group :assets do
-  gem "twitter-bootstrap-rails"
+  gem 'twitter-bootstrap-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 

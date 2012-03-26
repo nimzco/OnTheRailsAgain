@@ -13,13 +13,15 @@ class Article < ActiveRecord::Base
   validates :title, :introduction, :content, :link, :presence => true
 
   before_validation :generate_link
-  before_save :generate_table_of_content
+  before_save :generate_table_of_content,
+              :generate_anchor_links
   
   # For pagination gem
   self.per_page = 5
-
+  
+  
   # Generate the table of content in a nested list composed of all headers of the article
-  # The method is REALLY ugly because of some problem in the gsub...
+  # The method is REALLY ugly because I can't access matched string in the gsub...
   # Don't even try to understand it.
   def generate_table_of_content
     table_of_content_string = '<ul class="first">'
@@ -55,12 +57,13 @@ class Article < ActiveRecord::Base
     table_of_content_string += "</ul>"
     self.table_of_content = table_of_content_string
   end
+  
 
   # Add an id to all the headers
   # Ids are generating in the same way that URLs are.
   def generate_anchor_links
     self.content = self.content.gsub(/<h[0-9]>[^<]*<\/h[0-9]>/m) do |match|
-      h     = match[2].chr
+      h     = match[2].chr # Number of the header
       title = match.sub(/<h[0-9]>/m, "").sub(/<\/h[0-9]>/m, "")
       link  = escape_characters title
       "<h#{h} id='#{link}'>#{title}</h#{h}>"
