@@ -8,10 +8,8 @@
       .container
         %ul.nav
           %li.active
-            %a Home
+            %a= link_to "Home", articles_path
           %li 
-            %a Link
-          %li 
-            %a Link
+            %a= link_to "À propos", authors_path
           %li.divider-vertical
         = render 'shared/search'

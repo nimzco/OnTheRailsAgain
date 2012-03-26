@@ -3,7 +3,9 @@ OntheRailsAgain::Application.routes.draw do
   devise_for :authors
 
   resources :tags
-
+  
+  resources :authors, :only => [:index]
+  
   resources :articles do
     post 'activate', :on => :member
     post 'desactivate', :on => :member
