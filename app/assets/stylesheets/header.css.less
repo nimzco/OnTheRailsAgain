@@ -1,0 +1,32 @@
+@import "bootstrap_and_overrides.css.less";
+.navbar-inner {
+  .gradient(#BA262A, #E10000, #A20003);
+  .noradius;
+  //border-top: 1px solid #970507;
+  .container {
+    max-width: @max-width;
+    a.home {
+      margin-top: 1em;
+      padding-right: 0;
+      padding-left: 0;
+      margin-left: 20px;
+      font-weight: bold;
+      color: #000;
+      text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+      -webkit-transition: all .2s linear;
+         -moz-transition: all .2s linear;
+              transition: all .2s linear;
+    }
+    .divider-vertical {
+      background-color: #970507;
+      border-right: 1px solid #bd0f11;
+    }
+    .navbar-search {
+      input {
+        background-color: #FFEFEF;
+        border-color: #970507;
+        color: #333;
+      }
+    }
+  }
+}

@@ -1,8 +1,17 @@
 %header
-  .content
-    %hgroup
-      %h2
-        %a{:href => "/"}        
-          On The
-          %span#bold_title Rails
-          Again
+  %a.home{:href => "/"}        
+    On The
+    %span#bold_title Rails
+    Again      
+  .navbar
+    .navbar-inner
+      .container
+        %ul.nav
+          %li.active
+            %a Home
+          %li 
+            %a Link
+          %li 
+            %a Link
+          %li.divider-vertical
+        = render 'shared/search'

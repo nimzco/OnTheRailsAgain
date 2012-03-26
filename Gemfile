@@ -24,10 +24,10 @@ gem 'haml'
 gem 'factory_girl'
 
 group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
+  gem "twitter-bootstrap-rails"
   gem 'uglifier'
 end
+
 gem "jquery-rails"
 gem 'pg'
 
