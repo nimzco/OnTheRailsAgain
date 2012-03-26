@@ -2,9 +2,32 @@
 .navbar-inner {
   .gradient(#BA262A, #E10000, #A20003);
   .noradius;
-  //border-top: 1px solid #970507;
+  border-top: 1px solid #970507;
+  border-bottom: 1px solid #A20003;
   .container {
     max-width: @max-width;
+    ul.nav {
+      //font-weight: bold;
+      text-shadow: 1px 1px 0px #7E0000;
+      letter-spacing: 1px;
+      li:first-child {
+        border-right: 1px solid #970507;
+        border-left: 1px solid #970507;
+        box-shadow: 1px 0 0 #c20a0c, inset 1px 0 0 #c20a0c;
+      }
+      li {
+        border-right: 1px solid #970507;
+        box-shadow: 1px 0 0 #c20a0c, inset 1px 0 0 #c20a0c, 0 0 3px rgba(0, 0, 0, 0.2);
+        a {
+          color: #DDD;
+        }
+      }
+      li.active a {
+        background-color: #A20003;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
+        color: white;
+      }
+    }
     a.home {
       margin-top: 1em;
       padding-right: 0;
@@ -18,14 +41,32 @@
               transition: all .2s linear;
     }
     .divider-vertical {
+      display: inline-block;
       background-color: #970507;
       border-right: 1px solid #bd0f11;
+      margin: 0;
     }
     .navbar-search {
       input {
-        background-color: #FFEFEF;
+        background-color: whiteSmoke;
+        background-image: image-url("glyphicons_027_search.png");
+        background-position: 95% 50%;
+        background-repeat: no-repeat;
         border-color: #970507;
         color: #333;
+      }
+      input:focus, input.focused {
+        border-top: 1px solid #970507;
+        border-left: 1px solid #970507;
+        background-image: none;
+        box-shadow: none;
+        padding: 4px 9px;
+      }
+      .search-query:-moz-placeholder {
+        color: #AAA;
+      }
+      .search-query::-webkit-input-placeholder {
+        color: #AAA;
       }
     }
   }
