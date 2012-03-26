@@ -6,4 +6,5 @@
  *= require bootstrap_and_overrides
  *= require header
  *= require global
+ *= require about
 */

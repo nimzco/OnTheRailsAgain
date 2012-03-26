@@ -7,8 +7,9 @@
     .navbar-inner
       .container
         %ul.nav
-          %li.active
+          %li{ :class => (current_page?(articles_path) ? 'active' : '') }
             = link_to "Home", articles_path
-          %li 
+          %li{ :class => (current_page?(authors_path) ? 'active' : '') }
             = link_to "À propos", authors_path
+          %li.divider-vertical
         = render 'shared/search'
