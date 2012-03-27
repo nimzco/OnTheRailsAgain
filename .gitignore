@@ -10,3 +10,4 @@ public/assets/*
 .rvm
 .rvmrc
 .DS_Store
+vendor/*
