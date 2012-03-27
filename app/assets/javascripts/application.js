@@ -5,6 +5,5 @@
 //= require libs/jquery.localscroll-1.2.7-min
 
 $(document).ready(function(){
-  /* Your javascripts goes here... */
   $('#summary_content').localScroll();
 });
