@@ -11,5 +11,4 @@
             = link_to "Home", articles_path
           %li{ :class => (current_page?(authors_path) ? 'active' : '') }
             = link_to "À propos", authors_path
-          %li.divider-vertical
         = render 'shared/search'
