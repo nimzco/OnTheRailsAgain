@@ -86,6 +86,9 @@ GEM
     less-rails (2.1.8)
       actionpack (>= 3.1)
       less (~> 2.0.7)
+    less-rails-fontawesome (0.1.0)
+      less-rails (>= 2.1.7)
+      railties (>= 3.1.1)
     libv8 (3.3.10.4)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
@@ -205,6 +208,7 @@ DEPENDENCIES
   haml
   inherited_resources
   jquery-rails
+  less-rails-fontawesome
   meta_search
   pg
   rails (~> 3.2.2)
