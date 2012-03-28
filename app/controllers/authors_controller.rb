@@ -4,10 +4,12 @@ class AuthorsController < ApplicationController
   def index  
   end
   
-  def show_grid
-  end
-
-  def show  
+  def show
+    if    params[:id].downcase == 'nima'
+      render 'nima'
+    elsif params[:id].downcase == 'nico'
+      render 'nico'
+    end
   end
 
 end

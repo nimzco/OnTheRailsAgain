@@ -10,6 +10,6 @@
         %ul.nav
           %li{ :class => (current_page?(articles_path) ? 'active' : '') }
             = link_to "Home", articles_path
-          %li{ :class => (current_page?(authors_show_path) ? 'active' : '') }
-            = link_to "À propos", authors_show_path
+          %li{ :class => (current_page?(authors_path) ? 'active' : '') }
+            = link_to "À propos", authors_path
         = render 'shared/search'
