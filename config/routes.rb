@@ -4,7 +4,11 @@ OntheRailsAgain::Application.routes.draw do
 
   resources :tags
   
-  resources :authors, :only => [:index]
+  # resources :authors, :only => [:index]  
+  
+  get 'authors/index'
+  get 'authors/show_grid'
+  get 'authors/show'
   
   resources :articles do
     post 'activate', :on => :member
