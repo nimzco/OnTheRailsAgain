@@ -1,4 +1,26 @@
 body {
   color: #333;
+  background-image: image-url('bgnoise.gif');
 }
 
+section.articles {
+  header {
+    display: table-cell;
+    vertical-align: top;
+    time {
+      //margin-left: -3.2em;
+      margin-top: 1em;
+      text-align: center;
+      display: inline-block;
+      .radius(0.3em);
+      color: white;
+      padding: 0.5em 0.8em 0.5em 0.8em;
+      .gradient(@light_red, @light_red, @dark_red);    
+      font-size: 1em;
+      letter-spacing: 0.1em;
+      text-transform: capitalize;
+      border: 1px solid darken(@dark_red, 5%);
+      //.bshadow-in(0, 0, 4px, rgba(255,255,255, 0.4));
+    }
+  }
+}

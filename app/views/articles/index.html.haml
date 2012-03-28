@@ -1,11 +1,11 @@
 = content_for :meta_description do
   Blog destiné à une communauté francophone voulant se lancer dans l'apprentissage de Ruby On Rails.
-%aside.date
+  
 -if is_mobile?
   %aside.tags
     .content
 
-%section.articles  
+%section.articles.span8 
   - if @articles.empty?
     %h2.search_title
       Aucun article correspond à votre recherche...
@@ -16,7 +16,7 @@
     = render article
   = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
 
-%aside.tags
+%aside.tags.span3
   .content        
     - if current_author
       = button_to 'Nouvel article', new_article_path, :method => :get

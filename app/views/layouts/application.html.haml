@@ -19,12 +19,11 @@
     
   %body
     = render :partial => 'shared/header'
-    #header_border
     .container
       - if current_author
         = button_to 'logout', destroy_author_session_path, :method => :delete, :id => 'logoutButton'
       %section
-        .content                       
+        .content.row-fluid                       
           - flash.each do |name, msg|
             = content_tag :p, msg, :id => "flash_#{name}"
           = yield 
@@ -51,14 +50,6 @@
         js.src = "//connect.facebook.net/fr_FR/all.js#appId=201467316581947&xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-    - if ! is_mobile? && ! is_ipad?
-      :javascript
-        var uvOptions = {};
-        (function() {
-          var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-          uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/SJfJaOaPTlsSGZ9H4Opag.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-        })();
     - if Rails.env == 'production' and !current_author
       :javascript
         var _gaq = _gaq || [];

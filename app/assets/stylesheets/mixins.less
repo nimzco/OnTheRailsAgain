@@ -1,3 +1,9 @@
+.radius(@radius: 0.5em) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
 .gradient(@color: #F5F5F5, @stop: #EEE, @start: #FFF) {
   background: @color;
   background: -webkit-gradient(linear,
@@ -18,3 +24,11 @@
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
+
+/*
+.bshadow(@left, @top, @radius, @color) {
+	-webkit-box-shadow: inset @left @top @radius @color;
+	-moz-box-shadow: inset @left @top @radius @color;
+	box-shadow: inset @left @top @radius @color;
+}
+*/

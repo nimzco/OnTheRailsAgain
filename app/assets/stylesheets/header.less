@@ -1,13 +1,38 @@
-
+body > header {
+  background-color: #222;
+}
+.container {
+  a.home {
+    display: inline-block;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    padding-left: 64px;
+    text-align: center;
+    padding-right: 0;
+    font-size: 3em;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    //font-weight: bold;
+    color: #BB0000;
+    background-image: image-url('Logo.png');
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    //text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 10px rgba(255,255,255, .25);
+    color: #DDD;
+    text-shadow: -1px -1px 0px #000001, 0 0 10px rgba(0,0,0,.125);
+  }
+  span#bold_title {
+    color: @light_red;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 10px rgba(255,255,255,.125);
+  }
+}
 .navbar-inner {
   .gradient(#BA262A, #E10000, #A20003);
   .noradius;
-  border-top: 1px solid #970507;
-  border-bottom: 1px solid #A20003;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #444;
   .container {
-    max-width: @max-width;
     ul.nav {
-      //font-weight: bold;
       text-shadow: 1px 1px 0px #7E0000;
       letter-spacing: 1px;
       li:first-child {
@@ -28,18 +53,6 @@
         color: white;
       }
     }
-    a.home {
-      margin-top: 1em;
-      padding-right: 0;
-      padding-left: 0;
-      margin-left: 20px;
-      font-weight: bold;
-      color: #000;
-      text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
-      -webkit-transition: all .2s linear;
-         -moz-transition: all .2s linear;
-              transition: all .2s linear;
-    }
     .divider-vertical {
       display: inline-block;
       background-color: #970507;
@@ -47,6 +60,7 @@
       margin: 0;
     }
     .navbar-search {
+      float: right;
       input {
         background-color: whiteSmoke;
         background-image: image-url("glyphicons_027_search.png");
