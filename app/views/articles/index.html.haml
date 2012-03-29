@@ -5,13 +5,12 @@
   %aside.tags
     .content
 
-%section.articles.span8 
+%section.articles.span8
   - if @articles.empty?
     %h2.search_title
       Aucun article correspond à votre recherche...
   - elsif @search_text != ""
-    %h2.search_title
-      = @search_text
+    %h2.search_title.page-header= @search_text
   - @articles.each do |article|
     = render article
   = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
@@ -33,14 +32,14 @@
           N'hésitez pas à nous         
           %a{:href => 'mailto:admin@ontherailsagain.com'} envoyer un mail 
           pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
+      %div
+        %i.icon-inbox
+        %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} RSS
+      %div
+        %i.icon-twitter-sign
+        %a{:href => 'https://twitter.com/OnTheRailsBlog'} OnTheRailsBlog
+
       %h3.page-header Commentaire récent
-      %h3.page-header Nous contacter
-    -if !is_mobile?
-      #follow_rss
-        %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} &nbsp;
-        .twitter_follow_link
-          %i.icon-twitter-sign.icon-large
-          %a{:href => 'https://twitter.com/OnTheRailsBlog'} OnTheRailsBlog
     #tool
       - if current_author
         = button_to 'Tout desactiver', desactivate_all_articles_path

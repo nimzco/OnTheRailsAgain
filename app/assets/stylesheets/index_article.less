@@ -1,4 +1,8 @@
 section.articles {
+  .page-header:last-child {
+    display: none;
+  }
+  
   article {
     margin-bottom: 3em;
     //display: table;
@@ -37,26 +41,32 @@ section.articles {
     }
     .radius(3px);
     h2 {
-
+      line-height: normal;
+      a {
+        color:           #333;
+        text-decoration: none;
+      }     
     }
   }
 }
 
-#tags.aside_box ul {
+#tags.aside_box ul, .tags ul {
   list-style-type: none;
   padding-left: 0;
   margin: 0;
   li {
     display: inline-block;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.6em;
     a {
-      background-color: @linkColor;
-      font-size: 1em;
-      color: white;
-      padding: 0.3em 0.5em 0.3em 0.5em;
       .radius(3px);
-      text-decoration: none;
-      text-shadow: none;
+      background-color: @linkColor;
+      font-size       : 0.9em;
+      color           : white;
+      padding         : 0.2em 0.4em;
+      text-decoration : none;
+      text-shadow     : none;
+      border          : 1px solid #B00;
+      box-shadow      : 0 1px 0 white;
     }
   }
 }

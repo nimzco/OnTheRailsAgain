@@ -38,6 +38,7 @@ body > header {
     ul.nav {
       text-shadow: 1px 1px 0px #7E0000;
       letter-spacing: 1px;
+      margin-right: 0;
       li:first-child {
         border-right: 1px solid #970507;
         border-left: 1px solid #970507;
@@ -66,16 +67,22 @@ body > header {
       border-right: 1px solid #bd0f11;
       margin: 0;
     }
-    .navbar-search {
-      margin-left: 0;
+    .search {
+      position: relative;
+      margin-top: 7px;
+      margin-bottom: 0;
       input {
-        background-color: whiteSmoke;
+        //background-color: whiteSmoke;
         background-image: image-url("glyphicons_027_search.png");
         background-position: 95% 50%;
         background-repeat: no-repeat;
-        border-color: #970507;
+        border-color: darken(@dark_red, 8%);
         color: #333;
+        box-shadow: 0 1px 0 @light_red;
+        .radius(1em);
+        background-color: #EEE;
       }
+/*
       input:focus, input.focused {
         border-top: 1px solid #970507;
         border-left: 1px solid #970507;
@@ -83,6 +90,7 @@ body > header {
         box-shadow: none;
         padding: 4px 9px;
       }
+*/
       .search-query:-moz-placeholder {
         color: #AAA;
       }

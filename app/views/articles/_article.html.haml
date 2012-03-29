@@ -1,6 +1,6 @@
 %article
   %header
-    = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => article.link
+    %h2= link_to article.title, article_path(article.link)
     .authors
       Par
       = join_authors article
@@ -9,12 +9,13 @@
       %span.day= l article.created_at.to_date, :format => "%d"
       = l article.created_at.to_date, :format => "%b"
       = l article.created_at.to_date, :format => "%Y"
-    .tags
-      = join_tags article
   .wrapper    
     %p.article_content
       = article.introduction
       = link_to "Plus…", :controller => "articles", :action => "show", :id => article.link
+    .tags
+      = join_tags article
+
     .admin_tool
       - if current_author
         = button_to "Supprimer", article_path(article),:confirm => "are you sure ?", :method => :delete
