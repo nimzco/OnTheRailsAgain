@@ -2,7 +2,7 @@ module ArticlesHelper
 
   
   def join_tags(article)
-    article.tags(true).collect { |tag| link_to tag.name, articles_path(:tag => tag.name), :rel => 'tag' }.join(' - ').html_safe
+    article.tags(true).collect { |tag| link_to tag.name, articles_path(:tag => tag.name), :rel => 'tag', :class => 'btn btn-inverse' }.join(' ').html_safe
   end
 
   # Join all authors of an article with the keyword 'et'
