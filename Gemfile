@@ -28,6 +28,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'less-rails-fontawesome'
 end
 
 gem "jquery-rails"

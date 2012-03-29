@@ -1,11 +1,16 @@
-%h1 OnThe<em>Rails</em>Again est né 
+ 
+.row-fluid
+  .span4 &nbsp;
+  %img.span2{:src => "http://wbpreview.com/previews/WB0057UJ3/images/me.jpg"}
+  = image_tag 'nima.jpg', :class => 'span2'
+  .span4 &nbsp;
   
-.row
+.row-fluid
   .span6
-    %h2 Nicolas Dupont
+    %h2= link_to 'Nicolas Dupont', author_path('nico')
     %p
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .span6
-    %h2 Nima Izadi
+    %h2= link_to 'Nima Izadi', author_path('nima')
     %p
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
