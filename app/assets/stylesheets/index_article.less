@@ -9,11 +9,11 @@ section.articles {
     header {
       //display: table-cell;
       vertical-align: top;
-      .authors {
+      margin-bottom: 0.5em;
+      .authors, time {
         display: inline;
+        font-size: 0.9em;
       }
-      time {
-        display: inline;
        /*
  padding: 1em 1em 0.6em 1em;
         max-width: 3.5em;
@@ -30,7 +30,6 @@ section.articles {
           font-size: 2.2em;
         }
 */
-      }
     }
     .wrapper {
       //display: table-cell;
@@ -45,7 +44,24 @@ section.articles {
       a {
         color:           #333;
         text-decoration: none;
-      }     
+      }
+      a:hover {
+        color: @light_red;
+      }
+    }
+  }
+}
+aside {
+  h3 {
+    a {
+      color: black;
+      i {
+        font-size: 1.2em; 
+      }
+    }
+    a:hover {
+      text-decoration: none;
+      color:          @light_red;
     }
   }
 }

@@ -24,7 +24,7 @@
       %h3.page-header Catégories
       %ul
         - @tags.each do |tag|
-          %li= link_to "#{tag.name}  #{tag.articles.length}", articles_path(:tag => tag.name)
+          %li= link_to tag.name, articles_path(:tag => tag.name)
     -if !is_mobile?
       #contact.aside_box
         %h3.page-header Nous contacter
@@ -32,14 +32,16 @@
           N'hésitez pas à nous         
           %a{:href => 'mailto:admin@ontherailsagain.com'} envoyer un mail 
           pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
-      %div
-        %i.icon-inbox
-        %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} RSS
-      %div
-        %i.icon-twitter-sign
-        %a{:href => 'https://twitter.com/OnTheRailsBlog'} OnTheRailsBlog
+      %h3.page-header Restons en contact !
+      %h3
+        %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} 
+          %i.icon-inbox
+          RSS
+      %h3
+        %a{:href => 'https://twitter.com/OnTheRailsBlog'} 
+          %i.icon-twitter-sign
+          OnTheRailsBlog
 
-      %h3.page-header Commentaire récent
     #tool
       - if current_author
         = button_to 'Tout desactiver', desactivate_all_articles_path
