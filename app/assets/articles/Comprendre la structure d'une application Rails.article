@@ -1,0 +1,109 @@
+--date 
+10/10/2011
+
+--tags
+Structure
+
+--introduction
+La structure d'une application Ruby On Rails peut dérouter du fait du nombre de fichiers et dossiers qu'elle contient. Cet article présente rapidement  l'intérêt de chacun de ces fichiers et dossiers afin de comprendre cette structure.
+
+--title
+Comprendre la structure d'une application Rails
+
+--authors
+Nicolas
+
+--content
+.see 
+  Ce que nous allons voir :
+  %ul
+    %li comprendre l'intérêt de chaque fichier et de chaque dossier.
+
+%p Lorsque que l'on veut se lancer dans Ruby On Rails, il peut arriver que l'on soit un peu perturbé, voire découragé par la quantité de fichiers et de dossiers qui sont générés après avoir tapé la commande suivante :
+
+%pre.bash
+  :preserve
+    $ rails new mon_application
+    
+%p En effet, après avoir tapé cette commande, on obtient un dossier se nommant <i>mon_application</i> qui contient une dizaine de sous-dossiers, qui contiennent eux-mêmes d'autres dossiers…
+%p A quoi servent tous ces dossiers ? Où dois-je mettre mon code ?
+%p Si l'on comprend ce que chaque dossier contient, leurs intérêts et ceux dans lesquels on doit travailler, les choses sont de suite beaucoup moins repoussantes. Analysons rapidement chaque fichier et chaque dossier.
+
+%h2 Les plus importants
+
+%h3 Le dossier app, le dossier où l'on passe 90% de son temps
+
+%p Ce dossier est certainement celui dans lequel vous allez passer le plus de temps. En effet c'est dans ce dossier que se trouvera le coeur de votre application. D'ailleurs lorsque l'on ouvre ce dossier, on voit ceux structurant l'architecture MVC, avec les dossiers <i>models</i>, <i>controllers</i> et <i>views</i>. On trouve également un dossier <i>helpers</i> où l'on mettra des fichiers qui contiennent des méthodes utiles pour nos vues et nos contrôleurs.
+
+%p.warning Il est important de respecter l'architecture MVC et de mettre les bons bouts de code au bon endroit, et donc par exemple de faire attention à ne pas mettre une méthode qui correspond au modèle dans le controleur.
+
+%p Le dossier <i>app</i> contient également un dossier <i>assets</i> qui contient lui-même les dossiers <i>javascripts</i>, <i>stylesheets</i> et <i>images</i> qui eux-mêmes contiennent respectivement les fichiers Javascripts, les fichiers CSS et les images.
+
+%p.notice Dans les versions de Rails inférieur à 3.1, les dossiers <i>stylesheets</i>, <i>javascripts</i> et <i>images</i> sont dans le dossier <i>public</i>.
+
+%h3 Le dossier config
+  
+%p Ce dossier contient comme son nom l'indique tout ce qui correspond à la configuration de l'application. Notamment la configuration de la base de données se fait dans le fichier <i>database.yml</i> et le fichier <i>routes.rb</i> permet de définir les différentes parties de l'application pointées par les URLs. On trouve également un dossier <i>initializers</i> qui contiendra du code exécuté lors du lancement de l'application. Le dossier <i>locales</i> lui contient des fichiers qui vont nous être utiles pour l'internationalisation (I18n) de notre application.
+
+%h3 Le dossier db
+%p Ce dossier contient tout ce qui concerne la base de données. Il contient les migrations qui sont des fichiers qui permettent de créer, supprimer, ou modifier des tables et ainsi modifier la base de données.
+
+%h3 Le dossier public
+  
+%p Ce dossier contient les fichiers statiques et les ressources compilées comme par exemple des CSS générées à partir de fichier sass ou encore les fichiers Javascript compilés à partir des fichiers coffeescripts.
+
+%h3 Le fichier Gemfile
+  
+%p 
+  Le fichier <i>Gemfile</i> est un fichier très pratique permettant de spécifier les </em>gems</em> et toutes les dépendances nécessaires au bon fonctionnement de votre application. Vous trouverez la majeure partie des gems sur 
+  %a{ :href => 'http://rubygems.org/' } RubyGem.
+
+%h3 Le dossier test
+
+%p Ce dossier contient tous les éléments qui vont nous être utiles pour pouvoir tester notre application. C'est donc dans ce dossier que l'on va mettre tout notre code de test qui nous permettra de vérifier que chacune de nos classes et chacune de nos méthodes effectuent bien le travail attendu.
+
+%p.notice Même si les tests peuvent paraître inutiles et qu'il n'est pas nécessaire d'apprendre à en faire dès le début de notre apprentissage, il est important de noter qu'ils sont indispensables afin de produire une application fiable et de qualité.
+
+%h2 Les dossiers et fichiers que l'on ne touche pas souvent 
+
+%h3 Le fichier config.ru
+
+%p Ce fichier de configuration est utilisé par les serveurs Rack pour démarrer votre application.
+
+%h3 Le dossier doc
+ 
+%p Ce dossier contient toute le documentation concernant notre application, notamment c'est dans ce dossier que l'on peut stocker nos todos listes ou différentes notes au sujet de notre application.
+
+%h3 Le dossier log
+ 
+%p Ce dossier contient tous les logs de notre application, cela peut être utile pour savoir ce qu'il se passe dans notre application, puisqu'il contient le détail de chaque action éffectuée par notre application. Par exemple quand on accède à une liste d'éléments contenus dans la base de données, on peut voir la requête SQL effectuée pour récupérer ces données.
+
+%h3 Le fichier README
+
+%p Dans ce fichier nous pouvons écrire les informations que l'on veut communiquer aux personnes récupérant le code source de notre application. Par exemple, on peut indiquer ce que fait l'application, quelles sont les commandes à éffectuer afin de pouvoir l'exécuter, comment la configurer, etc… 
+
+%h3 Le dossier script
+
+%p Ce dossier contient initialement le script rails qui permet par exemple de démarrer notre application et de générer des fichiers comme des modèles ou des contrôleurs. Il peut également contenir d'autres scripts que l'on veut ajouter pour déployer ou lancer notre application.
+
+%h3 Le dossier tmp
+
+%p Ce dossier contient tous les éléments temporaires nécessaires à notre application, mais nous n'avons pas à nous en préoccuper.
+
+%h3 Le dossier vendor
+
+%p Ce dossier est destiné au code complémentaire de tierces parties. Dans une application Rails typique, cela comprend des gems Ruby, le code source de Rails (s’il est installé dans le projet) et les plugins contenant des fonctionnalités additionnelles packagées.
+
+%h3 Le fichier Rakefile
+
+%p Ce fichier localise et charge les tâches qui peuvent être utilisées depuis la ligne de commande. Là encore on n'a pas vraiment besoin de s'en préoccuper.
+
+%p Voilà pour l'ensemble des fichiers et dossiers. Si vous avez des questions ou améliorations à proposer n'hésitez pas à laisser un commentaire !
+
+%h2 Références
+
+%ul
+  %li
+    %a{:target => '_blank', :href => 'http://guides.rubyonrails.org/getting_started.html'} Rails guide : Getting Started
+  %li
+    %a{:target => '_blank', :href => 'http://railsdebutant.org/fr_guides/getting_started.html'} Rails guide : Getting Started (fr)

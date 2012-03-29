@@ -1,0 +1,213 @@
+--date 
+25/10/2011
+
+--introduction
+Une chose qui peut poser des problèmes avant de se lancer dans l'utilisation du framework Ruby On Rails est d'avoir un environnement fonctionnel.
+C'est pourquoi dans cet article je fais le tour des choses indispensables à avoir sur sa machine et j'explique comment les installer.
+
+--title
+Mettre en place son environnement Ruby On Rails sous Mac OS X Lion
+
+--authors
+Nima
+
+--content
+
+.see
+  Ce que nous allons voir :
+  %ul
+    %li Mettre en place son environnement Ruby On Rails
+    %li Installer MySQL et PostgreSQL
+    %li Les bases de RVM
+
+%h2 Mettre en place son environnement Ruby
+
+%h3 Installer les outils développeurs
+
+%p
+  Le language Ruby est fourni avec les outils développeurs Mac OS X, donc pour avoir son environnement Ruby fonctionnel il suffit d'installer XCode.
+  Si vous avez fait une mise à jour depuis Snow Leopard et que vous vous retrouvez avec un tas de bugs mystiques je vous conseille grandement de réinstaller XCode pour que les liens des librairies soient mis à jour. 
+  Voilà la commande à taper dans un terminal pour supprimer totalement XCode&nbsp;:
+
+%pre.bash
+  :preserve
+    $ sudo /Developer/Library/uninstall-devtools –mode=all
+
+%h3 Installer Rails
+
+%p
+  Et bien voilà, vous pouvez maintenant installer le framework Ruby On Rails.
+
+%pre.bash
+  :preserve
+    $ gem install rails
+
+%p
+  Vous pouvez maintenant réinstaller XCode fraichement !
+%h2 Installer MySQL (5.5)
+
+%p
+  Le plus simple reste de passer par 
+  %a{:target => '_blank', :href => 'http://dev.mysql.com/downloads/mysql/'} l'image fournit sur le site de MySQL
+  et d'installer tout ce qui se trouve à l'intérieur.
+%p
+  Pour ma part, j'ai pris la version 64bit&nbsp;:
+  %a{:target => '_blank', :href => 'http://dev.mysql.com/downloads/mirror.php?id=404216'} Mac OS X ver. 10.6 (x86, 64-bit), DMG Archive.
+
+%p
+  Pour savoir si vous êtes en 64 bits, lancez l'application <i>Information Système</i>, cliquez sur <i>Logiciel</i> et regardez si votre noyau est en 64bits.
+%p
+  Sinon, en ligne de commande&nbsp;:
+
+%pre.bash
+  :preserve
+    $ sysctl hw |grep 64bit
+    > hw.cpu64bit_capable: 1 # Vous êtes en 64 bits
+    > hw.cpu64bit_capable: 0 # Vous n'êtes pas en 64 bits
+
+%p
+  Une fois l'installation faite, il faut penser à rajouter le chemin des binaires MySQL à votre PATH. 
+  Pour que votre PATH et vos librairies dynamiques soient bien à jour, rajouter les lignes qui suivent dans le fichier <b>.profile</b> qui se trouve à la racine de votre home. (Exemple: /Users/Nima/.profile ou ~/.profile).
+
+%pre.bash
+  :preserve
+    # ~/.profile
+    export PATH="$PATH:/usr/local/mysql/bin"
+    export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/mysql/lib"
+%p
+  Si le fichier n'existe pas, vous pouvez le créer en utilisant la commande <span class="code">touch</span>.
+
+%pre.bash
+  :preserve
+    $ touch ~/.profile
+%p
+  Sachez que vous pourrez lancer ou arrêter MySQL à partir de vos préférences système. Une icône de MySQL doit se trouver dans la partie «autre».
+
+%h2 Installer PostgreSQL (9.1.1)
+
+%h3 Installation de PostgreSQL
+%p
+  Encore une fois, le plus simple reste de passer par 
+  %a{:target => '_blank', :href => 'http://www.enterprisedb.com/products-services-training/pgdownload'} l'image fournit par PostgreSQL.
+
+%p
+  L'installation va vous demander de redémarrer. Faite le puis relancez l'image et l'installation.
+  Pensez à bien spécifier un mot de passe pour l'utilisateur postgres.
+
+%p
+  Une fois l'installation faite, il faut créer un utilisateur. 
+
+%h3 Création d'un utilisateur
+
+%p
+  Voilà la commande à taper dans votre terminal pour créer un utilisateur. Ici le nom d'utilisateur sera <b>admin</b>. 
+  L'option <span class="code">--username</span> permet de spécifier que cette action doit être éxécuter par l'utilisateur <b>postgres</b> et l'option <span class="code">--pwprompt</span> force la demande d'un mot de passe.
+
+%pre.bash
+  :preserve
+    $ createuser admin --superuser --pwprompt --username postgres
+    Enter password for new role: # password pour l'utilisateur admin
+    Enter it again:
+    Password: # celui que vous avez entré pendant l'installation de postgres
+
+
+%h2 Installer RVM 
+
+%p
+  %a{:target => '_blank', :href => 'http://beginrescueend.com/'} RVM
+  est un outil très utile si l'on veut utiliser des versions de Ruby différentes pour plusieurs projets ou si on veut séparer ses gems d'un projet à un autre.
+  Pour l'installer, il suffit de faire ce qui est indiqué sur le site officiel, autrement dit, éxécuter ce qui suit dans un terminal.
+
+%pre.bash
+  :preserve
+    $ bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+
+%p
+  Puis, comme indiqué à la fin de l'installation, ajoutez ce qui suit dans votre <b>.profile</b>&nbsp;:
+
+%pre.bash
+  :preserve
+    # ~/.profile
+    [[ -s "/Users/Nima/.rvm/scripts/rvm" ]] && source "/Users/Nima/.rvm/scripts/rvm"  # This loads RVM into a shell session.  
+
+%h3 Les Gem et les Gemsets
+%p
+  Il est possible que vous vous demandiez ce qu'est une Gem. Est bien c'est simple, comme l'indique la doc de 
+  <a target='_blank' href='http://docs.rubygems.org/read/chapter/1'>RubyGems.org</a>, 
+  une gem est une application Ruby sous forme de paquet ou de librairie. Par exemple, Rails est une gem.
+  
+%p
+  Les gemsets sont des ensembles de gems et chaque ensemble est associé à un projet / environnement de travail spécifique.
+
+%p
+  Supposons que vous vouliez utiliser la version 1.9.2 de Ruby pour votre projet. Commencez par l'installer, comme ceci&nbsp;:
+
+%pre.bash
+  :preserve
+    $ rvm install 1.9.2 
+  
+%p 
+  Puis spécifiez à RVM que vous voulez utiliser cette version dans le terminal courant.
+
+%pre.bash
+  :preserve
+    $ rvm use 1.9.2
+%p.notice
+  Pour utiliser une version par défaut, rajouter l'option <span class='code'>--default</span>. Par exemple, <span class="code">rvm use --default 1.9.2</span>.
+  
+%p
+  Maintenant vous pouvez créer un Gemset et spécifier que vous voulez utiliser la version 1.9.2 pour votre projet.
+
+%pre.bash
+  :preserve
+    $ rvm gemset create mon_projet
+    $ rvm use 1.9.2@mon_projet
+%p
+  A partir de là, toute les gems que vous allez installer seront installées dans le Gemset que vous venez de créer.
+
+%p
+  Pour éviter de devoir retaper <span class='code'>rvm use 1.9.2@mon_projet</span> vous pouvez vous faire des alias dans votre <b>.profile</b>.
+
+%pre.bash
+  :preserve
+    # ~/.profile
+    alias mon_projet="rvm use 1.9.2@mon_projet; cd ~/Development/Rails/mon_projet"
+  
+%p
+  De cette façon vous n'aurez qu'a taper une commande dans le terminal pour vous trouver dans bon dossier de travail et utiliser le bon Gemset.
+
+%h3 Bundler
+
+%p  
+  %a{:target => '_blank', :href => 'http://gembundler.com/'} Bundler
+  est un gestionnaire de dépendance pour gérer les Gems de votre projet. 
+  Donc au lieu d'installer toutes les dépendances de vos projet les unes après les autres, vous les listerez dans le <b>Gemfile</b> de votre application, et il ne suffira que d'une commande pour que 
+  tout s'installe correctement. Autant vous dire que c'est un outil quasi indispensable !
+
+%p Cessons de discuter ! Voilà comment installer le gem Bundler...
+
+%pre.bash
+  :preserve
+    $ gem install bundler
+
+%p
+  Et pour lancer l'installation des gems listées dans le fichier <b>Gemset</b> de votre application Rails, il suffit de se placer à la racine de votre application et de lancer la commande suivante&nbsp;:
+
+%pre.bash
+  :preserve
+    $ bundle install
+
+%p
+  Donc suivant le système de gestion de base de données que vous voulez utiliser, il suffit de mettre une des deux lignes suivantes dans le fichier Gemfile puis d'éxécuter à nouveau la commande
+  <span class="code">bundle install</span>.
+
+%pre.ruby
+  :preserve
+    # Gemfile
+    gem 'pg'      # Pour PostgreSQL
+    gem 'mysql2'  # Pour MySQL
+
+%p
+  Voilà pour votre environnement Rails ! Vous devriez être «Up and running!» comme disent les anglais !
+%p
+  Si ça ne marche pas n'hésitez pas à nous laissez un commentaire, nous pourrons essayer de vous aider !

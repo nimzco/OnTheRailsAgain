@@ -39,6 +39,7 @@ namespace :otra do
   task :generate_articles => :environment do 
     # First, delete all existing articles
     Article.delete_all
+    Tag.delete_all
     Dir.open(ARTICLE_PATH).each do |article_name|
       next if File.extname(article_name) != ARTICLE_EXTENSION # Treat file only .article file
       
@@ -87,7 +88,7 @@ namespace :otra do
           next_is = 'authors'
         else
           case(next_is)
-            when 'date'         then article_values[:date]         = Date.parse(line.strip)
+            when 'date'         then article_values[:date]         = Time.zone.parse(line.strip)
             when 'introduction' then article_values[:introduction] << line.strip
             when 'content'      then article_values[:content]      << line
             when 'title'        then article_values[:title]        << line.strip
@@ -100,10 +101,10 @@ namespace :otra do
               line.strip.split(',').each do |tag_name|
                 tag_name.strip! # Removing eventual spaces at the begining or at the end
                 # If the tag exists, add it to the list of tags
-                if tag = Tag.where(:name => tag_name).first
-                  article_values[:tags] << tag
-                else
+                if Tag.where(:name => tag_name).empty?
                   article_values[:tags] << Tag.create(:name => tag_name)
+                else
+                  article_values[:tags] << Tag.where(:name => tag_name).first
                 end
               end
           end
@@ -113,7 +114,7 @@ namespace :otra do
     return article_values
   end
   
-#   desc 'Update all articles'
+#   desc 'UpT all articles'
 #   task :update_article => :environment do
 #   end
   def highlight(code, language = :ruby)

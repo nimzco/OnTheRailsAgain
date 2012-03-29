@@ -1,0 +1,122 @@
+--date 
+20/10/2011
+
+--tags
+Routes, Ressources
+
+--introduction
+Dès lors que l'on veut créer une application Rails on a besoin de modifier le fichier routes.rb. Cependant, l'utilité et le fonctionnement du routeur Rails ne sont pas forcément évidents. Cet article présente les bases et les buts du routeur Rails.
+
+--title
+Comprendre les routes en Rails
+
+--authors
+Nicolas
+
+--content
+
+.see
+  Ce que nous allons voir :
+  %ul
+    %li
+      le fonctionnement du routeur Rails ;
+    %li
+      les utilisations de bases.
+
+%h2 Comprendre le fonctionnement
+  
+%p Voici une schéma explicatif permettant de comprendre le rôle du routeur dans le fonctionnement d'une application Rails.
+
+%img{:src => "/article_images/comprendre_les_routes/Routes.png"}
+
+%p Le processus commence avec une requête faite à partir du navigateur. Cette requête est ensuite transmise au routeur Rails qui l'analyse et extrait les informations suivantes&nbsp;:
+
+%ul
+  %li le contrôleur à instancier ;
+  %li l'action (correspondant à une méthode) à appeler dans ce contrôleur ;
+  %li enfin, si il y en a, les paramètres à passer à cette méthode.
+  
+%p Lorsqu'il reçoit une URL correctement formattée, le routeur Rails instancie le contrôleur spécifié et appelle la méthode appropriée en lui passant les paramètres si besoin. Le contrôleur va donc effectuer les actions nécessaires et Rails renverra la vue correspondante. Cette vue sera ensuite renvoyée au navigateur. Cette explication est volontairement simplifiée mais elle montre l'importance du routeur Rails.
+
+%p Par contre si le routeur Rails reçoit une URL mal formattée, il sera incapable d'effectuer les bonnes actions. Il est donc très important que le format de l'URL soit correct, c'est pourquoi le routeur Rails à également une deuxième fonction&nbsp;: nous aider à générer de bonnes URLs.
+
+%p Donc pour synthétiser, le routeur Rails à deux fonctions principales&nbsp;: 
+%ul
+  %li <strong>connecter des URLs au code</strong>, c'est à dire les interpreter, instancier le bon contrôleur et enfin appeler les bonnes actions ;
+  %li <strong>générer des chemins et des URLs</strong> sans avoir besoin de les écrire «à la main» dans le code.
+  
+%p Le routeur Rails effectue ces deux fonctions en utilisant les règles de routage définies dans le fichier <i>config/routes.rb</i>. Voyons chacune de ces fonctions un peu plus en détail.
+
+%h2 Connecter les URLs au code
+
+%p Prenons un exemple, supposons que j'ai écris une fonction <code>new</code> dans le contrôleur <code>articles_controller</code>. J'aimerais que cette méthode soit éxecutée lorsque j'accède à l'URL suivante&nbsp;: <i>www.monsite.fr/articles/new</i>. 
+
+%p Pour cela, il suffit simplement de définir la règle suivante dans le fichier <i>config/routes.rb</i>&nbsp;:
+
+%pre.bash
+  :preserve
+    # config/routes.rb
+    match "articles/new" => "articles#new"
+    
+%p Décorticons un peu cette règle. Tout d'abord on définit l'URL que notre routeur doit reconnaître avec la première partie de la règle : <span class="code">match "articles/new"</span>.
+
+%p.notice On note qu'il n'y a pas besoin de préciser le nom de domaine, ceci est dû au fait que notre routeur ce trouve dans notre application et que notre application est accessible via son nom de domaine.
+
+%p Ensuite on précise quelle partie de code doit être éxécutée lorsque l'on pointe vers cette URL, avec la seconde partie de la règle <span class="code">=> "articles#new"</span>. Ce qui se trouve à gauche du # correspond au contrôleur à instancier et ce qui se trouve à droite correspond à la méthode à appeler.
+
+%p Rails nous permet également de définir la même règle plus simplement :
+
+%pre.bash
+  :preserve
+    # config/routes.rb
+    get "articles/new"
+    
+%p Voilà un exemple de la première utilité du routeur Rails qui est de relier les URLs au code, passons maintenant à la seconde utilité de ce routeur.
+
+%h2 Générer des chemins et des URLs
+
+%h3 Un peu de théorie
+
+%p Le routeur permet également de générer des routes helpers qui sont des méthodes qui renvoies une URL correctement formattée. En effet, si vous avez écrit la  règle précedente dans votre fichier <i>config/routes.rb</i> et que vous tapez la commande suivante dans un terminal à la racine de votre application :
+
+%pre.bash
+  :preserve
+    $ rake routes
+   
+%p vous obtiendrez ceci :
+%pre.bash
+  :preserve
+    new_article GET /articles/new(.:format) {:controller => "articles", :action => "new"}
+
+%p A partir de cette ligne on peut extraire les informations suivantes :
+%ul
+  %li Le <strong>prefixe du helper</strong>, qui est ici <span class="code">new_article</span>
+  %li La <strong>méthode HTTP</strong> utilisé, ici c'est GET.
+  %li Le <strong>format de l'URL</strong>, ici c'est <span class="code">/articles/new(.:format)</span>.
+  %li Le <strong>contrôleur</strong> qui sera appelé si on accède à cette URL
+  %li Et enfin, l'<strong>action</strong> du contrôleur qui sera appelée.
+
+%p A partir du préfixe, on obtient le nom des deux helpers générés à savoir <span class="code">new_article_path</span> et <span class="code">new_article_url</span>. La différence entre les deux est tout simplement que la version URL contient le nom de domaine et le port en plus du chemin. Par exemple :
+
+%ul
+  %li <span class="code">new_article_path</span> redirige vers <span class="code">/articles/new(.:format)</span>
+  %li alors que <span class="code">new_article_url</span> redirige vers <span class="code">http://www.monsite.fr/articles/new(.:format)</span>
+  
+%p.notice Dans l'exemple précédent, le numéro du port n'est pas indiqué car c'est le port HTTP par défaut à savoir le port 80.
+ 
+%h3 Utilisation de ces helpers
+ 
+%p Les helpers générés par le routeur Rails peuvent s'utiliser dans la vue et rendent le code plus facile à lire et plus fiable puisque qu'on est sûr que l'URL sera bien formatée. Par exemple pour faire un lien interne qui redirige vers <i>www.monsite.fr/articles/new</i> on peut tout simplement faire comme ça :
+%pre.erb
+  :preserve
+    <%= link_to "Créer un nouvel article", new_article_path %>
+
+%p Voilà pour ce qui est des bases des routes en Rails. Je publierai d'autres articles pour détailler les différentes manières de définir les règles dans le fichier routes.rb. Si vous avez des questions ou des améliorations à proposer n'hésitez pas à laisser un commentaire.
+
+%h2 Références
+
+%ul
+  %li
+    %a{:href => "http://darynholmes.wordpress.com/2008/03/15/beginners-tutorial-routing-in-rails-20-with-rest-part-1-of-n/"} Beginners Tutorial: Routing in Rails 2.0
+  %li
+    %a{:href => "http://guides.rubyonrails.org/routing.html"} Guide Rails : Rails Routing from the Outside In

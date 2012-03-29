@@ -1,0 +1,214 @@
+--date 
+03/10/2011
+
+--tags
+ActiveRecord, Relations
+
+--introduction
+Les associations font partie des choses les plus basiques et les plus importantes à maitriser lors de la création d'une application web. Après une petite revue du problème, nous allons voir comment mettre en place ces relations avec Rails.
+
+--title
+Les associations One-to-Many
+
+--authors
+Nima
+
+--content
+
+.see
+  Ce que nous allons voir :
+  %ul
+    %li comprendre ce qu'est une association One-to-Many ;
+    %li mettre en place une association One-to-Many avec Rails.
+
+%h2 Présentation du problème
+
+%p
+  Le problème est relativement simple, le but d'une association est de pouvoir recréer des relations d'appartenance sur le plan informatique. 
+  Par exemple, comment représenter le fait qu'un écrivain possède plusieurs livres ? Ce problème est assez courant dans les applications et Rails nous permet de mettre ça en place assez facilement.
+
+%h2 Un exemple concret
+
+%p
+  Pour bien comprendre comment cela marche, on va prendre un exemple concret.
+  Pour reprendre l'exemple cité ci-dessus, nous avons donc des écrivains qui écrivent des livres. On a donc une application avec des écrivains et des livres et on veut relier ces deux entités ensemble par une relation d'appartenance.
+  En gros :
+
+%ul
+  %li un écrivain a plusieurs livres ;
+  %li un livre n'appartient qu'à un écrivain.
+  
+%h2 En théorie
+
+%p
+  En "théorie" pour résoudre ce problème, il suffit que chaque livre ait une référence vers son écrivain.
+  Pour être un peu plus théorique, on peut visualiser la relation par un arbre à deux niveaux, l'écrivain étant une racine et tous ses livres étant des feuilles. 
+  Dans ce cas-là, toutes les feuilles (livres) ont une référence vers la racine (l'écrivain).
+  En terme de base de données cela donne quelque chose comme ça :
+
+%pre.bash
+  :preserve
+    Writer - id:integer  name:string
+    Book   - id:integer  title:string writer_id:integer(foreign_key)
+
+%p
+  Comme on le voit là, le livre a une référence vers son écrivain et cette référence est une clé étrangère vers la table <code>Writer</code>.
+
+%h2 En pratique
+%p Avant de continuer, voilà une représentation de la relation des modèles entre eux.
+%img{:src => '/article_images/Associations_One-to-Many/One-to-Many.png'}
+
+%h3 Préparer la base de données
+
+%p
+  Bon, la vraie question maintenant c'est : "Comment on fait avec Rails ?"
+  Eh bien comme on va le voir, ce n'est pas bien compliqué !
+  On crée tout d'abord nos modèles comme suit :
+  
+%pre.bash
+  :preserve
+    $ rails generate scaffold Writer name:string 
+    $ rails generate scaffold Book   title:string writer_id:integer
+    $ rake db:migrate
+%p
+  Ici on peut noter plusieurs choses. Premièrement, les IDs des modèles sont générés automatiquement, pas besoin de spécifier quoique se soit. 
+  Mais surtout, le fait de nommer la référence écrivain <span class="code">writer_id</span>
+  n'est pas anodin. En mettant bien le nom de la table de référence (en minuscule et au singulier) suivit de <span class="code">_id</span>
+  on indique à Rails que c'est une clé étrangère qui correspond à l'identifiant de l'objet <code>Writer</code>.
+
+%h3 Mettre les choses en place dans les modèles
+
+%p
+  Bon, évidemment ce n'est pas tout, mais c'est presque fini ! Il suffit maintenant de spécifier qui appartient à quoi dans les modèles et le tour est joué !
+  Comme on l'a dit plus haut, un écrivain  <strong>possède plusieurs (has many)</strong>
+  livres. Ou encore, un livre <strong>appartient à (belongs to)</strong>
+  un écrivain. Je mets en avant ces mots clés, car c'est grâce à ces derniers qu'on va décrire à Rails notre relation. En pratique ça donne :
+
+%pre.ruby
+  :preserve
+    # app/models/writer.rb
+    class Writer < ActiveRecord::Base
+      has_many :books
+    end
+
+    # app/models/book.rb
+    class Book < ActiveRecord::Base
+      belongs_to :writer
+    end
+
+%p
+  Il est important de noter ici le pluriel et le singulier des mots. Un écrivain possède DES livres &rarr; Je mets un pluriel. Un livre appartient à UN écrivain &rarr; singulier. 
+  Si vous avez oublié la syntaxe, voilà un petit mémo : c'est logique.
+  Ah et, j'oubliais de dire que... Voilà, c'est tout.
+
+%h2 Utilisation dans le code
+
+%p
+  Alors, évidemment, le fait de faire ça ne vous change pas vos vues ni vos contrôleurs automatiquement. Si vous cherchez la simplicité il y a des gems comme InheritedResource qui existent pour vous simplifier la vie dans les contrôleurs mais si vous débutez je vous le déconseille.
+
+%h3 Dans le contrôleur
+
+%p
+  Un des endroits ou l'affectation d'un écrivain à un livre peut être utile est dans le contrôleur <code>books_controller</code>. 
+  Si vous voulez par exemple affecter toujours le même écrivain à tous les livres, vous pouvez dans, la méthode <code>create</code>
+  du contrôleur <code>books_controller</code>, 
+  spécifier l'id de l'écrivain comme suit :
+
+%pre.ruby
+  :preserve
+    # app/controllers/book_controller.rb
+    def create
+      super_writer = Writer.first
+      @book = Book.new(params[:book])
+      @comment.writer = super_writer
+      # Ou 
+      @comment.writer_id = super_writer.id
+      ...
+    end
+
+%p
+  Comme vous le voyez, vous avez plusieurs façons possibles d'associer un écrivain à un livre. Si au contraire vous voulez attribuer des livres à un écrivain, c'est quasiment pareil :
+
+%pre.ruby
+  :preserve
+    book_list = Book.all
+    @writer.books = book_list
+    # Ou alors
+    @writer.books << Book.last
+%p
+  Il y a deux façons de faire cette affectation. <span class="code">@writer.books</span> (à condition que <span class="code">@writer</span>
+  soit définit avant) va vous renvoyer un tableau de livres. Vous pouvez donc soit, écraser ce tableau en utilisant l'opérateur <span class="code">=</span>, 
+  soit ajouter des livres à cette liste avec l'opérateur <span class="code">&lt;&lt;</span>.
+  
+
+%h3 Dans la vue
+
+%p
+  Un autre cas de figure est possible : vous voulez pouvoir choisir l'écrivain à la création d'un livre. Dans ce cas, on voudrait par exemple que dans le formulaire de création d'un livre 
+  on ait la liste de tous les écrivains du site et qu'il suffisse de sélectionner l'écrivain voulut pour l'associer au livre. Voilà une façon de faire :
+
+%pre.erb
+  :preserve
+    # app/views/books/_form.html.erb
+    <%= form_for(@book) do |f| %>
+      <div class='field'>
+        <%= f.label :title, "Titre" %><br />
+        <%= f.text_field :title %>
+      </div>
+      <div class='field'>  
+        <%= collection_select(:book, :writer_id, Writer.find(:all), :id, :name) %>
+      </div>
+      <div class='actions'>
+        <%= f.submit 'Créer le livre'%>
+      </div>
+    <% end %>
+
+%p
+  Bon, tout ceci mérite quelques explications. 
+  En fait, la fonction <code>collection_select</code>
+  est un helper qui va générer du code HTML en fonction de ce qu'on lui passe. Vous pouvez avoir la doc
+  %a{:target => '_blank', :href => "http://ap.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#M000455"} ici
+  si ça vous intéresse.
+  Sinon, ce n'est pas bien compliqué. La fonction prend 5 paramètres obligatoires et deux optionnels. Voyons les dans l'ordre :
+
+%dl
+  %dt Object :
+  %dd 
+    Le nom de l'objet du formulaire. Ici <span class="code">:book</span> car on crée un livre.  
+
+  %dt Method :
+  %dd 
+    La méthode employée pour récupérer la valeur du select. Ici, la valeur correspond à l'id de l'écrivain, donc <span class="code">:writer_id</span>.
+
+  %dt Collection :
+  %dd 
+    la collection d'objet qu'on lui passe. On veut lui passer tous les écrivains, donc <span class="code">Writer.find(:all)</span> ou <span class="code">Writer.all</span>.
+
+  %dt Value_method : 
+  %dd 
+    la méthode qui va être appelée sur chaque élément de la collection pour récupérer la valeur voulut. Ici on veut l'id de l'écrivain <span class="code">(writer.id)</span> donc la méthode est <span class="code">:id</span>.
+
+  %dt Text_method :
+  %dd
+    La méthode qui va être appelée sur chaque élément de la collection pour afficher la valeur dans la select box. Ici on veut le nom de l'écrivain donc :name.
+    Si l'écrivain avait deux attributs <span class="code">:firstname </span> et <span class="code">:lastname</span> 
+    on aurait pu faire une méthode simple dans le modèle pour récupérer le nom sous la forme <span class="code">"\#{first_name} \#{last_name}"</span>. Dans ce cas, il aurait donc fallu mettre le nom de cette méthode plutôt que <span class="code">:name</span>.
+
+  %dt Options :
+  %dd 
+    Des options comme <span class="code">{:include_blank &rarr; true} </span> pour mettre une première valeur null ou <span class="code">{:prompt => "Choisir un écrivain"}</span> pour mettre un texte à la première valeur.
+
+  %dt HTML_options :
+  %dd 
+    Les options html que peut prendre le tag select, comme <span class="code">{:class => "my_select_box"}</span>, etc…
+  
+%p
+  Voilà pour les associations One-to_Many. Si vous avez des questions n'hésitez pas à laisser un commentaire !
+  
+%h2 Références
+
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://ap.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#M000455"} API Rails
+  %li 
+    %a{:target => '_blank', :href => "http://guides.rubyonrails.org/association_basics.html#the-has_many-through-association"} Guide rails sur les associations

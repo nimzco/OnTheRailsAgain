@@ -1,0 +1,365 @@
+--date 
+01/11/2011
+
+--tags
+Routes, Ressources
+
+--introduction
+Cet article présente la manière de définir les routes en Rails pour des ressources ainsi que comment ajouter des actions pour ces ressources. Il présente également l'ensemble des routes helpers générés ainsi que leurs utilisations avec les différents verbes HTTP.
+
+--title
+Le routage de ressources en Rails
+
+--authors
+Nicolas
+
+--content
+
+%p Le routage de ressources en Rails permet de déclarer très rapidement l'ensemble des routes pour un contrôleur qui respecte l'architecture REST. Cet article présente comment définir les routes pour des ressources.
+
+.require
+  Pré-requis&nbsp;:
+  %ul
+    %li
+      Avoir compris le
+      %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/comprendre-les-routes-en-rails"} fonctionnement des routes en rails
+.see
+  Ce que nous allons voir&nbsp;:
+  %ul
+    %li Un rappel sur REST
+    %li Définir des routes pour des ressources
+    %li Ajouter des routes pour des actions spécifiques aux ressources
+
+%h2 Rappel sur les ressources et sur REST
+
+%h3 Notion de ressource
+
+%p 
+  La notion de ressource est vague et donc de difficile à définir. Prenons la première définition explicite du terme <strong>ressource</strong> dans son sens le plus général donnée par 
+  %a{:target => '_blank',:style => "display:inline;", :href => "http://tools.ietf.org/html/rfc2396"} Tim berners Lee
+  &nbsp;:
+%blockquote{:cite => "http://tools.ietf.org/html/rfc2396"}
+  Une ressource peut être toute chose qui possède une identité. Des exemples familiers incluent un document électronique, une image, un service (par exemple "le bulletin météo d'aujourd'hui pour Los Angeles"), ou un ensemble d'autres ressources. Certaines ressources ne peuvent pas être "ramenées par le réseau" (network retrievable), par exemple les êtres humains, les entreprises, les livres d'une bibliothèque peuvent être aussi considérés comme des ressources.
+
+%a{:target => '_blank', :href => "http://tools.ietf.org/html/rfc2396" } 
+
+%p Ce qu'il est important de comprendre c'est qu'une ressource est finalement n'importe quoi que l'on peut <b>identifier de manière unique</b> par une URI (Uniform Resource Identifier). Sur le web, cet identifiant unique est généralement une URL. 
+
+%p Même si cette notion paraît difficile à appréhender aux premiers abords, elle vous paraîtra plus claire une fois utilisée dans une application. Passons donc à la suite et à une approche de l'architecture REST.
+
+%h3 Notion de REST
+
+%p <strong>REST</strong> est un style architectural, une manière de construire une application pour le web. Les principes essentiels d'une architecture REST sont les suivants&nbsp;:
+
+%ul
+  %li
+    Chaque ressource doit être identifiée de manière <b>unique</b> par une URI.
+  %li
+    Les méthodes HTTP <code>GET</code>, <code>POST</code>, <code>PUT</code> et <code>DELETE</code> suffisent pour <b>accéder à</b> et <b>modifier</b> une ressource.
+    
+%h3 Exemple d'application RESTful
+
+%p
+  Je pense qu'il n'y a pas plus parlant qu'un exemple pour comprendre ce qu'est l'architecture REST et ce qu'est une ressource. <br />
+  Prenons donc l'exemple d'un blog contenant plusieurs articles. Ici, les ressources à manipuler sont les articles. Dans ce blog on peut ajouter, modifier, lire, et supprimer des articles. Chaque article a un identifiant unique, ici c'est son nom. Donc, pour que l'application respecte l'architecture REST elle doit permettre les actions suivantes&nbsp;:
+
+%ul
+  %li <b>Lire un article</b> - on effectue une requête de type <code>GET</code> sur <i>http://monblog.fr/articles/nom-de-mon-article</i>. Le nom de l'article étant son identifiant unique.
+  %li <b>Écrire un article</b> - on effectue une requête de type <code>POST</code> sur <i>http://monblog.fr/articles/</i>. Le contenu du message <code>POST</code> représentant le contenu du nouvel article à créer.
+  %li <b>Modifier un article</b> - on effectue une requête de type <code>PUT</code> sur <i>http://monblog.fr/articles/nom-de-mon-article</i>. Le contenu du message <code>PUT</code> représentant le contenu modifié de l'article.
+  %li <b>Supprimer un article</b> - on effectue une requête de type <code>DELETE</code> sur <i>http://monblog.fr/articles/nom-de-mon-article</i>.
+
+%p 
+  Si vous avez besoin de plus d'informations au sujet de REST reportez vous à la section REST de l'article 
+  %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/avant-de-commencer-avec-ruby-on-rails#3-rest-representational-state-transfer"} Avant de commencer avec Ruby On Rails
+
+
+-#######################################################################################################################################################################
+%h2 Les routes pour des ressources
+
+%h3 CRUD, méthodes HTTP et actions sur les ressources
+
+%p 
+  En Rails, le routage de ressources fournit une correspondance entre les <strong>verbes HTTP et les URLs</strong> avec les <strong>actions du contrôleur</strong>. Par convention, chaque action du contrôleur correspond à une <strong>opération CRUD</strong> (create, read, update, destroy) dans la base de données.
+%p
+  Prenons un exemple, supposons que nous avons un blog contenant des articles qui sont ici les ressources à manipuler. Voici comment définir les routes pour ce type de ressources&nbsp;:
+
+%pre.ruby
+  :preserve 
+    # config/routes.rb
+    resources :articles
+
+%p Cette seule règle permet de définir les routes pour les actions <code>index</code>, <code>show</code>, <code>new</code>, <code>edit</code>, <code>create</code>, <code>update</code> et <code>destroy</code>, qui sont les actions typiques que l'on doit pouvoir effectuer sur une ressource. 
+%p Nous obtenons les sept routes suivantes qui s'appliquent toutes au contrôleur <code>articles_controller</code>&nbsp;:
+
+%table
+  %thead
+    %tr
+      %th Méthode <br />HTTP
+      %th URL
+      %th Action
+      %th Utilité
+  %tbody
+    %tr
+      %td GET
+      %td <span class="code">/articles</span>
+      %td index
+      %td Afficher la liste de tous les articles
+    %tr
+      %td GET
+      %td <span class="code">/articles/new</span>
+      %td new
+      %td Afficher un formulaire pour créer un article
+    %tr
+      %td POST
+      %td <span class="code">/articles</span>
+      %td create
+      %td Créer un nouvel article à partir du contenu du message <code>POST</code>   
+    %tr
+      %td GET
+      %td <span class="code">/articles/:id</span>
+      %td show
+      %td Afficher l'article ayant pour id celle passée dans l'URL  
+    %tr
+      %td GET
+      %td <span class="code">/articles/:id/edit</span>
+      %td edit
+      %td Afficher un formulaire pour editer l'article ayant pour id celle passée dans l'URL
+    %tr
+      %td PUT
+      %td <span class="code">/articles/:id</span>
+      %td update
+      %td Mettre à jour un article ayant pour id celle passée dans l'URL à partir du corps du message <code>PUT</code>
+    %tr
+      %td DELETE
+      %td <span class="code">/articles/:id</span>
+      %td destroy
+      %td Supprimer l'article ayant pour id celle passée dans l'URL
+
+%p.warning Il est important de savoir qu'il y a une priorité sur les règles. Les règles écrites au début du fichier sont prioritaires par rapport à celles écrites en dessous. 
+%h3 Chemins et URLs générés (routes helpers)
+
+%p Comme pour toutes les routes, le routage de ressources génère des chemins et des URLs. Voici un tableau récapitulatif de ces helpers et des actions vers lesquelles ils redirigent en fonction du verbe HTTP employé&nbsp;:
+
+%table
+  %thead
+    %tr
+      %th Path helper
+      %th{:style => "width: 14%;"} Méthode <br />HTTP
+      %th{:style => "width: 12%;"} Action
+  %tbody
+    %tr
+      %td{:rowspan => 2} <span class="code">articles_path</span>
+      %td GET
+      %td index
+    %tr
+      %td POST
+      %td create
+    %tr
+      %td{:rowspan => 3} <span class="code">article_path(:id)</span> Ce path prend en paramètre l'id de l'article à modifier
+      %td GET
+      %td show
+    %tr
+      %td PUT
+      %td update
+    %tr
+      %td DELETE
+      %td destroy
+    %tr
+      %td <span class="code">new_article_path</span>
+      %td GET
+      %td new
+    %tr
+      %td <span class="code">edit_article_path</span>
+      %td GET
+      %td edit
+      
+%p.notice Comme tous les routes helpers, il y a aussi les URLs helpers qui sont générés. Pour s'en servir, il suffit de remplacer <span class="code">…_path</span> par <span class="code">…_url</span>. Par exemple, <span class="code">new_article_url</span>.
+      
+%h3 Exemple d'utilisations
+%p Le routage de ressource est utilisé par Rails lorsque l'on crée un scaffold. Rails génère les routes, le modèle, la table en base de données, les actions RESTful dans le contrôleur et les vues. Donc pour voir un bon exemple des <code>path_heplers</code>, il suffit de regarder dans les vues générées.
+
+%p Par exemple, si on crée le scaffold suivant&nbsp;:
+
+%pre.bash
+  :preserve
+    $ rails generate scaffold Article title:string content:text
+
+%p On peut constater l'utilisation des <code>path_helpers</code> suivants :
+
+%pre.erb
+  :preserve
+    # app/views/articles/index.html.erb
+    ...
+    <%= link_to 'New Article', new_article_path %>
+    ...
+
+%pre.erb
+  :preserve
+    # app/views/articles/show.html.erb
+    ...
+    # Ici @article est défini dans la méthode show du contrôleur articles_controller
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Back', articles_path %>
+    ...
+
+%pre.erb
+  :preserve
+    # app/views/articles/show.html.erb
+    ...
+    # Ici @article est défini dans la méthode edit du contrôleur articles_controller
+    <%= link_to 'Show', @article %> |
+    <%= link_to 'Back', articles_path %>
+    ...
+
+%p Pour le dernier exemple, on peut voir que le lien pour l'action <code>show</code> n'utilise pas le <code>path_helper</code> <span class="code">article_path(@article)</span>. Ceci est dû au fait que Rails comprend tout seul que lorsqu'on lui passe directement une instance de l'objet <b>Article</b> il doit utiliser le <code>path_helper</code> <span class="code">article_path</span> et donc on fonction de la méthode HTTP utilisé il redirigera vers la bonne action du contrôleur. Ici c'est un lien donc c'est la méthode <code>GET</code> qui est utilisé et donc ce lien redirigera vers l'action <code>show</code>.
+      
+%h3 Définir plusieurs ressources
+
+%p Le routeur Rails nous permet de définir plusieurs ressources en une seule ligne de la façon suivante&nbsp;:
+
+%pre.ruby
+  :preserve
+    resources :articles, :photos, :authors
+
+
+-#######################################################################################################################################################################
+%h2 Les routes pour une ressource unique 
+
+%h3 CRUD, méthodes HTTP et actions sur les ressources
+
+%p Il peut arriver que l'on ait besoin de définir les routes pour une ressource unique à laquelle on aimerait accéder sans préciser une ID. Le routeur Rails nous permet de définir ce genre de route. Prenons un exemple pour voir l'ensemble des routes créées.
+
+%pre.ruby
+  :preserve 
+    # config/routes.rb
+    resource :account
+%p.warning Faire attention, dans ce cas il n'y a pas de « s » au mot <span class="code">resource</span>
+    
+%p Cette seule règle permet de définir les routes pour les actions <code>show</code>, <code>new</code>, <code>edit</code>, <code>create</code>, <code>update</code> et <code>destroy</code> du contrôleur <code>accounts_controller</code>. Voici un récapitulatif&nbsp;:
+
+%table
+  %thead
+    %tr
+      %th Méthode <br />HTTP
+      %th URL
+      %th Action
+      %th Utilité
+      -#%th helper
+  %tbody
+    %tr
+      %td GET
+      %td <span class="code">/account/new</span>
+      %td new
+      %td Afficher un formulaire pour créer un compte
+    %tr
+      %td POST
+      %td <span class="code">/account</span>
+      %td create
+      %td Créer le nouveau compte à partir du contenu du message <code>POST</code>
+    %tr
+      %td GET
+      %td <span class="code">/account</span>
+      %td show
+      %td Afficher le seul et unique compte
+    %tr
+      %td GET
+      %td <span class="code">/account/edit</span>
+      %td edit
+      %td Afficher un formulaire pour editer le compte
+    %tr
+      %td PUT
+      %td <span class="code">/account</span>
+      %td update
+      %td Mettre à jour le seul et unique compte à partir du contenu du message <code>PUT</code>
+    %tr
+      %td DELETE
+      %td <span class="code">/account</span>
+      %td destroy
+      %td Supprimer le compte
+
+%h3 Chemins et URLs générés (routes helpers)
+
+%p Dans la ces d'une ressource unique, les <code>path_helpers</code> générés ne prennent pas de paramètre étant donné que la ressource à modifier est toujours la même. Voici un tableau récapitulatif de ces helpers et des actions vers lesquelles ils redirigent en fonction du verbe HTTP employé&nbsp;:
+
+%table
+  %thead
+    %tr
+      %th Path helper
+      %th{:style => "width: 14%;"} Méthode <br />HTTP
+      %th{:style => "width: 12%;"} Action
+  %tbody
+    %tr
+      %td{:rowspan => 4} <span class="code">account_path</span>
+      %td GET
+      %td show
+    %tr
+      %td POST
+      %td create
+    %tr
+      %td PUT
+      %td update
+    %tr
+      %td DELETE
+      %td destroy
+    %tr
+      %td <span class="code">new_account_path</span>
+      %td GET
+      %td new
+    %tr
+      %td <span class="code">edit_account_path</span>
+      %td GET
+      %td edit
+
+
+%h2 Ajouter des actions RESTful
+
+%p Il arrive souvent que l'on ait besoin d'ajouter des routes à une ressource pour des actions autres que celles définies par défaut. Le routeur Rails nous permet de le faire très simplement, voyons comment. 
+
+%h3 Ajout d'une action sur la collection
+
+%p Tout d'abord, il faut définir si cette action va agir sur <b>l'ensemble des ressources</b> ou seulement sur <b>une seule</b>. Prenons un exemple, supposons que l'on ait un contrôleur <code>photos_controller</code> et que l'on veuille ajouter la possiblité de faire une recherche sur les photos. Dans ce cas, l'action sera effectuée sur l'ensemble des ressources photos. Donc on défini les routes comme ceci&nbsp;:
+
+%pre.ruby
+  :preserve
+    resources :photos do
+      get 'search', :on => :collection
+    end
+
+%p.notice Il est possible d'utiliser des symboles à la place des chaînes de caractères. Par exemple, on pourrait écrire&nbsp;: <br /><span class="code">get :search, :on => :collection</span>
+
+%h3 Ajout d'une action sur un membre
+
+%p Supposons maintenant que l'on veuille effectuer une action sur une seule ressource, par exemple accéder à une previsualisation d'une photo. Dans ce cas on peux définir les routes comme ceci&nbsp;:
+
+%pre.ruby
+  :preserve
+    resources :photos do
+      get 'preview', :on => :member 
+    end
+
+%p Les routes helpers obtenus dans les deux cas précédents sont respectivement <span class="code">search_photos_path</span> et <span class="code">preview_photo_path</span>. Bien faire attention au « s » à la fin de photos que l'on met que lorsque l'action est sur la collection entière.
+    
+%p Si on a beaucoup d'actions à ajouter sur les membres ou sur la collection entière on peut également définir les routes comme ceci :
+
+%pre.ruby
+  :preserve
+    resources :photos do
+      member do
+        get 'preview'
+        get 'buy'
+      end
+      collection do
+        get 'search'
+        get 'another_action'
+      end
+    end
+
+%p.notice Il faut noter ici que l'on peut remplacer let mot <span class="code">get</span> par les autres méthodes HTTP, par exemple <span class="code">post</span>
+
+%p Voilà les bases pour le routage de ressources en Rails, je publierai prochainement un article sur les ressources imbriquées. Si vous avez des questions ou améliorations à proposer n'hésitez pas à laissez un commentaire.
+
+%h2 Références
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://guides.rubyonrails.org/routing.html"} Guide Rails - Rails Routing from the Outside In

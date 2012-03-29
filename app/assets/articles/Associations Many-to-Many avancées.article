@@ -1,8 +1,8 @@
 --date 
-29/09/2011
+17/10/2011
 
 --tags
-Test, Routes
+ActiveRecord, Relations
 
 --introduction
 Maintenant que nous avons abordé les relations Many-to-Many simples, voyons comment mettre en oeuvre les relations Many-to-Many avancées (ou has_many :through).
@@ -11,7 +11,11 @@ Cette relation permet de stocker des données relatives à l'association qui lie
 --title
 Les associations Many-to-Many avancées (has_many :through)
 
+--authors
+Nima
+
 --content
+
 .require
   Pré-requis :
   %ul

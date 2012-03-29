@@ -1,0 +1,154 @@
+--date 
+28/09/2011
+
+--tags
+Routes, Ressources
+
+--introduction
+Vous voulez vous lancer dans Ruby On Rails ? Nous ne pouvons que vous encourager ! Avec ce blog nous allons essayer 
+de vous éclaircir sur différents points techniques ou théoriques. Cela étant dit, il y a quelques rudiments assez fondamentaux avant de se lancer dans Rails que nous allons vous présenter dans cet article.
+
+--title
+Avant de commencer avec Ruby on Rails
+
+--authors
+Nicolas, Nima
+
+--content
+
+%p
+  A l'heure où nous écrivons cet article et lançons ce blog nous sommes à la version 3 de Rails (la sortie officielle date du 
+  <a target='_blank' href="http://weblog.rubyonrails.org/2010/8/29/rails-3-0-it-s-done">29 Août 2010</a>) 
+  donc faites attention lors de vos différentes recherches sur internet, pensez bien à regarder les versions utilisées !
+
+%h2 Ruby et les Gems
+
+%h3 Ruby
+%p
+  Le framework Ruby On Rails étant écrit en Ruby, connaitre quelques bases du langage pourra toujours aider. 
+  Pas de panique ! Pas besoin d'être un expert en Ruby pour savoir faire du Rails, mais cela vous aidera dans l'apprentissage de ce framework !
+
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://www.ruby-lang.org/en/"} Site officiel
+    ;
+  %li
+    %a{:target => '_blank', :href => "http://www.ruby-lang.org/fr/documentation/quickstart/"} Le quickstart
+    du site officiel ;
+  %li
+    %a{:target => '_blank', :href => "http://tryruby.org/"} TryRuby.org
+    \- un petit interpreteur interactif.
+  %li
+    %a{:target => '_blank', :href => "http://rubymonk.com/"} RubyMonk
+    \- un site interactif pour apprendre le ruby.
+    
+%h3 Les Gems
+
+%p 
+  Les Gems sont comme des petits modules (ce sont des applications et bibliothèques Ruby empaquetées) que l'on peut ajouter à notre application Rails et qui permettent assez souvent de se simplifier la vie.
+  Par exemple des Gems d'authentification existent et permettent de ne pas à avoir à coder tout un système d'authentification. 
+  Il n'est pas nécessaire de savoir se servir des Gems pour commencer à faire du Rails, mais il est toujours bon de savoir qu'elles existent.
+  Voici des liens à connaître où vous pourrez trouver la plupart des Gems&nbsp;:
+
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://rubygems.org/"} RubyGems
+    ;
+  %li
+    %a{:target => '_blank', :href => "https://www.ruby-toolbox.com/"} Ruby Toolbox.
+    
+%h2 Le MVC - Modèle-Vue-Contrôleur
+
+%p
+  Le MVC est une architecture actuellement très répandue et vous sera également utile pour d'autres projets informatiques donc n'hésitez vraiment pas à vous y attarder ! Le concept n'est pas évident et clair du premier coup d'oeil donc n'hésitez pas à lire plusieurs articles pour mieux comprendre. Quoiqu'il en soit le temps aidera également à la compréhension !
+
+%p Mais nous allons tout de même voir un aperçu de ce qu'est l'architecture MVC autour de laquelle Rails est organisé.
+
+%p Tout d'abord, les avantages de l'architecture MVC sont les suivants :
+
+%ul
+  %li la séparation de la logique métier de l’interface utilisateur ;
+  %li la limitation naturelle des répétitions (DRY) ;
+  %li l’évidence de l’emplacement des différents types de code pour une maintenance facilitée.
+
+%h3 Les Modèles
+
+%p Un modèle représente l’information, les données d’une application et les règles pour la manipuler. Dans le cas de Rails, les modèles sont d’abord utilisés pour gérer les interactions avec les tables dans une base de données. Le plus souvent une table dans votre base correspond à un modèle dans l’application. L’essentiel de la logique métier de votre application est concentré dans les modèles.
+
+%h3 Les Vues
+
+%p Les vues sont l’interface utilisateur de votre application. En Rails, les vues sont souvent des fichiers HTML contenant du code Ruby intégré et dédié à la présentation des données. Les vues ont la responsabilité de fournir des données au navigateur, ou aux autres outils utilisés pour faire des requêtes à votre application.
+
+%h3 Les Contrôleurs
+
+%p Les contrôleurs constituent le lien entre les modèles et les vues. En Rails, les contrôleurs sont responsables du traitement des requêtes entrantes en provenance du navigateur, de l’interrogation des modèles pour obtenir des données, et du passage de ces données aux vues pour leur présentation.
+
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://fr.wikipedia.org/wiki/Modèle-Vue-Contrôleur"} MVC avec Wikipedia
+    ;
+  %li
+    %a{:target => '_blank', :href => "http://www.siteduzero.com/tutoriel-3-65541-un-pattern-puissant-le-pattern-mvc.html"} MVC sur le site du zéro.
+
+
+%h2 REST - Representational State Transfer
+
+%p
+  REST est un style d'architecture et la vie sera bien plus facile pour vous si vous concevez vos applications Rails comme ceci.
+
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://fr.wikipedia.org/wiki/Representational_State_Transfer"} REST avec Wikipedia
+    ;
+  %li
+    %a{:target => '_blank', :href => "http://www.pompage.net/traduction/comment-j-ai-explique-rest-a-ma-femme"} Comment j'ai expliqué REST à ma femme
+    ;
+  %li
+    %a{:target => '_blank', :href => "http://www.biologeek.com/rest,traduction,web-semantique/pour-ne-plus-etre-en-rest-comprendre-cette-architecture/"} Pour ne plus être en REST, comprendre cette architecture.
+  %li
+    %a{:target => '_blank', :href => "http://www.croes.org/gerald/blog/qu-est-ce-que-rest/447/"} Gerald's Blog - Qu’est-ce que REST ?
+  %li
+    %a{:target => '_blank', :href => "http://www.aeon-consulting.fr/2009/07/08/comprendre-rest-partie-1-ressource/"} Aeon Blog - Comprendre REST
+
+%h2 Références bibliographique
+
+%p
+  Vous aimez la lecture ? Vous préférez apprendre avec un bon livre ? Voilà quelques références qui pourraient vous intéresser !
+
+%ul
+  %li
+    %a{:target => '_blank', :href => "http://pragprog.com/book/rails4/agile-web-development-with-rails"} Agile Web Development with Rails (4th edition)
+    En anglais, certes, mais un très bon livre pour débuter. Des notions de développement agiles sont également enseignées avec ce livre !
+
+%h2 Allez voir ailleurs !
+
+%p
+  Nous vous incitons fortement à aller voir les articles et les tutoriels des autres ! D'ailleurs si vous êtes féru en anglais n'hésitez pas à aller du côté de la communauté anglaise qui possède également beaucoup de ressources.
+  Un tas de personnes font des articles et des tutoriels avec un autre point de vue que le nôtre, une façon de penser qui se rapproche peut être plus de la vôtre.
+  Voilà une liste non exhaustive, évidemment :
+
+%ul
+  %li
+    Les 
+    %a{:target => '_blank', :href => "http://guides.rubyonrails.org/"} RailsGuides.
+    Nous ne pouvons que le conseiller très très fortement. Long et en anglais, mais remplis de la plupart des informations que vous cherchez et chercherez&nbsp;!
+  %li
+    Les
+    %a{:target => '_blank', :href => "http://railsdebutant.org/fr_guides/"} Guides Rails 
+    La même chose mais en français ! Tout n'est pas traduit, mais vous trouverez une partie des guides en français. (La première page est en anglais mais les guides sont bien en français !)
+    Ces traductions correspondent au 
+    %a{:target => '_blank', :href => "https://github.com/gdurelle/docrails"} répo git
+    du créateur de RailsDébutant.org. Il n'est donc pas forcément à jour par rapport au 
+    %a{:target => '_blank', :href => "https://github.com/josrozen/docrails/tree/master/railties/guides/source"} répo officiel.
+    (N'hésitez pas à contribuer si vous êtes bon en anglais et que vous avez un peu de temps !)
+  %li
+    Les 
+    %a{:target => '_blank', :href => "http://railscasts.com/"} RailsCast 
+    Ces vidéos, certes en anglais, sont très concises et très bien présentées par le célèbre Ryan Bates !
+  %li
+    %a{:target => '_blank', :href => "http://www.camilleroux.com/2011/09/08/comment-debuter-en-ruby-on-rails/"} Comment débuter en Ruby on Rails
+    de Camille Roux.
+%h2 Des choses à ajouter ?
+
+%p
+  Si vous avez des références intéressantes à conseiller, n'hésitez pas à nous les faire parvenir dans les commentaires pour que nous mettions notre article à jour !
