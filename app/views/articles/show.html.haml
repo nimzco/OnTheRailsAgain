@@ -6,8 +6,8 @@
 
 = content_for :title do
   = @article.title
-.article_show
-  .article_content{:data => {:spy => 'scroll'}}
+.article_show.row-fluid
+  .article_content.span7{:data => {:spy => 'scroll'}}
     %h1= @article.title
     %p.posted_by
       Posté par 

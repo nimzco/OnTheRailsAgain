@@ -16,23 +16,25 @@
     = render article
   = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
 
-%aside.tags.span3
+%aside.tags.span4
   .content        
     - if current_author
       = button_to 'Nouvel article', new_article_path, :method => :get
 
     #tags.aside_box
-      %h3 Tags
+      %h3.page-header Catégories
       %ul
         - @tags.each do |tag|
-          %li= link_to "#{tag.name} (#{tag.articles.length})", articles_path(:tag => tag.name)
+          %li= link_to "#{tag.name}  #{tag.articles.length}", articles_path(:tag => tag.name)
     -if !is_mobile?
       #contact.aside_box
-        %h3 Nous contacter
+        %h3.page-header Nous contacter
         %p
           N'hésitez pas à nous         
           %a{:href => 'mailto:admin@ontherailsagain.com'} envoyer un mail 
           pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
+      %h3.page-header Commentaire récent
+      %h3.page-header Nous contacter
     -if !is_mobile?
       #follow_rss
         %a#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain"} &nbsp;

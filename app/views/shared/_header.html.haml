@@ -6,8 +6,8 @@
       Again      
   .navbar
     .navbar-inner
-      .container
-        %ul.nav
+      .container.row-fluid
+        %ul.nav.span8
           %li{ :class => (current_page?(articles_path) ? 'active' : '') }
             = link_to "Home", articles_path
           %li{ :class => (current_page?(authors_path) ? 'active' : '') }

@@ -1,23 +1,26 @@
 %article
   %header
+    = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => article.link
+    .authors
+      Par
+      = join_authors article
     %time{ :datetime => l(article.created_at.to_date, :format => "%Y-%m-%d") }
+      le
       %span.day= l article.created_at.to_date, :format => "%d"
       = l article.created_at.to_date, :format => "%b"
       = l article.created_at.to_date, :format => "%Y"
-  .wrapper    
-    = link_to content_tag(:h2, article.title), :controller => "articles", :action => "show", :id => article.link
-    
-    %p.article_content
-      = article.introduction
     .tags
       = join_tags article
-    .authors
-      = join_authors article
+  .wrapper    
+    %p.article_content
+      = article.introduction
+      = link_to "Plus…", :controller => "articles", :action => "show", :id => article.link
     .admin_tool
       - if current_author
         = button_to "Supprimer", article_path(article),:confirm => "are you sure ?", :method => :delete
-        - if article.activate == true 
+        -# if article.activate == true 
           = button_to 'Desactiver', desactivate_article_path(article.id)        
-        - else
+        -# else
           = button_to 'Activer', activate_article_path(article.id)
+.page-header    
     
