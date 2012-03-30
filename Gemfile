@@ -20,6 +20,8 @@ gem 'inherited_resources'
 gem 'albino'
 gem 'capistrano'
 gem 'will_paginate'       , '~>3.0.2'
+gem 'tweet-button'
+gem 'bitly'
 
 gem 'haml'
 gem 'factory_girl'

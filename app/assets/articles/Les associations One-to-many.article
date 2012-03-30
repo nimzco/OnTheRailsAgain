@@ -2,7 +2,7 @@
 03/10/2011
 
 --tags
-ActiveRecord, Relations
+Ruby On Rails, ActiveRecord, Relations
 
 --introduction
 Les associations font partie des choses les plus basiques et les plus importantes à maitriser lors de la création d'une application web. Après une petite revue du problème, nous allons voir comment mettre en place ces relations avec Rails.

@@ -13,18 +13,18 @@
       Posté par 
       = join_authors @article
       le 
-      = l @article.created_at.to_date, :format => "%d %b %Y"
+      = l @article.created_at.to_date, :format => '%d %b %Y'
       - if @article.updated_at != @article.created_at
         (Mis à jour le
-        = l @article.updated_at.to_date, :format => "%d %b %Y"
+        = l @article.updated_at.to_date, :format => '%d %b %Y'
         )
-    #share_button
+    #share_buttons
+      %i.icon-share
       .share_button
-        %g:plusone{:size => "medium", :count => "false"}
-      .share_button
-        %a{ :href => "http://twitter.com/share?count=none", :class => "twitter-share-button", :data => {:via => 'ontherailsblog'}} 
+        %g:plusone{:size => 'medium', :count => 'false'}
+      .share_button= custom_tweet_button '<i class="icon-twitter-sign"></i>'.html_safe, {:url => BITLY.shorten('http://ontherailsagain.com'+request.path).bitly_url, :text => @article.title + ' - '}, {:target => 'blank_'}
       #fb_span
-        .fb-like{:data => {:send => false, :layout => "button_count", :width => 100, "show-faces" => false}}
+        .fb-like{:data => {:send => false, :layout => 'button_count', :width => 100, 'show-faces' => false}}
   
     ~ @article.content.html_safe
     
@@ -42,4 +42,5 @@
       ~ @article.table_of_content.html_safe
       - if current_author
         = button_to "Editer", edit_article_path(@article.link), :method => :get 
+
 

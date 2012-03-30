@@ -1,0 +1,1 @@
+BITLY = Bitly.new('ontherailsagain', 'R_999b49564ed0685fec27055c20fa6976')

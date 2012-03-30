@@ -22,5 +22,6 @@ $( ->
         if i < headers.length and ($(headers[i]).offset().top - $(document).scrollTop()) < (window.innerHeight / 3)
           summary_headers.css('font-weight', 'normal')
           $(summary_headers[i]).css('font-weight', 'bold')    
-  )  
+  )
+ 
 )
