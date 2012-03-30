@@ -37,9 +37,9 @@
     #disqus
       = raw disqus_thread
 
-%aside#summary{:style => "position:absolute; right: 0; top: 500px;"}
-  #summary_content
-    ~ @article.table_of_content.html_safe
-    - if current_author
-      = button_to "Editer", edit_article_path(@article.link), :method => :get 
+  %aside#summary.span5
+    #summary_content
+      ~ @article.table_of_content.html_safe
+      - if current_author
+        = button_to "Editer", edit_article_path(@article.link), :method => :get 
 

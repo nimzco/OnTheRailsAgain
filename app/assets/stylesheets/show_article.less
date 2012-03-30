@@ -6,6 +6,26 @@
     padding-bottom: 0.3em;
     margin-bottom: 0.6em;
   }
+  h2 {
+    counter-increment: section;
+    counter-reset: subsection;
+  }
+  h3 {
+    counter-increment: subsection;
+    counter-reset: subsubsection;
+  }
+  h4 {
+    counter-increment: subsubsection;
+  }
+  h2:before {
+    content: counter(section) ". ";
+  }
+  h3:before {
+    content: counter(section) "." counter(subsection) ". ";
+  }
+  h4:before {
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) ". ";
+  }
   .require {
     .alert;
     ul {
@@ -71,6 +91,51 @@
     content: '\A0\BB';
   }
 }
+
+/**------------------- SUMMARY -------------------**/
+
+#summary {
+  font-size: 105%;
+  ul.first {
+    font-size: 1.2em;
+    padding-left  : 0;
+    list-style    : none;
+    > li {
+      line-height: 1.3em;
+      counter-increment: niveau1;
+      counter-reset: niveau2;
+      margin-bottom: 0.5em;
+      > ul {
+        font-size: 0.9em;
+        list-style    : none;
+        > li {
+          counter-increment: niveau2;
+          counter-reset: niveau3;
+          > ul {
+            font-size: 0.9em;
+            list-style    : none;
+            > li {
+              counter-increment: niveau3;
+            }
+            > li:before {
+              content: counter(niveau1) "." counter(niveau2) "." counter(niveau3) ". ";
+              color: #a20003;
+            }
+          }
+        }
+        > li:before {
+          content: counter(niveau1) "." counter(niveau2) ". ";
+          color: #a20003;
+        }
+      }
+    }
+    > li:before {
+      content: counter(niveau1) ". ";
+      color: #a20003;
+    }
+  }
+}
+
 
 /**------------------- DISQUS OVERRIDE -------------------**/
 
