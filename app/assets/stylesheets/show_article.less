@@ -1,7 +1,25 @@
 .article_show {
-  h1 {
+  h1, h2 {
     text-align: left;
+    border-bottom: 1px solid #CCC;
+    box-shadow: 0 1px 0 white;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.6em;
   }
+  .require {
+    .alert;
+    ul {
+      margin-bottom: 0;
+    }
+  }
+  .see {
+    .alert;
+    .alert-info;
+    ul {
+      margin-bottom: 0;
+    }
+  }
+  
   pre {
     font-size: 1.1em;
     background-color: #EFEFEF;
@@ -21,5 +39,79 @@
     background-color: #EFEFEF;
     .radius(0.2em);
     padding-bottom: 0.1em;
+    
   }
+  table {
+    .table;
+    .table-bordered;
+    thead {
+      background-color: #e6f2fa;
+    }
+    tbody {
+      background-color: #F9F9FF;
+      tr:nth-child(even) td, tbody tr.even td {
+        background-color: #F5F5FF;
+      }
+    }
+    tr th, tr td {
+      vertical-align: middle;
+    }
+  }
+  blockquote {
+    color: #666;
+    padding: 0;
+    border: 0;
+    text-align: justify;
+    text-indent: -1em;
+  }
+  blockquote:before {
+    content: '\AB\A0';
+  }
+  blockquote:after {
+    content: '\A0\BB';
+  }
+}
+
+/**------------------- DISQUS OVERRIDE -------------------**/
+
+#disqus_thread {
+  a {
+    text-shadow: none;
+  }
+  /*
+h3 {
+    border-bottom: 1px solid #CCC;
+    box-shadow: 0 1px 0 white;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.6em;
+  }
+*/
+}
+
+#dsq-account-dropdown a, .dsq-subscribe-email, .dsq-subscribe-rss {
+  .btn;
+  text-decoration: none;
+  em {
+    text-decoration: none !important;
+  }
+}
+#dsq-account-dropdown a:hover, .dsq-subscribe-email:hover, .dsq-subscribe-rss:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -ms-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+#dsq-account-dropdown a:active, .dsq-subscribe-email:active, .dsq-subscribe-rss:active {
+  background-image: none;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #e6e6e6;
+  background-color: #d9d9d9 \9;
+  outline: 0;
 }

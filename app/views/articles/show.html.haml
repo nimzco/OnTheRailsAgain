@@ -33,9 +33,9 @@
       %ul.tags
         - @article.tags.each do |tag|
           %li= link_to tag.name, articles_path(:tag => tag.name)
-
-  #disqus
-    = raw disqus_thread
+    .page-header
+    #disqus
+      = raw disqus_thread
 
 %aside#summary{:style => "position:absolute; right: 0; top: 500px;"}
   #summary_content

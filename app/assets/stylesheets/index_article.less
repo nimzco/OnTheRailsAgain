@@ -4,41 +4,17 @@ section.articles {
   }
   
   article {
-    margin-bottom: 3em;
-    //display: table;
+    margin-bottom: 1em;
     header {
-      //display: table-cell;
       vertical-align: top;
       margin-bottom: 0.5em;
       .authors, time {
         display: inline;
         font-size: 0.9em;
       }
-       /*
- padding: 1em 1em 0.6em 1em;
-        max-width: 3.5em;
-        display: inline-block;
-        text-transform: capitalize;
-        text-align: center;
-        .gradient(@dark_red, @light_red, @dark_red);
-        border: 1px solid #890003;
-        box-shadow: inset 0 0 4px rgba(255,255,255,0.4);
-        color: white;
-        text-shadow: 1px 1px 0 #890003;
-        .radius(2px);
-        .day {
-          font-size: 2.2em;
-        }
-*/
     }
     .wrapper {
-      //display: table-cell;
-/*
-      vertical-align: top;
-      padding-left: 1em;
-*/
-    }
-    .radius(3px);
+    } 
     h2 {
       line-height: normal;
       a {
@@ -74,7 +50,7 @@ aside {
     display: inline-block;
     margin-bottom: 0.6em;
     a {
-      .radius(3px);
+      .radius(2px);
       background-color: @linkColor;
       font-size       : 0.9em;
       color           : white;
@@ -83,6 +59,10 @@ aside {
       text-shadow     : none;
       border          : 1px solid #B00;
       box-shadow      : 0 1px 0 white;
+    }
+    a:hover {
+      background-color: lighten(@linkColor, 5%);
+      border-color    : lighten(#B00, 5%);
     }
   }
 }

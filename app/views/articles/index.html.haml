@@ -7,10 +7,17 @@
 
 %section.articles.span8
   - if @articles.empty?
-    %h2.search_title
-      Aucun article correspond à votre recherche...
+    %h2.search_title.page-header
+      Résultat de la recherche
+    %p.alert.alert-warning
+      Aucun article ne correspond à votre recherche...
+      
   - elsif @search_text != ""
-    %h2.search_title.page-header= @search_text
+    %h2.search_title.page-header
+      Résultat de la recherche
+    -#%h2.search_title.page-header= @search_text
+    %p.alert.alert-info= @search_text
+      
   - @articles.each do |article|
     = render article
   = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
