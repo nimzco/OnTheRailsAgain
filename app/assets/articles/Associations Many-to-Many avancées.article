@@ -2,7 +2,7 @@
 17/10/2011
 
 --tags
-ActiveRecord, Relations
+Ruby On Rails, ActiveRecord, Relations
 
 --introduction
 Maintenant que nous avons abordé les relations Many-to-Many simples, voyons comment mettre en oeuvre les relations Many-to-Many avancées (ou has_many :through).
