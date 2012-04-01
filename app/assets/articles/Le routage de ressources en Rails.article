@@ -18,13 +18,13 @@ Nicolas
 %p Le routage de ressources en Rails permet de déclarer très rapidement l'ensemble des routes pour un contrôleur qui respecte l'architecture REST. Cet article présente comment définir les routes pour des ressources.
 
 .require
-  Pré-requis&nbsp;:
+  %strong Pré-requis&nbsp;:
   %ul
     %li
       Avoir compris le
       %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/comprendre-les-routes-en-rails"} fonctionnement des routes en rails
 .see
-  Ce que nous allons voir&nbsp;:
+  %strong Ce que nous allons voir&nbsp;:
   %ul
     %li Un rappel sur REST
     %li Définir des routes pour des ressources
@@ -77,7 +77,7 @@ Nicolas
 -#######################################################################################################################################################################
 %h2 Les routes pour des ressources
 
-%h3 CRUD, méthodes HTTP et actions sur les ressources
+%h3 CRUD, méthodes HTTP et actions
 
 %p 
   En Rails, le routage de ressources fournit une correspondance entre les <strong>verbes HTTP et les URLs</strong> avec les <strong>actions du contrôleur</strong>. Par convention, chaque action du contrôleur correspond à une <strong>opération CRUD</strong> (create, read, update, destroy) dans la base de données.
@@ -137,7 +137,7 @@ Nicolas
       %td Supprimer l'article ayant pour id celle passée dans l'URL
 
 %p.warning Il est important de savoir qu'il y a une priorité sur les règles. Les règles écrites au début du fichier sont prioritaires par rapport à celles écrites en dessous. 
-%h3 Chemins et URLs générés (routes helpers)
+%h3 Chemins et URLs générés
 
 %p Comme pour toutes les routes, le routage de ressources génère des chemins et des URLs. Voici un tableau récapitulatif de ces helpers et des actions vers lesquelles ils redirigent en fonction du verbe HTTP employé&nbsp;:
 
@@ -226,7 +226,7 @@ Nicolas
 -#######################################################################################################################################################################
 %h2 Les routes pour une ressource unique 
 
-%h3 CRUD, méthodes HTTP et actions sur les ressources
+%h3 CRUD, méthodes HTTP et actions
 
 %p Il peut arriver que l'on ait besoin de définir les routes pour une ressource unique à laquelle on aimerait accéder sans préciser une ID. Le routeur Rails nous permet de définir ce genre de route. Prenons un exemple pour voir l'ensemble des routes créées.
 
@@ -278,7 +278,7 @@ Nicolas
       %td destroy
       %td Supprimer le compte
 
-%h3 Chemins et URLs générés (routes helpers)
+%h3 Chemins et URLs générés
 
 %p Dans la ces d'une ressource unique, les <code>path_helpers</code> générés ne prennent pas de paramètre étant donné que la ressource à modifier est toujours la même. Voici un tableau récapitulatif de ces helpers et des actions vers lesquelles ils redirigent en fonction du verbe HTTP employé&nbsp;:
 

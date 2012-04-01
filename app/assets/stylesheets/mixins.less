@@ -1,22 +1,9 @@
-.radius(@radius: 0.5em) {
+/*------------------------------------------------------------------------------------------ MIXINS --------------------*/
+
+.radius(@radius: 0.3em) {
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
 	border-radius: @radius;
-}
-
-.gradient(@color: #F5F5F5, @stop: #EEE, @start: #FFF) {
-  background: @color;
-  background: -webkit-gradient(linear,
-                               left bottom,
-                               left top,
-                               color-stop(0, @start),
-                               color-stop(1, @stop));
-  background: -ms-linear-gradient(bottom,
-                                  @start,
-                                  @stop);
-  background: -moz-linear-gradient(center bottom,
-                                   @start 0%,
-                                   @stop 100%);
 }
 
 .noradius {
@@ -25,10 +12,113 @@
 	border-radius: 0;
 }
 
-/*
-.bshadow(@left, @top, @radius, @color) {
+.radiusRight(@radius: 0.3em) {
+	-webkit-border-bottom-right-radius: @radius;
+	-webkit-border-top-right-radius: @radius;
+	-moz-border-radius-bottomright: @radius;
+	-moz-border-radius-topright: @radius;
+	border-bottom-right-radius: @radius;
+	border-top-right-radius: @radius;
+}
+.radiusLeft(@radius: 0.3em) {
+	-webkit-border-bottom-left-radius: @radius;
+	-webkit-border-top-left-radius: @radius;
+	-moz-border-radius-bottomleft: @radius;
+	-moz-border-radius-topleft: @radius;
+	border-bottom-left-radius: @radius;
+	border-top-left-radius: @radius;
+}
+
+.radiusBottom(@radius: 0.3em) {
+	-webkit-border-bottom-left-radius: @radius;
+	-webkit-border-bottom-right-radius: @radius;
+	-moz-border-radius-bottomleft: @radius;
+	-moz-border-radius-bottomright: @radius;
+	border-bottom-left-radius: @radius;
+	border-bottom-right-radius: @radius;
+}
+
+.radiusTop(@radius: 0.3em) {
+	-webkit-border-top-left-radius: @radius;
+	-webkit-border-top-right-radius: @radius;
+	-moz-border-radius-topleft: @radius;
+	-moz-border-radius-topright: @radius;
+	border-top-left-radius: @radius;
+	border-top-right-radius: @radius;
+}
+
+.radiusTopRight(@radius: 0.3em) {
+	-webkit-border-top-right-radius: @radius;
+	-moz-border-radius-topright: @radius;
+	border-top-right-radius: @radius;
+}
+
+.radiusTopLeft(@radius: 0.3em) {
+	-webkit-border-top-left-radius: @radius;
+	-moz-border-radius-topleft: @radius;
+	border-top-left-radius: @radius;
+}
+
+.radiusBottomRight(@radius: 0.3em) {
+	-webkit-border-bottom-right-radius: @radius;
+	-moz-border-radius-bottomright: @radius;
+	border-bottom-right-radius: @radius;
+}
+
+.gradient(@bg-color, @start, @end) {
+	background: @bg-color;
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')", @start, @end));
+  -ms-filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d')", @start, @end));
+	background: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end));
+	background: -webkit-linear-gradient(top, @start, @end 100%);
+	background: -moz-linear-gradient(top,  @start,  @end);
+	background: -o-linear-gradient(top, @start, @end 100%);
+	background: linear-gradient(top, @start, @end 100%);
+}
+
+.bshadow-out(@left, @top, @radius, @color) {
+	-webkit-box-shadow: @left @top @radius @color;
+	-moz-box-shadow: @left @top @radius @color;
+	box-shadow: @left @top @radius @color;
+}
+
+.bshadow-in(@left, @top, @radius, @color) {
 	-webkit-box-shadow: inset @left @top @radius @color;
 	-moz-box-shadow: inset @left @top @radius @color;
 	box-shadow: inset @left @top @radius @color;
 }
-*/
+
+.bshadow(@leftO, @topO, @radiusO, @colorO, @leftI, @topI, @radiusI, @colorI) {
+	-webkit-box-shadow: @leftO @topO @radiusO @colorO, inset @leftI @topI @radiusI @colorI;
+	-moz-box-shadow: @leftO @topO @radiusO @colorO, inset @leftI @topI @radiusI @colorI;
+	box-shadow: @leftO @topO @radiusO @colorO, inset @leftI @topI @radiusI @colorI;
+}
+
+.noshadow {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.transition(@time: 0.3s, @type: all) {
+  -webkit-transition: @type @time ease-in-out;
+  -moz-transition: @type @time ease-in-out;
+  -ms-transition: @type @time ease-in-out;
+  -o-transition: @type @time ease-in-out;
+  transition: @type @time ease-in-out;
+  -webkit-transform: translateZ(0); /* Android end iOS improvement, force to use GPU hardware acceleration on these device */
+}
+
+.transition-delay(@time: 0.3s, @type: all, @delay: 1s) {
+  -webkit-transition: @type @time ease-in-out;
+  -moz-transition: @type @time ease-in-out;
+  -ms-transition: @type @time ease-in-out;
+  -o-transition: @type @time ease-in-out;
+  transition: @type @time ease-in-out;
+  -webkit-transform: translateZ(0); /* Android end iOS improvement, force to use GPU hardware acceleration on these device */
+  -webkit-transition-delay: @delay;
+  -moz-transition-delay: @delay;
+  -ms-transition-delay: @delay;
+  -o-transition-delay: @delay;
+  transition-delay: @delay;
+}

@@ -23,5 +23,23 @@ $( ->
           summary_headers.css('font-weight', 'normal')
           $(summary_headers[i]).css('font-weight', 'bold')    
   )
- 
+  sidePanel = $("#summary > div")
+  if sidePanel.length > 0
+    sidebarTop = sidePanel.offset().top
+    first = true
+    $(document).scroll((evt) ->
+        if (first)
+          sidebarTop = sidePanel.offset().top;
+          first = false;
+        wTop = $(window).scrollTop();
+        if (wTop > sidebarTop)
+          sidePanel.css({
+              position: "fixed",
+              top: "0px",
+          });
+        else
+          sidePanel.css({
+              position: "static"
+          });
+    );
 )

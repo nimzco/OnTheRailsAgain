@@ -1,3 +1,6 @@
-= form_for @search, {:controller => 'articles', :action => 'index', :html => { :class => "search span4"} } do |f|
-  = f.text_field  :title_or_content_contains, :size => '15', :class => 'search-query', :placeholder => 'Titres, tags, auteurs, etc…'
+= form_for @search, {:controller => 'articles', :action => 'index', :html => { :class => "search-form span4"} } do |f|
+  .input-prepend
+    %span.add-on
+      %i.icon-search
+    = f.text_field  :title_or_content_contains, :size => '15', :class => '', :placeholder => 'Titres, tags, auteurs, etc…'
   - f.submit  "&nbsp;".html_safe, :id => 'search_submit'

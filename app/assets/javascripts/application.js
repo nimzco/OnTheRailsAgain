@@ -5,5 +5,5 @@
 //= require libs/jquery.localscroll-1.2.7-min
 
 $(document).ready(function(){
-  $('#summary_content').localScroll();
+  $('#summary_content').localScroll({duration: 350});
 });

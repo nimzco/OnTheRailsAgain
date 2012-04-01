@@ -14,19 +14,16 @@ body > header {
     font-size: 3em;
     padding-bottom: 25px;
     padding-top: 25px;
-    //font-weight: bold;
-    color: #BB0000;
     background-image: image-url('Logo.png');
     background-repeat: no-repeat;
     background-position: 0% 50%;
-    //text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 10px rgba(255,255,255, .25);
     color: #DDD;
-    text-shadow: -1px -1px 0px #000001, 0 0 10px rgba(0,0,0,.125);
+    //text-shadow: -1px -1px 0px #000001, 0 0 10px rgba(0,0,0,.125);
+    text-shadow: -1px -1px 0 black;
     text-decoration: none;
   }
   span#bold_title {
     color: @light_red;
-    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 10px rgba(255,255,255,.125);
   }
 }
 .navbar-inner {
@@ -48,6 +45,8 @@ body > header {
         border-right: 1px solid #970507;
         box-shadow: 1px 0 0 #c20a0c, inset 1px 0 0 #c20a0c, 0 0 3px rgba(0, 0, 0, 0.2);
         a {
+          width: 5em;
+          text-align: center;
           color: white;
         }
       }
@@ -67,30 +66,32 @@ body > header {
       border-right: 1px solid #bd0f11;
       margin: 0;
     }
-    .search {
+    .search-form {
       position: relative;
       margin-top: 7px;
       margin-bottom: 0;
-      input {
-        //background-color: whiteSmoke;
-        background-image: image-url("glyphicons_027_search.png");
-        background-position: 95% 50%;
-        background-repeat: no-repeat;
-        border-color: darken(@dark_red, 8%);
-        color: #333;
-        box-shadow: 0 1px 0 @light_red;
-        .radius(1em);
-        background-color: #EEE;
+      .input-prepend {
+        display: table;
+        .add-on {
+          .radiusLeft(1em);      
+          border-color: darken(@dark_red, 8%);  
+          background-color: #A20003;
+          color: black;
+          font-size: 1.3em;
+          text-shadow: none;
+          box-shadow: 0 1px 0 @light_red, inset 0 0 5px rgba(255, 255, 255, 0.4);
+          padding-left: 0.5em;
+          text-shadow: 0 1px 0 @light_red;
+        }
+        input {
+          margin-bottom: 0;
+          border-color: darken(@dark_red, 8%);
+          color: #333;
+          box-shadow: 0 1px 0 @light_red, inset 0 0 3px rgba(0, 0, 0, 0.2);
+          .radiusRight(1em);
+          background-color: #EEE;
+        }
       }
-/*
-      input:focus, input.focused {
-        border-top: 1px solid #970507;
-        border-left: 1px solid #970507;
-        background-image: none;
-        box-shadow: none;
-        padding: 4px 9px;
-      }
-*/
       .search-query:-moz-placeholder {
         color: #AAA;
       }
