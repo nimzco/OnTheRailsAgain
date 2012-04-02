@@ -25,12 +25,11 @@
           = l @article.updated_at.to_date, :format => '%d %b %Y'
           )
       #share_buttons
-        %i.icon-share
         .share_button
           %g:plusone{:size => 'medium', :count => 'false'}
-        .share_button= custom_tweet_button '<i class="icon-twitter-sign"></i>'.html_safe, {:url => BITLY.shorten('http://ontherailsagain.com'+request.path).bitly_url, :text => @article.title + ' - '}, {:target => 'blank_'}
-        #fb_span
-          .fb-like{:data => {:send => false, :layout => 'button_count', :width => 100, 'show-faces' => false}}
+          .share= custom_tweet_button '<i class="icon-twitter-sign"></i>'.html_safe, {:url => BITLY.shorten('http://ontherailsagain.com'+request.path).bitly_url, :text => @article.title + ' - '}, {:target => 'blank_'}
+          #fb_span
+            .fb-like{:data => {:send => false, :layout => 'button_count', :width => 100, 'show-faces' => false}}
     
       ~ @article.content.html_safe
       
