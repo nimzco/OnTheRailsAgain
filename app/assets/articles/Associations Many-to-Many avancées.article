@@ -74,7 +74,7 @@ Nima
 %p  
   Créons rapidement les modèles <code>Doctor</code> et <code>Patient</code>.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rails generate scaffold Doctor  name:string speciality:string
     $ rails generate scaffold Patient name:string 
@@ -82,7 +82,7 @@ Nima
 %p
   Comme je vous l'ai dit, il est nécessaire de créer un modèle correspondant à la table de jointure&nbsp;: 
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rails generate model Appointment
 
@@ -90,7 +90,7 @@ Nima
   On ne crée que le modèle car aucune vue ou contrôleur n'a besoin d'y être associé. De plus, le fait de passer par la commande rails permet d'avoir le modèle et la migration générés en une fois.
   Il faut maintenant éditer la migration générée pour qu'elle corresponde à ce que l'on veut&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # db/migrate/x_create_appointments.rb
     class CreateAppointments < ActiveRecord::Migration
@@ -121,7 +121,7 @@ Nima
 %p
   Maintenant que la table de jointure est crée, il faut renseigner dans les modèles la façon dont ils sont liés entre eux.
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # app/models/doctor.rb
     Class Doctor < ActiveRecord::Base
@@ -154,7 +154,7 @@ Nima
   Plusieurs moyens s'offre à vous pour créer un <code>Appointment</code> qui lie un <code>Doctor</code> et un <code>Patient</code>.
   En voici un exemple&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # @patient et @doctor contiennent une instance d'un docteur et d'un patient
     Appointment.create(:doctor => @doctor, :patient => @patient, :appointment_date => Date.tomorrow)
@@ -162,7 +162,7 @@ Nima
 %p
   Vous pouvez également créer une association sans spécifier tous les champs, juste en ajoutant un nouveau patient à la liste des docteurs ou vice-versa :
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     @doctor.patients << @patient
     # Ou bien 
@@ -174,7 +174,7 @@ Nima
 %p
   Si vous voulez réaffecter toute la liste des patients ou des docteurs vous pouvez faire comme suit :
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     @doctor.patients = @new_array_of_patients
 
@@ -192,7 +192,7 @@ Nima
   Comme je l'ai dit précédemment, en réaffectant de nouveaux patients à un docteur, ses anciennes associations seront automatiquement supprimées. 
   Si vous voulez supprimer une association en particulier, vous pouvez simplement faire comme suit&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # On supprime tous les appointments qui existent entre @doctor et @patient
     @doctor.patients.delete(@patient)
@@ -206,7 +206,7 @@ Nima
 %p
   Rails crée également un tas de <code>helpers</code> qui peuvent être très sympa et que vous trouverez dans l'<a target='_blank' href='http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html'>API Rails</a>. Voici un un avant goût :
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     @doctor.patient_ids
     @doctor.patients.delete_all
@@ -223,7 +223,7 @@ Nima
 
 %p Il peut arriver que vous ayez besoin d'accéder à tous les paragraphes d'un document. Pour faire cela, vous pouvez par exemple définir vos relations comme suit&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # app/models/document.rb
     class Document < ActiveRecord::Base
@@ -245,7 +245,7 @@ Nima
 %p
   Et donc pour accéder à tous les paragraphes d'un document il suffit de faire&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     @document.paragraphs
 

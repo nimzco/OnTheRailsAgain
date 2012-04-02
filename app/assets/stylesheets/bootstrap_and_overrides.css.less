@@ -46,6 +46,39 @@ body {
   border-color: #BCE8F1;
 }
 
+.otra-pagination-centered {
+  display: table;
+  table-layout: fixed;
+  background-color: #FEFEFE;
+  margin: auto;
+  .bshadow-out(1px, 1px, 0, white);
+  > *:first-child {
+    border-left: 1px solid #CCC;
+    .radiusLeft(3px);
+  }
+  > *:last-child {
+    .radiusRight(3px);
+  }
+  a, span, em {
+    padding: 0 14px;
+    line-height: 34px;
+    text-decoration: none;
+    border: 1px solid #CCC;
+    border-left-width: 0;
+    display: inline-block;
+  }
+  a:hover {
+    background-color: whiteSmoke;
+  }
+  em.current {
+    background-color: whiteSmoke;
+    font-style: normal;
+  }
+  .disabled {
+    color: #999;
+  }
+}
+
 @import "global.less";
 @import "header.less";
 @import "about.less";

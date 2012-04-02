@@ -20,7 +20,7 @@
       
   - @articles.each do |article|
     = render article
-  = will_paginate @articles, :previous_label => 'Précédent', :next_label => 'Suivant'
+  = will_paginate @articles, :previous_label => '«', :next_label => '»', :class => 'otra-pagination-centered'
 
 %aside.tags.span4
   .content        

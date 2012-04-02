@@ -57,27 +57,21 @@
       margin-bottom: 0;
     }
   }
-  ul {
-    margin-bottom: 1.5em;
-  }
   pre {
-    font-size: 1.1em;
-    background-color: #F7F7F9;
-    padding: 2%;
-    .radius(0.2em);
-    border: 1px solid #E1E1E8;
-    font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+    font-size: 0.9em;
     white-space: pre-wrap;
     word-wrap: break-word;
     word-break: normal;
   }
     
-  span.code {
+  span.code, code {
+    font-size: 1em;
     font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
     padding: 2px 4px;
     color: #D14;
     background-color: #F7F7F9;
     border: 1px solid #E1E1E8;
+    .radius(0.2em);
   }
   table {
     .table;
@@ -116,12 +110,11 @@
 /**------------------- SUMMARY -------------------**/
 
 #summary {
-  font-size: 105%;
+  font-size: 110%;
   .page-header{
     margin-left: 25px;
   }
   ul.first {
-    font-size: 1.2em;
     padding-left  : 0;
     list-style    : none;
     > li {

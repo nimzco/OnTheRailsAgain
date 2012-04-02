@@ -21,7 +21,7 @@ Nicolas
 
 %p Lorsque que l'on veut se lancer dans Ruby On Rails, il peut arriver que l'on soit un peu perturbé, voire découragé par la quantité de fichiers et de dossiers qui sont générés après avoir tapé la commande suivante :
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rails new mon_application
     

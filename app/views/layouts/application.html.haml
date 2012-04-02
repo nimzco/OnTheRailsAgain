@@ -8,7 +8,8 @@
     
     = render 'shared/meta_information'
     == <link rel="alternate" type="application/rss+xml" title="OnTheRailsAgain - RSS" href="http://ontherailsagain.com/articles.rss" />
-
+    
+    = yield :extra_js_and_css
 
     %title 
       - if (yield :title).empty?
@@ -17,7 +18,7 @@
         = yield :title
     = csrf_meta_tag
     
-  %body
+  %body{:onload => "prettyPrint()"}
     = render :partial => 'shared/header'
     .container
       - if current_author
@@ -31,7 +32,7 @@
     %footer.container
       .page-header
       .content
-        Réalisé par deux passionnés des technologies du Web
+        Site et design réalisé par deux passionnés des technologies du Web
         <a href="mailto:lowx512@gmail.com">Nicolas Dupont</a>
         &
         <a href="mailto:nim.izadi@gmail.com">Nima Izadi</a>

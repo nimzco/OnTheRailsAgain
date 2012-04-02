@@ -84,7 +84,7 @@ Nicolas
 %p
   Prenons un exemple, supposons que nous avons un blog contenant des articles qui sont ici les ressources à manipuler. Voici comment définir les routes pour ce type de ressources&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve 
     # config/routes.rb
     resources :articles
@@ -181,20 +181,20 @@ Nicolas
 
 %p Par exemple, si on crée le scaffold suivant&nbsp;:
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rails generate scaffold Article title:string content:text
 
 %p On peut constater l'utilisation des <code>path_helpers</code> suivants :
 
-%pre.erb
+%pre.prettyprint.linenums
   :preserve
     # app/views/articles/index.html.erb
     ...
     <%= link_to 'New Article', new_article_path %>
     ...
 
-%pre.erb
+%pre.prettyprint.linenums
   :preserve
     # app/views/articles/show.html.erb
     ...
@@ -203,7 +203,7 @@ Nicolas
     <%= link_to 'Back', articles_path %>
     ...
 
-%pre.erb
+%pre.prettyprint.linenums
   :preserve
     # app/views/articles/show.html.erb
     ...
@@ -218,7 +218,7 @@ Nicolas
 
 %p Le routeur Rails nous permet de définir plusieurs ressources en une seule ligne de la façon suivante&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     resources :articles, :photos, :authors
 
@@ -230,7 +230,7 @@ Nicolas
 
 %p Il peut arriver que l'on ait besoin de définir les routes pour une ressource unique à laquelle on aimerait accéder sans préciser une ID. Le routeur Rails nous permet de définir ce genre de route. Prenons un exemple pour voir l'ensemble des routes créées.
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve 
     # config/routes.rb
     resource :account
@@ -320,7 +320,7 @@ Nicolas
 
 %p Tout d'abord, il faut définir si cette action va agir sur <b>l'ensemble des ressources</b> ou seulement sur <b>une seule</b>. Prenons un exemple, supposons que l'on ait un contrôleur <code>photos_controller</code> et que l'on veuille ajouter la possiblité de faire une recherche sur les photos. Dans ce cas, l'action sera effectuée sur l'ensemble des ressources photos. Donc on défini les routes comme ceci&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     resources :photos do
       get 'search', :on => :collection
@@ -332,7 +332,7 @@ Nicolas
 
 %p Supposons maintenant que l'on veuille effectuer une action sur une seule ressource, par exemple accéder à une previsualisation d'une photo. Dans ce cas on peux définir les routes comme ceci&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     resources :photos do
       get 'preview', :on => :member 
@@ -342,7 +342,7 @@ Nicolas
     
 %p Si on a beaucoup d'actions à ajouter sur les membres ou sur la collection entière on peut également définir les routes comme ceci :
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     resources :photos do
       member do

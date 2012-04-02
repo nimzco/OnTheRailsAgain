@@ -73,6 +73,7 @@ body > header {
       .input-prepend {
         display: table;
         .add-on {
+          display: table-cell;
           .radiusLeft(1em);      
           border-color: darken(@dark_red, 8%);  
           background-color: #A20003;
@@ -82,8 +83,10 @@ body > header {
           box-shadow: 0 1px 0 @light_red, inset 0 0 5px rgba(255, 255, 255, 0.4);
           padding-left: 0.5em;
           text-shadow: 0 1px 0 @light_red;
+          border-right: none;
         }
         input {
+          display: table-cell;
           margin-bottom: 0;
           border-color: darken(@dark_red, 8%);
           color: #333;
@@ -93,10 +96,12 @@ body > header {
         }
       }
       .search-query:-moz-placeholder {
-        color: #AAA;
+        color: #999;
+        text-shadow: 1px 1px 0 white;
       }
       .search-query::-webkit-input-placeholder {
-        color: #AAA;
+        text-shadow: 1px 1px 0 white;
+        color: #999;
       }
     }
   }

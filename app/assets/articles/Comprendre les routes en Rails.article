@@ -53,7 +53,7 @@ Nicolas
 
 %p Pour cela, il suffit simplement de définir la règle suivante dans le fichier <i>config/routes.rb</i>&nbsp;:
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     # config/routes.rb
     match "articles/new" => "articles#new"
@@ -66,7 +66,7 @@ Nicolas
 
 %p Rails nous permet également de définir la même règle plus simplement :
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     # config/routes.rb
     get "articles/new"
@@ -79,12 +79,12 @@ Nicolas
 
 %p Le routeur permet également de générer des routes helpers qui sont des méthodes qui renvoies une URL correctement formattée. En effet, si vous avez écrit la  règle précedente dans votre fichier <i>config/routes.rb</i> et que vous tapez la commande suivante dans un terminal à la racine de votre application :
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rake routes
    
 %p vous obtiendrez ceci :
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     new_article GET /articles/new(.:format) {:controller => "articles", :action => "new"}
 
@@ -107,7 +107,7 @@ Nicolas
 %h3 Utilisation de ces helpers
  
 %p Les helpers générés par le routeur Rails peuvent s'utiliser dans la vue et rendent le code plus facile à lire et plus fiable puisque qu'on est sûr que l'URL sera bien formatée. Par exemple pour faire un lien interne qui redirige vers <i>www.monsite.fr/articles/new</i> on peut tout simplement faire comme ça :
-%pre.erb
+%pre.prettyprint.linenums
   :preserve
     <%= link_to "Créer un nouvel article", new_article_path %>
 
