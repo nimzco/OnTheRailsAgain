@@ -7,9 +7,13 @@
   .navbar
     .navbar-inner
       .container.row-fluid
-        %ul.nav.span8
-          %li{ :class => (current_page?(articles_path) ? 'active' : '') }
-            = link_to "Home", articles_path
+        %ul.nav.span6
+          %li{ :class => (current_page?(articles_path) || current_page?(root_path) ? 'active' : '') }
+            = link_to 'Articles', root_path
           %li{ :class => (current_page?(authors_path) ? 'active' : '') }
-            = link_to "À propos", authors_path
+            = link_to 'À propos', authors_path
+        %div.nav.span2#share_buttons
+          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
+
         = render 'shared/search'
