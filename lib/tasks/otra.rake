@@ -111,7 +111,7 @@ def parse_article_from_file article_file_name
           when 'authors'      then 
             line.strip.split(',').each do |author|
               author.strip! # Removing eventual spaces at the begining or at the end
-              article_values[:authors] << Author.where(:name => author).first
+              article_values[:authors] << Author.where(:name => author).first unless Author.where(:name => author).empty?
             end
           when 'tags'         then 
             line.strip.split(',').each do |tag_name|
