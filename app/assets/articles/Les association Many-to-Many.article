@@ -185,6 +185,8 @@ Nima
     # app/controllers/articles_controller.rb
     def create
       @article = Article.new(params[:article])
+      ...
+    end
 
 %p
   L'article qui va être mis en base de donnée est créé à partir des paramètres qui sont stockés dans le tableau article lors de l'envoi du formulaire.
