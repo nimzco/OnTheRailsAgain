@@ -8,45 +8,48 @@
   = @article.title
   
 - content_for :extra_js_and_css do
-  -stylesheet_link_tag 'libs/prettify'
-  -javascript_include_tag 'libs/prettify'
+  = stylesheet_link_tag 'libs/prettify'
+  = javascript_include_tag 'libs/prettify'
+
+%article
+  .article_show
+    #left
+      .article_content{:data => {:spy => 'scroll'}}
+        %h1= @article.title
+        %p.posted_by
+          Posté par 
+          = join_authors @article
+          le 
+          = l @article.created_at.to_date, :format => '%d %b %Y'
+          - if @article.updated_at != @article.created_at
+            (Mis à jour le
+            = l @article.updated_at.to_date, :format => '%d %b %Y'
+            )    
+        ~ @article.content.html_safe
+        %script
+          prettyPrint()
+        - if @article.tags.nil? 
+          %h3 Tags:
+          %ul.tags
+            - @article.tags.each do |tag|
+              %li= link_to tag.name, articles_path(:tag => tag.name)
+        .page-header  
+    %aside#summary
+      #summary_content
+        .page-header
+        ~ @article.table_of_content.html_safe
+        - if current_author
+          = button_to "Editer", edit_article_path(@article.link), :method => :get 
+        .page-header
   
-.article_show
-  #left
-    .article_content{:data => {:spy => 'scroll'}}
-      %h1= @article.title
-      %p.posted_by
-        Posté par 
-        = join_authors @article
-        le 
-        = l @article.created_at.to_date, :format => '%d %b %Y'
-        - if @article.updated_at != @article.created_at
-          (Mis à jour le
-          = l @article.updated_at.to_date, :format => '%d %b %Y'
-          )
-      #share_buttons
-        .share_button
-          %g:plusone{:size => 'medium', :count => 'false'}
-          .share= custom_tweet_button '<i class="icon-twitter-sign"></i>'.html_safe, {:url => BITLY.shorten('http://ontherailsagain.com'+request.path).bitly_url, :text => @article.title + ' - '}, {:target => 'blank_'}
-          #fb_span
-            .fb-like{:data => {:send => false, :layout => 'button_count', :width => 100, 'show-faces' => false}}
-    
-      ~ @article.content.html_safe
-      
-      - if @article.tags.nil? 
-        %h3 Tags:
-        %ul.tags
-          - @article.tags.each do |tag|
-            %li= link_to tag.name, articles_path(:tag => tag.name)
-      .page-header
+  %footer
+    #footer_share_buttons
+      - bitly_url = BITLY.shorten('http://ontherailsagain.com/articles/' + @article.link).bitly_url
+      %span Partager cet article :
+      %g:plusone{:size => 'medium', :count => 'false'}
+      = tweet_button :url => bitly_url, :text => @article.title + ' - ', :count => 'none'
+      %a#delicious{:href => "http://delicious.com/save?&url=http://ontherailsagain.com/articles/#{@article.link}&title=#{@article.title}", :rel => 'nofollow', :target => '_blank'}
+      .fb-like{:data => {:send => false, :layout => 'button_count', :width => 58, 'show-faces' => false}}
+    .page-header  
     #disqus
       = raw disqus_thread
-
-  %aside#summary
-    #summary_content
-      .page-header
-      ~ @article.table_of_content.html_safe
-      - if current_author
-        = button_to "Editer", edit_article_path(@article.link), :method => :get 
-      .page-header
-

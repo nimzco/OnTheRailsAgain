@@ -18,7 +18,7 @@
         = yield :title
     = csrf_meta_tag
     
-  %body{:onload => "prettyPrint()"}
+  %body
     = render :partial => 'shared/header'
     .container
       - if current_author
@@ -42,6 +42,7 @@
     = javascript_include_tag "application"
     = yield :javascript
     = javascript_include_tag 'https://apis.google.com/js/plusone.js'
+
     #fb-root
     :javascript 
       (function(d, s, id) {

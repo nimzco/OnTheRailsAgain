@@ -12,7 +12,7 @@
             = link_to 'Articles', root_path
           %li{ :class => (current_page?(authors_path) ? 'active' : '') }
             = link_to 'À propos', authors_path
-        %div.nav.span2#share_buttons
+        %div.nav.span2#header_share_buttons
           %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
           %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
 

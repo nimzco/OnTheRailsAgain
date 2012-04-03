@@ -1,16 +1,43 @@
-.article_show {
-  display: table;
-  #left {
-    display: table-cell;
-    vertical-align: top;
-    width: 62%;
-  }
-  #summary {
-    display: table-cell;
-    vertical-align: top;    
-    > div {
+article {
+  @article_width: 62%;
+  .article_show {
+    display: table;
+    #left {
       display: table-cell;
-      width: auto;
+      vertical-align: top;
+      width: @article_width;
+    }
+    #summary {
+      display: table-cell;
+      vertical-align: top;    
+      > div {
+        display: table-cell;
+        width: auto;
+      }
+    }
+  }
+  footer {
+    width: @article_width;
+    #footer_share_buttons {
+      font-size  : 1.3em;
+      font-weight: bold;
+      display    : inline-block !important;
+      width      : 100%;    
+      > span, > div, > iframe, > a {
+        vertical-align: middle !important;
+      }
+      .fb-like {
+        height: 22px;
+      }
+      #delicious {
+        width              : 20px;
+        height             : 20px;
+        display            : inline-block;
+        background-position: 50% 50%;
+        background-repeat  : no-repeat;
+        background-size    : 100%;
+        background-image   : image-url('delicious.png'); 
+      }
     }
   }
 }
@@ -123,16 +150,21 @@
       counter-reset: niveau2;
       margin-bottom: 0.5em;
       > ul {
-        font-size: 0.9em;
-        list-style    : none;
+        font-size  : 0.95em;
+        list-style : none;
+        margin-top : 0.2em;
+        margin-left: 1em;
         > li {
           counter-increment: niveau2;
           counter-reset: niveau3;
+          line-height: 1.5em;
           > ul {
-            font-size: 0.9em;
-            list-style    : none;
+            font-size  : 0.95em;
+            list-style : none;
+            margin-left: 1em;
             > li {
               counter-increment: niveau3;
+              line-height: 1.5em;
             }
             > li:before {
               content: counter(niveau1) "." counter(niveau2) "." counter(niveau3) ". ";
