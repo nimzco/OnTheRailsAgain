@@ -61,7 +61,7 @@ Nima
   Nous avons donc deux modèles, le modèle <code>Article</code> et le modèle <code>Tag</code> et nous voulons pouvoir associer plusieurs tags à un article mais également plusieurs articles au même tag.
   Commençons par créer les deux modèles à l'aide des scaffolds :
   
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rails generate scaffold Article title:string content:text
     $ rails generate scaffold Tag name:string
@@ -100,14 +100,14 @@ Nima
   Maintenant que nous savons comment nommer cette table et que l'on sait qu'elle ne doit pas avoir de clé primaire nous pouvons créer la migration.
   Tâchez de donner un nom explicite à celle-ci (celui du fichier qui apparaitra dans le dossier db/migrations), cela pourrait vous servir à l'avenir si vous avez besoin de revenir en arrière.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rails generate migration CreateArticlesTagsJoinTable
 
 %p
   Il faut maintenant éditer cette migration pour y ajouter l'instruction de création de la table avec le bon nom (comme nous avons vu ci-dessus).
    
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # db/migrations/20111009221942_create_articles_tags_join_table
     class CreateArticlesTagsJoinTable < ActiveRecord::Migration
@@ -129,7 +129,7 @@ Nima
   
 %p Ensuite, pour exécuter la migration il vous suffit d'éxécuter la commande suivante :
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     rake db:migrate
 
@@ -140,7 +140,7 @@ Nima
   %em ont et appartiennent (has_and_belongs) à plusieurs (to_many)
   Tags. Et vice-versa !
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # app/models/article.rb
     class Article < ActiveRecord::Base
@@ -158,7 +158,7 @@ Nima
   Vous pouvez être amené à vous demander comment gérer ces dépendances dans un formulaire. Par exemple, lors de la création d'un article je voudrais pouvoir choisir tous les tags qui lui seront associés.
   Voilà une méthode pour faire ça&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # app/views/articles/_form.html.erb
     <%= form_for @article do |f| %>
@@ -180,7 +180,7 @@ Nima
 %p
   De plus, il n'y a rien a changer du côté du contrôleur, l'affectation des tags à l'article se fera automatiquement grâce au nom de l'input qui est <span class="code">article[tag_ids][]</span>. En effet, dans la methode create du contrôleur de l'article on retrouve&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # app/controllers/articles_controller.rb
     def create
@@ -194,13 +194,13 @@ Nima
 %p
   Une fois toute la partie base de données et modèle mis en place, Rails permet d'accéder aux objets entre eux très simplement. Par exemple, pour accéder à tous les tags d'un article on peut faire&nbsp;:
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     @article.tags # Renvoie un tableau contenant tous les tags de @article
 
 %p Pour ce qui est de l'affectation il y a deux possibilités&nbsp;:
   
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     @article.tags << Tag.first # On ajoute au tags déjà existant
     @article.tags = Tag.first  # On remplace les tags déjà existant

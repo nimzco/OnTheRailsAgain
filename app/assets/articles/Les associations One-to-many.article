@@ -46,7 +46,7 @@ Nima
   Dans ce cas-là, toutes les feuilles (livres) ont une référence vers la racine (l'écrivain).
   En terme de base de données cela donne quelque chose comme ça :
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     Writer - id:integer  name:string
     Book   - id:integer  title:string writer_id:integer(foreign_key)
@@ -65,7 +65,7 @@ Nima
   Eh bien comme on va le voir, ce n'est pas bien compliqué !
   On crée tout d'abord nos modèles comme suit :
   
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rails generate scaffold Writer name:string 
     $ rails generate scaffold Book   title:string writer_id:integer
@@ -84,7 +84,7 @@ Nima
   livres. Ou encore, un livre <strong>appartient à (belongs to)</strong>
   un écrivain. Je mets en avant ces mots clés, car c'est grâce à ces derniers qu'on va décrire à Rails notre relation. En pratique ça donne :
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # app/models/writer.rb
     class Writer < ActiveRecord::Base
@@ -114,7 +114,7 @@ Nima
   du contrôleur <code>books_controller</code>, 
   spécifier l'id de l'écrivain comme suit :
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # app/controllers/book_controller.rb
     def create
@@ -129,7 +129,7 @@ Nima
 %p
   Comme vous le voyez, vous avez plusieurs façons possibles d'associer un écrivain à un livre. Si au contraire vous voulez attribuer des livres à un écrivain, c'est quasiment pareil :
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     book_list = Book.all
     @writer.books = book_list
@@ -147,7 +147,7 @@ Nima
   Un autre cas de figure est possible : vous voulez pouvoir choisir l'écrivain à la création d'un livre. Dans ce cas, on voudrait par exemple que dans le formulaire de création d'un livre 
   on ait la liste de tous les écrivains du site et qu'il suffisse de sélectionner l'écrivain voulut pour l'associer au livre. Voilà une façon de faire :
 
-%pre.erb
+%pre.prettyprint.linenums
   :preserve
     # app/views/books/_form.html.erb
     <%= form_for(@book) do |f| %>

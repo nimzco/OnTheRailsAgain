@@ -32,7 +32,7 @@ Nima
   Si vous avez fait une mise à jour depuis Snow Leopard et que vous vous retrouvez avec un tas de bugs mystiques je vous conseille grandement de réinstaller XCode pour que les liens des librairies soient mis à jour. 
   Voilà la commande à taper dans un terminal pour supprimer totalement XCode&nbsp;:
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ sudo /Developer/Library/uninstall-devtools –mode=all
 
@@ -41,7 +41,7 @@ Nima
 %p
   Et bien voilà, vous pouvez maintenant installer le framework Ruby On Rails.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ gem install rails
 
@@ -62,7 +62,7 @@ Nima
 %p
   Sinon, en ligne de commande&nbsp;:
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ sysctl hw |grep 64bit
     > hw.cpu64bit_capable: 1 # Vous êtes en 64 bits
@@ -72,7 +72,7 @@ Nima
   Une fois l'installation faite, il faut penser à rajouter le chemin des binaires MySQL à votre PATH. 
   Pour que votre PATH et vos librairies dynamiques soient bien à jour, rajouter les lignes qui suivent dans le fichier <b>.profile</b> qui se trouve à la racine de votre home. (Exemple: /Users/Nima/.profile ou ~/.profile).
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     # ~/.profile
     export PATH="$PATH:/usr/local/mysql/bin"
@@ -80,7 +80,7 @@ Nima
 %p
   Si le fichier n'existe pas, vous pouvez le créer en utilisant la commande <span class="code">touch</span>.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ touch ~/.profile
 %p
@@ -106,7 +106,7 @@ Nima
   Voilà la commande à taper dans votre terminal pour créer un utilisateur. Ici le nom d'utilisateur sera <b>admin</b>. 
   L'option <span class="code">--username</span> permet de spécifier que cette action doit être éxécuter par l'utilisateur <b>postgres</b> et l'option <span class="code">--pwprompt</span> force la demande d'un mot de passe.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ createuser admin --superuser --pwprompt --username postgres
     Enter password for new role: # password pour l'utilisateur admin
@@ -121,14 +121,14 @@ Nima
   est un outil très utile si l'on veut utiliser des versions de Ruby différentes pour plusieurs projets ou si on veut séparer ses gems d'un projet à un autre.
   Pour l'installer, il suffit de faire ce qui est indiqué sur le site officiel, autrement dit, éxécuter ce qui suit dans un terminal.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
 
 %p
   Puis, comme indiqué à la fin de l'installation, ajoutez ce qui suit dans votre <b>.profile</b>&nbsp;:
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     # ~/.profile
     [[ -s "/Users/Nima/.rvm/scripts/rvm" ]] && source "/Users/Nima/.rvm/scripts/rvm"  # This loads RVM into a shell session.  
@@ -145,14 +145,14 @@ Nima
 %p
   Supposons que vous vouliez utiliser la version 1.9.2 de Ruby pour votre projet. Commencez par l'installer, comme ceci&nbsp;:
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rvm install 1.9.2 
   
 %p 
   Puis spécifiez à RVM que vous voulez utiliser cette version dans le terminal courant.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rvm use 1.9.2
 %p.notice
@@ -161,7 +161,7 @@ Nima
 %p
   Maintenant vous pouvez créer un Gemset et spécifier que vous voulez utiliser la version 1.9.2 pour votre projet.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ rvm gemset create mon_projet
     $ rvm use 1.9.2@mon_projet
@@ -171,7 +171,7 @@ Nima
 %p
   Pour éviter de devoir retaper <span class='code'>rvm use 1.9.2@mon_projet</span> vous pouvez vous faire des alias dans votre <b>.profile</b>.
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     # ~/.profile
     alias mon_projet="rvm use 1.9.2@mon_projet; cd ~/Development/Rails/mon_projet"
@@ -189,14 +189,14 @@ Nima
 
 %p Cessons de discuter ! Voilà comment installer le gem Bundler...
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ gem install bundler
 
 %p
   Et pour lancer l'installation des gems listées dans le fichier <b>Gemset</b> de votre application Rails, il suffit de se placer à la racine de votre application et de lancer la commande suivante&nbsp;:
 
-%pre.bash
+%pre.prettyprint.linenums
   :preserve
     $ bundle install
 
@@ -204,7 +204,7 @@ Nima
   Donc suivant le système de gestion de base de données que vous voulez utiliser, il suffit de mettre une des deux lignes suivantes dans le fichier Gemfile puis d'éxécuter à nouveau la commande
   <span class="code">bundle install</span>.
 
-%pre.ruby
+%pre.prettyprint.linenums
   :preserve
     # Gemfile
     gem 'pg'      # Pour PostgreSQL

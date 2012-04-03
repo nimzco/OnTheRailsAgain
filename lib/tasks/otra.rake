@@ -124,12 +124,16 @@ namespace :otra do
   def haml2html(content)
     @new_content = Haml::Engine.new(content).to_html
 
-   # @new_content.gsub(/<pre.*<\/pre>/) do |matched|
-   #   @language = matched.match(/<pre class='([aA-zZ]*)'>.*pre>/)[1]
-   #   @string   = matched.sub(/<pre class='([aA-zZ]*)'>/, "").sub(/<\/pre>/, "")
-   #   @string   = @string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
-   #   highlight(@string, @language)
-   # end.html_safe
+    @new_content.gsub(/<pre class='.*'>.*<\/pre>/) do |matched|
+      @string = matched.sub!(/<pre class='.*'>/, "").sub!(/<\/pre>/, "")
+      #highlight(@string, @language)
+      #debugger
+      @output = "<pre class='prettyprint linenums'>"
+      @output << `node lib/tasks/highlight.js '#{@string}'`
+      @output << "</pre>"
+      @output
+    end.html_safe
+    
   end
 end
 

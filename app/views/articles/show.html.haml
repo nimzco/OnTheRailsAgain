@@ -7,9 +7,9 @@
 = content_for :title do
   = @article.title
   
-= content_for :extra_js_and_css do
-  =stylesheet_link_tag 'libs/prettify'
-  =javascript_include_tag 'libs/prettify'
+- content_for :extra_js_and_css do
+  -stylesheet_link_tag 'libs/prettify'
+  -javascript_include_tag 'libs/prettify'
   
 .article_show
   #left
