@@ -45,10 +45,10 @@
   %footer
     #footer_share_buttons
       - bitly_url = BITLY.shorten('http://ontherailsagain.com/articles/' + @article.link).bitly_url
-      %span Partager cet article :
+      %span Partager cet article
+      %a#delicious{:href => "http://delicious.com/save?&url=http://ontherailsagain.com/articles/#{@article.link}&title=#{@article.title}", :rel => 'nofollow', :target => '_blank'}
       %g:plusone{:size => 'medium', :count => 'false'}
       = tweet_button :url => bitly_url, :text => @article.title + ' - ', :count => 'none'
-      %a#delicious{:href => "http://delicious.com/save?&url=http://ontherailsagain.com/articles/#{@article.link}&title=#{@article.title}", :rel => 'nofollow', :target => '_blank'}
       .fb-like{:data => {:send => false, :layout => 'button_count', :width => 58, 'show-faces' => false}}
     .page-header  
     #disqus
