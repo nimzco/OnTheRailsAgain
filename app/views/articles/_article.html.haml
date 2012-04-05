@@ -1,14 +1,16 @@
 %article
   %header
-    %h2= link_to article.title, article_path(article.link)
-    .authors
-      Par
-      = join_authors article
-    %time{ :datetime => l(article.created_at.to_date, :format => "%Y-%m-%d") }
-      le
-      %span.day= l article.created_at.to_date, :format => "%d"
-      = l article.created_at.to_date, :format => "%b"
-      = l article.created_at.to_date, :format => "%Y"
+    %h2.page-header
+      = link_to article.title, article_path(article.link)
+      %small
+        .authors
+          Par
+          = join_authors article
+        %time{ :datetime => l(article.created_at.to_date, :format => "%Y-%m-%d") }
+          le
+          %span.day= l article.created_at.to_date, :format => "%d"
+          = l article.created_at.to_date, :format => "%b"
+          = l article.created_at.to_date, :format => "%Y"
   .wrapper    
     %p.article_content
       = article.introduction
@@ -23,4 +25,6 @@
           = button_to 'Desactiver', desactivate_article_path(article.id)        
         -# else
           = button_to 'Activer', activate_article_path(article.id)
-.page-header
+.divider
+  .page-header
+  .page-header

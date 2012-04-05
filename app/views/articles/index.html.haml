@@ -29,9 +29,9 @@
 
     #tags.aside_box
       %h3.page-header Catégories
-      %ul
+      %p
         - @tags.each do |tag|
-          %li= link_to tag.name, articles_path(:tag => tag.name)
+          %span= link_to tag.name, articles_path(:tag => tag.name)
     -if !is_mobile?
       #contact.aside_box
         %h3.page-header Nous contacter

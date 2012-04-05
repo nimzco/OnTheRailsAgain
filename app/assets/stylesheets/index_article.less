@@ -1,10 +1,5 @@
-section.articles {
-  .page-header:last-child {
-    display: none;
-  }
-  
+section.articles {  
   article {
-    margin-bottom: 1em;
     header {
       vertical-align: top;
       margin-bottom: 0.5em;
@@ -42,11 +37,12 @@ aside {
   }
 }
 
-#tags.aside_box ul, .tags ul {
+#tags.aside_box p, .tags ul {
   list-style-type: none;
   padding-left: 0;
   margin: 0;
-  li {
+  text-align: justify;
+  li, span {
     display: inline-block;
     margin-bottom: 0.6em;
     a {
@@ -69,4 +65,12 @@ aside {
 
 h3.page-header {
   padding-bottom: 0;
+}
+
+.divider {
+  .page-header {
+    margin: 2px 0;
+    padding: 0;
+  }
+  margin: 24px 0;
 }

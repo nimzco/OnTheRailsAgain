@@ -4,16 +4,19 @@
       On The
       %span#bold_title Rails
       Again      
-  .navbar
-    .navbar-inner
+  .navigationbar
+    .inner
       .container.row-fluid
-        %ul.nav.span6
-          %li{ :class => (current_page?(articles_path) || current_page?(root_path) ? 'active' : '') }
-            = link_to 'Articles', root_path
-          %li{ :class => (current_page?(authors_path) ? 'active' : '') }
-            = link_to 'À propos', authors_path
-        %div.nav.span2#header_share_buttons
-          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
-          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
-
+        .span6
+          %ul.nav
+            %li{ :class => (current_page?(articles_path) || current_page?(root_path) ? 'active' : '') }
+              = link_to 'Articles', root_path
+            %li{ :class => (current_page?(authors_path) ? 'active' : '') }
+              = link_to 'À propos', authors_path
+        %div.nav.span2
+          #header_share_buttons
+            %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+              %i.icon-rss
+            %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
+              %i.icon-twitter
         = render 'shared/search'

@@ -9,7 +9,7 @@ Maintenant que nous avons abordé les relations Many-to-Many simples, voyons com
 Cette relation permet de stocker des données relatives à l'association qui lie deux modèles.
 
 --title
-Les associations Many-to-Many avancées (has_many :through)
+Les associations Many-to-Many avancées
 
 --authors
 Nima
