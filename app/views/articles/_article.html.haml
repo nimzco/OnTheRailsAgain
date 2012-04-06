@@ -6,8 +6,8 @@
         .authors
           Par
           = join_authors article
-        %time{ :datetime => l(article.created_at.to_date, :format => "%Y-%m-%d") }
           le
+        %time{ :datetime => l(article.created_at.to_date, :format => "%Y-%m-%d") }
           %span.day= l article.created_at.to_date, :format => "%d"
           = l article.created_at.to_date, :format => "%b"
           = l article.created_at.to_date, :format => "%Y"
