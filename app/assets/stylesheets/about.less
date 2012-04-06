@@ -79,7 +79,10 @@
 }
 
 #resume {
-    margin-top: 1em;
+  margin-top: 1.5em;
+  p {
+    margin: .5em auto;
+  }
   h1 {
     text-align: center;
     em {
@@ -94,6 +97,13 @@
   header {
     .thumbnail {
       .thumbnail_mixin;
+    }
+    .divider {
+      .page-header {
+        margin: 2px 0;
+        padding: 0;
+      }
+      margin: 0;
     }
     div {
       padding: 0;
@@ -127,10 +137,19 @@
       }
     }
   }
-  
   aside {
-    p {
-      margin: .5em auto;
+    p, span {font-size: 1.1em;}
+    h2 {
+      font-size    : 2.5em;
+      margin-bottom: 0;
+      margin-top   : 0.7em;
+    }
+    a {
+      display: inline-block;
+      i { font-size: 1.5em; }
+      span, i {
+        vertical-align: middle;
+      }
     }
   }
 }
