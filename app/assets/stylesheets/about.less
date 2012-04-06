@@ -1,33 +1,106 @@
 @thubmnail-width: 30%;
 @article-width:   70%;
 
-h1 {
-  text-align: center;
-  em {
-    color: @light_red;
-    font-style: normal;
+.thumbnail_mixin {
+  background-color: white;
+  display:          block;
+  padding:          6px;
+  line-height:      1;
+  border:           1px solid #DDD;
+  border-radius:    2px;
+}
+
+/* Desktop */
+#authors_description {
+  /* Display */
+  display     : table;
+  table-layout: fixed;
+  > div {
+    display       : table-cell;
+    vertical-align: top;
+    > div {
+      display: table;
+      > div {
+        display       : table-cell;
+        vertical-align: top;
+      }
+    }
+  }
+
+  /* Style */
+  h1 {
+    margin-bottom: 0;
+  }
+  ul {
+    list-style: none;
+    margin: auto 0;
+    li {
+      font-size: 1.1em;
+    }
+  }
+  a {
+    text-decoration: none;  
+  }
+  .text-content {
+    width: 22em;
+  } 
+  img {
+    .thumbnail_mixin;
+    margin: 0.7em;
+    margin-top: 2em;
+    width: 11em;    
+  }
+  .left {
+    text-align: right;
+    img {
+      margin-right: 0;
+    }
+  }
+  .right {
+    img {
+      margin-left:  0;
+    }
   }
 }
 
-.content {
+/* tablette */
+@media screen and (max-width: 640px) {
+  #authors_description {
+    > div {
+      display: table;
+      > div {
+        display: table-row;
+        > div {
+          display: table-cell;
+        }
+      }
+    }
+  }
+}
+
+#resume {
+    margin-top: 1em;
+  h1 {
+    text-align: center;
+    em {
+      color: @light_red;
+      font-style: normal;
+    }
+  }
   .page-header {
     padding-bottom: 0.3em;
+    margin: 0.5em auto;
   }
   header {
     .thumbnail {
-      background-color: white;
-      display:          block;
-      padding:          6px;
-      line-height:      1;
-      border:           1px solid #DDD;
-      border-radius:    2px;
+      .thumbnail_mixin;
     }
     div {
       padding: 0;
       background-color: transparent;
     }
-    h1 {
-      text-align: left;
+    h1, h2, h3 {
+      margin: 0 auto;    
     }
     h3 {
       font-weight: normal;
@@ -52,6 +125,12 @@ h1 {
       p {
         margin-bottom: 0;
       }
+    }
+  }
+  
+  aside {
+    p {
+      margin: .5em auto;
     }
   }
 }

@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
     if    params[:id].downcase == 'nima'
       render 'nima'
     elsif params[:id].downcase == 'nico'
-      render 'nico'
+      render 'nicolas'
     end
   end
 

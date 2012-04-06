@@ -51,9 +51,11 @@ body > header {
         border-right: 1px solid #970507;
         box-shadow: 1px 0 0 #c20a0c, inset 1px 0 0 #c20a0c, 0 0 3px rgba(0, 0, 0, 0.2);
         a {
-          margin: auto;
-          color     : white;
-          display   : block;
+          text-shadow: 0 0 0 white;
+          font-weight: 400;
+          margin     : auto;
+          color      : white;
+          display    : block;
           line-height: 3.5em;
         }
         a:hover {
@@ -90,11 +92,8 @@ body > header {
           background-position: 50% 50%;
           background-repeat  : no-repeat;
           background-size    : 100%;
-          height: 3.5em;
+          line-height: 3.5em;
           text-decoration: none;
-        }
-        a.share:hover {
-          color: @dark_red;
         }
         .icon-rss, .icon-twitter {
           font-size: 2em;
@@ -105,7 +104,7 @@ body > header {
           font-size: 2em;
         }
         .icon-rss:hover, .icon-twitter:hover {
-          color: #FEFEFE;
+          color: darken(@dark_red, 15%);
         }
       }
     }
@@ -116,8 +115,6 @@ body > header {
       margin: 0;
     }
     .search-form {
-      position: relative;
-      margin-top: 7px;
       margin-bottom: 0;
       .input-prepend {
         display: table;
