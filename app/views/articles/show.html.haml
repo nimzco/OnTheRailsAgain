@@ -54,5 +54,9 @@
       .page-header
       .page-header
       
+    %aside.alert.alert-warning#see-also
+      %h3 Voir aussi
+      %h4= link_to @related_article.title, @related_article
+
     #disqus
       = raw disqus_thread
