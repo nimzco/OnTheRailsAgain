@@ -7,6 +7,7 @@ require 'ruby-debug'
 ARTICLE_PATH = File.join(Rails.root, 'app', 'assets', 'articles')
 
 DATE_DELIMITER         = '--date'
+UPDATED_AT_DELIMITER   = '--updated_at'
 TITLE_DELIMITER        = '--title'
 INTRODUCTION_DELIMITER = '--introduction'
 TAGS_DELIMITER         = '--tags'
@@ -14,6 +15,7 @@ CONTENT_DELIMITER      = '--content'
 AUTHORS_DELIMITER      = '--authors'
 ARTICLE_EXTENSION      = '.article'
 
+# Use rake "generate_article[Name of the article.article]"
 desc 'Regenerate a specific article'
 task :generate_article, [:filename] => :environment do |t, args|
   article_values = parse_article_from_file args.filename
@@ -28,6 +30,9 @@ task :generate_article, [:filename] => :environment do |t, args|
                             :activated    => true)
   article.tags << article_values[:tags]
   article.save
+  article.updated_at = article_values[:updated_at]
+  article.save
+
 end
 
 desc 'Create new articles'
@@ -45,6 +50,8 @@ task :add_new_articles => :environment do
                                 :content      => haml2html(article_values[:content]),
                                 :activated    => true)
       article.tags << article_values[:tags]
+      article.save
+      article.updated_at = article_values[:updated_at]
       article.save
     end
   end
@@ -68,6 +75,8 @@ task :generate_articles => :environment do
                               :activated    => true)
     article.tags << article_values[:tags]
     article.save
+    article.updated_at = article_values[:updated_at]
+    article.save
   end
 end
 
@@ -80,6 +89,8 @@ def parse_article_from_file article_file_name
   article_values[:tags]         = []
   article_values[:authors]      = []
   article_values[:title]        = ''
+  article_values[:date]         = nil
+  article_values[:updated_at]   = nil
   next_is                       = ''
 
   puts "Parsing: #{article_file_name}"
@@ -90,6 +101,9 @@ def parse_article_from_file article_file_name
       # Detect date
       if line.include?(DATE_DELIMITER)
         next_is = 'date'
+      # Detect updated_at date
+      elsif line.include?(UPDATED_AT_DELIMITER)
+        next_is = 'updated_at'
       # Detect introduction
       elsif line.include?(INTRODUCTION_DELIMITER)
         next_is = 'introduction'
@@ -105,6 +119,7 @@ def parse_article_from_file article_file_name
       else
         case(next_is)
           when 'date'         then article_values[:date]         = Time.zone.parse(line.strip)
+          when 'updated_at'   then article_values[:updated_at]   = Time.zone.parse(line.strip)
           when 'introduction' then article_values[:introduction] << line.strip
           when 'content'      then article_values[:content]      << line
           when 'title'        then article_values[:title]        << line.strip
@@ -132,14 +147,15 @@ end
 
 def haml2html(content)
   new_content = Haml::Engine.new(content).to_html
-#   new_content.gsub(/<pre class='[^>]*'>.*<\/pre>/) do |matched|
-#     string = matched.sub(/<pre class='[^>]*'>/, "").sub(/<\/pre>/, "")
-#     string = string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
-#     # highlight(string, language)
-#     output = "<pre class='prettyprint linenums'>"
-#     output << `node lib/tasks/highlight.js '#{string}'`
-#     output << "</pre>"
-#     output
-#   end.html_safe
+  new_content.gsub(/<pre class='[^>]*'>.*<\/pre>/) do |matched|
+    string = matched.sub(/<pre class='[^>]*'>/, "").sub(/<\/pre>/, "")
+    string = string.gsub(/&#x000A;/, "\n").gsub(/&quot;/, '"')
+    # highlight(string, language)
+    output = "<pre class='prettyprint linenums'>"
+    # output << `node lib/tasks/highlight.js '#{CGI::escapeHTML(string)}'`
+    output << CGI::escapeHTML(string)
+    output << "</pre>"
+    output
+  end.html_safe
 end
 

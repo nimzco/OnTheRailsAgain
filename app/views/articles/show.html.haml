@@ -14,14 +14,14 @@
 %article
   .article_show
     #left
-      .article_content{:data => {:spy => 'scroll'}}
+      .article_content
         %h1= @article.title
         %p.posted_by
           Posté par 
           = join_authors @article
           le 
           = l @article.created_at.to_date, :format => '%d %b %Y'
-          - if @article.updated_at != @article.created_at
+          - if !@article.updated_at.nil?
             (Mis à jour le
             = l @article.updated_at.to_date, :format => '%d %b %Y'
             )    
@@ -54,7 +54,7 @@
       .page-header
       .page-header
       
-    %aside.alert.alert-warning#see-also
+    %aside.alert.alert-info#see-also
       %h3 Voir aussi
       %h4= link_to @related_article.title, @related_article
 

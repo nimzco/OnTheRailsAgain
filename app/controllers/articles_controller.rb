@@ -45,7 +45,8 @@ class ArticlesController < InheritedResources::Base
         tags = tags.reject{ |tag| tag.name == 'Ruby On Rails'}
       end
       @related_tag = tags.sample
-      @related_article = Article.includes(:tags).where('tags.id = ?', @related_tag).sample
+      @related_article = Article.includes(:tags).where('tags.id = ?', @related_tag).reject{|article| article == @article}
+      @related_article = @related_article.sample
       show!
     end
   end

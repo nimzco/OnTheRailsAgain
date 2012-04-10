@@ -22,9 +22,9 @@
       .admin_tool
         = button_to "Supprimer", article_path(article),:confirm => "are you sure ?", :method => :delete
         -# if article.activate == true 
-          = button_to 'Desactiver', desactivate_article_path(article.id)        
+        = button_to 'Desactiver', desactivate_article_path(article.id)        
         -# else
-          = button_to 'Activer', activate_article_path(article.id)
+        = button_to 'Activer', activate_article_path(article.id)
 .divider
   .page-header
   .page-header
