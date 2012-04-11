@@ -20,7 +20,7 @@
     
   %body
     = render :partial => 'shared/header'
-    .container
+    .container.row-fluid
       - if current_author
         = button_to 'logout', destroy_author_session_path, :method => :delete, :id => 'logoutButton'
       %section
@@ -29,7 +29,7 @@
             = content_tag :p, msg, :id => "flash_#{name}"
           = yield 
         
-    %footer.container
+    %footer.container.row-fluid
       .page-header
       .content
         Site et design réalisé par deux passionnés des technologies du Web

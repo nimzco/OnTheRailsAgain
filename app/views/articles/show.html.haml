@@ -34,7 +34,7 @@
             - @article.tags.each do |tag|
               %li= link_to tag.name, articles_path(:tag => tag.name)
         .page-header  
-    %aside#summary
+    %aside#summary.visible-desktop
       #summary_content
         .page-header
         ~ @article.table_of_content.html_safe
