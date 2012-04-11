@@ -32,12 +32,21 @@ class ArticlesController < InheritedResources::Base
   end
   
   def show
+    
     # Redirect user on correct URL if params[:id] is an integer
     if params[:id].to_i > 0
       @article = Article.find params[:id]
       redirect_to :action => :show, :id => @article.link
     else
-      @article = Article.where("link = ?", params[:id]).first
+      @article = Article.where(:link => params[:id]).first
+      tags = @article.tags
+      # We reject only if the size is greater than 1
+      if tags.size > 1 && # Then reject the common tag 'Ruby On Rails'
+        tags = tags.reject{ |tag| tag.name == 'Ruby On Rails'}
+      end
+      @related_tag = tags.sample
+      @related_article = Article.includes(:tags).where('tags.id = ?', @related_tag).reject{|article| article == @article}
+      @related_article = @related_article.sample
       show!
     end
   end

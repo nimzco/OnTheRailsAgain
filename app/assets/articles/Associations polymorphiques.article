@@ -1,0 +1,225 @@
+--date 
+10/04/2012
+
+--tags
+Ruby On Rails, ActiveRecord, Relations
+
+--introduction
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+--title
+Associations polymorphiques
+
+--authors
+Nima
+
+--content
+.require
+  Pré-requis :
+  %ul
+    %li connaître l'héritage ; 
+    %li 
+      avoir déjà vu les différentes associations 
+      (<a target="_blank" href="http://ontherailsagain.com/articles/les-associations-one-to-many" rel="nofollow">One-to-Many</a>,
+      <a target="_blank" href="http://ontherailsagain.com/articles/les-associations-many-to-many" rel="nofollow">Many-to-Many</a>,
+      <a target="_blank" href="http://ontherailsagain.com/articles/les-associations-many-to-many-avancees-has_many-through" rel="nofollow">has_many :through</a>).
+
+.see
+  Ce que nous allons voir :
+  %ul
+    %li créer une association polymorphique ;
+    %li utiliser une association polymorphique comme ressource imbriqué ;
+    %li créer une ressource polymorphique de façon générique.
+
+%h2 Qu'est-ce que c'est ?
+
+%p
+  L'association polymorphique est une association qui permet à un modèle d'appartenir à plusieurs autres modèles et donc de ne pas dépendre que d'un seul modèle. Par exemple, vous pourriez avoir un modèle <span class="code">Comment</span> qui appartient à des <span class="code">Articles</span> mais aussi à des <span class="code">Events</span> etc. De cette façon, vous n'avez pas besoin de dupliquer des modèles qui auront les mêmes informations avec des noms différents.
+
+%h2 Un exemple concret
+
+%p
+  Illustrons le problème par un exemple.
+  Supposons que nous avons trois modèles : <span class="code">Article</span>, <span class="code">Event</span> et <span class="code">Photo</span>. Le but est donc de créer un modèle <span class="code">Comment</span> unique pour nos trois modèles.
+
+%h3 Création du modèle
+%p
+  Pour les normes à respecter pour la création du modèle, c'est très simple. Étant donné que le modèle <span class="code">Comment</span> n'est plus lié à un modèle spécifique, il faut lui spécifier un champ qui réfèrera à l'ID de l'objet ainsi que le type de ce dernier. Autrement dit :
+
+%pre.prettyprint.linenums
+  :preserve
+    $ rails g model Comment content:text commentable_id:integer commentable_type:string
+
+%h3 Migration
+%p
+  Pour récapituler, une colonne où l'on stoque l'ID de l'objet auquel appartient le commentaire, et le type de cet objet sous la forme d'une string.
+  Côté migration, deux façons d'écrire :
+
+%pre.prettyprint.linenums
+  :preserve
+    class CreateComments < ActiveRecord::Migration
+      def change
+        create_table :comments do |t|
+          t.string :content
+          t.integer :commentable_id
+          t.string  :commentable_type
+          t.timestamps
+        end
+      end
+    end
+
+%p
+  Ou de façon un peu plus concise :
+
+%pre.prettyprint.linenums
+  :preserve
+    class CreateComments < ActiveRecord::Migration
+      def change
+        create_table :comments do |t|
+          t.string :content
+          t.integer :commentable, :polymorphic => true
+          t.timestamps
+        end
+      end
+    end
+
+%h3 Associations dans les modèles
+%p
+  Enfin, du côté des modèles, il suffit de déclarer les associations de la façon suivante :
+
+%pre.prettyprint.linenums
+  :preserve
+    # app/models/comment.rb
+    class Comment < ActiveRecord::Base
+      belongs_to :commentable, :polymorphic => true
+      ...
+
+    # app/models/event.rb
+    class Event < ActiveRecord::Base
+      has_many :comments, :as => :commentable
+      ...
+
+    # app/models/photo.rb
+    class Photo < ActiveRecord::Base
+      has_many :comments, :as => :commentable
+      ...
+
+    # app/models/article.rb
+    class Article < ActiveRecord::Base
+      has_many :comments, :as => :commentable
+      ...
+
+%h3 Création d'un commentaire
+%p
+  De façon simple, pour créer un commentaire associé à un objet, on peut simplement faire : 
+
+%pre.prettyprint.linenums
+  :preserve
+    @article.comments.create(:content => 'Mon contenu')
+
+%h2 Aller plus loin
+%h3 Ressources imbriquées
+%p
+  Si on veut généraliser et que l'on veut accéder par exemple à tous les commentaires d'un article par l'URL <span class="code">/articles/1/comments</span> il faut utiliser les ressources imbriquées et pour cela modifier les <span class="code">routes</span>.
+
+%pre.prettyprint.linenums
+  :preserve
+    #config/routes.rb
+    resources :model do
+      resources :comments
+    end
+%p
+  En faisant ça pour chaque modèle, la route <span class="code">/model/1/comments</span> redirigera alors vers l'action <span class="code">index</span> de <span class="code">CommentsController</span>. Et c'est dans cette méthode qu'il faut, en fonction du type de la ressource, afficher les commentaires.
+
+%h3 Récupérer la ressource
+%p
+  Ryan Bates nous propose dans son <a target="_blank" href="http://railscasts.com/episodes/154-polymorphic-association" rel="nofollow">RailsCast</a> une methode pour récupérer la ressource concerné.
+
+%pre.prettyprint.linenums
+  :preserve
+    # app/controllers/comments_controller.rb
+    private
+    def find_commentable
+      params.each do |name, value|
+        # Regex correspondant à la forme model_id
+        if name =~ /(.+)_id$/
+          # $1 correspond au nom du modèle
+          return $1.classify.constantize.find(value) 
+        end
+      end
+      nil # Retourne nil si rien n'a été trouvé
+    end
+
+%p
+  La méthode ci-dessus parcours tous les paramètres envoyés par le client et cherche un paramètre se terminant par <span class="code">_id</span>. Si nous étions à l'url <span class="code">/articles/1/comments</span>, nous aurions par exemple <span class="code">article_id</span> avec comme valeur 1.
+
+%p
+  Si la méthode trouve une correspondance dans les paramètres, elle appelle la méthode <span class="code">classify</span> sur le nom du modèle. La méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-classify" rel="nofollow">classify</a> transforme les chaînes de caractère s'apparentant à des noms de tables en des chaînes de caractère pouvant correspondre à des noms de classe. Par exemple : 
+  
+%pre.prettyprint.linenums
+  :preserve
+    "egg_and_hams".classify # => "EggAndHam"
+    "posts".classify        # => "Post"
+
+%p
+  Puis, la méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize" rel="nofollow">constantize</a> est appelé pour essayer de trouver une constante correspondante. "Article" deviendra alors la constante correspondant à la classe Article.
+
+%p
+  Enfin, la méthode find est appelé pour récupérer l'objet en question.
+
+%h3 Afficher et créer un commentaire
+%p
+  De cette façon, on peut maintenant afficher dans notre vue <span class="code">index</span> de <span class="code">comments</span>, tous les commentaires de l'objet concerné.
+  
+%pre.prettyprint.linenums
+  :preserve
+    # app/controllers/comments_controller.rb
+    def index
+      @commentable = find_commentable
+      @comments    = @commentable.comments
+    end
+
+%p
+  Et dans la vue :
+
+%pre.prettyprint.linenums
+  :preserve
+    # app/views/comments/index.html.erb
+    <h1>Liste des commentaires</h1>
+    <ul id="comments">
+      <% @comments.each do |comment| %>
+        <li><%= comment.content %></li>
+      <% end %>
+    </ul>
+
+    <h2>Nouveau commentaire</h2>
+    <% form_for [@commentable, Comment.new] do |form| %>
+      <ol class="formList">
+        <li>
+          <%= form.label :content %>
+          <%= form.text_area :content, :rows => 5 %>
+        </li>
+        <li><%= submit_tag "Add comment" %></li>
+      </ol>
+    <% end %>
+
+%p
+  Et enfin, pour l'action <span class="code">create</span> du contrôleur :
+
+%pre.prettyprint.linenums
+  :preserve
+    # app/controllers/comments_controller.rb
+    def create
+      @commentable = find_commentable
+      @comment = @commentable.comments.build(params[:comment])
+  
+%p
+  Voilà pour ce qui est des associations polymorphiques !
+
+%h2 Références
+%ul
+  %li
+    %a{:href => 'http://railscasts.com/episodes/154-polymorphic-association'} Rails Casts
+    de Ryan Bates ;
+  %li
+    %a{:href => 'http://guides.rubyonrails.org/association_basics.html#polymorphic-associations'} ActiveRecord Association RailsGuides.
