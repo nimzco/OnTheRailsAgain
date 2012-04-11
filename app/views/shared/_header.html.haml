@@ -1,5 +1,5 @@
 %header
-  .container.row-fluid
+  .container.row-fluid#header_title
     %a.home{:href => "/"}        
       On The
       %span#bold_title Rails
@@ -13,10 +13,17 @@
               = link_to 'Articles', root_path
             %li{ :class => (current_page?(authors_path) ? 'active' : '') }
               = link_to 'À propos', authors_path
-        %div.nav.span2
+        %div.nav.span2.not_mobile
           #header_share_buttons
             %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
               %i.icon-rss
             %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
               %i.icon-twitter
         = render 'shared/search'
+        %div#header_mobile.span6.mobile
+          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+            %i.icon-rss
+          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
+            %i.icon-twitter
+          %a#search_button
+            %i.icon-search

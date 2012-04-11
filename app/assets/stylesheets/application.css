@@ -5,4 +5,5 @@
  *= require_self
  *= require pygments
  *= require bootstrap_and_overrides
+ *= require libs/animate-custom
 */

@@ -1,4 +1,4 @@
-section.articles {  
+#article_section {  
   article {
     header {
       vertical-align: top;
@@ -76,4 +76,16 @@ h3.page-header {
     padding: 0;
   }
   margin: 24px 0;
+}
+
+@media (max-width: 768px)  {
+  aside {
+    display: none;
+  }
+  #article_section {
+    width: 94%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
 }

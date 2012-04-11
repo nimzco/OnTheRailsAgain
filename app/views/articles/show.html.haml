@@ -6,10 +6,13 @@
 
 = content_for :title do
   = @article.title
-  
-- content_for :extra_js_and_css do
+
+- content_for :header do  
   = stylesheet_link_tag 'libs/prettify'
   = javascript_include_tag 'libs/prettify'
+
+- content_for :javascript do
+  = javascript_include_tag 'article_show'
 
 %article
   .article_show
@@ -54,7 +57,7 @@
       .page-header
       .page-header
       
-    %aside.alert.alert-info#see-also
+    %aside#see-also.alert.alert-info.bounceOutRight.span4
       %h3 Voir aussi
       %h4= link_to @related_article.title, @related_article
 

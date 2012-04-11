@@ -1,11 +1,7 @@
 = content_for :meta_description do
   Blog destiné à une communauté francophone voulant se lancer dans l'apprentissage de Ruby On Rails.
   
--if is_mobile?
-  %aside.tags
-    .content
-
-%section.articles.span8
+#article_section.articles.span8
   - if @articles.empty?
     %h2.search_title.page-header
       Résultat de la recherche
@@ -32,13 +28,13 @@
       %p
         - @tags.each do |tag|
           %span= link_to tag.name, articles_path(:tag => tag.name)
-    -if !is_mobile?
-      #contact.aside_box
-        %h3.page-header Nous contacter
-        %p
-          N'hésitez pas à nous         
-          %a{:href => 'mailto:admin@ontherailsagain.com'} envoyer un mail 
-          pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
+
+    #contact.aside_box
+      %h3.page-header Nous contacter
+      %p
+        N'hésitez pas à nous         
+        %a{:href => 'mailto:admin@ontherailsagain.com'} envoyer un mail 
+        pour nous demander un article ou ne serais-ce que pour prendre contact avec nous !
 
     #tool
       - if current_author

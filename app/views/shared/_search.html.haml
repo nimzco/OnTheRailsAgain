@@ -1,4 +1,4 @@
-%div.span4.hidden-phone
+%div.span4#search_form.not_mobile
   = form_for @search, {:controller => 'articles', :action => 'index', :html => { :class => " search-form"} } do |f|
     .input-prepend
       %span.add-on

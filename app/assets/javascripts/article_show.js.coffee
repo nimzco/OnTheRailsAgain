@@ -1,4 +1,6 @@
 $( ->
+  $('#summary_content').localScroll {duration: 350}
+    
   # Get all headers of the article except the title (h1)
   headers              = $('.article_content > :header:not("h1")')
   # Get all headers of the summary
@@ -7,7 +9,6 @@ $( ->
   see_also_div         = $('#see-also')
   see_also_width       = $('#see-also').width()
   see_also_initial_right_position = $('#see-also').css('right')
-  console.log see_also_initial_right_position
   # Will select the current header in the summary regarding the position of the window
   $(window).scroll( ->    
     # Select the first header if the window is on top of the page
@@ -27,12 +28,14 @@ $( ->
           summary_headers.css('font-weight', 'normal')
           $(summary_headers[i]).css('font-weight', 'bold')
 
+    
     # When the user is reading the last part
     if ($(document).scrollTop() + window.innerHeight) > last_header_position
-      if see_also_div.css('right') == see_also_initial_right_position
-        see_also_div.animate({'right': '-10px'}, {queue: false})
-    else if see_also_div.css('right') == '-10px'
-      see_also_div.animate({'right': '-1000px'}, {queue: false})
+      if see_also_div.hasClass('bounceOutRight')
+        see_also_div.removeClass('bounceOutRight animated').addClass('bounceInRight animated')
+    else if see_also_div.hasClass('bounceInRight')
+      see_also_div.removeClass('bounceInRight animated').addClass('bounceOutRight animated')
+
 
   )
   
