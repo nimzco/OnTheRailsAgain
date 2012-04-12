@@ -28,9 +28,6 @@
   }
 
   /* Style */
-  h1 {
-    margin-bottom: 0;
-  }
   ul {
     list-style: none;
     margin: auto 0;
@@ -63,41 +60,30 @@
   }
 }
 
-/* tablette */
-@media screen and (max-width: 640px) {
-  #authors_description {
-    > div {
-      display: table;
-      > div {
-        display: table-row;
-        > div {
-          display: table-cell;
-        }
-      }
-    }
-  }
-}
-
 #resume {
   margin-top: 1.5em;
   p {
     margin: .5em auto;
-  }
-  h1 {
-    text-align: center;
-    em {
-      color: @light_red;
-      font-style: normal;
-    }
   }
   .page-header {
     padding-bottom: 0.3em;
     margin: 0.5em auto;
   }
   header {
+    margin-bottom: 3em;
     .thumbnail {
       .thumbnail_mixin;
+      margin-right: 1.2em;
     }
+    h1.page-header {
+      line-height: 1;
+      margin-top: 0;
+      em {
+        color: @light_red;
+        font-style: normal;
+      }
+    }
+
     .divider {
       .page-header {
         margin: 2px 0;
@@ -142,16 +128,33 @@
   }
   aside {
     p, span {font-size: 1.1em;}
-    h2 {
-      font-size    : 2.5em;
-      margin-bottom: 0;
-      margin-top   : 0.7em;
+    h2.page-header {
+      margin-top: 0;
+      line-height: 1;
     }
     a {
-      display: inline-block;
-      i { font-size: 1.5em; }
+      display: block;
+      font-size: 1em;      
+      .btn i { 
+        font-size: 1.5em; 
+      }
       span, i {
         vertical-align: middle;
+      }
+    }
+  }
+}
+
+/* tablette */
+@media screen and (max-width: 640px) {
+  #authors_description {
+    > div {
+      display: table;
+      > div {
+        display: table-row;
+        > div {
+          display: table-cell;
+        }
       }
     }
   }
