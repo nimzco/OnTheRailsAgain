@@ -21,11 +21,13 @@
             %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
               %i.icon-twitter
         = render 'shared/search'
-        %div#header_mobile.span6.mobile
-          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
-            %i.icon-rss
-          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
-            %i.icon-twitter
+        %div#header_mobile.mobile
+          %div
+            %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+              %i.icon-rss
+          %div
+            %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
+              %i.icon-twitter
           .header_link_group
             %a#tag_button
               %i.icon-tag

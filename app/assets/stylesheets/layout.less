@@ -28,7 +28,10 @@ body > header:first-child {
       }
 		}
 		ul#outgoing_links {
-			text-align: right;
+			text-align   : right;
+      li:last-child{
+        padding-right: 1em;
+      }
 			li {
         display    : inline-block;
         margin 		 : auto 0 0 auto;
@@ -41,11 +44,18 @@ body > header:first-child {
 				}
 			}
 		}
-		div#search_form {
-			form {
-        margin: 0.7em auto 0 auto;       
-        .input-prepend {
-            display: table;
+    div#search_form {
+      height : 3.5em;
+      display: table;
+      margin : 0 0 0 1%;
+      > div {
+        display       : table-cell;
+        vertical-align: middle;
+        form {
+          margin: 0;
+          .input-prepend {
+            margin-bottom: 0;
+            display      : table;
             .add-on {
               display   	: table-cell;
               padding-left: 0.5em;
@@ -55,7 +65,29 @@ body > header:first-child {
               margin-bottom: 0;
             }
           }
+        }
 			}
 		}
 	}
+}
+@media (max-width: 768px)  {
+  body > header:first-child {
+    div#header_mobile {
+      height : 3.5em;
+      float  : right;
+      display: table;
+      > div {
+        display       : table-cell;
+        vertical-align: middle;
+        padding       : 0 0.5em;
+      }
+      a#search_button i, a#tag_button i {
+        padding: 0.25em 0.5em;
+      }
+      .header_popover {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
 }

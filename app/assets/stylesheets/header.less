@@ -83,35 +83,33 @@ body > header:first-child {
         margin: 0;
       }
       div#search_form {
-        form {
-          .input-prepend {
-            .add-on {
-              .radiusLeft(1em);      
-              border-color: darken(@dark_red, 8%);  
-              background-color: #A20003;
-              color: black;
-              font-size: 1.3em;
-              text-shadow: none;
-              box-shadow: 0 1px 0 @light_red, inset 0 0 5px rgba(255, 255, 255, 0.4);
-              text-shadow: 0 1px 0 @light_red;
-              border-right: none;
+        > div {
+          form {
+            .input-prepend {
+              .add-on {
+                .radiusLeft(1em);      
+                border-color    : darken(@dark_red, 8%);  
+                background-color: #A20003;
+                color           : black;
+                font-size       : 1.3em;
+                text-shadow     : none;
+                box-shadow      : 0 1px 0 @light_red, inset 0 0 5px rgba(255, 255, 255, 0.4);
+                text-shadow     : 0 1px 0 @light_red;
+                border-right    : none;
+              }
+              input {
+                margin-bottom: 0;
+                border-color: darken(@dark_red, 8%);
+                color: #333;
+                box-shadow: 0 1px 0 @light_red, inset 0 0 3px rgba(0, 0, 0, 0.2);
+                .radiusRight(1em);
+                background-color: #EEE;
+              }
             }
-            input {
-              margin-bottom: 0;
-              border-color: darken(@dark_red, 8%);
-              color: #333;
-              box-shadow: 0 1px 0 @light_red, inset 0 0 3px rgba(0, 0, 0, 0.2);
-              .radiusRight(1em);
-              background-color: #EEE;
+            .search-query::-webkit-input-placeholder, .search-query:-moz-placeholder {
+              color: #999;
+              text-shadow: 1px 1px 0 white;
             }
-          }
-          .search-query:-moz-placeholder {
-            color: #999;
-            text-shadow: 1px 1px 0 white;
-          }
-          .search-query::-webkit-input-placeholder {
-            text-shadow: 1px 1px 0 white;
-            color: #999;
           }
         }
       }
@@ -124,17 +122,12 @@ body > header:first-child {
       text-align: center;
     }
     div#header_mobile {
-      display: block;
       text-align: right;
       a {
         color: black;  
         text-shadow: 0 1px 0 @light_red;
-        line-height: 3em;
-        padding: 0 0.5em;
         i {
           font-size: 2em;
-          vertical-align: middle;
-          display: inline-block;
         }
       }
       a:hover {
@@ -148,16 +141,8 @@ body > header:first-child {
         .radius(1em);
         box-shadow: 0 1px 0 @light_red;
         text-shadow: 0 1px 0 @light_red;
-        padding: 0.3em 0.5em;
-        padding-bottom: 0.2em;
-      }
-      .header_link_group {
-        position: relative;
-        display: inline-block;
       }
       .header_popover {
-        position: absolute;
-        right: 0;
         background-color: whiteSmoke;
         border: 1px solid black;
         border-radius: 3px;
