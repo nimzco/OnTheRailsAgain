@@ -21,7 +21,6 @@ class ArticlesController < InheritedResources::Base
       @articles = @search.page(params[:page]).order('created_at DESC')
       @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant à la recherche : «#{params[:search]["title_or_content_contains"]}»" if params[:search]
     end
-    @tags = Tag.find(:all, :order => :name)
     index!
   end
 

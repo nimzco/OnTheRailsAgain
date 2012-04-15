@@ -1,0 +1,61 @@
+//  Header
+// *******************************************************
+
+body > header:first-child {
+	// Header title
+	.container {
+	  a.home {
+	    display            : inline-block;
+	    margin-top         : 0.1em auto;
+	    padding 					 : 25px 0 25px 75px;
+	  }
+	}
+	// Navigation part
+	nav {
+		ul {
+        display 		 : table;
+        table-layout : fixed;
+        width				 : 20em;
+        margin 			 : auto 0 0 0;
+        li {
+          display 		  : table-cell;
+          vertical-align: middle;
+          a {
+          	margin     : auto;
+            display    : block;
+            line-height: 3.5em;
+        }
+      }
+		}
+		ul#outgoing_links {
+			text-align: right;
+			li {
+        display    : inline-block;
+        margin 		 : auto 0 0 auto;
+        height     : 3.5em;
+				a {
+          vertical-align : middle;
+          padding-left   : 0.3em;
+          width          : 25px;
+          height         : 25px;
+				}
+			}
+		}
+		div#search_form {
+			form {
+        margin: 0.7em auto 0 auto;       
+        .input-prepend {
+            display: table;
+            .add-on {
+              display   	: table-cell;
+              padding-left: 0.5em;
+            }
+            input {
+              display  	 	 : table-cell;
+              margin-bottom: 0;
+            }
+          }
+			}
+		}
+	}
+}

@@ -37,7 +37,7 @@
             - @article.tags.each do |tag|
               %li= link_to tag.name, articles_path(:tag => tag.name)
         .page-header  
-    %aside#summary.visible-desktop
+    %nav#summary.visible-desktop
       #summary_content
         .page-header
         ~ @article.table_of_content.html_safe
@@ -45,7 +45,7 @@
           = button_to "Editer", edit_article_path(@article.link), :method => :get 
         .page-header
   
-  %footer
+  %footer#article_footer
     #footer_share_buttons
       - bitly_url = BITLY.shorten(@article.permalink).bitly_url
       %span Partager cet article

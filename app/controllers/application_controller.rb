@@ -2,10 +2,11 @@
 class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
-  before_filter :check_url, :init_search
+  before_filter :check_url, :init_header
   
-  def init_search
+  def init_header
     @search = current_author ? Article.search(params[:search]) : Article.where(:articles => {:activated => true}).search(params[:search])
+    @tags = Tag.find(:all, :order => :name)
   end
   
   def check_url

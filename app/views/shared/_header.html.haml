@@ -5,18 +5,19 @@
       %span#bold_title Rails
       Again      
   .navigationbar
-    .inner
+    %nav
       .container.row-fluid
         .span6
-          %ul.nav
+          %ul.nav#menu_links
             %li{ :class => (current_page?(articles_path) || current_page?(root_path) ? 'active' : '') }
               = link_to 'Articles', root_path
             %li{ :class => (current_page?(authors_path) ? 'active' : '') }
               = link_to 'À propos', authors_path
-        %div.nav.span2.not_mobile
-          #header_share_buttons
+        %ul.nav.span2.not_mobile#outgoing_links
+          %li
             %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
               %i.icon-rss
+          %li
             %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
               %i.icon-twitter
         = render 'shared/search'
@@ -25,5 +26,14 @@
             %i.icon-rss
           %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
             %i.icon-twitter
-          %a#search_button
-            %i.icon-search
+          .header_link_group
+            %a#tag_button
+              %i.icon-tag
+            .header_popover.mobile
+              .arrow
+              %ul
+                %li lala
+                %li lali
+          .header_link_group
+            %a#search_button
+              %i.icon-search
