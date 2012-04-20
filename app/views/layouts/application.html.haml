@@ -26,7 +26,7 @@
       - if current_author
         = button_to 'logout', destroy_author_session_path, :method => :delete, :id => 'logoutButton'
       %section
-        .content.row-fluid                       
+        .content.row-fluid
           - flash.each do |name, msg|
             = content_tag :p, msg, :id => "flash_#{name}"
           = yield 

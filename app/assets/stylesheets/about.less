@@ -1,36 +1,12 @@
 @thubmnail-width: 30%;
 @article-width:   70%;
 
-.thumbnail_mixin {
-  background-color: white;
-  display:          block;
-  padding:          6px;
-  line-height:      1;
-  border:           1px solid #DDD;
-  border-radius:    2px;
-}
-
 /* Desktop */
 #authors_description {
-  /* Display */
-  display     : table;
-  table-layout: fixed;
-  > div {
-    display       : table-cell;
-    vertical-align: top;
-    > div {
-      display: table;
-      > div {
-        display       : table-cell;
-        vertical-align: top;
-      }
-    }
-  }
 
   /* Style */
   ul {
     list-style: none;
-    margin: auto 0;
     li {
       font-size: 1.1em;
     }
@@ -38,75 +14,35 @@
   a {
     text-decoration: none;  
   }
-  .text-content {
-    width: 22em;
-  } 
   img {
     .thumbnail_mixin;
-    margin: 0.7em;
-    margin-top: 2em;
-    width: 11em;    
   }
   .left {
     text-align: right;
-    img {
-      margin-right: 0;
-    }
-  }
-  .right {
-    img {
-      margin-left:  0;
-    }
   }
 }
 
 #resume {
-  margin-top: 1.5em;
-  p {
-    margin: .5em auto;
-  }
-  .page-header {
-    padding-bottom: 0.3em;
-    margin: 0.5em auto;
-  }
   header {
-    margin-bottom: 3em;
     .thumbnail {
       .thumbnail_mixin;
-      margin-right: 1.2em;
     }
     h1.page-header {
       line-height: 1;
-      margin-top: 0;
       em {
         color: @light_red;
         font-style: normal;
       }
     }
-
-    .divider {
-      .page-header {
-        margin: 2px 0;
-        padding: 0;
-      }
-      margin: 0;
-    }
     div {
-      padding: 0;
       background-color: transparent;
     }
     h1, h2, h3 {
-      margin: 0 auto;    
     }
     h2 {
-      padding-bottom: 0;
     }
     h3 {
       font-weight: normal;
-      i, span {
-        display:        inline-block;
-        vertical-align: middle;
-      }
     }
   }
   dl {
@@ -120,26 +56,16 @@
     .dl-title {
       font-weight: bold;
     }
-    dd {
-      p {
-        margin-bottom: 0;
-      }
-    }
   }
   aside {
-    p, span {font-size: 1.1em;}
+    p, span { font-size: 1.1em; }
     h2.page-header {
-      margin-top: 0;
       line-height: 1;
     }
     a {
-      display: block;
       font-size: 1em;      
       .btn i { 
         font-size: 1.5em; 
-      }
-      span, i {
-        vertical-align: middle;
       }
     }
   }

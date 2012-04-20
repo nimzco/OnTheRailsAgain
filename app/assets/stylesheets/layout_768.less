@@ -1,0 +1,45 @@
+@media (max-width: 768px) {
+//  Header
+// *******************************************************
+  body > header:first-child {
+    div#header_mobile {
+      height : @header_height;
+      float  : right;
+      display: table;
+      > div {
+        display       : table-cell;
+        vertical-align: middle;
+        padding       : 0 0.5em;
+      }
+      i#search_button, i#tag_button {
+        padding: 0.25em 0.5em;
+      }
+      .header_popover {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+
+//  Authors
+// *******************************************************
+  #authors_description {
+    display: table;
+    width: 100%;
+    > div {
+    	width: 100%;
+      display: table-row;
+      > div {
+      	width: 100%;
+        display: table-cell;
+      }   
+    }
+    .text-content {
+    	width: 100%;
+    }
+  }
+  #resume article {
+  	width: 100%;
+  	margin: 0 0.5em;
+  }
+}

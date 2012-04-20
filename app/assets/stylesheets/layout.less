@@ -89,27 +89,6 @@ body > header:first-child {
 		}
 	}
 }
-@media (max-width: 768px)  {
-  body > header:first-child {
-    div#header_mobile {
-      height : @header_height;
-      float  : right;
-      display: table;
-      > div {
-        display       : table-cell;
-        vertical-align: middle;
-        padding       : 0 0.5em;
-      }
-      i#search_button, i#tag_button {
-        padding: 0.25em 0.5em;
-      }
-      .header_popover {
-        position: absolute;
-        right: 0;
-      }
-    }
-  }
-}
 
 //  Index Articles
 // *******************************************************
@@ -129,17 +108,99 @@ body > header:first-child {
   }
 }
 
-//  Authors
+//  About - Index
 // *******************************************************
-@media (max-width: 768px) {
-  #authors_description {
+
+@thubmnail-width: 30%;
+@article-width:   70%;
+
+#authors_description {
+  /* Display */
+  display     : table;
+  table-layout: fixed;
+  > div {
+    display       : table-cell;
+    vertical-align: top;
     > div {
       display: table;
       > div {
-        display: table-row;
-        > div {
-          display: table-cell;
-        }
+        display       : table-cell;
+        vertical-align: top;
+      }
+    }
+  }
+
+  /* Style */
+  ul {
+    margin: auto 0;
+  }
+  .text-content {
+    width: 22em;
+  } 
+  img {
+    .thumbnail_mixin;
+    margin: 2em 0.7em 0.7em 0.7em;
+    width : 11em;    
+  }
+  .left img {
+    margin-right: 0;
+  }
+  .right img {
+    margin-left:  0;
+  }
+}
+
+#resume {
+  margin-top: 1.5em;
+  p {
+    margin: .5em auto;
+  }
+  .page-header {
+    padding-bottom: 0.3em;
+    margin: 0.5em auto;
+  }
+  header {
+    margin-bottom: 3em;
+    .thumbnail {
+      margin-right: 1.2em;
+    }
+    h1.page-header {
+      margin-top: 0;
+    }
+    .divider {
+      .page-header {
+        margin: 2px 0;
+        padding: 0;
+      }
+      margin: 0;
+    }
+    div {
+      padding: 0;
+    }
+    h1, h2, h3 {
+      margin: 0 auto;    
+    }
+    h2 {
+      padding-bottom: 0;
+    }
+    h3 {
+      i, span {
+        display:        inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+  dl dd p{
+    margin-bottom: 0;
+  }
+  aside {
+    h2.page-header {
+      margin-top: 0;
+    }
+    a {
+      display: block;
+      span, i {
+        vertical-align: middle;
       }
     }
   }
