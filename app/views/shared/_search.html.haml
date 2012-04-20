@@ -1,8 +1,6 @@
-%div.span4#search_form.not_mobile
-  %div
-    = form_for @search, {:controller => 'articles', :action => 'index', :html => { :class => " search-form"} } do |f|
-      .input-prepend
-        %span.add-on
-          %i.icon-search
-        = f.text_field  :title_or_content_contains, :class => '', :placeholder => 'Titres, tags, auteurs, etc…'
-      - f.submit  "&nbsp;".html_safe, :id => 'search_submit'
+= form_for @search, {:controller => 'articles', :action => 'index', :html => { :class => " search-form"} } do |f|
+  .input-prepend
+    %span.add-on
+      %i.icon-search
+    = f.text_field  :title_or_content_contains, :class => '', :placeholder => 'Titres, tags, auteurs, etc…'
+  - f.submit  "&nbsp;".html_safe, :id => 'search_submit'

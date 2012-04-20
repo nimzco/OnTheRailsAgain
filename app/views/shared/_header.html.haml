@@ -1,3 +1,5 @@
+- search_bar_html = render 'shared/search'
+- tags            = render 'shared/tags'
 %header
   .container.row-fluid#header_title
     %a.home{:href => "/"}        
@@ -20,22 +22,19 @@
           %li
             %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
               %i.icon-twitter
-        = render 'shared/search'
+        %div.span4#search_form.not_mobile
+          %div= search_bar_html
         %div#header_mobile.mobile
           %div
             %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
               %i.icon-rss
           %div
-            %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
+            %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank' }
               %i.icon-twitter
           .header_link_group
-            %a#tag_button
-              %i.icon-tag
-            .header_popover.mobile
-              .arrow
-              %ul
-                %li lala
-                %li lali
+            %a
+              %i.icon-tag#tag_button{ :data => { :content => tags, 'original-title' => 'Tags' }}
           .header_link_group
-            %a#search_button
-              %i.icon-search
+            %a
+              %i.icon-search#search_button{ :data => { :content => search_bar_html, 'original-title' => 'Recherche' }}
+            

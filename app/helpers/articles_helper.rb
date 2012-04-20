@@ -1,8 +1,7 @@
 module ArticlesHelper
-
   
   def join_tags(article)
-    content_tag(:ul, article.tags(true).collect { |tag| content_tag(:li, link_to(tag.name, articles_path(:tag => tag.name), :rel => 'tag')) }.join(' ').html_safe)
+    content_tag(:ul, article.tags(true).collect { |tag| content_tag(:li, link_to(tag.name, articles_path(:tag => tag.name), :rel => 'tag')) }.join(' ').html_safe, :class => 'tags_list')
   end
 
   # Join all authors of an article with the keyword 'et'

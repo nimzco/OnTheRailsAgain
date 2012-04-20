@@ -1,0 +1,3 @@
+%ul.tags_list
+	- @tags.each do |tag|
+		%li= link_to tag.name, articles_path(:tag => tag.name)

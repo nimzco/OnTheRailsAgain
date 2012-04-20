@@ -1,6 +1,6 @@
 = content_for :meta_description do
   Blog destiné à une communauté francophone voulant se lancer dans l'apprentissage de Ruby On Rails.
-  
+
 #article_section.articles.span8
   - if @articles.empty?
     %h2.search_title.page-header
@@ -11,7 +11,7 @@
   - elsif @search_text != ""
     %h2.search_title.page-header
       Résultat de la recherche
-    -#%h2.search_title.page-header= @search_text
+
     %p.alert.alert-info= @search_text
       
   - @articles.each do |article|
@@ -24,10 +24,8 @@
       = button_to 'Nouvel article', new_article_path, :method => :get
 
     #tags.aside_box
-      %h3.page-header Catégories
-      %p
-        - @tags.each do |tag|
-          %span= link_to tag.name, articles_path(:tag => tag.name)
+      %h3.page-header Tags
+      = render 'shared/tags'
 
     #contact.aside_box
       %h3.page-header Nous contacter

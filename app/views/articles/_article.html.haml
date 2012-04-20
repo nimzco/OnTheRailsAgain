@@ -15,8 +15,7 @@
     %p.article_content
       = article.introduction
       = link_to "Lire la suite…".html_safe, {:controller => "articles", :action => "show", :id => article.link}, :class => 'more_link'
-    .tags
-      = join_tags article
+    = join_tags article
 
     - if current_author
       .admin_tool

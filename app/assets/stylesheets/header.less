@@ -36,7 +36,7 @@ body > header:first-child {
           box-shadow  : 1px 0 0 #c20a0c, inset 1px 0 0 #c20a0c, 0 0 3px rgba(0, 0, 0, 0.2);
           a {
             text-shadow: 0 0 0 white;
-            font-weight: 400;
+            font-weight: 500;
             color      : white;
           }
           a:hover {
@@ -133,7 +133,7 @@ body > header:first-child {
         text-decoration: none;
         cursor: pointer;
       }
-      a#search_button i, a#tag_button i {
+      i#search_button, i#tag_button {
         font-size: 1.5em;
         border: 1px solid darken(@dark_red, 8%);  
         background-color: #A20003;
@@ -141,10 +141,29 @@ body > header:first-child {
         box-shadow: 0 1px 0 @light_red;
         text-shadow: 0 1px 0 @light_red;
       }
-      .header_popover {
-        background-color: whiteSmoke;
-        border: 1px solid black;
-        border-radius: 3px;
+    }
+  }
+  .popover-inner {
+    .popover-title {
+      margin: 0;
+    }
+    .popover-content {
+      p {
+        margin-top:   0;
+      }
+      form {
+        margin-bottom: 0;
+        div.input-prepend {
+          display: table;
+          span, input {
+            margin-bottom: 0; 
+            display: table-cell;
+          }
+          .add-on {
+            padding: 0.3em 0.4em;
+          }
+
+        }
       }
     }
   }

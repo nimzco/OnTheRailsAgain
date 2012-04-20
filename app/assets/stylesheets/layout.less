@@ -1,8 +1,27 @@
-//  Header
+//  Global
 // *******************************************************
 
+ul.tags_list {
+  padding-left   : 0;
+  margin         : 0;
+  li {
+    display      : inline-block;
+    margin-bottom: 0.6em;
+    a {
+      .radius(2px);
+      padding         : 0.2em 0.4em;
+    }
+  }
+}
+
+
+//  Header
+// *******************************************************
+@header_height: 3.5em;
+
 body > header:first-child {
-	// Header title
+	font-size: 13px;
+  // Header title
 	.container {
 	  a.home {
 	    display            : inline-block;
@@ -23,7 +42,7 @@ body > header:first-child {
           a {
           	margin     : auto;
             display    : block;
-            line-height: 3.5em;
+            line-height: @header_height;
         }
       }
 		}
@@ -35,7 +54,7 @@ body > header:first-child {
 			li {
         display    : inline-block;
         margin 		 : auto 0 0 auto;
-        height     : 3.5em;
+        height     : @header_height;
 				a {
           vertical-align : middle;
           padding-left   : 0.3em;
@@ -45,7 +64,7 @@ body > header:first-child {
 			}
 		}
     div#search_form {
-      height : 3.5em;
+      height : @header_height;
       display: table;
       margin : 0 0 0 1%;
       > div {
@@ -73,7 +92,7 @@ body > header:first-child {
 @media (max-width: 768px)  {
   body > header:first-child {
     div#header_mobile {
-      height : 3.5em;
+      height : @header_height;
       float  : right;
       display: table;
       > div {
@@ -81,12 +100,28 @@ body > header:first-child {
         vertical-align: middle;
         padding       : 0 0.5em;
       }
-      a#search_button i, a#tag_button i {
+      i#search_button, i#tag_button {
         padding: 0.25em 0.5em;
       }
       .header_popover {
         position: absolute;
         right: 0;
+      }
+    }
+  }
+}
+
+//  Authors
+// *******************************************************
+@media (max-width: 768px) {
+  #authors_description {
+    > div {
+      display: table;
+      > div {
+        display: table-row;
+        > div {
+          display: table-cell;
+        }
       }
     }
   }

@@ -36,7 +36,6 @@ $( ->
     else if see_also_div.hasClass('bounceInRight')
       see_also_div.removeClass('bounceInRight animated').addClass('bounceOutRight animated')
 
-
   )
   
   sidePanel = $("#summary > div")

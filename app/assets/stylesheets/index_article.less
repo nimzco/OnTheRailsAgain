@@ -39,29 +39,27 @@ aside {
     }
   }
 }
-
-#tags.aside_box p, .tags ul {
+.popover ul.tags_list {
+  font-weight: 500;
+}
+ul.tags_list {
+  text-align     : left;
+  letter-spacing : 0.1em;
   list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-  text-align: justify;
-  li, span {
-    display: inline-block;
-    margin-bottom: 0.6em;
+  li {
     a {
       .radius(2px);
       background-color: @linkColor;
       font-size       : 0.9em;
       color           : white;
-      padding         : 0.2em 0.4em;
       text-decoration : none;
       text-shadow     : none;
       border          : 1px solid #B00;
       box-shadow      : 0 1px 0 white;
     }
     a:before {
-      content: "\f02b";
-      font-family: 'FontAwesome';
+      content      : "\f02b";
+      font-family  : 'FontAwesome';
       padding-right: 0.3em;
     }
 
