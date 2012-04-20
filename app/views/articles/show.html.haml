@@ -15,7 +15,7 @@
   = javascript_include_tag 'article_show'
 
 %article
-  .article_show
+  #article_show
     #left
       .article_content
         %h1= @article.title
@@ -23,11 +23,7 @@
           Posté par 
           = join_authors @article
           le 
-          = l @article.created_at.to_date, :format => '%d %b %Y'
-          - if !@article.updated_at.nil?
-            (Mis à jour le
-            = l @article.updated_at.to_date, :format => '%d %b %Y'
-            )    
+          = l @article.created_at.to_date, :format => '%d %B %Y'
         ~ @article.content.html_safe
         %script
           prettyPrint()
