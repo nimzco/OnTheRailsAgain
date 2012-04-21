@@ -7,7 +7,7 @@ class AuthorsController < ApplicationController
   def show
     if    params[:id].downcase == 'nima'
       render 'nima'
-    elsif params[:id].downcase == 'nico'
+    elsif params[:id].downcase == 'nicolas'
       render 'nicolas'
     end
   end
