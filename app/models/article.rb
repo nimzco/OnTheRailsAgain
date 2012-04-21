@@ -32,10 +32,11 @@ class Article < ActiveRecord::Base
     first = true
     oldH = 1
     h = ''
+    index = 1
     self.content.gsub(/<h[0-9][^>]*>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9][^>]*>/m, '').sub(/<\/h[0-9]>/m, '')
-      link  = escape_characters title
+      link  = escape_characters(title) + index.to_s
       nb_ul = 1
       if !first
         case (h.to_i - oldH)
@@ -53,6 +54,7 @@ class Article < ActiveRecord::Base
       table_of_content_string += "<li><a href='##{link}'>#{title}</a>"
       oldH = h.to_i
       first = false
+      index++
     end
     table_of_content_string += '</li>'
     (oldH - 1).abs.times do
