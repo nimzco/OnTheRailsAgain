@@ -20,7 +20,7 @@
         = yield :title
     = csrf_meta_tag
     
-  %body
+  %body{'data-spy' => 'scroll'}
     = render :partial => 'shared/header'
     .container.row-fluid
       - if current_author

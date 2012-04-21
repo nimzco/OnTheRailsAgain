@@ -1,44 +1,21 @@
 $( ->
   $('#summary_content').localScroll {duration: 350}
-    
-  # Get all headers of the article except the title (h1)
-  headers              = $('.article_content > :header:not("h1")')
-  # Get all headers of the summary
-  summary_headers      = $('#summary a')
-  last_header_position = $('.article_content > :header:not("h1")').last().offset().top
+  $('#summary_content').scrollspy()
+
   see_also_div         = $('#see-also')
   see_also_width       = $('#see-also').width()
   see_also_initial_right_position = $('#see-also').css('right')
-  # Will select the current header in the summary regarding the position of the window
-  $(window).scroll( ->    
-    # Select the first header if the window is on top of the page
-    if $(document).scrollTop() < 150
-      summary_headers.css('font-weight', 'normal')
-      $(summary_headers[0]).css('font-weight', 'bold')      
-
-    # Select the last header if the window is at the bottom of the page
-    else if ($(document).scrollTop() + window.innerHeight) >= (document.body.scrollHeight - 20)
-      summary_headers.css('font-weight', 'normal')
-      $(summary_headers[summary_headers.length - 1]).css('font-weight', 'bold')
-
-    # Else check which header to select
-    else
-      for i in [0..(headers.length)]
-        if i < headers.length and ($(headers[i]).offset().top - $(document).scrollTop()) < (window.innerHeight / 3)
-          summary_headers.css('font-weight', 'normal')
-          $(summary_headers[i]).css('font-weight', 'bold')
-
-    
-    # When the user is reading the last part
-    if ($(document).scrollTop() + window.innerHeight) > last_header_position
-      if see_also_div.hasClass('bounceOutRight')
-        see_also_div.removeClass('bounceOutRight animated').addClass('bounceInRight animated')
-    else if see_also_div.hasClass('bounceInRight')
-      see_also_div.removeClass('bounceInRight animated').addClass('bounceOutRight animated')
-
-  )
+  last_header_position = $('.article_content > :header:not("h1")').last().offset().top
   
+  # When the user is reading the last part
+  if ($(document).scrollTop() + window.innerHeight) > last_header_position
+    if see_also_div.hasClass('bounceOutRight')
+      see_also_div.removeClass('bounceOutRight animated').addClass('bounceInRight animated')
+  else if see_also_div.hasClass('bounceInRight')
+    see_also_div.removeClass('bounceInRight animated').addClass('bounceOutRight animated')
+
   sidePanel = $("#summary > div")
+
   if sidePanel.length > 0
     sidebarTop = sidePanel.offset().top
     first = true

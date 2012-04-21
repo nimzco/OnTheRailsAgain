@@ -32,7 +32,7 @@
           %ul.tags
             - @article.tags.each do |tag|
               %li= link_to tag.name, articles_path(:tag => tag.name)
-        .page-header  
+
     %nav#summary.visible-desktop
       #summary_content
         .page-header
@@ -44,14 +44,14 @@
   %footer#article_footer
     #footer_share_buttons
       - bitly_url = BITLY.shorten(@article.permalink).bitly_url
-      %span Partager cet article
-      %a#delicious{:href => "http://delicious.com/save?&url=#{@article.permalink}&title=#{@article.title}", :rel => 'nofollow', :target => '_blank'}
-      %a{ :href => "https://plusone.google.com/_/+1/confirm?hl=fr&url=#{@article.permalink}", :rel => 'nofollow', :target => '_blank'} Google +
-      = custom_tweet_button 'Twitter', {:url => bitly_url, :text => @article.title + ' - '}, {:rel => 'nofollow', :target => '_blank'}
-      %a{ :href => "http://www.facebook.com/sharer.php?u=#{@article.permalink}&t=#{@article.title}", :target => '_blank', :rel => 'nofollow' } Facebook
-    .divider
-      .page-header
-      .page-header
+      -#%span Partager cet article
+      -#%a#delicious{:href => "http://delicious.com/save?&url=#{@article.permalink}&title=#{@article.title}", :rel => 'nofollow', :target => '_blank'}
+      %a{ :href => "https://plusone.google.com/_/+1/confirm?hl=fr&url=#{@article.permalink}", :rel => 'nofollow', :target => '_blank'}
+        %i.icon-article-google &nbsp;
+      = custom_tweet_button '<i class="icon-article-twitter"></i>&nbsp;'.html_safe, {:url => bitly_url, :text => @article.title + ' - '}, {:rel => 'nofollow', :target => '_blank'}
+      %a{ :href => "http://www.facebook.com/sharer.php?u=#{@article.permalink}&t=#{@article.title}", :target => '_blank', :rel => 'nofollow' }
+        %i.icon-article-facebook &nbsp;
+    
       
     %aside#see-also.alert.alert-info.bounceOutRight.span4
       %h3 Voir aussi

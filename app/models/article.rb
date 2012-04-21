@@ -28,7 +28,7 @@ class Article < ActiveRecord::Base
   # The method is REALLY ugly because I can't access matched string in the gsub...
   # Don't even try to understand it.
   def generate_table_of_content
-    table_of_content_string = '<ul class="first">'
+    table_of_content_string = '<ul class="nav">'
     first = true
     oldH = 1
     h = ''

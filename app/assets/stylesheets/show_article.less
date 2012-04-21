@@ -19,26 +19,22 @@ article {
   footer {
     width: @article_width;
     #footer_share_buttons {
-      font-size  : 1.3em;
-      font-weight: bold;
-      display    : inline-block !important;
-      width      : 100%;    
-      > span, > div, > iframe, > a {
-        vertical-align: middle !important;
+      border: 1px solid #DDD;
+      box-shadow: 1px 1px 0 white, inset 0 0 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      .radius(0.2em);
+      margin: 24px 0;
+      a {
+        display: inline-block;
+        color: #333;
+        > i {
+          font-size: 2em;
+          margin: 0 0.4em;
+        }
       }
-      .fb-like {
-        height: 22px;
-      }
-      #delicious {
-        width              : 18px;
-        height             : 18px;
-        display            : inline-block;
-        background-position: 50% 50%;
-        background-repeat  : no-repeat;
-        background-size    : 100%;
-        background-image   : image-url('delicious.png'); 
-        border             : solid 1px #BBB;
-        border-radius      : 3px;
+      a:hover {
+        text-decoration: none;
+        color: @light_red;
       }
     }
   }
@@ -145,9 +141,11 @@ article {
   .page-header{
     margin-left: 25px;
   }
-  ul.first {
+  ul.nav {
     padding-left  : 0;
     list-style    : none;
+    margin-left   : 25px;
+    margin-bottom : 0;
     > li {
       line-height: 1.3em;
       counter-increment: niveau1;
@@ -185,6 +183,9 @@ article {
     > li:before {
       content: counter(niveau1) ". ";
       color: #a20003;
+    }
+    li.active > a {
+      color: black;
     }
   }
 }

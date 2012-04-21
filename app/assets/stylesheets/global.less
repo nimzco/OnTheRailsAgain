@@ -8,13 +8,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
-    font-family: 'Fontomas';
-    src: font-url('fontomas/fontomas-webfont.eot');
-    src: font-url('fontomas/fontomas-webfont.eot?#iefix') format('eot'),
-         font-url('fontomas/fontomas-webfont.woff') format('woff'),
-         font-url('fontomas/fontomas-webfont.ttf') format('truetype'),
-         font-url('fontomas/fontomas-webfont.svg#webfontkw9J4lGf') format('svg');
+    font-family: 'Fontomas2';
+    src: url('fontomas2/fontomas2-webfont.eot');
+    src: url('fontomas2/fontomas2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fontomas2/fontomas2-webfont.woff') format('woff'),
+         url('fontomas2/fontomas2-webfont.ttf') format('truetype'),
+         url('fontomas2/fontomas2-webfont.svg#FontomasCustomRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -31,9 +32,24 @@
     content: "l"; 
 }
 .icon-rss:before {
-  content: "r"; 
+    content: "r"; 
 }
 
+.icon-article-twitter:before, .icon-article-facebook:before, .icon-article-google:before {
+    font-family: 'Fontomas2';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon-article-twitter:before {
+    content:"#";
+}
+.icon-article-facebook:before {
+    content:'"';
+}
+.icon-article-google:before {
+    content:"!";
+}
 body {
   color: #333;
   background-image: image-url('bgnoise.gif');

@@ -30,7 +30,7 @@ task :generate_article, [:filename] => :environment do |t, args|
                             :activated    => true)
   article.tags << article_values[:tags]
   article.save
-  article.updated_at = article_values[:updated_at]
+  #article.updated_at = article_values[:updated_at]
   article.save
 
 end
@@ -51,7 +51,7 @@ task :add_new_articles => :environment do
                                 :activated    => true)
       article.tags << article_values[:tags]
       article.save
-      article.updated_at = article_values[:updated_at]
+      #article.updated_at = article_values[:updated_at]
       article.save
     end
   end
@@ -75,7 +75,7 @@ task :generate_articles => :environment do
                               :activated    => true)
     article.tags << article_values[:tags]
     article.save
-    article.updated_at = article_values[:updated_at]
+    #article.updated_at = article_values[:updated_at]
     article.save
   end
 end
