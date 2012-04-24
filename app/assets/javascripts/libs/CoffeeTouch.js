@@ -290,7 +290,7 @@
     }
     EventRouter.prototype.touchstart = function(event) {
       var i, iMachine, _i, _len, _ref, _results;
-      event.preventDefault();
+      //event.preventDefault();
       this.fingerCount = event.touches.length;
       this.grouper.refreshFingerCount(this.fingerCount, this.element);
       _ref = event.changedTouches;
@@ -303,7 +303,7 @@
     };
     EventRouter.prototype.touchend = function(event) {
       var exists, iMKey, iTouch, _i, _len, _ref;
-      event.preventDefault();
+      //event.preventDefault();
       for (iMKey in this.machines) {
         iMKey = parseInt(iMKey);
         exists = false;
@@ -324,7 +324,7 @@
     };
     EventRouter.prototype.touchmove = function(event) {
       var i, iMachine, _i, _len, _ref, _results;
-      event.preventDefault();
+      //event.preventDefault();
       _ref = event.changedTouches;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
