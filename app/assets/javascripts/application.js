@@ -6,23 +6,30 @@
 
 $(function() {
 	// Popover
-  var search_button = $('#search_button');
-  var tag_button  	 = $('#tag_button');
-  search_button.popover({placement: 'left', trigger: 'manual'});
-  tag_button   .popover({placement: 'left', trigger: 'manual'});
-  
+  var searchButton = $('#search_button');
+  var tagButton  	 = $('#tag_button');
+  searchButton.popover({placement: 'left', trigger: 'manual'});
+  tagButton   .popover({placement: 'left', trigger: 'manual'});
+  var toggle_responsive_button = function (target) {
+    var id = target.id;
+    if (id === 'tag_button') {
+      searchButton.popover('hide');
+      tagButton.popover('toggle');
+    } else if (id === 'search_button') {
+      tagButton.popover('hide');
+      searchButton.popover('toggle');
+    } else if ($(target).closest('.popover').length === 0) {
+      searchButton.popover('hide');
+      tagButton   .popover('hide');
+    };
+  };
 
   $('body').onGesture('tap', function(CoffeeTouchEvent) {
-  	var id = CoffeeTouchEvent.targets[0].id;
-  	if (id === 'tag_button') {
-  		search_button.popover('hide');
-  		tag_button.popover('toggle');
-  	} else if (id === 'search_button') {
-  		tag_button.popover('hide');
-  		search_button.popover('toggle');
-  	} else if ($(CoffeeTouchEvent.targets[0]).closest('.popover').length === 0) {
-		  search_button.popover('hide');
-			tag_button   .popover('hide');
-  	};
-  });  
+    var target = CoffeeTouchEvent.targets[0];
+    toggle_responsive_button(target);
+  });
+  $('body').click(function(jQueryEvent) {
+    var target = jQueryEvent.target;
+    toggle_responsive_button(target);
+  });
 });
