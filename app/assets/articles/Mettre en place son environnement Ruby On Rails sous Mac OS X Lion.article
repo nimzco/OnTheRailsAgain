@@ -23,7 +23,7 @@ Nima
     %li Installer MySQL et PostgreSQL
     %li Les bases de RVM
 
-%h2 Mettre en place son environnement Ruby
+%h2 L'environnement Ruby
 
 %h3 Installer les outils développeurs
 
