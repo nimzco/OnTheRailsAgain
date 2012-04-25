@@ -36,7 +36,7 @@ class Article < ActiveRecord::Base
     self.content.gsub(/<h[0-9][^>]*>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr
       title = match.sub(/<h[0-9][^>]*>/m, '').sub(/<\/h[0-9]>/m, '')
-      link  = escape_characters(title) + index.to_s
+      link  = "#{escape_characters(title)}-#{index.to_s}"
       nb_ul = 1
       if !first
         case (h.to_i - oldH)
@@ -54,7 +54,7 @@ class Article < ActiveRecord::Base
       table_of_content_string += "<li><a href='##{link}'>#{title}</a>"
       oldH = h.to_i
       first = false
-      index++
+      index = index + 1
     end
     table_of_content_string += '</li>'
     (oldH - 1).abs.times do
@@ -68,10 +68,12 @@ class Article < ActiveRecord::Base
   # Add an id to all the headers
   # Ids are generating in the same way that URLs are.
   def generate_anchor_links
+    index = 1
     self.content = self.content.gsub(/<h[0-9]>[^<]*<\/h[0-9]>/m) do |match|
       h     = match[2].chr # Number of the header
       title = match.sub(/<h[0-9]>/m, "").sub(/<\/h[0-9]>/m, "")
-      link  = escape_characters title
+      link  = "#{escape_characters(title)}-#{index.to_s}"
+      index = index + 1
       "<h#{h} id='#{link}'>#{title}</h#{h}>"
     end    
   end
