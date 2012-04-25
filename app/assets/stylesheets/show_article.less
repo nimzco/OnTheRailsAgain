@@ -141,6 +141,9 @@ article {
   .page-header{
     margin-left: 25px;
   }
+  .page-header:last-child {
+    padding: 0 0;
+  }
   ul.nav {
     padding-left  : 0;
     list-style    : none;
@@ -180,9 +183,12 @@ article {
         }
       }
     }
-    > li:before {
+    > li > a:before {
       content: counter(niveau1) ". ";
       color: #a20003;
+    }
+    a:hover {
+      text-decoration: none;
     }
     li.active > a {
       color: black;
@@ -191,6 +197,8 @@ article {
 }
 
 #see-also {
+  .alert-info;
+  box-shadow: 1px 1px 0 white;
   opacity: 0;
   -moz-opacity: 0;
   filter:alpha(opacity=0);

@@ -34,7 +34,7 @@ Nima
 %h2 Qu'est-ce que c'est ?
 
 %p
-  L'association polymorphique est une association qui permet à un modèle d'appartenir à plusieurs autres modèles et donc de ne pas dépendre que d'un seul modèle. Par exemple, vous pourriez avoir un modèle <span class="code">Comment</span> qui appartient à des <span class="code">Articles</span> mais aussi à des <span class="code">Events</span> etc. De cette façon, vous n'avez pas besoin de dupliquer des modèles qui auront les mêmes informations avec des noms différents.
+  L'association polymorphique est une association qui permet à un modèle d'appartenir à plusieurs autres modèles et donc de ne pas dépendre que d'un seul modèle. Par exemple, vous pourriez avoir un modèle <span class="code">Comment</span> qui appartient à des <span class="code">Articles</span> mais aussi à des <span class="code">Events</span>. De cette façon, vous n'avez pas besoin de dupliquer des modèles qui auront les mêmes informations avec des noms différents.
 
 %h2 Un exemple concret
 
