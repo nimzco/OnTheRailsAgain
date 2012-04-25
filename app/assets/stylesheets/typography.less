@@ -2,7 +2,7 @@
 // *******************************************************
 
 body { 
-  font-size: 90%; 
+  font-size: 80%; 
   line-height:1.25;
 }
 h1, h2, h3 { 
@@ -47,6 +47,14 @@ a, a:hover {
   text-decoration: none;
 }
 
+//  Article Index
+// *******************************************************
+#article_section {
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
 //  About
 // *******************************************************
 #resume {
@@ -54,5 +62,77 @@ a, a:hover {
 		p {
 			line-height: 1.6;
 		}
-	}	
+	}
+  font-size: 110%;
+  dl {
+    dt {
+      width: 175px;
+    }
+    dd {
+      margin-left: 185px;
+    }
+  }
+  h2 div {
+    text-align: right;
+    width     : 175px;
+  }
+  header {
+    h1.page-header {
+      line-height  : 1;
+      font-size    : 3em;
+      margin-bottom: 0;
+      em {
+        font-style: normal;
+      }
+    }
+    h3 {
+      font-weight: normal;
+    }
+  }
+  .skills dl dd p {
+    font-size   : 1.1em;
+    line-height: 1.6;
+  }
+  dl {
+    dt, dd, {
+      line-height: 1.1;
+    }
+    .dl-title, dt {
+      line-height: 1.6;
+    }
+    .dl-title {
+      font-weight: bold;
+    }
+    .elapsed-time {
+      font-weight: normal;
+      color: gray;
+    }
+    .place, .elapsed-time{
+      font-style: italic;
+    }
+  }
+  aside {
+    p, span { font-size: 1.1em; }
+    h2.page-header {
+      line-height: 1;
+    }
+    a {
+      font-size: 1em;      
+      .btn i { 
+        font-size: 1.5em; 
+      }
+    }
+  }
+}
+#authors_description {
+  /* Style */
+  ul li {
+    font-size: 1.1em;
+  }
+  a {
+    text-decoration: none;  
+  }
+  .left {
+    text-align: right;
+  }
 }
