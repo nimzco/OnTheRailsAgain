@@ -48,18 +48,12 @@ body > header:first-child {
 		}
 		ul#outgoing_links {
 			text-align   : right;
-      li:last-child{
-        padding-right: 1em;
-      }
 			li {
         display    : inline-block;
         margin 		 : auto 0 0 auto;
         height     : @header_height;
-				a {
+				a i {
           vertical-align : middle;
-          padding-left   : 0.3em;
-          width          : 25px;
-          height         : 25px;
 				}
 			}
 		}
@@ -69,6 +63,7 @@ body > header:first-child {
       > div {
         display       : table-cell;
         vertical-align: middle;
+        margin        : auto;
         form {
           margin: 0;
           .input-prepend {
@@ -81,6 +76,7 @@ body > header:first-child {
             input {
               display  	 	 : table-cell;
               margin-bottom: 0;
+              width        : 98%;
             }
           }
         }
