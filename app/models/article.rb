@@ -82,6 +82,7 @@ class Article < ActiveRecord::Base
   # Generate a link for an article based on its title
   def generate_link
     self.link = escape_characters self.title
+    self.bitly_url = BITLY.shorten(self.permalink).bitly_url
   end
     
   def activate_article
