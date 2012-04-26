@@ -76,6 +76,9 @@ a, a:hover {
     text-align: right;
     width     : 175px;
   }
+  #contact h2 div {
+    text-align: left;
+  }
   header {
     h1.page-header {
       line-height  : 1;
@@ -134,5 +137,16 @@ a, a:hover {
   }
   .left {
     text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+  #resume {
+    #contact {
+      h2 div {
+        text-align: right;
+        width     : 175px;
+      }      
+    }
   }
 }
