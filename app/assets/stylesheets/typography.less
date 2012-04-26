@@ -57,6 +57,7 @@ a, a:hover {
 
 //  About
 // *******************************************************
+@date_width: 200px;
 #resume {
 	aside#contact {
 		ul {
@@ -76,15 +77,15 @@ a, a:hover {
   font-size: 110%;
   dl {
     dt {
-      width: 175px;
+      width: @date_width;
     }
     dd {
-      margin-left: 185px;
+      margin-left: 215px;
     }
   }
   h2 div {
     text-align: right;
-    width     : 175px;
+    width     : @date_width;
   }
   #contact h2 div {
     text-align: left;
@@ -104,7 +105,7 @@ a, a:hover {
   }
   .skills dl dd p {
     font-size   : 1.1em;
-    line-height: 1.6;
+    line-height : 1.6;
   }
   dl {
     dt, dd, {
@@ -153,7 +154,7 @@ a, a:hover {
     #contact {
       h2 div {
         text-align: right;
-        width     : 175px;
+        width     : @date_width;
       }      
     }
   }

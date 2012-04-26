@@ -1,22 +1,20 @@
-%article#authors_description
-  %div
-    %section.left
-      %div.image-content
-        = link_to image_tag('nico.jpg'), author_path('Nicolas')
-      %div.text-content
-        %h1= link_to 'Nicolas Dupont', author_path('Nicolas')
-        %ul
-          %li En alternance chez Intellicore
-          %li Passionné des technologies du Web
-          %li Lorem ipsum dolor sit amet, 
-        
-  %div    
-    %section.right
-      %div.text-content
-        %h1= link_to 'Nima Izadi', author_path('Nima')
-        %ul
-          %li Développeur Ruby On Rails / Front end
-          %li Passionné des technologies du Web
-          %li Guitariste et photographe amateur dans son temps libre
-      %div.image-content
-        = link_to image_tag('nima.jpg'), author_path('Nima')
+%article#authors_description.row-fluid
+  %section.span6
+    %div.image-content
+      = link_to image_tag('nico.jpg'), author_path('Nicolas')
+    %div.text-content
+      %h1= link_to 'Nicolas Dupont', author_path('Nicolas')
+      %ul
+        %li Etudiant ingénieur en alternance chez Intellicore.
+        %li Passionné par tout ce qui touche de près ou de loin au web.
+        %li Snowborder et photographe amateur.
+
+  %section.span6
+    %div.image-content
+      = link_to image_tag('nima.jpg'), author_path('Nima')
+    %div.text-content
+      %h1= link_to 'Nima Izadi', author_path('Nima')
+      %ul
+        %li Développeur Ruby On Rails / Front end.
+        %li Passionné par les technologies du Web.
+        %li Guitariste et photographe amateur dans son temps libre.
