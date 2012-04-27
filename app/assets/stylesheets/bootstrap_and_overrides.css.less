@@ -96,8 +96,7 @@ body {
 @import "layout.less";
 @import "layout_768.less";
 
-
-@media (max-width: 480px) {  
+@media (max-width: 480px) {
   @date_width: 100px;
   #header_title a.home {
     font-size: 1.2em;
@@ -158,13 +157,27 @@ body {
     width: auto;
     text-align: center;
   }
-  #resume aside#contact a#download-button {
-    margin: auto;
+  #resume {
+    section {
+      float: none;
+    }
+    header .thumbnail {
+      display: none;
+    }
+    #hobbies p {
+      margin-left: 115px;
+    }
+    aside#contact a#download-button {
+      margin: auto;
+    }
+  } 
+  pre.prettyprint, code, span.code {
+    word-break: break-word;
   }
-  #resume #hobbies p {
-    margin-left: 115px;
+  table td, table tr {
+    word-break: break-word; 
   }
-  #resume header .thumbnail {
-    display: none;
+  table {
+    table-layout: fixed;
   }
 }

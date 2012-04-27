@@ -145,8 +145,8 @@ Nicolas
   %thead
     %tr
       %th Path helper
-      %th{:style => "width: 14%;"} Méthode <br />HTTP
-      %th{:style => "width: 12%;"} Action
+      %th Méthode <br />HTTP
+      %th Action
   %tbody
     %tr
       %td{:rowspan => 2} <span class="code">articles_path</span>
@@ -286,8 +286,8 @@ Nicolas
   %thead
     %tr
       %th Path helper
-      %th{:style => "width: 14%;"} Méthode <br />HTTP
-      %th{:style => "width: 12%;"} Action
+      %th Méthode <br />HTTP
+      %th Action
   %tbody
     %tr
       %td{:rowspan => 4} <span class="code">account_path</span>
