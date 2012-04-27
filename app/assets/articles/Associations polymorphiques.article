@@ -54,6 +54,8 @@ Nima
 %p
   Pour récapituler, une colonne où l'on stoque l'ID de l'objet auquel appartient le commentaire, et le type de cet objet sous la forme d'une string.
   Côté migration, deux façons d'écrire :
+%p.alert.alert-error
+  phrase à reprendre
 
 %pre.prettyprint.linenums
   :preserve
@@ -111,7 +113,7 @@ Nima
 
 %h3 Création d'un commentaire
 %p
-  De façon simple, pour créer un commentaire associé à un objet, on peut simplement faire : 
+  Ensuite, pour créer un commentaire associé à un objet, on peut simplement faire : 
 
 %pre.prettyprint.linenums
   :preserve
@@ -162,10 +164,10 @@ Nima
     "posts".classify        # => "Post"
 
 %p
-  Puis, la méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize" rel="nofollow">constantize</a> est appelé pour essayer de trouver une constante correspondante. "Article" deviendra alors la constante correspondant à la classe Article.
+  Puis, la méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize" rel="nofollow">constantize</a> est appelé pour essayer de trouver une constante correspondante. "Article" deviendra alors la constante correspondant à la classe <code>Article</code>.
 
 %p
-  Enfin, la méthode find est appelé pour récupérer l'objet en question.
+  Enfin, la méthode <code>find</code> est appelé pour récupérer l'objet en question.
 
 %h3 Afficher et créer un commentaire
 %p

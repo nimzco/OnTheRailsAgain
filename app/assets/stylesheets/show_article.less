@@ -17,13 +17,14 @@ article {
     }
   }
   footer {
+    margin-top: 1em;
     width: @article_width;
+    border: 1px solid #DDD;
+    box-shadow: 1px 1px 0 white, inset 0 0 6px rgba(0, 0, 0, 0.1);
+    .radius(0.2em);
     #footer_share_buttons {
-      border: 1px solid #DDD;
-      box-shadow: 1px 1px 0 white, inset 0 0 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      .radius(0.2em);
-      margin: 24px 0;
+      text-align: center;  
+      margin: 12px 0;
       a {
         display: inline-block;
         color: #333;
@@ -36,6 +37,14 @@ article {
         text-decoration: none;
         color: @light_red;
       }
+    }
+    #disqus {
+      margin: 15px;
+      margin-top: 0;
+    }
+    .divider {
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
 }
@@ -189,6 +198,16 @@ article {
     }
     a:hover {
       text-decoration: underline;
+    }
+    li > a {
+      padding: 4px;
+      border: 1px solid transparent;
+    }
+    li.active > a{
+      border: 1px solid #DDD;
+      box-shadow: 1px 1px 0 white, inset 0 0 6px rgba(0, 0, 0, 0.1);
+      .radius(0.2em);
+      padding: 4px;
     }
     li.active > a {
       color: black;

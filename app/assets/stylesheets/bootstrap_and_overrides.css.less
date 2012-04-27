@@ -47,11 +47,12 @@ body {
   color: #b78c43;
 }
 
-.alert-info {
-  border-color: #BCE8F1;
-  color: #3A87AD;
+.alert.alert-info {
+  .alert-info;
 }
-
+.alert.alert-error {
+  .alert-error;
+}
 .otra-pagination-centered {
   display: table;
   table-layout: fixed;
@@ -94,3 +95,76 @@ body {
 @import "typography.less";
 @import "layout.less";
 @import "layout_768.less";
+
+
+@media (max-width: 480px) {  
+  @date_width: 100px;
+  #header_title a.home {
+    font-size: 1.2em;
+    background-image: none;
+    padding: 10px;
+    text-align: center;
+  }
+  body > header:first-child nav ul {
+    width: 12em;
+  }
+  body > header:first-child div#header_mobile > div {
+    padding: 0 0.2em;
+  }
+  #authors_description {
+    .span6 {
+      display: table;
+      width: 96%;
+      margin: auto;
+      float: none;
+      > div {
+        display: table-cell;
+        vertical-align: top;
+      }
+      .image-content img {
+        width: 7em;
+      }
+      .text-content h1 {
+        padding-top: 0;
+        line-height: 0.8em;
+      }
+    }
+  }
+  #resume {
+    dl {
+      dt {
+        width: @date_width;
+      }
+      dd {
+        margin-left: 115px;
+      }
+    }
+    h2 div, #contact h2 div {
+      text-align: center;
+      width     : auto;
+    }
+  }
+  #resume aside#contact ul li {
+      margin: auto;
+  }
+  #resume #pict-skills {
+    > div {
+      display: block;
+      margin: auto;
+    }
+  }
+  #resume aside#contact {
+    float: none;
+    width: auto;
+    text-align: center;
+  }
+  #resume aside#contact a#download-button {
+    margin: auto;
+  }
+  #resume #hobbies p {
+    margin-left: 115px;
+  }
+  #resume header .thumbnail {
+    display: none;
+  }
+}

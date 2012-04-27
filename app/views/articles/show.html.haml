@@ -32,15 +32,15 @@
           %ul.tags
             - @article.tags.each do |tag|
               %li= link_to tag.name, articles_path(:tag => tag.name)
-
-    %nav#summary.visible-desktop
-      #summary_content
-        .page-header
-        ~ @article.table_of_content.html_safe
-        - if current_author
-          = button_to "Editer", edit_article_path(@article.link), :method => :get 
-        .page-header
-  
+    - if !is_mobile? || !is_ipad?
+      %nav#summary
+        #summary_content
+          .page-header
+          ~ @article.table_of_content.html_safe
+          - if current_author
+            = button_to "Editer", edit_article_path(@article.link), :method => :get 
+          .page-header
+    
   %footer#article_footer
     #footer_share_buttons
       -#%a#delicious{:href => "http://delicious.com/save?&url=#{@article.permalink}&title=#{@article.title}", :rel => 'nofollow', :target => '_blank'}
@@ -49,11 +49,12 @@
       = custom_tweet_button '<i class="icon-article-twitter"></i>&nbsp;'.html_safe, {:url => @article.bitly_url, :text => @article.title + ' - '}, {:rel => 'nofollow', :target => '_blank'}
       %a{ :href => "http://www.facebook.com/sharer.php?u=#{@article.permalink}&t=#{@article.title}", :target => '_blank', :rel => 'nofollow' }
         %i.icon-article-facebook &nbsp;
-    
+    .divider
+      .page-header
+      .page-header
+    #disqus
+      = raw disqus_thread
       
     %aside#see-also.alert.alert-info.bounceOutRight.span4
       %h3 Voir aussi
       %h4= link_to @related_article.title, @related_article
-
-    #disqus
-      = raw disqus_thread
