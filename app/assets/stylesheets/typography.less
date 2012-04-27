@@ -64,11 +64,15 @@ a, a:hover {
       list-style: none;
       margin-left: 0;
       li {
-        line-height: 1.6;  
+        line-height: 1.6;
         i {
           width         : 15px;
           text-align    : center;
           display       : inline-block;
+          vertical-align: middle;
+        }
+        span {
+          display: inline-block;
           vertical-align: middle;
         }
       }			
@@ -87,14 +91,18 @@ a, a:hover {
     text-align: right;
     width     : @date_width;
   }
-  #contact h2 div {
-    text-align: left;
+  #contact h2 {
+    padding-top: 0;
+    div {
+      text-align: left;
+    }
   }
   header {
     h1.page-header {
-      line-height  : 1;
-      font-size    : 3em;
+      line-height  : 0.8em;
+      font-size    : 2.5em;
       margin-bottom: 0;
+      padding-top: 0;
       em {
         font-style: normal;
       }
@@ -124,7 +132,6 @@ a, a:hover {
     }
   }
   aside {
-    p, span { font-size: 1.1em; }
     h2.page-header {
       line-height: 1;
     }

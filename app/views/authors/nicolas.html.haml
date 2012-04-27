@@ -1,50 +1,48 @@
 .container#resume
   %article.row-fluid
     %section.span9
-      %header.row-fluid
-        .thumbnail.span3
-          = image_tag 'nico.jpg'
-        .span8
-          %h1.page-header Nicolas Dupont
-          %h2 Ingénieur Web Front end
-          %h3 
-            %i.icon-bookmark
-            %span Ruby On Rails
-          %h3 
-            %i.icon-bookmark
-            %span HTML 5, TwitterBootstrap
-          %h3 
-            %i.icon-bookmark
-            %span JavaScript (jQuery, Backbone.js)
-          %h3 
-            %i.icon-bookmark
-            %span CSS 3, SASS, LESS
-          %h3 
-            %i.icon-bookmark
-            %span Responsive Web Design, Web mobile
+      %header#pict-skills
+        %div
+          .thumbnail
+            = image_tag 'nico.jpg'
+        %div.skills
+          %div
+            %h1.page-header Nicolas Dupont
+            %h2 Ingénieur web front end
+            %h3 
+              %i.icon-bookmark
+              %span Ruby On Rails
+            %h3 
+              %i.icon-bookmark
+              %span JavaScript – jQuery, Backbone.js
+            %h3 
+              %i.icon-bookmark
+              %span CSS3 – SASS, LESS, Compass
+            %h3 
+              %i.icon-bookmark
+              %span HTML5, TwitterBootstrap
+            %h3 
+              %i.icon-bookmark
+              %span Responsive Web Design, Web mobile
     
     %aside#contact.span3
       %h2.page-header 
         %div Contact
       %ul
         %li
-          %a{:href => 'mailto:nim.izadi@gmail.com'}
+          %a{:href => 'mailto:npg.dupont@gmail.com'}
             %i.icon-envelope
-            %span Nim.Izadi@gmail.com
-        %li
-          %a{:href => 'https://twitter.com/Nima_Izad'}
-            %i.icon-twitter
-            %span @Nima_Izadi
+            %span Npg.Dupont@gmail.com
         %li
           %a{:href => 'https://twitter.com/Nima_Izad'}
             %i.icon-linkedin
             %span LinkedIn
         %li
           %i.icon-signal
-          +33 6 07 65 33 23
+          %span +33 6 45 16 95 60
         %li
           %i.icon-map-marker
-          Nice, FRANCE
+          %span Nice, FRANCE
   
       %a.btn.btn-large.noPrint#download-button{:href => asset_path('Nima Izadi CV.pdf')}
         %i.icon-download 
@@ -174,17 +172,17 @@
           %dt
             Logicielle
           %dd
-            %p Ruby ; Java
+            %p Ruby, Java
         %dl.dl-horizontal
           %dt
             Connaissances
           %dd
-            %p Web Sémantique ; Node.js ; (No)SQL ; Scheme ; Python ; GIT ; OSX / Linux
+            %p Web Sémantique, Node.js, (No)SQL, Scheme, Python, GIT
         %dl.dl-horizontal
           %dt
             Langues
           %dd
-            %p Français ; Persan (courant) ; Anglais (courant) ; Espagnol (moyen)
+            %p Français, Anglais – courant
 
     // Hobbies
     // ---------------------------------------
@@ -194,4 +192,6 @@
       %p
         Photographie – <a href="http://500px.com/Lowx">500px</a>.
       %p
-        Snowboard, Wing Chun.
+        Snowboard
+      %p
+        Kung Fu – Wing Chun

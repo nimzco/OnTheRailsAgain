@@ -160,11 +160,24 @@ body > header:first-child {
     padding-bottom: 0.3em;
     margin: 0.5em auto;
   }
+  #pict-skills {
+    display: table;
+    width: 100%;
+    > div {
+      display: table-cell;
+      vertical-align: top;
+    }
+    > div:first-child {
+      width: 200px;
+    }
+    div.skills {
+      div {
+        margin-left: 15px;
+      }
+    }
+  }
   header {
     margin-bottom: 3em;
-    .thumbnail {
-      margin-right: 1.2em;
-    }
     h1.page-header {
       margin-top: 0;
     }
