@@ -34,7 +34,7 @@ Nima
 %h2 Qu'est-ce que c'est ?
 
 %p
-  L'association polymorphique est une association qui permet à un modèle d'appartenir à plusieurs autres modèles. Il ne dépend donc pas d'un unique modèle. Par exemple, un modèle <span class="code">Comment</span> peut appartenir à des <span class="code">Articles</span> mais aussi à des <span class="code">Events</span>. De cette façon, vous n'avez pas besoin de dupliquer des modèles ayant des informations similaires.
+  L'association polymorphique est une association qui permet à un modèle d'appartenir à plusieurs autres modèles. Il ne dépend donc pas d'un unique modèle. Par exemple, un modèle <span class="code">Comment</span> peut appartenir à des <span class="code">Articles</span>, mais aussi à des <span class="code">Events</span>. De cette façon, vous n'avez pas besoin de dupliquer des modèles ayant des informations similaires.
 
 %h2 Un exemple concret
 
@@ -44,7 +44,7 @@ Nima
 
 %h3 Création du modèle
 %p
-  Comme toujours, des conventions sont à respecter pour que tout se passe comme prévu. Le modèle <span class="code">Comment</span> n'étant plus lié à un modèle spécifique, il faut lui spécifier un champ qui réfèrera à l'ID de la ressource auquel il appartient ainsi que le type de ce dernier. Voilà comment générer le modèle <span class="code">Comment</span> :
+  Comme toujours, des conventions sont à respecter pour que tout se passe comme prévu. Le modèle <span class="code">Comment</span> n'étant plus lié à un modèle spécifique, il faut lui spécifier un champ qui réfèrera à l'ID de la ressource auquel il appartient ainsi que le type de ce dernier. Voilà comment générer le modèle <span class="code">Comment</span>&nbsp;
 
 %pre.prettyprint.linenums
   :preserve
@@ -52,10 +52,8 @@ Nima
 
 %h3 Migration
 %p
-  Pour récapituler, une colonne où l'on stoque l'ID de l'objet auquel appartient le commentaire, et le type de cet objet sous la forme d'une string.
+  Pour récapituler, il faut stoquer l'ID de l'objet auquel le commentaire appartient et le type de ce dernier.
   Côté migration, deux façons d'écrire :
-%p.alert.alert-error
-  phrase à reprendre
 
 %pre.prettyprint.linenums
   :preserve
@@ -89,7 +87,7 @@ Nima
 
 %h3 Associations dans les modèles
 %p
-  Il faut maintenant déclarer dans les modèles concernés les associations de la façon suivante :
+  Il faut maintenant déclarer dans les modèles concernés les associations de la façon suivante&nbsp;:
 
 %pre.prettyprint.linenums
   :preserve
@@ -115,7 +113,7 @@ Nima
 
 %h3 Création d'un commentaire
 %p
-  Si on veut maintenant créer un commentaire et l'associé à un article, on peut simplement faire : 
+  Si on veut maintenant créer un commentaire et l'associé à un article, on peut simplement faire&nbsp; 
 
 %pre.prettyprint.linenums
   :preserve
@@ -137,7 +135,7 @@ Nima
 
 %h3 Récupérer la ressource
 %p
-  Ryan Bates nous propose dans son <a target="_blank" href="http://railscasts.com/episodes/154-polymorphic-association" rel="nofollow">RailsCast</a> une methode pour récupérer la ressource concerné.
+  Ryan Bates nous propose dans son <a target="_blank" href="http://railscasts.com/episodes/154-polymorphic-association" rel="nofollow">RailsCast</a> une méthode pour récupérer la ressource concernée.
 
 %pre.prettyprint.linenums
   :preserve
@@ -158,7 +156,7 @@ Nima
   La méthode ci-dessus parcours tous les paramètres envoyés par le client et cherche un paramètre se terminant par <span class="code">_id</span>. Si nous étions à l'url <span class="code">/articles/1/comments</span>, nous aurions par exemple <span class="code">article_id</span> avec comme valeur 1.
 
 %p
-  Si la méthode trouve une correspondance dans les paramètres, elle appelle la méthode <span class="code">classify</span> sur le nom du modèle. La méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-classify" rel="nofollow">classify</a> transforme les chaînes de caractère s'apparentant à des noms de tables en des chaînes de caractère pouvant correspondre à des noms de classe. Par exemple : 
+  Si la méthode trouve une correspondance dans les paramètres, elle appelle la méthode <span class="code">classify</span> sur le nom du modèle. La méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-classify" rel="nofollow">classify</a> transforme les chaînes de caractère s'apparentant à des noms de tables en des chaînes de caractère pouvant correspondre à des noms de classe. Par exemple&nbsp; 
   
 %pre.prettyprint.linenums
   :preserve
@@ -208,7 +206,7 @@ Nima
     <% end %>
 
 %p
-  Et enfin, pour l'action <span class="code">create</span> du contrôleur :
+  Et enfin, pour l'action <span class="code">create</span> du contrôleur&nbsp;
 
 %pre.prettyprint.linenums
   :preserve
