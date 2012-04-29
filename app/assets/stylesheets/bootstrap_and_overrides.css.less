@@ -1,6 +1,6 @@
 @import "twitter/bootstrap/bootstrap";
 @import 'fontawesome';
-
+@import "mixins.css.less";
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
@@ -20,8 +20,6 @@
 @dark_red : #a20003;
 @light_red: #e10000;
 @max-width: 830px;
-
-@import "mixins.less";
 
 .nav > li > a:hover {
   background-color: transparent;
@@ -87,14 +85,14 @@ body {
   }
 }
 
-@import "global.less";
-@import "header.less";
-@import "about.less";
-@import "index_article.less";
-@import "show_article.less";
-@import "typography.less";
-@import "layout.less";
-@import "layout_768.less";
+@import "global.css.less";
+@import "header.css.less";
+@import "about.css.less";
+@import "index_article.css.less";
+@import "show_article.css.less";
+@import "typography.css.less";
+@import "layout.css.less";
+@import "layout_768.css.less";
 
 @media (max-width: 480px) {
   @date_width: 100px;
