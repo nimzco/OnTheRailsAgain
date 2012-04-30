@@ -43,6 +43,9 @@ class ArticlesController < InheritedResources::Base
     @related_tag = tags.sample
     @related_article = Article.includes(:tags).where('tags.id = ?', @related_tag).reject{|article| article == @article}
     @related_article = @related_article.sample
+    if @related_article.nil?
+      @related_article = Article.all.reject{|article| article == @article}.sample
+    end
     show!
   end
 
