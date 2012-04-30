@@ -113,7 +113,7 @@ Nima
 
 %h3 Création d'un commentaire
 %p
-  Si on veut maintenant créer un commentaire et l'associé à un article, on peut simplement faire&nbsp; 
+  Si on veut maintenant créer un commentaire et l'associer à un article, on peut simplement faire&nbsp; 
 
 %pre.prettyprint.linenums
   :preserve
@@ -164,7 +164,7 @@ Nima
     "posts".classify        # => "Post"
 
 %p
-  Puis, la méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize" rel="nofollow">constantize</a> est appelé pour essayer de trouver une constante correspondante. "Article" deviendra alors la constante correspondant à la classe <code>Article</code>.
+  Puis, la méthode <a target="_blank" href="http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html#method-i-constantize" rel="nofollow">constantize</a> est appelé pour essayer de trouver une constante correspondante. «Article» deviendra alors la constante correspondant à la classe <code>Article</code>.
 
 %p
   Enfin, la méthode <code>find</code> est appelé pour récupérer l'objet en question.
