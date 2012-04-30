@@ -5,8 +5,7 @@
 Ruby On Rails, ActiveRecord, Relations
 
 --introduction
-L'association polymorphique peut sembler compliquer et déroutant. En regardant d'un peu plus près, son utilisation n'est pas si compliqué et peut être très utile !
-C'est une association qui permet à un modèle d'appartenir à plusieurs autres modèles.
+L'association polymorphique peut sembler compliquée et déroutante. En regardant d'un peu plus près, son utilisation n'est pas si difficile et peut être très utile ! C'est une association qui permet à un modèle d'appartenir à plusieurs autres modèles.
 
 --title
 Associations polymorphiques
