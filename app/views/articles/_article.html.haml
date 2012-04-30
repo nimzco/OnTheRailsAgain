@@ -17,13 +17,6 @@
       = link_to "Lire la suite…".html_safe, {:controller => "articles", :action => "show", :id => article.link}, :class => 'more_link'
     = join_tags article
 
-    - if current_author
-      .admin_tool
-        = button_to "Supprimer", article_path(article),:confirm => "are you sure ?", :method => :delete
-        -# if article.activate == true 
-        = button_to 'Desactiver', desactivate_article_path(article.id)        
-        -# else
-        = button_to 'Activer', activate_article_path(article.id)
 .divider
   .page-header
   .page-header

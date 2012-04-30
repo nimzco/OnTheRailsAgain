@@ -24,7 +24,7 @@
     = render :partial => 'shared/header'
     .container.row-fluid
       - if current_author
-        = button_to 'logout', destroy_author_session_path, :method => :delete, :id => 'logoutButton'
+        = button_to 'logout', destroy_author_session_path, :method => :delete, :id => 'logoutButton', :class => 'btn', :style => 'position: absolute; top: 1em; left: 1em'
       %section
         .content.row-fluid
           - flash.each do |name, msg|

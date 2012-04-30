@@ -37,8 +37,6 @@
         #summary_content
           .page-header
           ~ @article.table_of_content.html_safe
-          - if current_author
-            = button_to "Editer", edit_article_path(@article.link), :method => :get 
           .page-header
     
   %footer#article_footer
