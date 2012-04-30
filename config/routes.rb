@@ -2,17 +2,9 @@ OntheRailsAgain::Application.routes.draw do
 
   devise_for :authors
 
-  resources :tags
-  
   resources :authors, :only => [:index, :show]
   
-  resources :articles do
-    post 'activate', :on => :member
-    post 'desactivate', :on => :member
-    post 'activate_all', :on => :collection
-    post 'desactivate_all', :on => :collection
-  end
-  
+  resources :articles  
   root :to => "articles#index"  
   
   match "sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
