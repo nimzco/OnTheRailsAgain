@@ -27,7 +27,9 @@ class ApplicationController < ActionController::Base
   end
   
   def check_url
-    redirect_to request.protocol + request.host_with_port[4..-1] + request.fullpath, :status => 301 if /^www/.match(request.host)
+    if /^www/.match(request.host) or '81.65.7.225'.match(request.host)
+      redirect_to request.protocol + request.host_with_port[4..-1] + request.fullpath, :status => 301
+    end
   end
 
 end
