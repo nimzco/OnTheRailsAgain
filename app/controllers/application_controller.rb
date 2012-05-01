@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownAction,      :with => :render_not_found
   end
 
-  protected
   def render_not_found
     render :template => 'errors/not_found', :status => :not_found
   end
