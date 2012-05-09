@@ -6,7 +6,7 @@ Une chose qui peut poser des problèmes avant de se lancer dans l'utilisation du
 C'est pourquoi dans cet article je fais le tour des choses indispensables à avoir sur sa machine et j'explique comment les installer.
 
 --tags
-Ruby On Rails
+MySQL, PostgreSQL, RVM
 
 --title
 Mettre en place son environnement Ruby On Rails sous Mac OS X Lion

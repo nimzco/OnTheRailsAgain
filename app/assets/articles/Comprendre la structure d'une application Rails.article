@@ -2,7 +2,7 @@
 10/10/2011
 
 --tags
-Ruby On Rails, Structure
+Structure
 
 --introduction
 La structure d'une application Ruby On Rails peut dérouter du fait du nombre de fichiers et dossiers qu'elle contient. Cet article présente rapidement  l'intérêt de chacun de ces fichiers et dossiers afin de comprendre cette structure.

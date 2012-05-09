@@ -1,8 +1,8 @@
 --date 
-29/05/2012
+09/05/2012
 
 --tags
-Ruby On Rails, ActiveRecord, Relations
+ActiveRecord, Relations
 
 --introduction
 L'association polymorphique peut sembler compliquée et déroutante. En regardant d'un peu plus près, son utilisation n'est pas si difficile et peut être très utile ! C'est une association qui permet à un modèle d'appartenir à plusieurs autres modèles.
@@ -227,45 +227,30 @@ Nicolas
       …
 
       def create
-        @tag = Tag.new(params[:tag])
-        respond_to do |format|
-          if @tag.save
-            format.html { redirect_to [@article, @tag], :notice => 'Tag was successfully created.' }
-            …
-          else
-            …
-          end
-        end
+        …
+        format.html { redirect_to [@article, @tag] }
+        …
       end
 
       def update
-        @tag = Tag.find(params[:id])
-        respond_to do |format|
-          if @tag.update_attributes(params[:tag])
-            format.html { redirect_to [@article, @tag], :notice => 'Tag was successfully updated.' }
-            …
-          else
-            …
-          end
-        end
+        …
+        format.html { redirect_to [@article, @tag] }
+        …
       end
 
       def destroy
-        @tag = Tag.find(params[:id])
-        @tag.destroy
-
-        respond_to do |format|
-          format.html { redirect_to article_tags_url }
-          …
-        end
+        …
+        format.html { redirect_to article_tags_url }
+        …
       end
     end
 
-%p.alert.alert-info Il faut noter qu'en Ruby On Rails <code>[@article, @tag]</code> et équivalent à <code>article_tag_path(@article, @tag)</code>
+%p.alert.alert-info Il faut noter qu'en Ruby On Rails <code>[@article, @tag]</code> est équivalent à <code>article_tag_path(@article, @tag)</code>
 
 %h2 Vues
 
 %p Ensuite il est nécessaire d'adapter l'ensemble des vues précédemment générées avec les scaffolds pour que ça fonctionne. Il faut modifier l'ensemble des paths existant en rajoutant les variables @article et @tag comme par exemple pour la vue index de tags :
+
 %pre.erb
   :preserve
     <h1>Listing tags</h1>
@@ -295,11 +280,30 @@ Nicolas
     <%= link_to 'New Tag', new_article_tag_path %> 
 
 
-%p.alert Evitez d'imbriquer trop de ressources. Essayez de vous limitez à une imbrication.
+%p.alert 
+  Evitez d'imbriquer trop de ressources. Essayez de vous limitez à une imbrication.
+%p
+  Par exemple vous pouvez diviser cette url : 
+  <br /> <code>posts/:post_id/comments/:comment_id/favorites</code> 
+  <br /> en 
+  <br /> <code>posts/:post_id/comments/:comment_id</code>
+  <br /> <code>comments/:comment_id/favorites/:favorite_id</code>
+
+%pre.ruby
+  :preserve
+    # config/routes.rb
+    resources :posts do
+      resources :comments
+    end
+
+    resources :comments do
+      resources :favorites
+    end
+
 
 %h2 Ressources
 
 %ul
-  %li Restrict auto-generated routes.
-  %li http://rails-bestpractices.com/posts/11-needless-deep-nesting
-  %li http://blog.shingara.fr/quelles-nouvelles-dans-rails-edge-les-shallow-routes.html
+  %li <a href="http://guides.rubyonrails.org/routing.html" target="_blank">Guides Rails - Routes</a>
+  %li <a href="http://rails-bestpractices.com/posts/11-needless-deep-nesting" target="_blank">Rails Best Practices - Needless deep nesting</a>
+  %li <a href="http://guides.rubyonrails.org/action_controller_overview.html#filters" target="_blank">Filtres en Ruby On Rails</a>

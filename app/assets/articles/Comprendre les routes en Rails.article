@@ -2,7 +2,7 @@
 20/10/2011
 
 --tags
-Ruby On Rails, Routes, Ressources
+Routes, Ressources
 
 --introduction
 Dès lors que l'on veut créer une application Rails on a besoin de modifier le fichier routes.rb. Cependant, l'utilité et le fonctionnement du routeur Rails ne sont pas forcément évidents. Cet article présente les bases et les buts du routeur Rails.

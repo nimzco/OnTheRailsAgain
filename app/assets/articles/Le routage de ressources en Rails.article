@@ -2,7 +2,7 @@
 01/11/2011
 
 --tags
-Ruby On Rails, Routes, Ressources
+Routes, Ressources
 
 --introduction
 Cet article présente la manière de définir les routes en Rails pour des ressources ainsi que comment ajouter des actions pour ces ressources. Il présente également l'ensemble des routes helpers générés ainsi que leurs utilisations avec les différents verbes HTTP.
