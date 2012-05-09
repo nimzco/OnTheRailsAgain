@@ -28,7 +28,7 @@ Nima
   Ce que nous allons voir :
   %ul
     %li créer une association polymorphique ;
-    %li utiliser une association polymorphique comme ressource imbriqué ;
+    %li utiliser une association polymorphique comme ressource imbriquée ;
     %li créer une ressource polymorphique de façon générique.
 
 %h2 Qu'est-ce que c'est ?

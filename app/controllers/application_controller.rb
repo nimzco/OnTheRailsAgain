@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownAction,      :with => :render_not_found
   end
 
-  protected
   def render_not_found
     render :template => 'errors/not_found', :status => :not_found
   end
@@ -28,7 +27,9 @@ class ApplicationController < ActionController::Base
   end
   
   def check_url
-    redirect_to request.protocol + request.host_with_port[4..-1] + request.fullpath, :status => 301 if /^www/.match(request.host)
+    if /^www/.match(request.host) or '81.65.7.225'.match(request.host)
+      redirect_to request.protocol + 'ontherailsagain.com' + request.fullpath, :status => 301
+    end
   end
 
 end
