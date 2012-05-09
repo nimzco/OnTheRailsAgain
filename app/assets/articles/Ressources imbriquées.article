@@ -1,0 +1,305 @@
+--date 
+29/05/2012
+
+--tags
+Ruby On Rails, ActiveRecord, Relations
+
+--introduction
+L'association polymorphique peut sembler compliquée et déroutante. En regardant d'un peu plus près, son utilisation n'est pas si difficile et peut être très utile ! C'est une association qui permet à un modèle d'appartenir à plusieurs autres modèles.
+
+--title
+Ressources imbriquées
+
+--authors
+Nicolas
+
+--content
+%p Nous avons vu comment définir des relations d'associations entre différents modèles, ainsi que la façon de définir des routes pour des ressources. Passons maintenant à la gestion des ressources imbriquées.
+
+%h2 Présentation du problème
+
+%p Reprenons l'exemple de l'article sur les <a href="http://ontherailsagain.com/articles/les-associations-many-to-many" target="_blank">associations many-to-many</a> pour illustrer le problème. Nous avons un modèle <code>Article</code> et un modèle <code>Tag</code>. Un article peut avoir plusieurs tags et un tag appartient à plusieurs articles. Ces modèles sont les ressources que nous allons manipuler et sont donc liés par une relation many-to-many. 
+
+%p Le problème est que nous voulons représenter cette relation dans les URLs, c'est à dire par exemple, accéder à la liste de tous les tags d'un article par l'url : <em>http://monsite.fr/articles/id_de_l_article/tags.</em>
+
+%h2 Routes
+
+%p Afin de représenter cette imbrication de ressources au niveau des URLs, on définit les routes comme ceci :
+
+%pre.ruby
+  :preserve
+    # config/routes.rb
+    resources :articles do
+      resources :tags
+    end
+     
+%p Cette déclaration permet de définir les routes pour les <code>Articles</code> mais aussi pour les <code>Tags</code>.
+
+%h3 CRUD, méthodes HTTP et actions
+
+%p Voyons de plus près l'ensemble des routes générées :
+
+%table
+  %thead
+    %tr
+      %th Méthode <br />HTTP
+      %th URL
+      %th Action
+      %th Utilité
+  %tbody
+    %tr
+      %td GET
+      %td <span class="code">/articles</span>
+      %td index
+      %td Afficher la liste de tous les articles
+    %tr
+      %td GET
+      %td <span class="code">/articles/new</span>
+      %td new
+      %td Afficher un formulaire pour créer un article
+    %tr
+      %td POST
+      %td <span class="code">/articles</span>
+      %td create
+      %td Créer un nouvel article
+    %tr
+      %td GET
+      %td <span class="code">/articles/:id</span>
+      %td show
+      %td Afficher un article
+    %tr
+      %td GET
+      %td <span class="code">/articles/:id/edit</span>
+      %td edit
+      %td Afficher un formulaire pour éditer un article
+    %tr
+      %td PUT
+      %td <span class="code">/articles/:id</span>
+      %td update
+      %td Mettre à jour un article
+    %tr
+      %td DELETE
+      %td <span class="code">/articles/:id</span>
+      %td destroy
+      %td Supprimer un article
+    %tr
+      %td GET
+      %td <span class="code">/articles/:article_id/tags</span>
+      %td index
+      %td Afficher la liste de tous les tags d'un article
+    %tr
+      %td GET
+      %td <span class="code">/articles/:article_id/tags/new</span>
+      %td new
+      %td Afficher un formulaire pour créer un tag appartenant à un article
+    %tr
+      %td POST
+      %td <span class="code">/articles/:article_id/tags</span>
+      %td create
+      %td Créer un nouveau tag pour un article
+    %tr
+      %td GET
+      %td <span class="code">/articles/:article_id/tags/:id</span>
+      %td show
+      %td Afficher un tag spécifique appartenant à un article
+    %tr
+      %td GET
+      %td <span class="code">/articles/:article_id/tags/:id/edit</span>
+      %td edit
+      %td Afficher un formulaire pour editer un tag appartenant à un article
+    %tr
+      %td PUT
+      %td <span class="code">/articles/:article_id/tags/:id</span>
+      %td update
+      %td Mettre à jour un tag appartenant à un article
+    %tr
+      %td DELETE
+      %td <span class="code">/articles/:article_id/tags/:id</span>
+      %td destroy
+      %td Supprimer un tag appartenant à un article
+
+%p Il est important de noter que les URLs permettant d'accéder aux tags requièrent l'<code>id</code> d'un article, en effet, nous allons devoir fournir cet <code>id</code> à chaque path helper. Voyons justement les chemins et URLs qui sont générés à partir de cette déclaration de route.
+
+%h3 Chemins et URLs générés
+  
+%table
+  %thead
+    %tr
+      %th Path helper
+      %th{:style => "padding-left: 10px; padding-right: 10px;"} Méthode <br />HTTP
+      %th{:style => "padding-left: 10px; padding-right: 10px;"} Action
+  %tbody
+    %tr
+      %td{:rowspan => 2} <span class="code">articles_path</span>
+      %td GET
+      %td index
+    %tr
+      %td POST
+      %td create
+    %tr
+      %td{:rowspan => 3} <span class="code">article_path(:id)</span> Ce path prend en paramètre l'id de l'article à afficher, modifier ou supprimer
+      %td GET
+      %td show
+    %tr
+      %td PUT
+      %td update
+    %tr
+      %td DELETE
+      %td destroy
+    %tr
+      %td <span class="code">new_article_path</span>
+      %td GET
+      %td new
+    %tr
+      %td <span class="code">edit_article_path(:id)</span> Ce path prend en paramètre l'id de l'article à modifier
+      %td GET
+      %td edit
+    %tr
+      %td{:rowspan => 2} <span class="code">article_tags_path</span>
+      %td GET
+      %td index
+    %tr
+      %td POST
+      %td create
+    %tr
+      %td{:rowspan => 3} <span class="code">article_tag_path(:article_id, :tag_id)</span> Ce path prend en paramètre l'id de l'article auquel appartient le tag à modifier ainsi que l'id de ce dernier
+      %td GET
+      %td show
+    %tr
+      %td PUT
+      %td update
+    %tr
+      %td DELETE
+      %td destroy
+    %tr
+      %td <span class="code">new_article_tag_path</span>
+      %td GET
+      %td new
+    %tr
+      %td <span class="code">edit_article_tag_path(:article_id, :tag_id)</span> Ce path prend en paramètre l'id de l'article auquel appartient le tag à modifier ainsi que l'id de ce dernier
+      %td GET
+      %td edit
+      
+%h2 Contrôleur
+
+%p Après avoir modifié les routes, il est souvent nécessaire d'apporter des modifications au code existant pour pouvoir faire fonctionner l'application avec les ressources imbriquées. Par exemple, si vous avez générés vos modèles à l'aide de scaffold et que l'ensemble des vues et contrôleurs existent déjà il faut les modifier.
+
+%h3 Ajout d'une variable nécessaire
+
+%p Tout d'abord, nos tags sont dépendants d'un article, il faut donc définir cet article dans le contrôleur. Il est possible pour cela de créer une variable faisant référence à l'article auquel appartient le tag en ajoutant ce morceau de code au début de chaque méthode où la référence est nécessaire :
+
+%pre.ruby
+  :preserve
+    @article = Article.find(params[:article_id])
+     
+%p Pour éviter la duplication de cette ligne de code, on peut créer une méthode qui définie cette variable. Pour que cette méthode soit exécutée avant les autres, on définit un <code>before_filter</code>, comme ceci&nbsp;:
+
+%pre.ruby
+  :preserve
+    # app/controllers/tags_controller.rb
+    class TagsController < ApplicationController
+      before_filter :find_article  
+      
+      def index
+        ...
+      end
+      ...
+      def destroy
+        ...
+      end
+      
+      private
+      def find_article
+        @article = Article.find(params[:article_id])
+      end
+    end
+
+%p.alert.alert-info Pour en savoir plus sur les <a href="http://guides.rubyonrails.org/action_controller_overview.html#filters" target="_blank">filtres en Ruby On Rails</a>
+
+%h3 Modification des path helpers
+
+%p Maintenant que la référence à l'article auquel appartient le tag est définie, il faut modifier les redirect_to dans les méthodes <code>create</code>, <code>update</code> et <code>destroy</code> comme ceci :
+
+%pre.ruby
+  :preserve
+    # app/controllers/tags_controller.rb
+    class TagsController < ApplicationController      
+      …
+
+      def create
+        @tag = Tag.new(params[:tag])
+        respond_to do |format|
+          if @tag.save
+            format.html { redirect_to [@article, @tag], :notice => 'Tag was successfully created.' }
+            …
+          else
+            …
+          end
+        end
+      end
+
+      def update
+        @tag = Tag.find(params[:id])
+        respond_to do |format|
+          if @tag.update_attributes(params[:tag])
+            format.html { redirect_to [@article, @tag], :notice => 'Tag was successfully updated.' }
+            …
+          else
+            …
+          end
+        end
+      end
+
+      def destroy
+        @tag = Tag.find(params[:id])
+        @tag.destroy
+
+        respond_to do |format|
+          format.html { redirect_to article_tags_url }
+          …
+        end
+      end
+    end
+
+%p.alert.alert-info Il faut noter qu'en Ruby On Rails <code>[@article, @tag]</code> et équivalent à <code>article_tag_path(@article, @tag)</code>
+
+%h2 Vues
+
+%p Ensuite il est nécessaire d'adapter l'ensemble des vues précédemment générées avec les scaffolds pour que ça fonctionne. Il faut modifier l'ensemble des paths existant en rajoutant les variables @article et @tag comme par exemple pour la vue index de tags :
+%pre.erb
+  :preserve
+    <h1>Listing tags</h1>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Article</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td><%= tag.article_id %></td>
+        <td><%= link_to 'Show', article_tag_path(@article, tag) %></td>
+        <td><%= link_to 'Edit', edit_article_tag_path(@article, tag) %></td>
+        <td><%= link_to 'Destroy', article_tag_path(@article, tag), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New Tag', new_article_tag_path %> 
+
+
+%p.alert Evitez d'imbriquer trop de ressources. Essayez de vous limitez à une imbrication.
+
+%h2 Ressources
+
+%ul
+  %li Restrict auto-generated routes.
+  %li http://rails-bestpractices.com/posts/11-needless-deep-nesting
+  %li http://blog.shingara.fr/quelles-nouvelles-dans-rails-edge-les-shallow-routes.html
