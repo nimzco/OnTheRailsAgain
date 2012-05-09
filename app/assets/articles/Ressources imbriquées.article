@@ -14,6 +14,21 @@ Ressources imbriquées
 Nicolas
 
 --content
+
+.require
+  Pré-requis :
+  %ul
+    %li 
+      avoir vu le 
+      %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/le-routage-de-ressources-en-rails" } routage de ressources</a>.
+
+.see
+  Ce que nous allons voir :
+  %ul
+    %li déclarer les ressources imbriquées au niveau des routes ;
+    %li adapter les contrôleurs pour gérer ces ressources imbriquées.
+
+
 %p Nous avons vu comment définir des relations d'associations entre différents modèles, ainsi que la façon de définir des routes pour des ressources. Passons maintenant à la gestion des ressources imbriquées.
 
 %h2 Présentation du problème

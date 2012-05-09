@@ -18,8 +18,8 @@ Nima
 .see
   Ce que nous allons voir :
   %ul
-    %li comprendre ce qu'est une association One-to-Many ;
-    %li mettre en place une association One-to-Many avec Rails.
+    %li comprendre ce qu'est une association <a href="http://ontherailsagain.com/articles/les-associations-one-to-many" target="_blank">One-to-Many</a> ;
+    %li mettre en place une association <a href="http://ontherailsagain.com/articles/les-associations-one-to-many" target="_blank">One-to-Many</a> avec Rails.
 
 %h2 Présentation du problème
 
