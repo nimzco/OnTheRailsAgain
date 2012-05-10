@@ -1,11 +1,11 @@
 --date 
-09/05/2012
+11/05/2012
 
 --tags
-ActiveRecord, Relations
+Routes, Relations
 
 --introduction
-L'association polymorphique peut sembler compliquée et déroutante. En regardant d'un peu plus près, son utilisation n'est pas si difficile et peut être très utile ! C'est une association qui permet à un modèle d'appartenir à plusieurs autres modèles.
+Il peut être naturel d'avoir des ressources qui appartiennent à d'autre ressources. C'est dans ce cas là qu'il peut être intéressant d'utiliser des ressources imbriquées aux niveaux des routes pour avoir des URLs cohérente.
 
 --title
 Ressources imbriquées
@@ -19,14 +19,17 @@ Nicolas
   Pré-requis :
   %ul
     %li 
-      avoir vu le 
+      Avoir comrpis le
+      %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/comprendre-les-routes-en-rails" } fonctionnement des routes</a>.
+    %li 
+      Avoir vu le 
       %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/le-routage-de-ressources-en-rails" } routage de ressources</a>.
 
 .see
   Ce que nous allons voir :
   %ul
-    %li déclarer les ressources imbriquées au niveau des routes ;
-    %li adapter les contrôleurs pour gérer ces ressources imbriquées.
+    %li Déclarer les ressources imbriquées au niveau des routes.
+    %li Adapter les contrôleurs et les vues pour gérer ces ressources imbriquées.
 
 
 %p Nous avons vu comment définir des relations d'associations entre différents modèles, ainsi que la façon de définir des routes pour des ressources. Passons maintenant à la gestion des ressources imbriquées.
@@ -298,9 +301,9 @@ Nicolas
 %p.alert 
   Evitez d'imbriquer trop de ressources. Essayez de vous limitez à une imbrication.
 %p
-  Par exemple vous pouvez diviser cette url : 
+  Par exemple si vous avez trois ressources Post, Comment et Favorite, vous pouvez diviser l'imbrication :
   <br /> <code>posts/:post_id/comments/:comment_id/favorites</code> 
-  <br /> en 
+  <br /> comme ceci : 
   <br /> <code>posts/:post_id/comments/:comment_id</code>
   <br /> <code>comments/:comment_id/favorites/:favorite_id</code>
 
@@ -319,6 +322,6 @@ Nicolas
 %h2 Ressources
 
 %ul
-  %li <a href="http://guides.rubyonrails.org/routing.html" target="_blank">Guides Rails - Routes</a>
+  %li <a href="http://guides.rubyonrails.org/routing.html#nested-resources" target="_blank">Guides Rails - Routes</a>  
   %li <a href="http://rails-bestpractices.com/posts/11-needless-deep-nesting" target="_blank">Rails Best Practices - Needless deep nesting</a>
   %li <a href="http://guides.rubyonrails.org/action_controller_overview.html#filters" target="_blank">Filtres en Ruby On Rails</a>

@@ -6,35 +6,34 @@
       On The
       %span#bold_title Rails
       Again      
-  .navigationbar
-    %nav
-      .container.row-fluid
-        .span6
-          %ul.nav#menu_links
-            %li{ :class => (current_page?(articles_path) || current_page?(root_path) ? 'active' : '') }
-              = link_to 'Articles', root_path
-            %li{ :class => (current_page?(authors_path) ? 'active' : '') }
-              = link_to 'À propos', authors_path
-        %ul.nav.span2.not_mobile#outgoing_links
-          %li
-            %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
-              %i.icon-rss
-          %li
-            %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
-              %i.icon-twitter
-        %div.span4#search_form.not_mobile
-          %div= search_bar_html
-        %div#header_mobile.mobile
-          %div
-            %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
-              %i.icon-rss
-          %div
-            %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank' }
-              %i.icon-twitter
-          .header_link_group
-            %a
-              %i.icon-tag#tag_button{ :data => { :content => tags, 'original-title' => 'Tags' }}
-          .header_link_group
-            %a
-              %i.icon-search#search_button{ :data => { :content => search_bar_html, 'original-title' => 'Recherche' }}
-            
+  %nav
+    .container.row-fluid
+      .span6
+        %ul.nav#menu_links
+          %li{ :class => (current_page?(articles_path) || current_page?(root_path) ? 'active' : '') }
+            = link_to 'Articles', root_path
+          %li{ :class => (current_page?(authors_path) ? 'active' : '') }
+            = link_to 'À propos', authors_path
+      %ul.nav.span2.not_mobile#outgoing_links
+        %li
+          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+            %i.icon-rss
+        %li
+          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
+            %i.icon-twitter
+      %div.span4#search_form.not_mobile
+        %div= search_bar_html
+      %div#header_mobile.mobile
+        %div
+          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+            %i.icon-rss
+        %div
+          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank' }
+            %i.icon-twitter
+        .header_link_group
+          %a
+            %i.icon-tag#tag_button{ :data => { :content => tags, 'original-title' => 'Tags' }}
+        .header_link_group
+          %a
+            %i.icon-search#search_button{ :data => { :content => search_bar_html, 'original-title' => 'Recherche' }}
+          
