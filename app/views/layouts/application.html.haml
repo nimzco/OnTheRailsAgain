@@ -9,7 +9,8 @@
     = stylesheet_link_tag 'application'#, :media => 'screen, projection'
     
     = render 'shared/meta_information'
-    == <link rel="alternate" type="application/rss+xml" title="OnTheRailsAgain - RSS" href="http://ontherailsagain.com/articles.rss" />
+    = auto_discovery_link_tag :atom, feed_url
+    = auto_discovery_link_tag :rss, feed_url + ".rss"
     
     = yield :header
 

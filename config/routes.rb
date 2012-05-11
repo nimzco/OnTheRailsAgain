@@ -5,6 +5,10 @@ OntheRailsAgain::Application.routes.draw do
   resources :authors, :only => [:index, :show]
   
   resources :articles  
+  match '/feed' => 'articles#index',
+        :as => :feed,
+        :defaults => { :format => 'atom' }
+
   root :to => "articles#index"  
   
   match "sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
