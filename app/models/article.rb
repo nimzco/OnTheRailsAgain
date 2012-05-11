@@ -24,6 +24,9 @@ class Article < ActiveRecord::Base
     "http://ontherailsagain.com/articles/#{self.link}"
   end
   
+  def to_param
+    self.link
+  end
   # Generate the table of content in a nested list composed of all headers of the article
   # The method is REALLY ugly because I can't access matched string in the gsub...
   # Don't even try to understand it.
