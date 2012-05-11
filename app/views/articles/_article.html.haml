@@ -14,7 +14,7 @@
   .wrapper    
     %p.article_content
       = article.introduction
-      = link_to "Lire la suite…".html_safe, {:controller => "articles", :action => "show", :id => article.link}, :class => 'more_link'
+      = link_to "Lire la suite…".html_safe, {:controller => "articles", :action => "show", :id => article.link}, :class => 'more_link', :title => 'Lire la suite'
     = join_tags article
 
 .divider
