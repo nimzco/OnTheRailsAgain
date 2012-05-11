@@ -10,7 +10,7 @@ atom_feed :language => 'fr-FR', :id => feed_url do |feed|
       entry.author do |author|
         author.name join_authors_without_link(article)
       end      
-      entry.content "#{article.introduction} #{article.content}", :type => 'html'
+      entry.content "<p>#{article.introduction}</p>#{article.content}", :type => 'html'
       entry.updated article.created_at
     end
   end
