@@ -19,9 +19,9 @@ Nima
 .see
   Ce que nous allons voir :
   %ul
-    %li Mettre en place son environnement Ruby On Rails
-    %li Installer MySQL et PostgreSQL
-    %li Les bases de RVM
+    %li Mettre en place son environnement Ruby On Rails.
+    %li Installer MySQL et PostgreSQL.
+    %li Les bases de RVM.
 
 %h2 L'environnement Ruby
 

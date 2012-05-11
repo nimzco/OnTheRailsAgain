@@ -19,9 +19,9 @@ Nicolas
   Ce que nous allons voir :
   %ul
     %li
-      le fonctionnement du routeur Rails ;
+      Le fonctionnement du routeur Rails.
     %li
-      les utilisations de bases.
+      Les utilisations de bases.
 
 %h2 Comprendre le fonctionnement
   

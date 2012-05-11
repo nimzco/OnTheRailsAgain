@@ -17,16 +17,16 @@ Nima
 .require
   Pré-requis :
   %ul
-    %li avoir des bases en SQL (table, clé primaire, clé étrangère) ;
+    %li Avoir des bases en SQL (table, clé primaire, clé étrangère.
     %li 
-      avoir vu les associations 
+      Avoir vu les associations 
       %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/Les-associations-one-to-many"} One-to-Many.
 
 .see
   Ce que nous allons voir :
   %ul
-    %li comprendre une relation Many-to-Many ;
-    %li créer une relation Many-to-Many avec Rails.
+    %li Comprendre une relation Many-to-Many.
+    %li Créer une relation Many-to-Many avec Rails.
 
 %h2 Présentation du problème
 
