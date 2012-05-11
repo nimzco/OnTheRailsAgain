@@ -68,7 +68,7 @@ Nima
 
 %p Avant de continuer, voilà une représentation de la relation des modèles entre eux.
 
-%img{:src => "/article_images/Associations_Many-to-Many_avancees/Many-to-Many.png"}
+%img{:src => "http://ontherailsagain.com/article_images/Associations_Many-to-Many_avancees/Many-to-Many.png"}
 %h3 Préparer la base de données
 
 %p  
@@ -219,7 +219,7 @@ Nima
   Vous pouvez vous servir des <span class="code">has_many :through</span> pour vous faire des raccourcis. Je m'explique.
   Supposez qu'un document à plusieurs sections et que les sections ont plusieurs paragraphes comme le montre le schéma suivant&nbsp;:
   
-%img{:src => "/article_images/Associations_Many-to-Many_avancees/Document.png"}
+%img{:src => "http://ontherailsagain.com/article_images/Associations_Many-to-Many_avancees/Document.png"}
 
 %p Il peut arriver que vous ayez besoin d'accéder à tous les paragraphes d'un document. Pour faire cela, vous pouvez par exemple définir vos relations comme suit&nbsp;:
 
