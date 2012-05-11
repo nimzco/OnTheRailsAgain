@@ -23,14 +23,13 @@ task :generate_article, [:filename] => :environment do |t, args|
     article.first.delete
   end
   article = Article.create( :created_at   => article_values[:date],
+                            :updated_at   => article_values[:date],
                             :title        => article_values[:title],
                             :introduction => article_values[:introduction],
                             :authors      => article_values[:authors],
                             :content      => haml2html(article_values[:content]),
                             :activated    => true)
   article.tags << article_values[:tags]
-  article.save
-  #article.updated_at = article_values[:updated_at]
   article.save
 
 end
@@ -44,14 +43,13 @@ task :add_new_articles => :environment do
     # Create the article only if it doesn't exist yet
     if Article.where(:title => article_values[:title]).empty?
       article = Article.create( :created_at   => article_values[:date],
+                                :updated_at   => article_values[:date],
                                 :title        => article_values[:title],
                                 :introduction => article_values[:introduction],
                                 :authors      => article_values[:authors],
                                 :content      => haml2html(article_values[:content]),
                                 :activated    => true)
       article.tags << article_values[:tags]
-      article.save
-      #article.updated_at = article_values[:updated_at]
       article.save
     end
   end
@@ -74,8 +72,6 @@ task :generate_articles => :environment do
                               :content      => haml2html(article_values[:content]),
                               :activated    => true)
     article.tags << article_values[:tags]
-    article.save
-    #article.updated_at = article_values[:updated_at]
     article.save
   end
 end

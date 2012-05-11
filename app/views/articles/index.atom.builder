@@ -5,7 +5,6 @@ atom_feed :language => 'fr-FR', :id => feed_url do |feed|
   @articles.each do |article|
     feed.entry( article, { :id => article_url(article), 
                            :url => article_url(article),
-                           :published => article.created_at   , 
                            :updated => article.created_at}) do |entry|
       entry.summary article.introduction
       entry.title article.title
