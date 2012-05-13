@@ -27,7 +27,7 @@ Nicolas
   
 %p Voici une schéma explicatif permettant de comprendre le rôle du routeur dans le fonctionnement d'une application Rails.
 
-%img{:src => "http://ontherailsagain.com/article_images/comprendre_les_routes/Routes.png", :alt => 'Représentation schématique du fonctionnement des routes'}
+%img{:src => "http://ontherailsagain.com/article_images/comprendre_les_routes/Routes.png", :alt => 'Représentation schématique du fonctionnement des routes', :title => 'Schéma du fonctionnement des routes'}
 
 %p Le processus commence avec une requête faite à partir du navigateur. Cette requête est ensuite transmise au routeur Rails qui l'analyse et extrait les informations suivantes&nbsp;:
 
