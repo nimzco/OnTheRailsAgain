@@ -42,6 +42,9 @@ Nima
   Illustrons le problème par un exemple.
   Supposons que nous avons trois modèles : <span class="code">Article</span>, <span class="code">Event</span> et <span class="code">Photo</span>. Le but est de créer un unique modèle <span class="code">Comment</span> pour nos trois types de ressources.
 
+%p Voilà un schéma représentatif de ce que l'on veut obtenir&nbsp;:
+%img{:src => "http://ontherailsagain.com/article_images/Associations_polymorphiques/Associations_polymorphiques.png", :alt => 'Représentation schématique de la relation polymorphique'}
+
 %h3 Création du modèle
 %p
   Comme toujours, des conventions sont à respecter pour que tout se passe comme prévu. Le modèle <span class="code">Comment</span> n'étant plus lié à un modèle spécifique, il faut lui spécifier un champ qui réfèrera à l'ID de la ressource auquel il appartient ainsi que le type de ce dernier. Voilà comment générer le modèle <span class="code">Comment</span>&nbsp;

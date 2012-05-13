@@ -56,7 +56,7 @@ Nima
 
 %h2 En pratique
 %p Avant de continuer, voilà une représentation de la relation des modèles entre eux.
-%img{:src => 'http://ontherailsagain.com/article_images/Associations_One-to-Many/One-to-Many.png'}
+%img{:src => 'http://ontherailsagain.com/article_images/Associations_One-to-Many/One-to-Many.png', :alt => 'Représentation schématique de la relation One to Many'}
 
 %h3 Préparer la base de données
 
