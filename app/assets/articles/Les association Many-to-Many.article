@@ -52,7 +52,7 @@ Nima
 
 %h2 En pratique
 %p Avant de continuer, voilà une représentation de la relation des modèles entre eux.
-%img{:src => 'http://ontherailsagain.com/article_images/Associations_Many-to-Many/Many-to-Many.png', :alt => 'Représentation schématique de la relation Many to Many', :title => 'Schéma de l'association Many to Many'}
+%img{:src => 'http://ontherailsagain.com/article_images/Associations_Many-to-Many/Many-to-Many.png', :alt => "Représentation schématique de la relation Many to Many", :title => "Schéma de l'association Many to Many"}
 
 %h3 Création des modèles
 
