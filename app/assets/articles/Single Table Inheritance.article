@@ -56,7 +56,7 @@ Nima
     end
 
 %p.alert.alert-info
-  Pour avoir une structure plus «propre», on peut mettre les fichiers <code>editor.rb</code> et <code>administrator.rb</code> dans un sous dossier <code>/app/models/user/</code> et il faudrait alors suffixer les noms de classe des deux modèles par <code>User::</code>.
+  Pour avoir une structure plus «propre», on peut mettre les fichiers <code>editor.rb</code> et <code>administrator.rb</code> dans un sous dossier <code>/app/models/users/</code> et il faudrait alors suffixer les noms de classe des deux modèles par <code>User::</code>.
 
 %h3 Création de la table
 
