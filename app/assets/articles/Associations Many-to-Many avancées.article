@@ -20,14 +20,14 @@ Nima
   Pré-requis :
   %ul
     %li 
-      Avoir vu les associations 
+      avoir vu les associations 
       %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/les-associations-many-to-many"} Many-to-Many simples.
 
 .see
   Ce que nous allons voir :
   %ul
-    %li Stocker des informations relatives à une relation Many-to-Many.
-    %li Utiliser et manipuler les associations.
+    %li stocker des informations relatives à une relation Many-to-Many ;
+    %li utiliser et manipuler les associations.
 
 %h2 Présentation du problème
 
