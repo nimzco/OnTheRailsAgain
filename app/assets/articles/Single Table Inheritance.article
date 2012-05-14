@@ -2,7 +2,7 @@
 14/05/2012
 
 --tags
-ActiveRecord, Relations
+ActiveRecord, Relations, Routes
 
 --introduction
 «Single Table Inheritence» (STI) (en français «Héritage de table unique») est un moyen de faire de l'héritage en n'utilisant qu'une seule table en base de données. Le tout est de savoir comment structurer ses modèles et le tour est joué !
