@@ -1,0 +1,162 @@
+--date 
+14/05/2012
+
+--tags
+ActiveRecord, Relations, Routes
+
+--introduction
+«Single Table Inheritence» (STI) (en français «Héritage de table unique») est un moyen de faire de l'héritage en n'utilisant qu'une seule table en base de données. Le tout est de savoir comment structurer ses modèles et le tour est joué !
+
+
+--title
+Single Table Inheritance
+
+--authors
+Nima
+
+--content
+.see
+  Ce que nous allons voir :
+  %ul
+    %li comment organiser les modèles ;
+    %li comment créer la table ;
+    %li comment gérer le type du modèle avec un seul contrôleur.
+
+%h2 Qu'est-ce que c'est ?
+
+%p
+  «Single Table Inheritence» (STI) (en français «Héritage de table unique») est un moyen de faire de l'héritage en n'utilisant qu'une seule table en base de données. Le tout est de savoir comment structurer ses modèles et le tour est joué !
+
+%h2 Illustration par un exemple
+
+%p
+  Supposons que nous avons plusieurs types d'utilisateurs. Des administrateurs qui ont tous les droits et des éditeurs qui n'ont que des droits d'édition. Nous pouvons donc ici utiliser l'héritage pour nos modèles utilisateurs. Une classe mère <code>User</code> et deux classes filles <code>Administrator</code> et <code>Editor</code>.
+  
+%h3 Création des modèles
+
+%p
+  Comme tout héritage classique, il faut une classe par modèle.
+
+%pre.ruby
+  :preserve
+    # app/models/user.rb
+    class User < ActiveRecord::Base
+    end
+
+%pre.ruby
+  :preserve
+    # app/models/editor.rb
+    class Editor < User
+    end
+
+%pre.ruby
+  :preserve
+    # app/models/administrator.rb
+    class Administrator < User
+    end
+
+%p.alert.alert-info
+  Pour avoir une structure plus «propre», on peut mettre les fichiers <code>editor.rb</code> et <code>administrator.rb</code> dans un sous dossier <code>/app/models/users/</code> et il faudrait alors suffixer les noms de classe des deux modèles par <code>Users::</code>.
+
+%h3 Création de la table
+
+%p
+  Comme je l'ai dit plus haut, une seule table en base de données est nécessaire. Cette table doit contenir les champs des trois modèles. Tout ce qui correspond au modèle <code>User</code>, <code>Editor</code> et <code>Administrator</code>.
+
+%p
+  En plus de tous ces champs, il faut rajouter une colonne <code>type</code> qui permettra de savoir de quel type est la ressource en question.
+
+%pre.prettyprint.linenums
+  :preserve
+    # db/migrate/124812048_create_user.rb
+    class CreateUser < ActiveRecord::Migration
+      def self.up
+        create_table :users do |t|
+          t.string :username
+          t.string :password
+          ...
+          t.string :type
+
+          t.timestamps
+        end
+      end
+
+      def self.down
+        drop_table :users
+      end
+    end
+
+%img{:src => 'http://ontherailsagain.com/article_images/Single_Table_Inheritance/Single_Table_Inheritance.png', :alt => "Du modèle d'héritage Ruby aux tables en bases de données", :title => "Du Ruby à la BDD"}
+
+%h3 Ajout des routes
+
+%p Pour ce qui est des routes, il suffit de les déclarer comme des ressources. Si vous voulez n'utiliser qu'un seul contrôleur vous pouvez faire comme ceci&nbsp;:
+
+%pre.ruby
+  :preserve
+    # config/routes.rb
+    resources :users,          :controller => 'user', :type => User.name
+    resources :editors,        :controller => 'user', :type => Editor.name
+    resources :administrators, :controller => 'user', :type => Administrator.name
+
+%p
+  En rajoutant un couple clé/valeur après la définition de la ressource, on précise au routeur de passer un paramètre qui correspond à la clé avec sa valeur associée. Ici, on définit le paramètre <code>:type</code> avec le nom de la ressource.
+%p
+  De cette façon quand vous accèderez à l'url <code>/editors/new</code> la requête sera redirigé vers le contrôleur <code>UsersController</code>.
+
+%h3 Côté contrôleur
+
+%p
+  Voyons maintenant comment différencier les trois types d'utilisateurs côté contrôleur.
+%p
+  Le <a href='http://stackoverflow.com/questions/5246767/sti-one-controller/5254995#5254995' title="Réponse d'Alan Peabody sur StackOverflow">post d'Alan Peabody</a> sur Stack Overflow propose une solution intéressante pour gérer le type de modèle dans le contrôleur. Il suggère d'ajouter une méthode privée qui permettra d'accéder à la classe du type de modèle concerné.
+
+%pre.ruby
+  :preserve
+    # app/controllers/users_controller.rb
+    private
+    def user_type
+      params[:type].constantize
+    end
+
+%p
+  Ainsi vous n'aurez pas à vous soucier de la gestion du type dans vos autres méthodes.
+
+%pre.ruby
+  :preserve
+    # app/controllers/users_controller.rb
+    def index
+      @users = user_type.all
+      # …
+    end
+
+    def new
+      @user = user_type.new
+      # …
+    end
+
+    def create
+      @user = user_type.new(params)
+      # …
+    end
+
+%p
+  N'hésitez pas à proposer d'autres solutions ou à me reprendre si besoin !
+
+%h2 Références
+%ul
+  %li
+    %a{:href => 'http://juixe.com/techknow/index.php/2006/06/03/rails-single-table-inheritance/', :target => '_blank'} Rails Single Table Inheritance
+    de TechKnow.
+  %li
+    %a{:href => 'http://code.alexreisner.com/articles/single-table-inheritance-in-rails.html', :target => '_blank'} Single Table Inheritance in Rails
+    de Alex Reisner
+  %li
+    %a{:href => 'http://martinfowler.com/eaaCatalog/singleTableInheritance.html', :target => '_blank'} Single Table Inheritance
+    de Martin Fowler
+  %li
+    %a{:href => 'http://stackoverflow.com/questions/5246767/sti-one-controller/5252136#5252136', :target => '_blank'} Réponse de fl00r
+    – Stack Overflow
+  %li
+    %a{:href => 'http://stackoverflow.com/questions/5246767/sti-one-controller/5254995#5254995', :target => '_blank'} Réponse d'Alan Peabody
+    – Stack Overflow

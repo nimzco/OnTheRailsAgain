@@ -1,9 +1,7 @@
 # encoding: utf-8
-
 class ArticlesController < InheritedResources::Base
   before_filter :authenticate_author!, :only => ["new", "create", "edit"]
   before_filter :set_page_name
-  respond_to :rss
   
   def set_page_name
     @page = :article
@@ -21,7 +19,14 @@ class ArticlesController < InheritedResources::Base
       @articles = @search.page(params[:page]).order('created_at DESC')
       @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant à la recherche : «#{params[:search]["title_or_content_contains"]}»" if params[:search]
     end
-    index!
+    index! do |format|
+      format.atom do 
+        @articles = Article.order("created_at DESC") 
+        render :layout => false
+      end
+      # Redirect permanently to the ATOM feed
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+      end
   end
 
   def new

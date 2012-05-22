@@ -2,10 +2,10 @@
 11/05/2012
 
 --tags
-Routes, Relations
+Routes, Relations, Ressources
 
 --introduction
-Il peut être naturel d'avoir des ressources qui appartiennent à d'autre ressources. C'est dans ce cas là qu'il peut être intéressant d'utiliser des ressources imbriquées aux niveaux des routes pour avoir des URLs cohérente.
+Il arrive souvent d'avoir des ressources qui appartiennent à d'autres ressources. Dans ce genre de cas, il peut être intéressant de définir une imbrication de ressources au niveau des routes pour avoir des URLs cohérentes. Cet article présente comment définir ces routes ainsi que les modifications nécessaires à apporter au code des contrôleurs et des vues déjà existants.
 
 --title
 Ressources imbriquées
@@ -19,7 +19,7 @@ Nicolas
   Pré-requis :
   %ul
     %li 
-      Avoir comrpis le
+      Avoir compris le
       %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/comprendre-les-routes-en-rails" } fonctionnement des routes</a>.
     %li 
       Avoir vu le 
@@ -38,7 +38,7 @@ Nicolas
 
 %p Reprenons l'exemple de l'article sur les <a href="http://ontherailsagain.com/articles/les-associations-many-to-many" target="_blank">associations many-to-many</a> pour illustrer le problème. Nous avons un modèle <code>Article</code> et un modèle <code>Tag</code>. Un article peut avoir plusieurs tags et un tag appartient à plusieurs articles. Ces modèles sont les ressources que nous allons manipuler et sont donc liés par une relation many-to-many. 
 
-%p Le problème est que nous voulons représenter cette relation dans les URLs, c'est à dire par exemple, accéder à la liste de tous les tags d'un article par l'url : <em>http://monsite.fr/articles/id_de_l_article/tags.</em>
+%p Le problème est que nous voulons représenter cette relation dans les URLs, c'est-à-dire par exemple, accéder à la liste de tous les tags d'un article par l'url : <em>http://monsite.fr/articles/id_de_l_article/tags.</em>
 
 %h2 Routes
 
@@ -202,13 +202,15 @@ Nicolas
 
 %p Après avoir modifié les routes, il est souvent nécessaire d'apporter des modifications au code existant pour pouvoir faire fonctionner l'application avec les ressources imbriquées. Par exemple, si vous avez générés vos modèles à l'aide de scaffold et que l'ensemble des vues et contrôleurs existent déjà il faut les modifier.
 
-%h3 Ajout d'une variable nécessaire
+%h3 Ajout d'une référence
 
 %p Tout d'abord, nos tags sont dépendants d'un article, il faut donc définir cet article dans le contrôleur. Il est possible pour cela de créer une variable faisant référence à l'article auquel appartient le tag en ajoutant ce morceau de code au début de chaque méthode où la référence est nécessaire :
 
 %pre.ruby
   :preserve
     @article = Article.find(params[:article_id])
+
+%p Le <code>params[:article_id]</code> permet de récupérer l'id de l'article qui est passé dans l'URL.
      
 %p Pour éviter la duplication de cette ligne de code, on peut créer une méthode qui définie cette variable. Pour que cette méthode soit exécutée avant les autres, on définit un <code>before_filter</code>, comme ceci&nbsp;:
 
@@ -230,7 +232,7 @@ Nicolas
       def find_article
         @article = Article.find(params[:article_id])
       end
-    end
+    end 
 
 %p.alert.alert-info Pour en savoir plus sur les <a href="http://guides.rubyonrails.org/action_controller_overview.html#filters" target="_blank">filtres en Ruby On Rails</a>
 
@@ -299,13 +301,15 @@ Nicolas
 
 
 %p.alert 
-  Evitez d'imbriquer trop de ressources. Essayez de vous limitez à une imbrication.
+  Évitez d'imbriquer trop de ressources. Essayez de vous limiter à une imbrication, cela permet d'avoir des URLs plus lisibles et des path helper moins long et moins contraignant à écrire.
 %p
   Par exemple si vous avez trois ressources Post, Comment et Favorite, vous pouvez diviser l'imbrication :
   <br /> <code>posts/:post_id/comments/:comment_id/favorites</code> 
-  <br /> comme ceci : 
+  <br /> en deux imbrications : 
   <br /> <code>posts/:post_id/comments/:comment_id</code>
   <br /> <code>comments/:comment_id/favorites/:favorite_id</code>
+
+%p Pour cela il faut écrire les routes en deux parties comme ceci :
 
 %pre.ruby
   :preserve

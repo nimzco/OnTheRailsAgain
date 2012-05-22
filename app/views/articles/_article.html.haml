@@ -1,7 +1,7 @@
 %article
   %header
     %h2
-      = link_to article.title, article_path(article.link)
+      = link_to article.title, article_path(article)
       %small
         .authors
           Par
@@ -14,7 +14,7 @@
   .wrapper    
     %p.article_content
       = article.introduction
-      = link_to "Lire la suite…".html_safe, {:controller => "articles", :action => "show", :id => article.link}, :class => 'more_link'
+      = link_to "Lire la suite…".html_safe, article_path(article), :class => 'more_link', :title => 'Lire la suite'
     = join_tags article
 
 .divider

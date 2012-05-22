@@ -9,7 +9,8 @@
     = stylesheet_link_tag 'application'#, :media => 'screen, projection'
     
     = render 'shared/meta_information'
-    == <link rel="alternate" type="application/rss+xml" title="OnTheRailsAgain - RSS" href="http://ontherailsagain.com/articles.rss" />
+    = auto_discovery_link_tag :atom, feed_url
+    = auto_discovery_link_tag :rss, feed_url + ".rss"
     
     = yield :header
 
@@ -35,9 +36,9 @@
       .page-header
       .content
         Site et design réalisé par deux passionnés des technologies du Web
-        <a href="/authors/nicolas">Nicolas Dupont</a>
+        <a href="/authors/nicolas" title="Nicolas Dupont">Nicolas Dupont</a>
         &
-        <a href="/authors/nima">Nima Izadi</a>.
+        <a href="/authors/nima" title="Nima Izadi">Nima Izadi</a>.
         
         = yield :footer
 

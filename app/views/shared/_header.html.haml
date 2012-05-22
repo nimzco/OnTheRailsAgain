@@ -16,19 +16,19 @@
             = link_to 'À propos', authors_path
       %ul.nav.span2.not_mobile#outgoing_links
         %li
-          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+          = link_to feed_path, :id => 'rss_feed', :target => '_blank', :title => 'RSS' do
             %i.icon-rss
         %li
-          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank'} 
+          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank', :title => 'Twitter'}
             %i.icon-twitter
       %div.span4#search_form.not_mobile
         %div= search_bar_html
       %div#header_mobile.mobile
         %div
-          %a.share#rss_feed{:href => "http://feeds.feedburner.com/OnTheRailsAgain", :target => '_blank'}
+          = link_to feed_path, :id => 'rss_feed', :target => '_blank', :title => 'RSS' do
             %i.icon-rss
         %div
-          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank' }
+          %a.share#twitter{:href => 'https://twitter.com/OnTheRailsBlog'          , :target => '_blank' , :title => 'Twitter'}
             %i.icon-twitter
         .header_link_group
           %a

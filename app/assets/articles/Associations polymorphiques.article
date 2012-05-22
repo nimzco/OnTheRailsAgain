@@ -17,7 +17,7 @@ Nima
 .require
   Pré-requis :
   %ul
-    %li connaître l'héritage ; 
+    %li connaître l'héritage ;
     %li 
       avoir déjà vu les différentes associations 
       (<a target="_blank" href="http://ontherailsagain.com/articles/les-associations-one-to-many" rel="nofollow">One-to-Many</a>,
@@ -41,6 +41,9 @@ Nima
 %p
   Illustrons le problème par un exemple.
   Supposons que nous avons trois modèles : <span class="code">Article</span>, <span class="code">Event</span> et <span class="code">Photo</span>. Le but est de créer un unique modèle <span class="code">Comment</span> pour nos trois types de ressources.
+
+%p Voilà un schéma représentatif de ce que l'on veut obtenir&nbsp;:
+%img{:src => "http://ontherailsagain.com/article_images/Associations_polymorphiques/Associations_polymorphiques.png", :alt => "Représentation schématique de la relation polymorphique", :title => "Schéma de l'association polymorphique"}
 
 %h3 Création du modèle
 %p

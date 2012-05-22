@@ -17,7 +17,7 @@ Nicolas
 .see 
   Ce que nous allons voir :
   %ul
-    %li comprendre l'intérêt de chaque fichier et de chaque dossier.
+    %li Comprendre l'intérêt de chaque fichier et de chaque dossier.
 
 %p Lorsque que l'on veut se lancer dans Ruby On Rails, il peut arriver que l'on soit un peu perturbé, voire découragé par la quantité de fichiers et de dossiers qui sont générés après avoir tapé la commande suivante :
 

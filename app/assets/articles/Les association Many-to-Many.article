@@ -17,7 +17,7 @@ Nima
 .require
   Pré-requis :
   %ul
-    %li avoir des bases en SQL (table, clé primaire, clé étrangère) ;
+    %li avoir des bases en SQL (table, clé primaire, clé étrangère ;
     %li 
       avoir vu les associations 
       %a{:target => '_blank', :href => "http://ontherailsagain.com/articles/Les-associations-one-to-many"} One-to-Many.
@@ -52,7 +52,7 @@ Nima
 
 %h2 En pratique
 %p Avant de continuer, voilà une représentation de la relation des modèles entre eux.
-%img{:src => '/article_images/Associations_Many-to-Many/Many-to-Many.png'}
+%img{:src => 'http://ontherailsagain.com/article_images/Associations_Many-to-Many/Many-to-Many.png', :alt => "Représentation schématique de la relation Many to Many", :title => "Schéma de l'association Many to Many"}
 
 %h3 Création des modèles
 
