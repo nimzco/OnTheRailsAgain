@@ -1,5 +1,5 @@
 --date 
-11/05/2012
+21/05/2012
 
 --tags
 Routes, Contrôleurs, 
@@ -73,32 +73,9 @@ Nicolas
 
 %p D'ailleurs, en général, nous devons nous efforcer d'avoir des gros modèles et des petits contrôleurs. Les méthodes des contrôleurs ne devraient contenir que très peu de lignes de code. Si une action contrôleur devient trop grosse, alors nous devons essayer de sortir la logique et l'inclure dans le modèle.
 
-%h2 Exemple
+%h3 Créer une réponse HTTP
 
-%h3 Fonctionnement par défaut
-
-%p Par défaut, Rails utilise le fichier de vue qui a le même nom que celui de la méthode éxecutée. Prenons un exemple, supposons que nous ayons le contrôleur <code>ArticlesController</code> défini de la façon suivante :
-
-%pre.ruby
-  :preserve
-    # app/controllers/articles_controller.rb
-    class ArticlesController < ApplicationController
-        def new
-        end
-    end
-
-%p Supposons également que les routes soient bien définies comme ceci :
-
-%pre.ruby
-  :preserve
-    # config/routes.rb
-    resources :articles
-
-%p Si l'utilisateur accède à l'URL <code>/articles/new</code> pour créer un nouvel article, Rails va créer une instance du contrôleur <code>ArticlesController</code>, éxecuter la méthode <code>new</code> et utiliser le fichier de vue <code>app/view/articles/new.html.erb</code> et ce, même si la méthode <code>new</code> ne fait absolument rien.
-
-%h3 Comment ça fonctionne ?
-
-%p Tout d'abord, il faut savoir que depuis un contrôleur, il y a trois façons pour créer une réponse HTTP :
+%p Depuis un contrôleur, il y a trois façons pour créer une réponse HTTP :
 
 %ul
   %li Utiliser la méthode <code>render</code> qui permet de créer une réponse HTTP complète à envoyer au navigateur
@@ -109,10 +86,9 @@ Nicolas
 
 %p Par défaut, si rien n'est précisé, le contrôleur fait un appel à la méthode <code>render</code> et execute donc la vue ayant le même nom que celle-ci, c'est un bon exemple de « Convention Over Configuration » dont on entend souvent parler avec Ruby On Rails.
 
-
 %h2 Variables accessibles dans la vue
 
-%p L'exemple précedent ne fait rien, et si nous voulons réellement créer un article il faudrait modifier la méthode <code>new</code> de la façon suivante :
+%p Maintenant que l'on sait comment créer une réponse, on souhaite très souvent partager des variables en tre le contrôleur et la vue. Pour cela il suffit de définir une variable d'instance, comme ceci :
 
 %pre.ruby
   :preserve
@@ -123,7 +99,7 @@ Nicolas
         end
     end
 
-%p En créant une variable avec un <code>@</code>, on crée une variable d'instance, c'est à dire que cette variable est accessible tout au long de la vie de l'objet. Ainsi, cette instance du modèle <code>Article</code> sera accessible dans la vue <code>app/view/articles/new.html.erb</code> et l'utilisateur pourra effectuer des modifications dessus.
+%p En créant une variable avec un <code>@</code>, on crée une variable d'instance, c'est à dire que cette variable est accessible tout au long de la vie de l'objet. Ainsi, cette instance du modèle <code>Article</code> sera accessible dans la vue qui sera rendu par le contrôleur, à savoir ici <code>app/view/articles/new.html.erb</code> puisque rien n'a été précisé.
 
 %h2 Paramètres et données utilisateurs
 
@@ -142,6 +118,40 @@ Ensuite, les paramètres passés par la méthode HTTP <code>POST</code> qui vien
 
     # app/controllers/articles_controller.rb
     params[:demo] # contient "true"
+
+
+%h2 Exemple
+
+%p Prenons un exemple concret nous permettant de comprendre tout ces mécanismes. Supposons que nous souhaitons créer un article. Tout d'abord on défini le modèle :
+
+%pre.shell
+  :preserve
+  $ rails g model Article title:string content:text
+
+
+%p Et le contrôleur avec les méthodes <code>new</code> et <code>create</code> :
+%pre.shell
+  :preserve
+  rails g controller ArticlesController new create
+
+%p
+
+%pre.erb
+  :preserve
+    # app/views/articles/_form.html.erb
+    <%= form_for(@article) do |f| %>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :content %><br />
+        <%= f.text_area :content %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
 
 
 
