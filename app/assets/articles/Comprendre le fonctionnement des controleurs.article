@@ -73,7 +73,7 @@ Nicolas
 
 %p D'ailleurs, en général, nous devons nous efforcer d'avoir des gros modèles et des petits contrôleurs. Les méthodes des contrôleurs ne devraient contenir que très peu de lignes de code. Si une action contrôleur devient trop grosse, alors nous devons essayer de sortir la logique et l'inclure dans le modèle.
 
-%h3 Créer une réponse HTTP
+%h2 Créer une réponse HTTP
 
 %p Depuis un contrôleur, il y a trois façons pour créer une réponse HTTP :
 
@@ -86,20 +86,68 @@ Nicolas
 
 %p Par défaut, si rien n'est précisé, le contrôleur fait un appel à la méthode <code>render</code> et execute donc la vue ayant le même nom que celle-ci, c'est un bon exemple de « Convention Over Configuration » dont on entend souvent parler avec Ruby On Rails.
 
-%h2 Variables accessibles dans la vue
+%p Prenons un exemple pour illustrer ceci en se penchant sur le code généré par un scaffold. Supposons donc que nous ayons executé la commande suivante pour générer notre scaffold pour une ressource Article :
 
-%p Maintenant que l'on sait comment créer une réponse, on souhaite très souvent partager des variables en tre le contrôleur et la vue. Pour cela il suffit de définir une variable d'instance, comme ceci :
+%pre.shell
+  :preserve
+  $ rails g scaffold Article name:string content:text
+
+
+%p Parmis le code généré regardons le code du controller Article, dans lequel on peut voir un exemple de ce comportement par défaut, par exemple la méthode index :
 
 %pre.ruby
   :preserve
-    # app/controllers/articles_controller.rb
-    class ArticlesController < ApplicationController
-        def new
-          @article = Article.new
-        end
-    end
+  # app/controllers/articles_controller.rb
 
-%p En créant une variable avec un <code>@</code>, on crée une variable d'instance, c'est à dire que cette variable est accessible tout au long de la vie de l'objet. Ainsi, cette instance du modèle <code>Article</code> sera accessible dans la vue qui sera rendu par le contrôleur, à savoir ici <code>app/view/articles/new.html.erb</code> puisque rien n'a été précisé.
+  def index
+    @articles = Article.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @articles }
+    end
+  end
+
+%p On constate que lorsque la requête est faite au format HTML, il n'y a aucune instruction précise, et le contrôleur effectue quand même le rendu de la vue <code>app/views/articles/index.html.erb</code>
+
+%h2 Variables accessibles dans la vue
+
+%p Maintenant que l'on sait comment créer une réponse, on souhaite très souvent partager des variables en tre le contrôleur et la vue. Pour cela il suffit de définir une variable d'instance, comme on peut voir, toujours dans la méthode index du contrôleur Article généré par le scaffold :
+
+%pre.ruby
+  :preserve
+  # app/controllers/articles_controller.rb
+
+  def index
+    @articles = Article.all
+    …
+  end
+
+%p En créant une variable avec un <code>@</code>, on crée une variable d'instance, c'est à dire que cette variable est accessible tout au long de la vie de l'objet. Ainsi, cette instance contenant l'ensemble des modèles <code>Articles</code> sera accessible dans la vue qui sera rendu par le contrôleur. Et donc cette variable est utilisée dans la vue <code>index</code> comme ceci : 
+
+%pre.erb
+  :preserve
+  <h1>Listing articles</h1>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.name %></td>
+      <td><%= article.content %></td>
+      <td><%= link_to 'Show', article %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
 
 %h2 Paramètres et données utilisateurs
 
@@ -113,45 +161,53 @@ Ensuite, les paramètres passés par la méthode HTTP <code>POST</code> qui vien
 
 %pre.ruby
   :preserve
-    #URL
-    /articles/new?demo=true
-
     # app/controllers/articles_controller.rb
-    params[:demo] # contient "true"
 
+    # GET /articles/1/edit (exemple d'URL)
+    def edit
+      @article = Article.find(params[:id])
+    end
 
-%h2 Exemple
+%p Ici, la méthode edit récupère l'<code>id</code> contenue dans l'url pour trouver dans la base de donnée l'article à éditer et créer une instance de cet article.
 
-%p Prenons un exemple concret nous permettant de comprendre tout ces mécanismes. Supposons que nous souhaitons créer un article. Tout d'abord on défini le modèle :
+%p On peut égalemment voir un exemple de paramètre passés par la méthode <code>POST</code> dans avec la vue du formulaire :
 
-%pre.shell
+%pre.ruby
   :preserve
-  $ rails g model Article title:string content:text
-
-
-%p Et le contrôleur avec les méthodes <code>new</code> et <code>create</code> :
-%pre.shell
-  :preserve
-  rails g controller ArticlesController new create
-
-%p
-
-%pre.erb
-  :preserve
-    # app/views/articles/_form.html.erb
-    <%= form_for(@article) do |f| %>
-      <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :content %><br />
-        <%= f.text_area :content %>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+  <%= form_for(@article) do |f| %>
+    <% if @article.errors.any? %>
+      …
     <% end %>
 
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :content %><br />
+      <%= f.text_area :content %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
 
+%p Lorsque l'on envoi ce formulaire si on regarde dans la console, on peut constater que le hash params contient toutes nos informations :
 
+%pre.ruby
+  :preserve
+  Started POST "/articles" for 127.0.0.1 at 2012-05-28 20:53:00 +0200
+  Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"D5ivgsVng2NL46KIE62+y57gRBAK+uhLuyOgqD+bE3k=", "article"=>{"name"=>"Article test", "content"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}, "commit"=>"Create Article"}
+
+%p Et les récupérés dans le contrôleur dans la méthode create :
+
+%pre.ruby
+  :preserve
+  def create
+    @article = Article.new(params[:article])
+
+    respond_to do |format|
+    …
+    end
+  end
