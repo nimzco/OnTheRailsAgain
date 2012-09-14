@@ -3,9 +3,9 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '~>3.2.6'
+gem 'rails', '~>3.2.8'
 
-gem "heroku"
+gem 'heroku'
 gem 'thin'
 
 # Bundle edge Rails instead:
