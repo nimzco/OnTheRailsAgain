@@ -5,14 +5,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '~>3.2.6'
 
-# gem "heroku"
+gem "heroku"
 gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'disqus'
-gem 'meta_search'  
+gem 'meta_search'
 gem 'ancestry'            , '~>1.2.4'
 gem 'devise'              , '~>1.4.2'
 gem 'formtastic'
