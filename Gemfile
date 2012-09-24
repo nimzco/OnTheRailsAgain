@@ -6,7 +6,6 @@ source 'http://rubygems.org'
 gem 'rails', '~>3.2.8'
 
 gem 'heroku'
-gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,17 +13,16 @@ gem 'thin'
 gem 'disqus'
 gem 'meta_search'
 gem 'ancestry'            , '~>1.2.4'
-gem 'devise'              , '~>1.4.2'
+gem 'devise'              , '~>2.1.2'
 gem 'formtastic'
 gem 'inherited_resources'
 gem 'albino'
-gem 'capistrano'
 gem 'will_paginate'       , '~>3.0.2'
 gem 'tweet-button'
 gem 'bitly'
 
 gem 'haml'
-gem 'factory_girl'
+gem 'i18n'                , '~> 0.6.1'
 
 group :assets do
   gem 'twitter-bootstrap-rails'
@@ -33,12 +31,17 @@ group :assets do
   gem 'less-rails-fontawesome'
 end
 
-gem "jquery-rails"
+gem 'jquery-rails'
 gem 'pg'
+
+group :test do
+  gem 'factory_girl'
+end
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem "rspec-rails" , "~> 2.6"
+  gem 'rspec-rails' , "~> 2.6"
+  gem 'thin'
 end
 
 # Use unicorn as the web server
