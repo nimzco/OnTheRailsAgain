@@ -3,7 +3,7 @@
 # OnTheRailsAgain Rake Tasks list
 
 require 'rake/clean'
-require 'ruby-debug'
+
 ARTICLE_PATH = File.join(Rails.root, 'app', 'assets', 'articles')
 
 DATE_DELIMITER         = '--date'
@@ -35,7 +35,7 @@ task :generate_article, [:filename] => :environment do |t, args|
 end
 
 desc 'Create new articles'
-task :add_new_articles => :environment do 
+task :add_new_articles => :environment do
   Dir.open(ARTICLE_PATH).each do |article_name|
     next if File.extname(article_name) != ARTICLE_EXTENSION # Treat file only .article file
 
@@ -56,15 +56,15 @@ task :add_new_articles => :environment do
 end
 
 desc 'Generate all articles'
-task :generate_articles => :environment do 
+task :generate_articles => :environment do
   # First, delete all existing articles
   Article.delete_all
   Tag.delete_all
   Dir.open(ARTICLE_PATH).each do |article_name|
     next if File.extname(article_name) != ARTICLE_EXTENSION # Treat file only .article file
-    
+
     article_values = parse_article_from_file article_name
-      
+
     article = Article.create( :created_at   => article_values[:date],
                               :title        => article_values[:title],
                               :introduction => article_values[:introduction],
@@ -76,7 +76,7 @@ task :generate_articles => :environment do
   end
 end
 
-# Parse an File article to parse and create a new article 
+# Parse an File article to parse and create a new article
 # Returns a hash containing all values of an article
 def parse_article_from_file article_file_name
   article_values                = {}
@@ -90,7 +90,7 @@ def parse_article_from_file article_file_name
   next_is                       = ''
 
   puts "Parsing: #{article_file_name}"
-  File.open(File.join(ARTICLE_PATH, article_file_name), 'r') do |article_file|      
+  File.open(File.join(ARTICLE_PATH, article_file_name), 'r') do |article_file|
     article_file.each_line do |line|
       next if line.blank?
       ##### Checking what next line will be
@@ -119,12 +119,12 @@ def parse_article_from_file article_file_name
           when 'introduction' then article_values[:introduction] << line.strip
           when 'content'      then article_values[:content]      << line
           when 'title'        then article_values[:title]        << line.strip
-          when 'authors'      then 
+          when 'authors'      then
             line.strip.split(',').each do |author|
               author.strip! # Removing eventual spaces at the begining or at the end
               article_values[:authors] << Author.where(:name => author).first unless Author.where(:name => author).empty?
             end
-          when 'tags'         then 
+          when 'tags'         then
             line.strip.split(',').each do |tag_name|
               tag_name.strip! # Removing eventual spaces at the begining or at the end
               # If the tag exists, add it to the list of tags
