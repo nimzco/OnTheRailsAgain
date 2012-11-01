@@ -3,15 +3,20 @@ OntheRailsAgain::Application.routes.draw do
   devise_for :authors
 
   resources :authors, :only => [:index, :show]
-  
-  resources :articles  
+
+  resources :articles
   match '/feed' => 'articles#index',
         :as => :feed,
         :defaults => { :format => 'atom' }
 
-  root :to => "articles#index"  
-  
+  root :to => "articles#index"
+
   match "sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
+
+  match "/Nima"   , :controller => 'authors', :action => :show, :id => 'nima'
+  match "/nima"   , :controller => 'authors', :action => :show, :id => 'nima'
+  match "/Nicolas", :controller => 'authors', :action => :show, :id => 'nicolas'
+  match "/nicolas", :controller => 'authors', :action => :show, :id => 'nicolas'
 
   # Matches routing errors
   match '*a', :to => 'application#render_not_found'
