@@ -131,3 +131,11 @@
   border:           1px solid #DDD;
   border-radius:    2px;
 }
+
+.transform(@transformation) {
+  -webkit-transform: @transformation;
+  -moz-transform:    @transformation;
+  -ms-transform:     @transformation;
+  -o-transform:      @transformation;
+  transform:         @transformation;
+}

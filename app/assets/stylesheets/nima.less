@@ -1,0 +1,99 @@
+@import "mixins.css.less";
+
+
+h1 {
+  text-align  : center;
+  font-variant: small-caps;
+  font-size   : 3.5em;
+}
+
+.thumbnail-wrapper {
+  .transition;
+  .thumbnail {
+    .transform(rotate(-1.5deg));
+    background-color: white;
+    padding: 7px;
+    border-radius: 0;
+  }
+}
+
+hr {
+  border-top: 1px solid #DDD;
+}
+.skills {
+  h2:last-child {
+    margin-bottom: 0;
+  }
+  h2:first-child {
+    margin-top: 0;
+  }
+}
+
+#contact-warpper {
+  h2 {
+    text-align    : center;
+    margin-bottom : 0;
+  }
+  hr {
+    margin-top: 0;
+  }
+  #contact {
+    margin: 1em 0;
+    ul {
+      list-style  : none;
+      margin-left : 0;
+      text-align  : center;
+      li {
+        display: inline-block;
+        font-size: 4em;
+      }
+    }
+  }
+}
+
+#go-to-resume {
+  margin-bottom: 20em;
+  text-align: center;
+}
+
+#resume {
+  hgroup {
+    h1 {
+      border-bottom: 0;
+      box-shadow: none;
+    }
+    h2 {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-height: 800px) {
+  .thumbnail-wrapper {
+    width: 30% !important; // ~span4
+  }
+}
+@media (max-width: 600px) {
+  .thumbnail-wrapper {
+    display: block !important;
+    width: 100% !important;
+    .thumbnail {
+      margin: auto !important;
+      width: 50% !important;
+    }
+  }
+  .skills {
+    width       : 100% !important;
+    margin-left : 0 !important;
+    text-align  : center;
+    h2, p {
+      padding-left: 1rem;
+    }
+  }
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    padding-left: 1rem;
+  }
+}
