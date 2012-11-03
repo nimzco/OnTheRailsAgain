@@ -17,10 +17,6 @@ set :scm, :git
 
 set :use_sudo, false
 
-# role :web, "ontherailsagain.com"
-# role :app, "ontherailsagain.com"
-# role :db,  "ontherailsagain.com", :primary => true
-
 server "ec2-user@ec2-50-19-204-4.compute-1.amazonaws.com", :app, :web, :db, :primary => true
 ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/OnTheRailsAgain.pem"]
 
@@ -32,6 +28,11 @@ ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/OnTheRailsAgain.pem"]
 
 after "deploy:update", "assets:compile"
 
+namespace :articles do
+  task :update do
+    run "cd #{release_path}; rake generate_articles RAILS_ENV=production "
+  end
+end
 namespace :assets do
   task :compile do
     run "cd #{release_path}; rake assets:precompile RAILS_ENV=production "
