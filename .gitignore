@@ -10,3 +10,4 @@ public/assets/*
 .rvmrc
 .DS_Store
 vendor/*
+bin/
