@@ -1,0 +1,26 @@
+development:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: ontherailsagain_development
+  pool: 5
+  username: postgres
+  password: password
+
+test:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: ontherailsagain_test
+  pool: 5
+  username: postgres
+  password: password
+
+production:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: ontherailsagain_production
+  pool: 5
+  username: postgres
+  password: password

@@ -4,7 +4,6 @@ log/*.log
 tmp/
 db/seeds.rb
 public/stylesheets/*.css
-config/database.yml
 .sass-cache/
 public/assets/*
 .rvm
