@@ -3,7 +3,7 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '~>3.2.8'
+gem 'rails', '~>3.2.9'
 
 gem 'heroku'
 
@@ -29,13 +29,14 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'less-rails-fontawesome'
+  gem 'less-rails'                , '~> 2.2.6'
+  gem 'therubyracer', :platforms => :ruby
 end
 
 gem 'jquery-rails'
 gem 'pg'
 
 group :production do
-  gem 'therubyracer'
   gem 'execjs'
 end
 
