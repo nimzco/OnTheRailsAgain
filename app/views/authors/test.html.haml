@@ -1,0 +1,12 @@
+<div id='coursavenue-widget'></div>
+:javascript
+  window.onload = function() {
+    var coursavenue_widget_div = document.getElementById('coursavenue-widget');
+    var request = new XMLHttpRequest();
+    request.open('GET', 'http://pro.coursavenue.com/etablissements/abaneraz-tango-club--2/widget_ext.json?comments=true&nb_comments=5', false);
+    request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    request.send(null);
+    if (request.status == 200) {
+      coursavenue_widget_div.innerHTML = request.responseText;
+    }
+  }

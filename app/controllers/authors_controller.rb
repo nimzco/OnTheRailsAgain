@@ -1,9 +1,12 @@
 # encoding: utf-8
 class AuthorsController < ApplicationController
 
-  def index  
+  def test
   end
-  
+
+  def index
+  end
+
   def show
     if    params[:id].downcase == 'nima'
       render 'nima'

@@ -17,6 +17,7 @@ OntheRailsAgain::Application.routes.draw do
   match "/nima"   , :controller => 'authors', :action => :show, :id => 'nima'
   match "/Nicolas", :controller => 'authors', :action => :show, :id => 'nicolas'
   match "/nicolas", :controller => 'authors', :action => :show, :id => 'nicolas'
+  match "/test"   , :controller => 'authors', :action => 'test'
 
   # Matches routing errors
   match '*a', :to => 'application#render_not_found'
