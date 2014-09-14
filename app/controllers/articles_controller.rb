@@ -2,26 +2,27 @@
 class ArticlesController < InheritedResources::Base
   before_filter :authenticate_author!, :only => ["new", "create", "edit"]
   before_filter :set_page_name
-  
+
   def set_page_name
     @page = :article
   end
-  
-  def index  
+
+  def index
     @search_text = ''
     if params[:tag]
       @articles = Article.page(params[:page]).find(:all, :order => 'Articles.created_at DESC', :include => :tags, :conditions => ["tags.name = ?", params[:tag]])
       @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant au tag : " + params[:tag]
     elsif params[:author]
       @articles = Article.page(params[:page]).find(:all, :order => 'Articles.created_at DESC', :include => :authors, :conditions => ["authors.name = ?", params[:author]])
-      @search_text = "Article#{@articles.size > 1 ? 's' : ''} ayant pour auteur : " + params[:author]      
+      @search_text = "Article#{@articles.size > 1 ? 's' : ''} ayant pour auteur : " + params[:author]
     else
-      @articles = @search.page(params[:page]).order('created_at DESC')
+      @articles = Article.page(params[:page]).order('created_at DESC')
+      # @articles = @search.page(params[:page]).order('created_at DESC')
       @search_text = "Article#{@articles.size > 1 ? 's' : ''} correspondant à la recherche : «#{params[:search]["title_or_content_contains"]}»" if params[:search]
     end
     index! do |format|
-      format.atom do 
-        @articles = Article.order("created_at DESC") 
+      format.atom do
+        @articles = Article.order("created_at DESC")
         render :layout => false
       end
       # Redirect permanently to the ATOM feed
@@ -34,7 +35,7 @@ class ArticlesController < InheritedResources::Base
     @article.authors << current_author
     new!
   end
-  
+
   def show
     @article = Article.where(:link => params[:id]).first
     raise ActiveRecord::RecordNotFound if @article.nil?
@@ -58,7 +59,7 @@ class ArticlesController < InheritedResources::Base
     @article = Article.where("link = ?",  params[:id]).first
     edit!
   end
-  
+
   def create
     @article = Article.new(params[:article])
     begin
@@ -75,7 +76,7 @@ class ArticlesController < InheritedResources::Base
       end
     end
   end
-  
+
   def update
     @article = Article.find(params[:id])
     @article.content = if Rails.env != 'production' then haml2html(params[:article][:content]) else params[:article][:content] end
@@ -93,45 +94,45 @@ class ArticlesController < InheritedResources::Base
       end
     end
   end
-  
+
   def activate
     @article = Article.find params[:id]
     @article.activate_article
     @article.save
     redirect_to articles_path
   end
-  
+
   def desactivate
     @article = Article.find params[:id]
     @article.desactivate
     @article.save
     redirect_to articles_path
   end
-  
+
   def activate_all
     @articles = Article.all
     @articles.each do |article|
       article.activate_article
-      article.save  
-    end  
+      article.save
+    end
     redirect_to articles_path
   end
-  
+
   def desactivate_all
     @articles = Article.all
     @articles.each do |article|
       article.desactivate
-      article.save  
-    end  
+      article.save
+    end
     redirect_to articles_path
   end
-  
+
   private
 
   def highlight(code, language = :ruby)
     Albino.new(code, language).to_s
   end
-  
+
   def haml2html(content)
     @new_content = Haml::Engine.new(content).to_html
 

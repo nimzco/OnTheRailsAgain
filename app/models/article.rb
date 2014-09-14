@@ -13,17 +13,19 @@ class Article < ActiveRecord::Base
   validates :title, :introduction, :content, :link, :presence => true
 
   before_validation :generate_link
-  before_save :generate_table_of_content,
-              :generate_anchor_links
-  
+  before_save :generate_table_of_content
+  before_save :generate_anchor_links
+
+  scope :active, -> { where(activated: true) }
+
   # For pagination gem
   self.per_page = 5
-  
+
   # Permalink
   def permalink
     "http://ontherailsagain.com/articles/#{self.link}"
   end
-  
+
   def to_param
     self.link
   end
@@ -45,7 +47,7 @@ class Article < ActiveRecord::Base
         case (h.to_i - oldH)
           when 1
             table_of_content_string += '<ul>'
-          when 0 
+          when 0
             table_of_content_string += '</li>'
           else
             table_of_content_string += '</li>'
@@ -66,7 +68,7 @@ class Article < ActiveRecord::Base
     table_of_content_string += "</ul>"
     self.table_of_content = table_of_content_string
   end
-  
+
 
   # Add an id to all the headers
   # Ids are generating in the same way that URLs are.
@@ -78,16 +80,16 @@ class Article < ActiveRecord::Base
       link  = "#{escape_characters(title)}-#{index.to_s}"
       index = index + 1
       "<h#{h} id='#{link}'>#{title}</h#{h}>"
-    end    
+    end
   end
-  
+
   # Is called before validation of the article when it is created
   # Generate a link for an article based on its title
   def generate_link
     self.link = escape_characters self.title
     self.bitly_url = BITLY.shorten(self.permalink).bitly_url
   end
-    
+
   def activate_article
     self.activated = true
   end
@@ -95,8 +97,8 @@ class Article < ActiveRecord::Base
   def desactivate
     self.activated = false
   end
-  
-  private 
+
+  private
   # Return a string with all weird character escaped
   # Words will be seperated by dashes and all special characters will be removed
   def escape_characters string
@@ -108,7 +110,7 @@ class Article < ActiveRecord::Base
        ['œ'] => 'oe',
        ['ú','ù','û','ü','U','Û','Ù'] => 'u',
        ['ç','Ç'] => 'c',
-       [' '] => '-', 
+       [' '] => '-',
        ['.',',',';','?','!',':','=','+','=','<','>','%','^','$','€','&',')','(','…','\'','"', '/'] => '-'
        }
 

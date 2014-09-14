@@ -6,6 +6,7 @@ development:
   pool: 5
   username: postgres
   password: password
+  template: template0
 
 test:
   host: localhost
@@ -15,6 +16,7 @@ test:
   pool: 5
   username: postgres
   password: password
+  template: template0
 
 production:
   host: localhost
@@ -24,3 +26,4 @@ production:
   pool: 5
   username: admin
   password: password
+  template: template0

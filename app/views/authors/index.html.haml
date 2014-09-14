@@ -1,7 +1,7 @@
 = content_for :title do
   Nicolas Dupont & Nima Izadi
 %article#authors_description.row-fluid
-  %section.span6
+  %section.col-md-6
     %div.image-content
       = link_to image_tag('nico.jpg'), author_path('Nicolas')
     %div.text-content
@@ -9,14 +9,12 @@
       %p Je suis passionné par ce que je fais, j'aime innover et entreprendre. À terme je souhaite monter mon entreprise. J'aime beaucoup partager avec les autres ce qui me permet d'apprendre tous les jours de nouvelles choses.<br />J'adore le snowboard et je <a title="500px" target="_blank" href="http://500px.com/Lowx">m'initie également à la photo</a> avec des amis.
       %p= link_to 'Si mon C.V. vous intéresse…', author_path('Nicolas')
 
-  %section.span6
+  %section.col-md-6
     %div.image-content
       = link_to image_tag('nima.jpg'), author_path('Nima')
     %div.text-content
       %h1= link_to 'Nima Izadi', author_path('Nima')
       %p
-        Je suis co-fondateur de <a href="http://www.coursavenue.com" target="_blank">CoursAvenue</a>, co-organisateur du <a href="http://meetup.rubyparis.org/" target="_blank">Paris.rb</a> et développeur <b>Freelance</b>.
-        %br
-        J'aime entreprendre, rencontrer des gens et apprendre mais j'adore également <a href="https://speakerdeck.com/nima" target="_blank">parler en public</a> !
+        Je suis co-fondateur de <a href="http://www.coursavenue.com" target="_blank">CoursAvenue</a>. J'aime entreprendre, rencontrer des gens et apprendre mais j'adore également <a href="https://speakerdeck.com/nima" target="_blank">parler en public</a> !
         %br
         Je suis aussi guitariste et <a title="500px" target="_blank" href="http://500px.com/nima_izadi">photographe amateur</a> passionné de voyages !

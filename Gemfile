@@ -3,33 +3,34 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.14'
+# gem 'rails', '3.2.14'
+gem 'rails', '4.1.4'
+
+gem 'passenger'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'disqus'
-gem 'meta_search'
-gem 'ancestry'            , '~>1.2.4'
-gem 'devise'              , '~>2.1.2'
+gem 'squeel'
+gem 'ancestry'
+gem 'devise'
 gem 'formtastic'
 gem 'inherited_resources'
 gem 'albino'
-gem 'will_paginate'       , '~>3.0.2'
+gem 'will_paginate'
 gem 'tweet-button'
 gem 'bitly'
 
 gem 'haml'
-gem 'i18n'                , '~> 0.6.1'
+gem 'i18n'
 
-group :assets do
-  gem 'twitter-bootstrap-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'less-rails-fontawesome'
-  gem 'less-rails'                , '~> 2.2.6'
-  gem 'therubyracer', :platforms => :ruby
-end
+gem 'twitter-bootstrap-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'less-rails-fontawesome'
+gem 'less-rails'
+gem 'therubyracer', :platforms => :ruby
 
 gem 'jquery-rails'
 gem 'pg'
@@ -44,9 +45,11 @@ end
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'rspec-rails' , "~> 2.6"
-  gem 'thin'
+  gem 'rspec-rails'
 end
+
+gem 'better_errors'
+gem 'binding_of_caller'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -67,3 +70,6 @@ gem 'capistrano'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
+# Must be before jobs
+
+gem 'protected_attributes'      , '~>1.0.8'

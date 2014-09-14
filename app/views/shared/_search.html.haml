@@ -1,6 +1,6 @@
-= form_for @search, {:controller => 'articles', :action => 'index', :html => { :class => " search-form"} } do |f|
-  .input-prepend
-    %span.add-on
-      %i.icon-search
-    = f.search_field  :title_or_content_contains, :class => '', :placeholder => 'Titres, tags, contenu…'
-  - f.submit  "&nbsp;".html_safe, :id => 'search_submit'
+-# = form_for Article.new, { controller: 'articles', action: 'index', html: { class: " search-form"} } do |f|
+-#   .input-prepend
+-#     %span.add-on
+-#       %i.icon-search
+-#     = f.search_field  :title_or_content_contains, class: '', placeholder: 'Titres, tags, contenu…'
+-#   - f.submit  "&nbsp;".html_safe, id: 'search_submit'

@@ -8,7 +8,7 @@
       Again
   %nav
     .container.row-fluid
-      .span6
+      .col-md-6
         %ul.nav#menu_links
           %li{ :class => (current_page?(articles_path) || current_page?(root_path) ? 'active' : '') }
             = link_to 'Articles', root_path
